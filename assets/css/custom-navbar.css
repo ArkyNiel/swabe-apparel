@@ -1,0 +1,37 @@
+.custom-navbar {
+  padding: 0;
+}
+
+.search-container {
+  max-width: 800px;
+}
+
+.navbar .nav-link {
+  color: #333;
+  font-size: 14px;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .nav-link:hover {
+  color: #000;
+}
+
+.input-group .form-control {
+  border-right: none;
+}
+
+.input-group .btn {
+  border-left: none;
+}
+
+.nav-item.dropdown {
+  margin-left: 1rem;
+}
+
+.list-unstyled {
+  margin-bottom: 0;
+}
+
+.dropdown-toggle {
+  padding: 0.5rem 1rem;
+}
