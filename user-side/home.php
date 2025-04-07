@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../assets/css/products-card-animation.css">
+    <link rel="stylesheet" href="../assets/css/item-cards.css">
 </head>
 <body>
     <?php include('./components/navigationbar.php'); ?>
@@ -32,5 +33,174 @@
       </div>
     </div>
 
+    <!-- cards -->
+    <div class="container section-content">
+      <h1 class="mb-4 mt-5">FOR YOUR FASHION</h1>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="card-container left">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt1.jpg"
+                class="card-img-top"
+                alt="Shirt 1"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container left">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt2.jpg"
+                class="card-img-top"
+                alt="Shirt 2"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container left">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt3.jpg"
+                class="card-img-top"
+                alt="Shirt 3"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container right">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt1.jpg"
+                class="card-img-top"
+                alt="Shirt 4"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container right">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt2.jpg"
+                class="card-img-top"
+                alt="Shirt 5"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container right">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt3.jpg"
+                class="card-img-top"
+                alt="Shirt 6"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 mb-4">
+          <div class="card-container left">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt1.jpg"
+                class="card-img-top"
+                alt="Shirt 7"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container left">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt2.jpg"
+                class="card-img-top"
+                alt="Shirt 8"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container left">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt3.jpg"
+                class="card-img-top"
+                alt="Shirt 9"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container right">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt1.jpg"
+                class="card-img-top"
+                alt="Shirt 10"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container right">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt2.jpg"
+                class="card-img-top"
+                alt="Shirt 10"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4">
+          <div class="card-container right">
+            <div class="card" style="width: 100%; height: 300px">
+              <img
+                src="../assets/img/shirt3.jpg"
+                class="card-img-top"
+                alt="Shirt 10"
+                style="height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="buy-text">Buy Now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="../assets/js/products-card-transition.js"></script>
 </body>
 </html>

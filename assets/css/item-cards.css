@@ -1,0 +1,186 @@
+.card-container {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.buy-text {
+  position: absolute;
+  bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: none;
+}
+
+.card-container:hover .buy-text {
+  display: block;
+}
+
+.card-img-top {
+  transition: transform 0.6s ease;
+}
+
+.card-container:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+.search-section {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  bottom: -160px;
+  padding: 50px 300px;
+  color: #ffff;
+}
+
+.search-section .left-column,
+.search-section .right-column {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 1.3s ease, opacity 1s ease;
+}
+
+.search-section .right-column {
+  transform: translateX(100%);
+}
+
+.search-section.visible .left-column {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.search-section.visible .right-column {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.card {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.search-section {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.search-section.visible {
+  opacity: 1;
+}
+
+.card-container:hover .card-img-top {
+  transform: scale(1.1);
+}
+
+.card-container:hover .buy-text {
+  opacity: 1;
+}
+
+.left-cards .card-container {
+  transform: translateX(-100px);
+}
+
+.right-cards .card-container {
+  transform: translateX(100px);
+}
+
+.card-container.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.left-cards .card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.right-cards .card {
+  transition: transform 0.3s ease-in-out;
+}
+
+@keyframes move-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes move-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.about-us {
+  padding: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 300px;
+}
+
+.banner {
+  width: 100%;
+  position: relative;
+  top: 10px;
+  padding-right: 100px;
+}
+
+.banner .about-img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.banner .about-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-text {
+  opacity: 0;
+  animation: slideInLeft 1s forwards;
+}
+
+.animate-img {
+  opacity: 0;
+  animation: slideInRight 1s forwards;
+}
