@@ -3,8 +3,19 @@
   overflow: hidden;
   z-index: 1;
   opacity: 0;
-  transform: translateX(100%);
-  transition: transform 1s ease-out, opacity 1s ease-out;
+  transform: translateX(-100px); /* Default for left side cards */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* For right side cards */
+.card-container.right {
+  transform: translateX(100px);
+}
+
+/* When card becomes visible */
+.card-container.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .buy-text {
@@ -34,6 +45,7 @@
   transform: scale(1.1);
 }
 
+/* Search section styles */
 .search-section {
   width: 100%;
   position: absolute;
@@ -41,6 +53,12 @@
   bottom: -160px;
   padding: 50px 300px;
   color: #ffff;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.search-section.visible {
+  opacity: 1;
 }
 
 .search-section .left-column,
@@ -54,77 +72,25 @@
   transform: translateX(100%);
 }
 
-.search-section.visible .left-column {
-  opacity: 1;
-  transform: translateX(0);
-}
-
+.search-section.visible .left-column,
 .search-section.visible .right-column {
   opacity: 1;
   transform: translateX(0);
 }
 
+/* Card hover effects */
 .card {
   transition: transform 0.2s ease-out;
   will-change: transform;
 }
 
-.search-section {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.search-section.visible {
-  opacity: 1;
-}
-
-.card-container:hover .card-img-top {
-  transform: scale(1.1);
-}
-
-.card-container:hover .buy-text {
-  opacity: 1;
-}
-
-.left-cards .card-container {
-  transform: translateX(-100px);
-}
-
+/* Remove redundant animations */
+.left-cards .card-container,
 .right-cards .card-container {
-  transform: translateX(100px);
+  transform: none; /* Let JavaScript handle the initial transform */
 }
 
-.card-container.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.left-cards .card {
-  transition: transform 0.3s ease-in-out;
-}
-
-.right-cards .card {
-  transition: transform 0.3s ease-in-out;
-}
-
-@keyframes move-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes move-right {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
+/* About section animations */
 .about-us {
   padding: 80px;
   display: flex;
@@ -144,7 +110,7 @@
   height: 250px;
   object-fit: cover;
   border-radius: 15px;
-  transition: transform 1s ease, opacity 1s ease;
+  transition: transform 1s ease;
 }
 
 .banner .about-img:hover {
@@ -153,6 +119,7 @@
   cursor: pointer;
 }
 
+/* Animation keyframes */
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);
@@ -184,3 +151,5 @@
   opacity: 0;
   animation: slideInRight 1s forwards;
 }
+
+

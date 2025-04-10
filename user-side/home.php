@@ -36,171 +36,49 @@
     <!-- cards -->
     <div class="container section-content">
       <h1 class="mb-4 mt-5">FOR YOUR FASHION</h1>
-      <div class="row">
-        <div class="col-md-2">
-          <div class="card-container left">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt1.jpg"
-                class="card-img-top"
-                alt="Shirt 1"
-                style="height: 100%; object-fit: cover"
-              />
+      <div class="row" id="products-container">
+        <?php
+          include '../assets/js/products.php'; 
+          
+          $productsPerPage = 12; // 12 per page meaning 2 row per load
+          $limitedProducts = array_slice($products, 0, $productsPerPage);
+          
+          foreach ($limitedProducts as $index => $product) {
+            $isLeft = $index < 6 ? 'left' : 'right';
+        ?>
+            <div class="col-md-2 mb-4 product-item">
+              <div class="card-container <?php echo $isLeft; ?>">
+                <div class="card" style="width: 100%; height: 300px">
+                  <img
+                    src="<?php echo $product['image']; ?>"
+                    class="card-img-top"
+                    alt="<?php echo $product['name']; ?>"
+                    style="height: 100%; object-fit: cover"
+                  />
+                </div>
+                <div class="buy-text">Buy Now</div>
+              </div>
             </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container left">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt2.jpg"
-                class="card-img-top"
-                alt="Shirt 2"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container left">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt3.jpg"
-                class="card-img-top"
-                alt="Shirt 3"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container right">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt1.jpg"
-                class="card-img-top"
-                alt="Shirt 4"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container right">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt2.jpg"
-                class="card-img-top"
-                alt="Shirt 5"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container right">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt3.jpg"
-                class="card-img-top"
-                alt="Shirt 6"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
+        <?php
+          }
+        ?>
       </div>
-
-      <div class="row">
-        <div class="col-md-2 mb-4">
-          <div class="card-container left">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt1.jpg"
-                class="card-img-top"
-                alt="Shirt 7"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container left">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt2.jpg"
-                class="card-img-top"
-                alt="Shirt 8"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container left">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt3.jpg"
-                class="card-img-top"
-                alt="Shirt 9"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container right">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt1.jpg"
-                class="card-img-top"
-                alt="Shirt 10"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container right">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt2.jpg"
-                class="card-img-top"
-                alt="Shirt 10"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
-        <div class="col-md-2 mb-4">
-          <div class="card-container right">
-            <div class="card" style="width: 100%; height: 300px">
-              <img
-                src="../assets/img/shirt3.jpg"
-                class="card-img-top"
-                alt="Shirt 10"
-                style="height: 100%; object-fit: cover"
-              />
-            </div>
-            <div class="buy-text">Buy Now</div>
-          </div>
-        </div>
+      
+      <!-- Load More Button -->
+      <div class="text-center my-4" id="load-more-container" style="display: <?php echo count($products) > $productsPerPage ? 'block' : 'none'; ?>">
+        <button id="load-more-btn" class="btn btn-primary">
+          <i class="fas fa-chevron-down"></i> Load More
+        </button>
       </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/products-card-transition.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <script>
+        // loadmore feature
+        const productsData = <?php echo json_encode($products); ?>;
+    </script>
+    <script src="../assets/js/load-more.js"></script>
 </body>
 </html>
