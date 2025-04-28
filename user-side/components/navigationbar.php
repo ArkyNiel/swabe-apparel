@@ -3,7 +3,7 @@
     <div class="container py-2 border-bottom">
         <div class="d-flex justify-content-between align-items-center w-100">
             <div class="d-flex align-items-center">
-                <a class="navbar-brand fw-bold" href="#Swabe">SWABE APPAREL</a>
+                <a class="navbar-brand fw-bold" href="../home.php">SWABE APPAREL</a>
             </div>
             <div class="search-container flex-grow-1 mx-4">
                 <form class="d-flex" role="search">
@@ -15,12 +15,11 @@
                     </div>
                 </form>
             </div>
-            <!-- Pages and Account dropdowns -->
             <div class="d-flex align-items-center">
                 <li class="nav-item dropdown list-unstyled">
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">Pages</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item link-hover" href="/about-us">About Us</a></li>
+                        <li><a class="dropdown-item link-hover" href="./links/aboutus.php">About Us</a></li>
                         <li><a class="dropdown-item link-hover" href="/location">Location</a></li>
                     </ul>
                 </li>

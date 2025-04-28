@@ -3,16 +3,15 @@
   overflow: hidden;
   z-index: 1;
   opacity: 0;
-  transform: translateX(-100px); /* Default for left side cards */
+  transform: translateX(-100px);
+  cursor: pointer;
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 
-/* For right side cards */
 .card-container.right {
   transform: translateX(100px);
 }
 
-/* When card becomes visible */
 .card-container.visible {
   opacity: 1;
   transform: translateX(0);
@@ -35,6 +34,7 @@
 
 .card-container:hover .buy-text {
   display: block;
+  cursor: pointer;
 }
 
 .card-img-top {
@@ -45,7 +45,6 @@
   transform: scale(1.1);
 }
 
-/* Search section styles */
 .search-section {
   width: 100%;
   position: absolute;
@@ -78,19 +77,16 @@
   transform: translateX(0);
 }
 
-/* Card hover effects */
 .card {
   transition: transform 0.2s ease-out;
   will-change: transform;
 }
 
-/* Remove redundant animations */
 .left-cards .card-container,
 .right-cards .card-container {
-  transform: none; /* Let JavaScript handle the initial transform */
+  transform: none;
 }
 
-/* About section animations */
 .about-us {
   padding: 80px;
   display: flex;
@@ -119,7 +115,6 @@
   cursor: pointer;
 }
 
-/* Animation keyframes */
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);

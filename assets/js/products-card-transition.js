@@ -23,14 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
       lastScrollTop = window.pageYOffset <= 0 ? 0 : window.pageYOffset;
     });
   
-    // Card animation observer
     const observerOptions = {
       root: null,
       rootMargin: "0px",
       threshold: 0.1
     };
 
-    let animatedCards = new Set(); // Keep track of animated cards
+    let animatedCards = new Set(); 
 
     function setupCardObserver() {
       const observer = new IntersectionObserver((entries) => {
@@ -41,16 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const cardIndex = Array.from(document.querySelectorAll('.card-container')).indexOf(card);
             const isRight = cardIndex >= 6;
             
-            // Set initial position
             card.style.transform = isRight ? 'translateX(100px)' : 'translateX(-100px)';
             card.style.opacity = "0";
             card.style.transition = "all 0.5s ease-out";
             
-            // Trigger animation after a small delay
             setTimeout(() => {
               card.style.transform = "translateX(0)";
               card.style.opacity = "1";
-              animatedCards.add(card); // Mark this card as animated
+              animatedCards.add(card); 
             }, cardIndex % 6 * 100);
             
             observer.unobserve(card);
@@ -58,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }, observerOptions);
 
-      // Observe all cards that haven't been animated yet
+      // checking cards that not loaded before
       document.querySelectorAll('.card-container').forEach(card => {
         if (!animatedCards.has(card)) {
           observer.observe(card);
@@ -69,12 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial setup
     setupCardObserver();
 
-    // Create a MutationObserver to watch for new cards
+  
     const mutationObserver = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length) {
           setTimeout(() => {
-            setupCardObserver(); // Re-run setup for new cards with a slight delay
+            setupCardObserver(); // load cards
           }, 100);
         }
       });
