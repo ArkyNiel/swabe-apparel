@@ -56,7 +56,7 @@
                     style="height: 100%; object-fit: cover"
                   />
                 </div>
-                <div class="buy-text">Buy Now</div>
+                <div class="buy-text">View</div>
               </div>
             </div>
         <?php

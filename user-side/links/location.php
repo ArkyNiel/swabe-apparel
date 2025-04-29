@@ -78,6 +78,41 @@
             </div>
         </div>
 
+        <!-- Bottom row navigation links -->
+        <div class="container-fluid bg-white">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav mx-auto my-2 my-lg-0 justify-content-center w-100">
+                        <li class="nav-item"><a class="nav-link link-hover" href="hotsales.php">Hot Sales 🔥</a></li>
+                        <li class="nav-item"><a class="nav-link link-hover" href="allproducts.php">All Products</a></li>
+                        <li class="nav-item"><a class="nav-link link-hover" href="newproducts.php">New Products</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link icon-hover link-hover" href="shoes.php">
+                                <span class="text">Shoes</span>
+                                <i class="fas fa-shoe-prints icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon-hover link-hover" href="shirts.php">
+                                <span class="text">Shirts</span>
+                                <i class="fas fa-tshirt icon"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon-hover link-hover" href="collection.php">
+                                <span class="text">Collection</span>
+                                <i class="fas fa-box icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
         <div class="container-fluid bg-white">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">

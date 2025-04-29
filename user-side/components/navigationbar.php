@@ -3,7 +3,7 @@
     <div class="container py-2 border-bottom">
         <div class="d-flex justify-content-between align-items-center w-100">
             <div class="d-flex align-items-center">
-                <a class="navbar-brand fw-bold" href="../home.php">SWABE APPAREL</a>
+                <a class="navbar-brand fw-bold" href="./home.php">SWABE APPAREL</a>
             </div>
             <div class="search-container flex-grow-1 mx-4">
                 <form class="d-flex" role="search">
@@ -44,22 +44,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav mx-auto my-2 my-lg-0 justify-content-center w-100">
-                    <li class="nav-item"><a class="nav-link link-hover" href="#Products">Products</a></li>
-                    <li class="nav-item"><a class="nav-link link-hover" href="#mens-latest">New Shirts</a></li>
+                    <li class="nav-item"><a class="nav-link link-hover" href="./links/hotsales.php">Hot Sales 🔥</a></li>
+                    <li class="nav-item"><a class="nav-link link-hover" href="./links/allproducts.php">All Products</a></li>
+                    <li class="nav-item"><a class="nav-link link-hover" href="./links/newproducts.php">New products</a></li>
                     <li class="nav-item">
-                        <a class="nav-link icon-hover link-hover" href="/shoes">
+                        <a class="nav-link icon-hover link-hover" href="./links/shoes.php">
                             <span class="text">Shoes</span>
                             <i class="fas fa-shoe-prints icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link icon-hover link-hover" href="/shirts">
+                        <a class="nav-link icon-hover link-hover" href="./links/shirts.php">
                             <span class="text">Shirts</span>
                             <i class="fas fa-tshirt icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link icon-hover link-hover" href="/collection">
+                        <a class="nav-link icon-hover link-hover" href="./links/collection.php">
                             <span class="text">Collection</span>
                             <i class="fas fa-box icon"></i>
                         </a>
