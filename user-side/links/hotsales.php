@@ -129,6 +129,6 @@
         const productsData = <?php echo json_encode($products); ?>;
     </script>
     <script src="../../assets/js/load-more.js"></script>
-    <?php include('./../components/footer.php'); ?>
+    <?php include('../../components/footer.php'); ?>
 </body>
 </html>

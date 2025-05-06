@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SWABE APPAREL | ONLINE STORE</title>
     <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../assets/css/products-card-animation.css">
@@ -48,11 +48,19 @@
         ?>
             <div class="col-md-2 mb-4 product-item">
               <div class="card-container <?php echo $isLeft; ?>">
-                <div class="card" style="width: 100%; height: 300px">
+                <div 
+                  class="card product-card" 
+                  style="width: 100%; height: 300px; cursor:pointer;"
+                  data-name="<?php echo htmlspecialchars($product['name'] ?? ''); ?>"
+                  data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
+                  data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
+                  data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
+                  data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
+                >
                   <img
-                    src="<?php echo $product['image']; ?>"
+                    src="<?php echo $product['image'] ?? ''; ?>"
                     class="card-img-top"
-                    alt="<?php echo $product['name']; ?>"
+                    alt="<?php echo $product['name'] ?? ''; ?>"
                     style="height: 100%; object-fit: cover"
                   />
                 </div>
@@ -80,6 +88,23 @@
         const productsData = <?php echo json_encode($products); ?>;
     </script>
     <script src="../assets/js/load-more.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+          card.addEventListener('click', function() {
+            document.getElementById('modalProductImage').src = this.getAttribute('data-image');
+            document.getElementById('modalProductName').textContent = this.getAttribute('data-name');
+            document.getElementById('modalProductColor').textContent = this.getAttribute('data-color');
+            document.getElementById('modalProductSize').textContent = this.getAttribute('data-size');
+            document.getElementById('modalProductPrice').textContent = this.getAttribute('data-price');
+            var modal = new bootstrap.Modal(document.getElementById('productModal'));
+            modal.show();
+          });
+        });
+      });
+    </script>
     <?php include('./components/footer.php'); ?>
+    <?php include('./components/modal.php'); ?>
 </body>
 </html>

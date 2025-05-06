@@ -97,7 +97,14 @@
         ?>
             <div class="col-md-2 mb-4 product-item">
               <div class="card-container <?php echo $isLeft; ?>">
-                <div class="card" style="width: 100%; height: 300px">
+                <div class="card product-card" 
+                     style="width: 100%; height: 300px; cursor:pointer;"
+                     data-name="<?php echo htmlspecialchars($product['name'] ?? ''); ?>"
+                     data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
+                     data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
+                     data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
+                     data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
+                >
                   <img
                     src="<?php echo $product['image']; ?>"
                     class="card-img-top"
@@ -129,6 +136,57 @@
         const productsData = <?php echo json_encode($products); ?>;
     </script>
     <script src="../../assets/js/load-more.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select all product cards
+      const productCards = document.querySelectorAll('.product-card');
+      productCards.forEach(card => {
+        card.addEventListener('click', function() {
+          // Set modal content
+          document.getElementById('modalProductImage').src = this.getAttribute('data-image');
+          document.getElementById('modalProductName').textContent = this.getAttribute('data-name');
+          document.getElementById('modalProductColor').textContent = this.getAttribute('data-color');
+          document.getElementById('modalProductSize').textContent = this.getAttribute('data-size');
+          document.getElementById('modalProductPrice').textContent = this.getAttribute('data-price');
+          // Show modal
+          var modal = new bootstrap.Modal(document.getElementById('productModal'));
+          modal.show();
+        });
+      });
+
+      // Lightbox for full image view
+      const imgContainer = document.querySelector('#productModal .img-hover-container');
+      const img = document.getElementById('modalProductImage');
+      const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+      const lightboxImage = document.getElementById('lightboxImage');
+
+      if (imgContainer && img && lightboxImage) {
+        imgContainer.addEventListener('click', function() {
+          if (img.src) {
+            lightboxImage.src = img.src;
+            lightboxModal.show();
+          }
+        });
+      }
+
+      // Fix for lingering modal backdrop and modal-open class
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(function(modal) {
+        modal.addEventListener('hidden.bs.modal', function () {
+          // Remove any lingering backdrops
+          document.querySelectorAll('.modal-backdrop').forEach(function(backdrop) {
+            backdrop.parentNode.removeChild(backdrop);
+          });
+          // Remove modal-open from body if no modals are open
+          if (!document.querySelector('.modal.show')) {
+            document.body.classList.remove('modal-open');
+            document.body.style = '';
+          }
+        });
+      });
+    });
+    </script>
     <?php include('./../components/footer.php'); ?>
+    <?php include(__DIR__ . '/../components/modal.php'); ?>
 </body>
 </html>
