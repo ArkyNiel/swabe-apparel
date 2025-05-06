@@ -20,7 +20,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">Pages</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item link-hover" href="./links/aboutus.php">About Us</a></li>
-                        <li><a class="dropdown-item link-hover" href="/location">Location</a></li>
+                        <li><a class="dropdown-item link-hover" href="./links/location.php">Location</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown list-unstyled">

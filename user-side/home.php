@@ -71,7 +71,6 @@
           }
         ?>
       </div>
-      
       <!-- Load More Button -->
       <div class="text-center my-4" id="load-more-container" style="display: <?php echo count($products) > $productsPerPage ? 'block' : 'none'; ?>">
         <button id="load-more-btn" class="btn btn-primary">

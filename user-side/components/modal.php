@@ -4,7 +4,7 @@
     <div class="modal-content border-0 rounded-1 shadow">
       <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="modal-body d-flex flex-column flex-md-row p-0">
-        <!-- Image Section with Hover Overlay -->
+        <!-- Overlay -->
         <div class="col-md-6 d-flex align-items-center justify-content-center bg-light rounded-start-1 p-4 position-relative" style="min-height: 320px;">
           <div class="img-hover-container w-100 h-100 d-flex align-items-center justify-content-center position-relative" style="cursor: pointer;">
             <img id="modalProductImage" src="" alt="Product Image"
