@@ -26,6 +26,7 @@
             <dt class="col-4 text-muted small">Price</dt>
             <dd class="col-8 mb-0 fw-bold" id="modalProductPrice"></dd>
           </dl>
+          <button type="button" class="btn w-100 mt-auto rounded-1" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -36,7 +37,6 @@
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;">
     <div class="modal-content border-0 bg-transparent shadow-none p-0" style="background: transparent;">
-      <button type="button" class="btn-close position-absolute end-0 top-0 m-2 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
       <img id="lightboxImage" src="" alt="Full View" style="width: 500px; height: 700px; object-fit: contain; display: block;" />
     </div>
   </div>
