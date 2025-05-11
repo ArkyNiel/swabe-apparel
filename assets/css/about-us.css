@@ -1,0 +1,31 @@
+.container {
+    width: 1300px;
+}
+
+.bg-dark h1,
+.bg-dark p {
+color: #fff !important;
+}
+
+.aboutus-bg {
+    position: relative;
+    background-image: url('../../assets/img/your-background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.aboutus-bg::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    border-radius: 0.5rem; 
+    z-index: 1;
+}
+
+.aboutus-bg > * {
+    position: relative;
+    z-index: 2;
+}
