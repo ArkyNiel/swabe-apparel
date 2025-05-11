@@ -29,7 +29,7 @@
                         <li><a class="dropdown-item link-hover" href="/manage-account">Manage Account</a></li>
                         <li><a class="dropdown-item link-hover" href="/feedback">Give us Feedback</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item link-hover" href="/login"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
+                        <li><a class="dropdown-item link-hover" href="./links/login.php"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
                     </ul>
                 </li>
             </div>

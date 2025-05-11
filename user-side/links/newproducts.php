@@ -40,7 +40,7 @@
                             <li><a class="dropdown-item link-hover" href="/manage-account">Manage Account</a></li>
                             <li><a class="dropdown-item link-hover" href="/feedback">Give us Feedback</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item link-hover" href="/login"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
+                            <li><a class="dropdown-item link-hover" href="login.php"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
                         </ul>
                     </li>
                 </div>
@@ -187,7 +187,15 @@
       });
     });
     </script>
-    <?php include('./../components/footer.php'); ?>
+    <footer class="bg-dark text-white py-5 mt-5" style="font-size: 0.95rem;">
+      <div class="container text-center">
+        <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
+        <br>
+        <a href="privacypolicy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy Policy</a>
+        <a href="termsofservice.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of Service</a>
+      </div>
+    </footer>
+
     <?php include(__DIR__ . '/../components/modal.php'); ?>
 </body>
 </html>

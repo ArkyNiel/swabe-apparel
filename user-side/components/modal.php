@@ -26,7 +26,6 @@
             <dt class="col-4 text-muted small">Price</dt>
             <dd class="col-8 mb-0 fw-bold" id="modalProductPrice"></dd>
           </dl>
-          <button type="button" class="btn btn-outline-dark w-100 mt-auto rounded-1" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

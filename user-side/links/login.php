@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +34,16 @@
             <div class="col-md-6 bg-white d-flex align-items-center justify-content-center">
                 <div class="w-100 p-4" style="max-width: 350px;">
                     <h2 class="mb-4 text-center">Login</h2>
-                    <form action="login_process.php" method="POST" autocomplete="off">
+
+                    <?php if (isset($_SESSION['alert'])): ?>
+                        <div class="alert alert-<?php echo $_SESSION['alert']['type']; ?> alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['alert']['message']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php unset($_SESSION['alert']); ?>
+                    <?php endif; ?>
+
+                    <form action="../../back-end/user-side/login_process.php" method="POST" autocomplete="off">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" required autofocus>
@@ -43,6 +54,7 @@
                         </div>
                         <button type="submit" class="btn btn-dark w-100">Login</button>
                     </form>
+
                     <div class="mt-3 text-center">
                         <a href="create.php" class="text-decoration-none">Don't have an account? Create one</a>
                     </div>

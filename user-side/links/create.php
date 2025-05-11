@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +23,7 @@
 </head>
 <body>
     <div class="container-fluid auth-container d-flex align-items-center justify-content-center">
-        <div class="row w-100 shadow rounded-1 overflow-hidden" style="max-width: 800px;">
+        <div class="row w-100 shadow rounded-1 overflow-hidden" style="max-width: 1000px;">
             <!-- Branding -->
             <div class="col-md-6 d-none d-md-flex flex-column align-items-center justify-content-center auth-branding">
                 <img src="../../assets/img/logo.jpg" alt="Swabe Apparel Logo" class="brand-logo mb-3">
@@ -30,9 +32,17 @@
             </div>
             <!-- Create Account Form -->
             <div class="col-md-6 bg-white d-flex align-items-center justify-content-center">
-                <div class="w-100 p-4" style="max-width: 350px;">
+                <div class="w-100 p-4" style="max-width: 450px;">
                     <h2 class="mb-4 text-center">Create Account</h2>
-                    <form action="register_process.php" method="POST" autocomplete="off">
+
+                    <?php if (isset($_SESSION['alert'])): ?>
+                        <div class="alert alert-<?php echo $_SESSION['alert']['type']; ?> alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['alert']['message']; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php unset($_SESSION['alert']); ?>
+                    <?php endif; ?>
+                    <form action="../../back-end/user-side/register_process.php" method="POST" autocomplete="off">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" required autofocus>
