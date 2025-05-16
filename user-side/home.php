@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/item-cards.css">
 </head>
 <body>
+    <?php include('./components/loader.php'); ?>
     <?php include('./components/navigationbar.php'); ?>
     <?php include('./components/productscard.php'); ?>
 

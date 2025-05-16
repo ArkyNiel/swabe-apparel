@@ -26,9 +26,9 @@
                 <li class="nav-item dropdown list-unstyled">
                     <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">Account</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item link-hover" href="/manage-account">Manage Account</a></li>
-                        <li><a class="dropdown-item link-hover" href="/feedback">Give us Feedback</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item link-hover" href="./links/manageaccount.php">Manage Account</a></li>
+                        <li><a class="dropdown-item link-hover" href="./links/feedback.php">Give us Feedback</a></li>
+                        <li><hr class="dropdown-divider"></li>  
                         <li><a class="dropdown-item link-hover" href="./links/login.php"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
                     </ul>
                 </li>

@@ -22,6 +22,7 @@
     </style>
 </head>
 <body>
+<?php include('../components/loader.php'); ?>
     <div class="container-fluid auth-container d-flex align-items-center justify-content-center">
         <div class="row w-100 shadow rounded-1 overflow-hidden" style="max-width: 1000px;">
             <!-- Branding -->

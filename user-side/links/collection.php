@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../assets/css/item-cards.css">
 </head>
 <body>
+<?php include('../components/loader.php'); ?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column">
         <div class="container py-2 border-bottom">
             <div class="d-flex justify-content-between align-items-center w-100">
@@ -37,10 +38,10 @@
                     <li class="nav-item dropdown list-unstyled">
                         <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">Account</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item link-hover" href="/manage-account">Manage Account</a></li>
-                            <li><a class="dropdown-item link-hover" href="/feedback">Give us Feedback</a></li>
+                            <li><a class="dropdown-item link-hover" href="manageaccount.php">Manage Account</a></li>
+                            <li><a class="dropdown-item link-hover" href="feedback.php">Give us Feedback</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item link-hover" href="/login"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
+                            <li><a class="dropdown-item link-hover" href="login.php"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
                         </ul>
                     </li>
                 </div>

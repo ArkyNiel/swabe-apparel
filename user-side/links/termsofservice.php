@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<?php include('../components/loader.php'); ?>
     <div class="container py-3 mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
