@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../../assets/css/products-card-animation.css">
     <link rel="stylesheet" href="../../assets/css/item-cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 <?php include('../components/loader.php'); ?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column">
-        <div class="container py-2 border-bottom">
-            <div class="d-flex justify-content-between align-items-center w-100">
+        <div class="w-100 py-2 border-bottom">
+          <div class="d-flex justify-content-between align-items-center w-100 px-4">
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand fw-bold" href="../home.php">SWABE APPAREL</a>
                 </div>
@@ -36,21 +37,23 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown list-unstyled">
-                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">Account</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item link-hover" href="manageaccount.php">Manage Account</a></li>
-                            <li><a class="dropdown-item link-hover" href="feedback.php">Give us Feedback</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item link-hover" href="login.php"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
-                        </ul>
-                    </li>
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fa-regular fa-user" style="font-size: 20px; line-height: 1;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item link-hover" href="manageaccount.php">Manage Account</a></li>
+                        <li><a class="dropdown-item link-hover" href="feedback.php">Give us Feedback</a></li>
+                        <li><hr class="dropdown-divider"></li>  
+                        <li><a class="dropdown-item link-hover" href="login.php">Log In</a></li>
+                    </ul>
+                  </li>
                 </div>
             </div>
         </div>
 
         <!-- Bottom row navigation links -->
-        <div class="container-fluid bg-white">
-            <div class="container">
+          <div class="w-100 bg-white">
+            <div class="px-4">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
                     <span class="navbar-toggler-icon"></span>
                 </button>

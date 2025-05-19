@@ -2,6 +2,9 @@
 session_start();
 
 // Check if user is not logged in
+// manageaccount*
+// addtocart*
+
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['alert'] = [
         'type' => 'warning',
