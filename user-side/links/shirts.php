@@ -69,19 +69,16 @@
                         <li class="nav-item">
                             <a class="nav-link icon-hover link-hover" href="shoes.php">
                                 <span class="text">Shoes</span>
-                                <i class="fas fa-shoe-prints icon"></i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link icon-hover link-hover" href="#shirts.php">
                                 <span class="text">Shirts</span>
-                                <i class="fas fa-tshirt icon"></i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link icon-hover link-hover" href="collection.php">
                                 <span class="text">Collection</span>
-                                <i class="fas fa-box icon"></i>
                             </a>
                         </li>
                     </ul>

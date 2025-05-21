@@ -35,3 +35,32 @@
 .dropdown-toggle {
   padding: 0.5rem 1rem;
 }
+
+/* Add these new rules for dropdown positioning */
+.dropdown-menu {
+  position: absolute !important;
+  right: 0;
+  left: auto !important;
+  min-width: 200px;
+  margin-top: 0.5rem;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu.show {
+  display: block;
+  transform: translate3d(0px, 38px, 0px) !important;
+}
+
+/* Ensure dropdowns don't overflow on mobile */
+@media (max-width: 991.98px) {
+  .dropdown-menu {
+    position: static !important;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
