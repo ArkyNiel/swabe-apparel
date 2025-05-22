@@ -38,7 +38,7 @@
 
     <!-- cards -->
     <div class="container section-content">
-        <h1 class="mb-4 mt-5">FOR YOUR FASHION</h1>
+        <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
           include '../assets/js/products.php'; 
