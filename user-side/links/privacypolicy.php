@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <?php include('../components/loader.php'); ?>
     <div class="container py-3 mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -23,7 +24,9 @@
                 <div class="mb-4">
                     <h3 class="fw-semibold">1. Introduction</h3>
                     <p>
-                        Swabe Apparel ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and store.
+                        Swabe Apparel ("we," "our," or "us") is committed to protecting your privacy. This Privacy
+                        Policy explains how we collect, use, disclose, and safeguard your information when you visit our
+                        website and store.
                     </p>
                 </div>
 
@@ -71,7 +74,8 @@
                 <div class="mb-4">
                     <h3 class="fw-semibold">5. Data Security</h3>
                     <p>
-                        We implement appropriate security measures to protect your personal information. However, no method of transmission over the internet is 100% secure.
+                        We implement appropriate security measures to protect your personal information. However, no
+                        method of transmission over the internet is 100% secure.
                     </p>
                 </div>
 
@@ -108,4 +112,5 @@
     </div>
 
 </body>
+
 </html>

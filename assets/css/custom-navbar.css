@@ -9,7 +9,11 @@
 .navbar .nav-link {
   color: #333;
   font-size: 14px;
+<<<<<<< HEAD
   padding: 0.5rem 1rem;
+=======
+  padding: 0.5rem 0.1rem;
+>>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
 }
 
 .navbar .nav-link:hover {
@@ -35,3 +39,55 @@
 .dropdown-toggle {
   padding: 0.5rem 1rem;
 }
+<<<<<<< HEAD
+=======
+
+.dropdown-menu {
+  position: absolute !important;
+  right: 0;
+  left: auto !important;
+  min-width: 200px;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.10);
+}
+
+.dropdown-menu.show {
+  display: block;
+  transform: translate3d(0px, 13px, 0px) !important;
+}
+
+/* Ensure dropdowns don't overflow on mobile */
+@media (max-width: 991.98px) {
+  .dropdown-menu {
+    position: static !important;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.fa-cart-shopping,
+.fa-heart {
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.fa-cart-shopping:hover,
+.fa-heart:hover {
+  color: #1b1b1b;
+}
+
+/* Add a small badge for cart items count */
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+>>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420

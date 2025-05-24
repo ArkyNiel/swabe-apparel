@@ -3,7 +3,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('load-more-btn');
     let currentPage = 1;
     const productsPerPage = 12;
+<<<<<<< HEAD
     let allProducts = productsData; // json
+=======
+    let allProducts = productsData; // json products
+    
+    // Create modal instance once
+    const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+    
+    productsContainer.addEventListener('click', function(e) {
+        const productCard = e.target.closest('.product-card');
+        if (productCard) {
+            document.getElementById('modalProductImage').src = productCard.getAttribute('data-image');
+            document.getElementById('modalProductName').textContent = productCard.getAttribute('data-name');
+            document.getElementById('modalProductColor').textContent = productCard.getAttribute('data-color');
+            document.getElementById('modalProductSize').textContent = productCard.getAttribute('data-size');
+            document.getElementById('modalProductPrice').textContent = productCard.getAttribute('data-price');
+            productModal.show();
+        }
+    });
+>>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
     
     if (allProducts.length > productsPerPage) {
         loadMoreBtn.style.display = 'block';
@@ -21,7 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const productHTML = `
                     <div class="col-md-2 mb-4 product-item">
                         <div class="card-container ${isRight}">
+<<<<<<< HEAD
                             <div class="card" style="width: 100%; height: 300px">
+=======
+                            <div 
+                                class="card product-card" 
+                                style="width: 100%; height: 300px; cursor:pointer;"
+                                data-name="${product.name || ''}"
+                                data-image="${product.image || ''}"
+                                data-color="${product.color || 'N/A'}"
+                                data-size="${product.size || 'N/A'}"
+                                data-price="${product.price || 'N/A'}"
+                            >
+>>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
                                 <img
                                     src="${product.image}"
                                     class="card-img-top"
@@ -29,7 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                     style="height: 100%; object-fit: cover"
                                 />
                             </div>
+<<<<<<< HEAD
                             <div class="buy-text">Buy Now</div>
+=======
+                            <div class="buy-text">View</div>
+>>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
                         </div>
                     </div>
                 `;

@@ -6,51 +6,61 @@
     <title>SWABE APPAREL | LOCATION</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .content-wrapper {
-        flex: 1 0 auto;
-    }
-    .footer {
-        flex-shrink: 0;
-        width: 100%;
-    }
-    .container {
-        width: 1300px;
-    }
-    .bg-dark h1,
-    .bg-dark p {
-        color: #fff !important;
-    }
-    .card-img-top {
-        height: 250px;   
-        width: 100%;       
-        object-fit: cover;     
-    }
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.container {
+    width: 1300px;
+}
+
+.bg-dark h1,
+.bg-dark p {
+    color: #fff !important;
+}
+
+.card-img-top {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
 </style>
 
 <body>
+    <?php include('../components/loader.php'); ?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column">
-        <div class="container py-2 border-bottom">
-            <div class="d-flex justify-content-between align-items-center w-100">
+        <div class="w-100 py-2 border-bottom">
+            <div class="d-flex justify-content-between align-items-center w-100 px-4">
                 <div class="d-flex align-items-center">
                     <a class="navbar-brand fw-bold" href="../home.php">SWABE APPAREL</a>
                 </div>
                 <div class="search-container flex-grow-1 mx-4">
                     <form class="d-flex" role="search">
                         <div class="input-group">
-                            <input class="form-control" type="search" placeholder="Search products..." aria-label="Search">
+                            <input class="form-control" type="search" placeholder="Search products..."
+                                aria-label="Search">
                             <button class="btn btn-dark" type="submit">
                                 <i class="fas fa-search"></i> Search
                             </button>
@@ -58,20 +68,40 @@
                     </form>
                 </div>
                 <div class="d-flex align-items-center">
+                    <li class="nav-item list-unstyled me-3">
+                        <a class="nav-link d-flex align-items-center" href="./links/cart.php">
+                            <i class="fa-solid fa-cart-shopping" style="font-size: 25px; line-height: 1;"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item list-unstyled me-3">
+                        <a class="nav-link d-flex align-items-center" href="./links/wishlist.php">
+                            <i class="fa-regular fa-heart" style="font-size: 25px; line-height: 1;"></i>
+                        </a>
+                    </li>
                     <li class="nav-item dropdown list-unstyled">
-                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">Pages</a>
-                        <ul class="dropdown-menu">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="pagesDropdown"
+                            role="button" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-store" style="font-size: 25px; line-height: 1;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item link-hover" href="aboutus.php">About Us</a></li>
-                            <li><a class="dropdown-item link-hover" href="#location.php">Location</a></li>
+                            <li><a class="dropdown-item link-hover" href="location.php">Location</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown list-unstyled">
-                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">Account</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item link-hover" href="/manage-account">Manage Account</a></li>
-                            <li><a class="dropdown-item link-hover" href="/feedback">Give us Feedback</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item link-hover" href="/login"><i class="fas fa-sign-out-alt"></i> Log In</a></li>
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="accountDropdown"
+                            role="button" data-bs-toggle="dropdown">
+                            <i class="fa-regular fa-user" style="font-size: 25px; line-height: 1;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item link-hover" href="manageaccount.php">Manage Account</a>
+                            </li>
+                            <li><a class="dropdown-item link-hover" href="feedback.php">Give us Feedback</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item link-hover" href="login.php">Log In</a></li>
                         </ul>
                     </li>
                 </div>
@@ -92,19 +122,16 @@
                         <li class="nav-item">
                             <a class="nav-link icon-hover link-hover" href="shoes.php">
                                 <span class="text">Shoes</span>
-                                <i class="fas fa-shoe-prints icon"></i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link icon-hover link-hover" href="shirts.php">
                                 <span class="text">Shirts</span>
-                                <i class="fas fa-tshirt icon"></i>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link icon-hover link-hover" href="collection.php">
                                 <span class="text">Collection</span>
-                                <i class="fas fa-box icon"></i>
                             </a>
                         </li>
                     </ul>
@@ -113,39 +140,39 @@
         </div>
     </nav>
 
-        <div class="container-fluid bg-white">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav mx-auto my-2 my-lg-0 justify-content-center w-100">
-                        <li class="nav-item"><a class="nav-link link-hover" href="#Products">Products</a></li>
-                        <li class="nav-item"><a class="nav-link link-hover" href="#mens-latest">New Shirts</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link icon-hover link-hover" href="/shoes">
-                                <span class="text">Shoes</span>
-                                <i class="fas fa-shoe-prints icon"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link icon-hover link-hover" href="/shirts">
-                                <span class="text">Shirts</span>
-                                <i class="fas fa-tshirt icon"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link icon-hover link-hover" href="/collection">
-                                <span class="text">Collection</span>
-                                <i class="fas fa-box icon"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="container-fluid bg-white">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mx-auto my-2 my-lg-0 justify-content-center w-100">
+                    <li class="nav-item"><a class="nav-link link-hover" href="#Products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link link-hover" href="#mens-latest">New Shirts</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-hover link-hover" href="/shoes">
+                            <span class="text">Shoes</span>
+                            <i class="fas fa-shoe-prints icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-hover link-hover" href="/shirts">
+                            <span class="text">Shirts</span>
+                            <i class="fas fa-tshirt icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link icon-hover link-hover" href="/collection">
+                            <span class="text">Collection</span>
+                            <i class="fas fa-box icon"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
     </nav>
-    
+
     <div class="content-wrapper">
         <!-- Location Content -->
         <div class="container py-5 mt-5">
@@ -193,8 +220,21 @@
             </div>
         </div>
     </div>
-    <?php include('./../components/footer.php'); ?>
+
+
+    <footer class="bg-dark text-white py-5 mt-5" style="font-size: 0.95rem;">
+        <div class="container text-center">
+            <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
+            <br>
+            <a href="privacypolicy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
+                Policy</a>
+            <a href="termsofservice.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
+                Service</a>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
