@@ -12,15 +12,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->rowCount() === 1) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $user['password'])) {
-            $_SESSION['alert'] = ['type' => 'success', 'message' => 'Login successful!'];
-            // REDIRECT PATH
+            // Store user data in session
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['username'] = $user['username'];
+            
+            $_SESSION['alert'] = [
+                'type' => 'success', 
+                'message' => 'Welcome back, ' . $user['username'] . '!'
+            ];
+            
+            // path
             header('Location: ../../user-side/home.php');
             exit;
         } else {
-            $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Incorrect password.'];
+            $_SESSION['alert'] = [
+                'type' => 'danger', 
+                'message' => 'Incorrect password.'
+            ];
         }
     } else {
-        $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Account not found.'];
+        $_SESSION['alert'] = [
+            'type' => 'danger', 
+            'message' => 'Account not found.'
+        ];
     }
 
     header('Location: ../../user-side/links/login.php');

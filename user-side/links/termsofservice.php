@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <?php include('../components/loader.php'); ?>
     <div class="container py-3 mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -23,7 +24,8 @@
                 <div class="mb-4">
                     <h3 class="fw-semibold">1. Acceptance of Terms</h3>
                     <p>
-                        By accessing and using Swabe Apparel's website and services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+                        By accessing and using Swabe Apparel's website and services, you agree to be bound by these
+                        Terms of Service. If you do not agree to these terms, please do not use our services.
                     </p>
                 </div>
 
@@ -82,7 +84,8 @@
                 <div class="mb-4">
                     <h3 class="fw-semibold">7. Intellectual Property</h3>
                     <p>
-                        All content on this website, including logos, images, and text, is the property of Swabe Apparel and is protected by copyright laws.
+                        All content on this website, including logos, images, and text, is the property of Swabe Apparel
+                        and is protected by copyright laws.
                     </p>
                 </div>
 
