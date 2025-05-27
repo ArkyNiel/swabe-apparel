@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column">
     <!-- Top row links -->
     <div class="w-100 py-2 border-bottom">
@@ -42,12 +45,16 @@
                         <i class="fa-regular fa-user" style="font-size: 25px; line-height: 1;"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item link-hover" href="./links/manageaccount.php">Manage Account</a></li>
-                        <li><a class="dropdown-item link-hover" href="./links/feedback.php">Give us Feedback</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item link-hover" href="./links/login.php">Log In</a></li>
+                        <?php if(isset($_SESSION['user_id'])): ?>
+                            <li><a class="dropdown-item link-hover" href="./links/manageaccount.php">Manage Account</a></li>
+                            <li><a class="dropdown-item link-hover" href="./links/feedback.php">Give us Feedback</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item link-hover" href="./links/logout.php">Log Out</a></li>
+                        <?php else: ?>
+                            <li><a class="dropdown-item link-hover" href="./links/login.php">Log In</a></li>
+                        <?php endif; ?>
                     </ul>
                 </li>
             </div>

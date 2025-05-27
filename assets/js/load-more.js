@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('load-more-btn');
     let currentPage = 1;
     const productsPerPage = 12;
-<<<<<<< HEAD
-    let allProducts = productsData; // json
-=======
     let allProducts = productsData; // json products
     
     // Create modal instance once
@@ -22,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
             productModal.show();
         }
     });
->>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
     
     if (allProducts.length > productsPerPage) {
         loadMoreBtn.style.display = 'block';
@@ -40,9 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const productHTML = `
                     <div class="col-md-2 mb-4 product-item">
                         <div class="card-container ${isRight}">
-<<<<<<< HEAD
-                            <div class="card" style="width: 100%; height: 300px">
-=======
                             <div 
                                 class="card product-card" 
                                 style="width: 100%; height: 300px; cursor:pointer;"
@@ -52,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 data-size="${product.size || 'N/A'}"
                                 data-price="${product.price || 'N/A'}"
                             >
->>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
                                 <img
                                     src="${product.image}"
                                     class="card-img-top"
@@ -60,11 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     style="height: 100%; object-fit: cover"
                                 />
                             </div>
-<<<<<<< HEAD
-                            <div class="buy-text">Buy Now</div>
-=======
                             <div class="buy-text">View</div>
->>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
                         </div>
                     </div>
                 `;
