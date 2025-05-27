@@ -15,44 +15,45 @@
                     </div>
                 </form>
             </div>
-            <div class="d-flex align-items-center">
-                <li class="nav-item list-unstyled me-3">
+            <div class="d-flex align-items-center gap-0">
+                <li class="nav-item list-unstyled">
                     <a class="nav-link d-flex align-items-center" href="./links/cart.php">
                         <i class="fa-solid fa-cart-shopping" style="font-size: 25px; line-height: 1;"></i>
                     </a>
                 </li>
-                <li class="nav-item list-unstyled me-3">
+                <li class="nav-item list-unstyled gap-0">
                     <a class="nav-link d-flex align-items-center" href="./links/wishlist.php">
                         <i class="fa-regular fa-heart" style="font-size: 25px; line-height: 1;"></i>
                     </a>
                 </li>
-                <li class="nav-item dropdown list-unstyled">
+                <li class="nav-item dropdown list-unstyled me-0">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="pagesDropdown"
                         role="button" data-bs-toggle="dropdown">
                         <i class="fa-solid fa-store" style="font-size: 25px; line-height: 1;"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item link-hover" href="./links/aboutus.php">About Us</a></li>
-                        <li><a class="dropdown-item link-hover" href="./links/location.php">Location</a></li>
+                        <li><a class="dropdown-item link-hover py-2" href="./links/aboutus.php">About Us</a></li>
+                        <li><a class="dropdown-item link-hover py-2" href="./links/location.php">Location</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown list-unstyled">
+                <li class="nav-item dropdown list-unstyled me-0">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="accountDropdown"
                         role="button" data-bs-toggle="dropdown">
                         <i class="fa-regular fa-user" style="font-size: 25px; line-height: 1;"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item link-hover" href="./links/manageaccount.php">Manage Account</a></li>
-                        <li><a class="dropdown-item link-hover" href="./links/feedback.php">Give us Feedback</a></li>
+                        <li><a class="dropdown-item link-hover py-2" href="./links/manageaccount.php">Manage Account</a></li>
+                        <li><a class="dropdown-item link-hover py-2" href="./links/feedback.php">Give us Feedback</a></li>
                         <li>
-                            <hr class="dropdown-divider">
+                            <hr class="dropdown-divider my-2">
                         </li>
-                        <li><a class="dropdown-item link-hover" href="./links/login.php">Log In</a></li>
+                        <li><a class="dropdown-item link-hover py-2" href="./links/login.php">Log In</a></li>
                     </ul>
                 </li>
             </div>
         </div>
     </div>
+
 
     <!-- Bottom row navigation links -->
     <div class="w-100 bg-white">
