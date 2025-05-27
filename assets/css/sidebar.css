@@ -1,0 +1,70 @@
+.sidebar {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sidebar.collapsed {
+    width: 70px !important;
+    min-width: 70px !important;
+    padding: 1rem 0.5rem !important;
+}
+
+.sidebar.collapsed .d-none.d-sm-inline {
+    display: none !important;
+}
+
+.sidebar.collapsed .nav-link {
+    text-align: center;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar.collapsed .nav-link i {
+    margin: 0 !important;
+    font-size: 1.2rem;
+}
+
+.sidebar.collapsed .nav-item {
+    text-align: center;
+    width: 100%;
+}
+
+.sidebar.collapsed small {
+    display: none !important;
+}
+
+.sidebar.collapsed h3 {
+    display: none !important;
+}
+
+.sidebar.collapsed .nav-pills {
+    align-items: center !important;
+}
+
+.sidebar.collapsed .nav-pills .nav-item {
+    margin: 0.5rem 0;
+}
+
+#sidebarToggle {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+#sidebarToggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar.collapsed + .col {
+    margin-left: 60px;
+}
