@@ -8,5 +8,6 @@
 </head>
 <body>
     <?php include('components/sidebar.php'); ?>
+    <?php include('components/topbar.php'); ?>
 </body>
 </html>

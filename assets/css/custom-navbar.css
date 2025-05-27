@@ -9,11 +9,7 @@
 .navbar .nav-link {
   color: #333;
   font-size: 14px;
-<<<<<<< HEAD
-  padding: 0.5rem 1rem;
-=======
   padding: 0.5rem 0.1rem;
->>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
 }
 
 .navbar .nav-link:hover {
@@ -39,8 +35,6 @@
 .dropdown-toggle {
   padding: 0.5rem 1rem;
 }
-<<<<<<< HEAD
-=======
 
 .dropdown-menu {
   position: absolute !important;
@@ -90,4 +84,3 @@
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
 }
->>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
