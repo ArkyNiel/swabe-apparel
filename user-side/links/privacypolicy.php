@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SWABE APPAREL | PRIVACY AND POLICY</title>
+    <title>PRIVACY AND POLICY | SWABE APPAREL</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../../assets/css/about-us.css">

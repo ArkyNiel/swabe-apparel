@@ -1,12 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column">
     <!-- Top row links -->
-<<<<<<< HEAD
-    <div class="container py-2 border-bottom">
-        <div class="d-flex justify-content-between align-items-center w-100">
-=======
     <div class="w-100 py-2 border-bottom">
         <div class="d-flex justify-content-between align-items-center w-100 px-4">
->>>>>>> a4bb8033adc37ea82be7f8e42a385555adb77420
             <div class="d-flex align-items-center">
                 <a class="navbar-brand fw-bold" href="./home.php">SWABE APPAREL</a>
             </div>
