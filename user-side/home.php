@@ -13,6 +13,7 @@
 <body>
     <?php include('./components/loader.php'); ?>
     <?php include('./components/navigationbar.php'); ?>
+
     <?php include('./components/productscard.php'); ?>
 
     <div class="section-content mb-0 bg-primary" id="section-content"
@@ -23,7 +24,7 @@
                     <h1 class="text-warning" style="font-size: 2rem; font-weight: bold; margin-bottom: 20px;">Find Your
                         Fashion</h1>
                     <h1 class="text-warning" style="font-size: 1.5rem; font-weight: bold;">By scrolling in swabe apparel
-                        & collections</h1>
+                        & collections</h1>s
                 </div>
             </div>
             <div class="col-md-6 right-column d-flex align-items-center">

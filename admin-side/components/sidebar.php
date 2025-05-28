@@ -1,224 +1,129 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Messages </a></li>
-             	<li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Help</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a></li>
-            </ul>
-            <form class="navbar-form navbar-right" action="#" method="GET">
-           		<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search..." id="query" name="search" value="">
-                  	<div class="input-group-btn">
-                    	<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
-                  	</div>
-				</div>
-            </form>
-        </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/sidebar.css">
+
+<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark py-5 d-flex flex-column sidebar" style="height: 100vh;">
+    <button class="btn btn-link text-white" id="sidebarToggle" style="position: absolute; top: 1rem; left: 1rem; z-index: 1000;">
+        <i class="bi bi-list fs-4"></i>
+    </button>
+
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white flex-grow-1" style="margin-top: 2rem;">
+        <h3 class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <span class="fs-5 d-none d-sm-inline">Swabe Apparel</span>
+        </h3>
+
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100">
+            <li class="nav-item w-100">
+                <a href="./dashboard.php" class="nav-link text-white">
+                    <i class="bi bi-speedometer2 me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                </a>
+            </li>
+
+            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Product Management</small>
+            <li class="nav-item w-100 mt-3">
+                <a href="./products.php" class="nav-link text-white">
+                    <i class="bi bi-box-seam me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">All Products</span>
+                </a>
+            </li>
+
+            <li class="nav-item w-100 mt-2">
+                <a href="./categories.php" class="nav-link text-white">
+                    <i class="bi bi-tags me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Categories</span>
+                </a>
+            </li>
+
+            <li class="nav-item w-100 mt-2">
+                <a href="./inventory.php" class="nav-link text-white">
+                    <i class="bi bi-box2 me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Inventory</span>
+                </a>
+            </li>
+
+            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Sales & Orders</small>
+            <li class="nav-item w-100 mt-3">
+                <a href="./orders.php" class="nav-link text-white">
+                    <i class="bi bi-cart3 me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Orders</span>
+                </a>
+            </li>
+
+            <li class="nav-item w-100 mt-2">
+                <a href="./customers.php" class="nav-link text-white">
+                    <i class="bi bi-people me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Customers</span>
+                </a>
+            </li>
+
+            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Reports</small>
+            <li class="nav-item w-100 mt-3">
+                <a href="./sales-report.php" class="nav-link text-white">
+                    <i class="bi bi-graph-up me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Sales Report</span>
+                </a>
+            </li>
+
+            <li class="nav-item w-100 mt-2">
+                <a href="./inventory-report.php" class="nav-link text-white">
+                    <i class="bi bi-clipboard-data me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Inventory Report</span>
+                </a>
+            </li>
+
+            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Settings</small>
+            <li class="nav-item w-100 mt-3">
+                <a href="./settings.php" class="nav-link text-white">
+                    <i class="bi bi-gear me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Settings</span>
+                </a>
+            </li>
+        </ul>
     </div>
-</nav>
 
-<div id="wrapper" class="toggled">
-    <div class="container-fluid">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-              	<li class="sidebar-brand">
-                    <br>
-                </li>
-                <li class="sidebar-brand">
-                    <a href="#" class="navbar-brand">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
-                </li>
-                 <li>
-                    <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</a>
-                </li>                
-                <li>
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#337AB7"> STATISTICS</font>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Reports</a>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Statistic</a>
-                </li>
-                <li>
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span><font color="#337AB7"> ADMINISTRATION</font>
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users</a>
-                </li>
-              	<li>
-                    <a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Messages</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                      <br>
-                      <h1>Your Title</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-						Your Content
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+    <div class="mt-auto">
+        <ul class="nav flex-column align-items-center">
+            <li class="nav-item w-100">
+                <a href="../back-end/logout.php" class="nav-link text-white">
+                    <i class="bi bi-box-arrow-right me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Logout</span>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
-<!-- /#wrapper -->
-
-<style>
-    /*!
- * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-/* Toggle Styles */
-
-#wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#wrapper.toggled {
-    padding-left: 250px;
-}
-
-#sidebar-wrapper {
-    position: fixed;
-    left: 250px;
-    z-index: 1000;
-    overflow-y: auto;
-    margin-left: -250px;
-    width: 0;
-    height: 100%;
-    background: #000;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-}
-
-#page-content-wrapper {
-    padding: 15px;
-    width: 100%;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-}
-
-/* Sidebar Styles */
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    margin: 0;
-    padding: 0;
-    width: 250px;
-    list-style: none;
-}
-
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-}
-
-.sidebar-nav li a {
-    display: block;
-    color: #999999;
-    text-decoration: none;
-}
-
-.sidebar-nav li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    text-decoration: none;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-    color: #999999;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-    background: none;
-    color: #fff;
-}
-
-@media (min-width: 768px) {
-    #wrapper {
-        padding-left: 250px;
-    }
-
-    #wrapper.toggled {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
-}
-</style>
 
 <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    
+    sidebarToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
     });
+});
 </script>
+
+<style>
+.sidebar {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#sidebarToggle {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sidebarToggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+</style>
