@@ -54,6 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <div class="buy-text">View</div>
                         </div>
+                        <div class="card-actions">
+                            <button class="btn favorite-btn" title="Add to Favorites">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="btn cart-btn" title="Add to Cart">
+                                <i class="fas fa-cart-shopping"></i>
+                            </button>
+                        </div>
                     </div>
                 `;
                 productsContainer.insertAdjacentHTML('beforeend', productHTML);

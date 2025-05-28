@@ -152,14 +152,13 @@
     gap: 8px;
     justify-content: flex-end;
     margin-top: 8px;
-    padding-right: 5px;
 }
 
 .card-actions .btn {
-    width: 32px;
+    width: 52px;
     height: 32px;
     padding: 0;
-    border-radius: 50%;
+    border-radius: 50px;
     background-color: rgba(0, 0, 0, 0.6);
     border: none;
     display: flex;
@@ -169,14 +168,13 @@
 }
 
 .card-actions .btn i {
-    font-size: 14px;
+    font-size: 18px;
     color: #fff;
     font-weight: 300;
 }
 
 .card-actions .btn:hover {
     background-color: rgba(0, 0, 0, 0.8);
-    transform: scale(1.1);
 }
 
 .favorite-btn:hover i {
@@ -184,7 +182,7 @@
 }
 
 .cart-btn:hover i {
-    color: #4d94ff;
+    color: #ffffff;
 }
 
 
