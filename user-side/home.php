@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../assets/css/products-card-animation.css">
     <link rel="stylesheet" href="../assets/css/item-cards.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -62,6 +63,14 @@
                     </div>
                     <div class="buy-text">View</div>
                 </div>
+                <div class="card-actions">
+                    <button class="btn favorite-btn" title="Add to Favorites">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="btn cart-btn" title="Add to Cart">
+                        <i class="fas fa-cart-shopping"></i>
+                    </button>
+                </div>
             </div>
             <?php
           }
@@ -78,7 +87,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
     // loadmore feature
     const productsData = <?php echo json_encode($products); ?>;
