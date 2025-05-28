@@ -147,4 +147,44 @@
   animation: slideInRight 1s forwards;
 }
 
+.card-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 8px;
+    padding-right: 5px;
+}
+
+.card-actions .btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.card-actions .btn i {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 300;
+}
+
+.card-actions .btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+.favorite-btn:hover i {
+    color: #ff4d4d;
+}
+
+.cart-btn:hover i {
+    color: #4d94ff;
+}
+
 
