@@ -65,15 +65,6 @@
         </div>
     </div>
 
-        <!-- Load More Button -->
-        <div class="text-center my-4" id="load-more-container"
-            style="display: <?php echo count($products) > $productsPerPage ? 'block' : 'none'; ?>">
-            <button id="load-more-btn" class="btn btn-primary">
-                <i class="fas fa-chevron-down"></i> Load More
-            </button>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
