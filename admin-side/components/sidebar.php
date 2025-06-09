@@ -21,12 +21,6 @@
             </li>
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Product Management</small>
-            <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=products" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'products') ? 'active' : ''; ?>">
-                    <i class="bi bi-box-seam me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">All Products</span>
-                </a>
-            </li>
 
             <li class="nav-item w-100 mt-2">
                 <a href="main.php?page=categories" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'categories') ? 'active' : ''; ?>">
@@ -135,5 +129,4 @@ document.addEventListener('DOMContentLoaded', function() {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-// ... rest of your existing styles ...
 </style>
