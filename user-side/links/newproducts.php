@@ -17,7 +17,7 @@
 
     <!-- cards -->
     <div class="container section-content">
-        <h1 class="mb-4 mt-5">NEW ARRIVALS/PRODUCTS</h1>
+        <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
           include '../../assets/js/products.php'; 
@@ -36,10 +36,18 @@
                         data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
                         data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
                         data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>">
-                        <img src="<?php echo $product['image']; ?>" class="card-img-top"
-                            alt="<?php echo $product['name']; ?>" style="height: 100%; object-fit: cover" />
+                        <img src="<?php echo $product['image'] ?? ''; ?>" class="card-img-top"
+                            alt="<?php echo $product['name'] ?? ''; ?>" style="height: 100%; object-fit: cover" />
                     </div>
                     <div class="buy-text">View</div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn favorite-btn" title="Add to Favorites">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="btn cart-btn" title="Add to Cart">
+                        <i class="fas fa-cart-shopping"></i>
+                    </button>
                 </div>
             </div>
             <?php

@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/sidebar.css">
+<link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
+
 
 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark py-5 d-flex flex-column sidebar" style="height: 100vh;">
     <button class="btn btn-link text-white" id="sidebarToggle" style="position: absolute; top: 1rem; left: 1rem; z-index: 1000;">
@@ -14,7 +15,7 @@
 
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100">
             <li class="nav-item w-100">
-                <a href="./dashboard.php" class="nav-link text-white">
+                <a href="main.php?page=dashboard" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'dashboard') ? 'active' : ''; ?>">
                     <i class="bi bi-speedometer2 me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                 </a>
@@ -22,21 +23,21 @@
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Product Management</small>
             <li class="nav-item w-100 mt-3">
-                <a href="./products.php" class="nav-link text-white">
+                <a href="main.php?page=allproducts" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'products') ? 'active' : ''; ?>">
                     <i class="bi bi-box-seam me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">All Products</span>
                 </a>
             </li>
 
             <li class="nav-item w-100 mt-2">
-                <a href="./categories.php" class="nav-link text-white">
+                <a href="main.php?page=categories" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'categories') ? 'active' : ''; ?>">
                     <i class="bi bi-tags me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Categories</span>
                 </a>
             </li>
 
             <li class="nav-item w-100 mt-2">
-                <a href="./inventory.php" class="nav-link text-white">
+                <a href="main.php?page=inventory" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'inventory') ? 'active' : ''; ?>">
                     <i class="bi bi-box2 me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Inventory</span>
                 </a>
@@ -44,14 +45,14 @@
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Sales & Orders</small>
             <li class="nav-item w-100 mt-3">
-                <a href="./orders.php" class="nav-link text-white">
+                <a href="main.php?page=orders" class="nav-link text-white">
                     <i class="bi bi-cart3 me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Orders</span>
                 </a>
             </li>
 
             <li class="nav-item w-100 mt-2">
-                <a href="./customers.php" class="nav-link text-white">
+                <a href="main.php?page=customers" class="nav-link text-white">
                     <i class="bi bi-people me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Customers</span>
                 </a>
@@ -59,14 +60,14 @@
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Reports</small>
             <li class="nav-item w-100 mt-3">
-                <a href="./sales-report.php" class="nav-link text-white">
+                <a href="main.php?page=sales-report" class="nav-link text-white">
                     <i class="bi bi-graph-up me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Sales Report</span>
                 </a>
             </li>
 
             <li class="nav-item w-100 mt-2">
-                <a href="./inventory-report.php" class="nav-link text-white">
+                <a href="main.php?page=inventory-report" class="nav-link text-white">
                     <i class="bi bi-clipboard-data me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Inventory Report</span>
                 </a>
@@ -74,7 +75,7 @@
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Settings</small>
             <li class="nav-item w-100 mt-3">
-                <a href="./settings.php" class="nav-link text-white">
+                <a href="main.php?page=settings" class="nav-link text-white">
                     <i class="bi bi-gear me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Settings</span>
                 </a>
@@ -124,6 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 #sidebarToggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 </style>
