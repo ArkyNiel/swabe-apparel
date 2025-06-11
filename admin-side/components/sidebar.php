@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="../assets/css/sidebar.css">
+<link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
 
 
 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark py-5 d-flex flex-column sidebar" style="height: 100vh;">
@@ -22,7 +23,7 @@
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Product Management</small>
             <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=products" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'products') ? 'active' : ''; ?>">
+                <a href="main.php?page=allproducts" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'products') ? 'active' : ''; ?>">
                     <i class="bi bi-box-seam me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">All Products</span>
                 </a>
@@ -135,5 +136,4 @@ document.addEventListener('DOMContentLoaded', function() {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-// ... rest of your existing styles ...
 </style>

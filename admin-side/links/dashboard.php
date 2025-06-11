@@ -1,9 +1,10 @@
-<link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
+<link rel="stylesheet" href="./../assets/bootswatch/css/bootstrap.min.css">
+<link rel="stylesheet" href="./../assets/css/dashboard.css">
 
 <div class="container-fluid py-4">
     <div class="row g-4">
         <!-- Total Orders Card -->
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-3">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
@@ -20,7 +21,7 @@
         </div>
 
         <!-- Total Products Card -->
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-3">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
@@ -37,7 +38,7 @@
         </div>
 
         <!-- Total Revenue Card -->
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-3">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
@@ -52,6 +53,40 @@
                 </div>
             </div>
         </div>
+
+        <!-- Total Accounts Card -->
+        <div class="col-12 col-md-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-subtitle mb-2 text-muted">Total Accounts</h6>
+                            <h2 class="card-title mb-0">0</h2>
+                        </div>
+                        <div class="bg-secondary bg-opacity-10 p-3 rounded">
+                            <i class="fas fa-users text-secondary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Closed Accounts Card -->
+        <div class="col-12 col-md-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-subtitle mb-2 text-muted">Closed Accounts</h6>
+                            <h2 class="card-title mb-0">0</h2>
+                        </div>
+                        <div class="bg-danger bg-opacity-10 p-3 rounded">
+                            <i class="fas fa-user-slash text-danger"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -60,36 +95,3 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<style>
-/* Custom styles to enhance Bootstrap */
-.card {
-    transition: transform 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-}
-
-.card-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-}
-
-.card-subtitle {
-    font-size: 0.9rem;
-}
-
-.bg-opacity-10 {
-    --bs-bg-opacity: 0.1;
-}
-
-.table th {
-    font-weight: 600;
-    background-color: #f8f9fa;
-}
-
-.badge {
-    padding: 0.5em 0.8em;
-    font-weight: 500;
-}
-</style>
