@@ -56,7 +56,7 @@
                                     <td>2024-03-15</td>
                                     <td>2 items</td>
                                     <td>₱2,800</td>
-                                    <td><span class="badge badge-warning">Processing</span></td>
+                                    <td><span class="badge badge-danger">Refund</span></td>
                                     <td>
                                         <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button>
                                         <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
@@ -68,7 +68,7 @@
                                     <td>2024-03-14</td>
                                     <td>5 items</td>
                                     <td>₱5,200</td>
-                                    <td><span class="badge badge-info">Shipped</span></td>
+                                    <td><span class="badge badge-success">Completed</span></td>
                                     <td>
                                         <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button>
                                         <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
