@@ -54,16 +54,9 @@
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Reports</small>
             <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=sales-report" class="nav-link text-white">
+                <a href="main.php?page=salesreport" class="nav-link text-white">
                     <i class="bi bi-graph-up me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Sales Report</span>
-                </a>
-            </li>
-
-            <li class="nav-item w-100 mt-2">
-                <a href="main.php?page=inventory-report" class="nav-link text-white">
-                    <i class="bi bi-clipboard-data me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Inventory Report</span>
                 </a>
             </li>
 
@@ -77,7 +70,7 @@
         </ul>
     </div>
 
-    <div class="mt-auto">
+    <div class="mt-5">
         <ul class="nav flex-column align-items-center">
             <li class="nav-item w-100">
                 <a href="../back-end/logout.php" class="nav-link text-white">
