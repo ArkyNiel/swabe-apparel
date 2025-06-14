@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./../assets/css/settings.css">
+
 <div class="container-fluid mt-3" style="height: calc(100vh - 60px); overflow-y: auto;">
     <h2 class="mb-4 sticky-top bg-white py-3" style="z-index: 1000;">System Settings</h2>
     
@@ -103,48 +105,11 @@
     </div>
 </div>
 
-<style>
-.content-wrapper {
-    min-height: 100vh;
-    background: #f4f6f9;
-    display: flex;
-    flex-direction: column;
-}
-.content-header {
-    background: #fff;
-    border-bottom: 1px solid #dee2e6;
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-}
-.main-scrollable {
-    flex: 1 1 auto;
-    overflow-y: auto;
-    max-height: calc(100vh - 80px);
-    padding-bottom: 30px;
-}
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-</style>
-
 <script>
-// Add any necessary JavaScript for dynamic functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Form validation
     const form = document.querySelector('form');
     form.addEventListener('submit', function(e) {
-        // Add your form validation logic here
     });
 });
 </script>
