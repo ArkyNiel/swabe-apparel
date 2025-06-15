@@ -136,8 +136,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body" style="border-radius: 12px;">
-                <form method="POST" action="" id="inventoryForm">
-                    <div class="row g-3">
+            <form method="POST" action="./../back-end/admin-side/additem.php" id="inventoryForm" enctype="multipart/form-data">
+                <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label">Product Name</label>
                             <input type="text" class="form-control" style="border-radius: 8px;" name="product_name" required>
