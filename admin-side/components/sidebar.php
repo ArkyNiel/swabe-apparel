@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="../assets/css/sidebar.css">
+<link rel="stylesheet" href="./../assets/css/sidebar.css">
 <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
 
 
 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark py-5 d-flex flex-column sidebar" style="height: 100vh;">
-    <button class="btn btn-link text-white" id="sidebarToggle" style="position: absolute; top: 1rem; left: 1rem; z-index: 1000;">
+    <button class="btn btn-link text-white" id="sidebarToggle" style="margin-left: 15px; background-color: none; border: none; outline: none;">
         <i class="bi bi-list fs-4"></i>
     </button>
 
@@ -100,27 +100,37 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 
 #sidebarToggle {
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
     padding: 0.5rem;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 1rem;
+    left: 0.5rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 #sidebarToggle:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
 }
 
-.nav-link.active {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    color: #fff !important;
+.nav-link {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 2px 0;
 }
 
 .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: translateX(5px);
 }
 
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
 </style>
