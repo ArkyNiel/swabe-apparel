@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <section class="content">
+    <section class="content" style="height: calc(100vh - 120px); overflow-y: auto;">
         <div class="container-fluid">
             <!-- Customer Stats Cards -->
             <div class="row">
