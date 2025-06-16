@@ -1,14 +1,14 @@
 <div class="container-fluid py-4">
     <!-- Header Section -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Inventory Management</h2>
-        <button class="btn btn-primary" style="border-radius: 8px;" data-bs-toggle="modal" data-bs-target="#addInventoryModal">
+        <h2 style="margin-left: 10px; margin-right: 10px;">Inventory Management</h2>
+        <button class="btn btn-primary" style="border-radius: 25px; margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#addInventoryModal">
             <i class="bi bi-plus-circle me-2"></i>Add New Item
         </button>
     </div>
 
     <!-- Filters section -->
-    <div class="card mb-4" style="border-radius: 12px;">
+    <div class="card mb-4" style="border-radius: 12px; margin-left: 10px; margin-right: 10px;">
         <div class="card-body" style="border-radius: 12px;">
             <div class="row g-3">
                 <!-- Search bar -->
@@ -45,7 +45,7 @@
     </div>
 
     <!-- Inventory table -->
-    <div class="card" style="border-radius: 12px;">
+    <div class="card" style="border-radius: 12px; margin-left: 10px; margin-right: 10px;">
         <div class="card-body" style="border-radius: 12px;">
             <div class="table-responsive" style="border-radius: 12px; overflow:hidden;">
                 <table class="table table-hover align-middle mb-0" style="border-radius: 12px;">

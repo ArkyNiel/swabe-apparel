@@ -102,19 +102,79 @@
                     <h5 class="mb-0 fw-bold text-dark">Quick Actions</h5>
                 </div>
                 <div class="card-body rounded-4">
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="?page=inventory" class="btn btn-primary rounded-4 px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
-                            <i class="fas fa-plus"></i> Add New Product
-                        </a>
-                        <a href="?page=orders" class="btn btn-success rounded-4 px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
-                            <i class="fas fa-list"></i> View All Orders
-                        </a>
-                        <a href="?page=customers" class="btn btn-info rounded-4 px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
-                            <i class="fas fa-users"></i> Manage Customers
-                        </a>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <a href="?page=inventory" class="text-decoration-none">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="icon-circle bg-primary bg-opacity-10 me-3">
+                                                <i class="fas fa-plus text-primary"></i>
+                                            </div>
+                                            <h6 class="card-title mb-0 fw-semibold text-dark">Add New Product</h6>
+                                        </div>
+                                        <p class="card-text text-muted small mb-0">Add new items to your product catalog</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="?page=orders" class="text-decoration-none">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="icon-circle bg-success bg-opacity-10 me-3">
+                                                <i class="fas fa-list text-success"></i>
+                                            </div>
+                                            <h6 class="card-title mb-0 fw-semibold text-dark">View All Orders</h6>
+                                        </div>
+                                        <p class="card-text text-muted small mb-0">Manage and track all customer orders</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="?page=customers" class="text-decoration-none">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card">
+                                    <div class="card-body p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="icon-circle bg-info bg-opacity-10 me-3">
+                                                <i class="fas fa-users text-info"></i>
+                                            </div>
+                                            <h6 class="card-title mb-0 fw-semibold text-dark">Manage Customers</h6>
+                                        </div>
+                                        <p class="card-text text-muted small mb-0">View and manage customer information</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+.hover-card {
+    transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-circle i {
+    font-size: 1.2rem;
+}
+</style>

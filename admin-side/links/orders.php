@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="mt-4">Orders Management</h1>
+                    <h1 class="mt-4" style="margin-left: 10px; margin-right: 10px;">Orders Management</h1>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="content">
+    <section class="content" style="margin-left: 10px; margin-right: 10px;">
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
@@ -92,12 +92,12 @@
                     </div>
                 </div>
                 <div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">«</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    <ul class="pagination pagination-sm justify-content-center m-0">
+                        <li class="page-item"><a class="page-link text-dark" href="#">«</a></li>
+                        <li class="page-item active"><a class="page-link bg-dark border-dark" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">»</a></li>
                     </ul>
                 </div>
             </div>

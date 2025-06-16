@@ -22,10 +22,10 @@ $statusBadge = [
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="mt-4">Sales Report</h1>
+                    <h1 class="mt-4" style="margin-left: 10px;">Sales Report</h1>
                 </div>
                 <div class="col-sm-6 mt-3">
-                    <div class="date-filter float-right">
+                    <div class="date-filter float-right" style="margin-right: 20px;">
                         <select class="form-control modern-select" id="reportPeriod">
                             <option value="today">Today</option>
                             <option value="week">This Week</option>
@@ -38,7 +38,7 @@ $statusBadge = [
             </div>
         </div>
     </div>
-    <section class="content main-scrollable">
+    <section class="content main-scrollable" style="margin-left: 10px; margin-right: 10px;">
         <div class="container-fluid mt-3">
             <!-- Sales Summary Cards -->
             <div class="row">

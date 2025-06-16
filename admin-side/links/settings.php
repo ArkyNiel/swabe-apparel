@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="./../assets/css/settings.css">
 
 <div class="container-fluid mt-3" style="height: calc(100vh - 60px); overflow-y: auto;">
-    <h2 class="mb-4 sticky-top bg-white py-3" style="z-index: 1000;">System Settings</h2>
+    <h2 class="mb-4 sticky-top bg-white py-3" style="z-index: 1000; margin-left: 10px; margin-right: 10px;">System Settings</h2>
     
-    <div class="row">
+    <div class="row" style="padding-left: 10px; padding-right: 10px;">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">

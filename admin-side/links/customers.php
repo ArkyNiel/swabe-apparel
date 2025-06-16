@@ -139,12 +139,12 @@
                     </div>
                 </div>
                 <div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">«</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    <ul class="pagination pagination-sm justify-content-center m-0">
+                        <li class="page-item"><a class="page-link text-dark" href="#">«</a></li>
+                        <li class="page-item active"><a class="page-link bg-dark border-dark" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link text-dark" href="#">»</a></li>
                     </ul>
                 </div>
             </div>

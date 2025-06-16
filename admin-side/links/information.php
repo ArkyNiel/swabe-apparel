@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="mt-4">Product Summary</h1>
+                    <h1 class="mt-4" style="margin-left: 10px; margin-right: 10px;">Product Summary</h1>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="content" style="height: calc(100vh - 120px); overflow-y: auto;">
+    <section class="content " style="height: calc(100vh - 120px); overflow-y: auto; margin-left: 10px; margin-right: 10px;">
         <div class="container-fluid">
             <!-- Summary Cards -->
             <div class="row">
@@ -21,6 +21,9 @@
                             <h3>150</h3>
                             <p>Total Products</p>
                         </div>
+                        <div class="icon">
+                            <i class="fas fa-box"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -28,6 +31,9 @@
                         <div class="inner">
                             <h3>₱250,000</h3>
                             <p>Total Inventory Value</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-peso-sign"></i>
                         </div>
                     </div>
                 </div>
@@ -37,6 +43,9 @@
                             <h3>5</h3>
                             <p>Low Stock Items</p>
                         </div>
+                        <div class="icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -44,6 +53,9 @@
                         <div class="inner">
                             <h3>2</h3>
                             <p>Out of Stock</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-times-circle"></i>
                         </div>
                     </div>
                 </div>
@@ -149,8 +161,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body text-center">
+                                    <div class="card hover-card">
+                                        <div class="card-body">
                                             <h5>Nike Air Max</h5>
                                             <p class="text-muted">Shoes Category</p>
                                             <h4>₱5,999</h4>
@@ -159,8 +171,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body text-center">
+                                    <div class="card hover-card">
+                                        <div class="card-body">
                                             <h5>Classic White Tee</h5>
                                             <p class="text-muted">Shirts Category</p>
                                             <h4>₱999</h4>
@@ -169,8 +181,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body text-center">
+                                    <div class="card hover-card">
+                                        <div class="card-body">
                                             <h5>Summer Collection Set</h5>
                                             <p class="text-muted">Collections Category</p>
                                             <h4>₱2,499</h4>
