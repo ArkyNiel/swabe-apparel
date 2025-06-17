@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $size     = $_POST['size'] ?? null;
     $color    = $_POST['color'];
     $stock    = (int)$_POST['stock'];
+    $price    = (float)$_POST['price'];
     
     $imagePath = null;
     if (!empty($_FILES['product_image']['tmp_name'])) {
@@ -15,13 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $targetPath = $uploadDir . time() . '_' . $fileName;
 
         if (move_uploaded_file($_FILES['product_image']['tmp_name'], $targetPath)) {
-            $imagePath = $targetPath;
+            // Store the path relative to the root
+            $imagePath = 'user-side/uploads/' . time() . '_' . $fileName;
         }
     }
 
     // execute SQL
-    $stmt = $conn->prepare("INSERT INTO inventory (product_name, category, size, color, stock, image_path) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$name, $category, $size, $color, $stock, $imagePath]);
+    $stmt = $conn->prepare("INSERT INTO inventory (product_name, category, size, color, stock, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$name, $category, $size, $color, $stock, $price, $imagePath]);
 
     header("Location: ../../admin-side/main.php?page=inventory");
     exit;

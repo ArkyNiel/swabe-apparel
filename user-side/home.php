@@ -91,7 +91,7 @@
             } else {
                 foreach ($limitedProducts as $index => $product) {
                     $isLeft = $index < 6 ? 'left' : 'right';
-                    include './components/products-card.php';
+                    include './components/product-card.php';
                 }
             }
             ?>
