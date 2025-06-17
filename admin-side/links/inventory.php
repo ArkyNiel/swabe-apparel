@@ -172,6 +172,10 @@
                             <label class="form-label">Stock Quantity</label>
                             <input type="number" class="form-control" style="border-radius: 8px;" name="stock" required min="0">
                         </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Price</label>
+                            <input type="number" step="0.01" name="price" required>
+                        </div>
                         <div class="col-12">
                             <label class="form-label">Product Image</label>
                             <input type="file" class="form-control" style="border-radius: 8px;" name="product_image" accept="image/*">
