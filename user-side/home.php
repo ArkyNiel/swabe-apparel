@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../assets/css/products-card-animation.css">
     <link rel="stylesheet" href="../assets/css/item-cards.css">
+    <link rel="stylesheet" href="../assets/css/icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
+    <?php 
+    // Add database connection
+    include '../connection/connection.php';
+    ?>
     <?php include('./components/loader.php'); ?>
     <?php include('./components/navigationbar.php'); ?>
 
@@ -22,17 +27,52 @@
         <div class="row w-100">
             <div class="col-md-6 left-column" style="padding: 70px;">
                 <div class="content-wrapper" style="max-width: 500px;">
-                    <h1 class="text-warning" style="font-size: 2rem; font-weight: bold; margin-bottom: 20px;">Find Your
-                        Fashion</h1>
-                    <h1 class="text-warning" style="font-size: 1.5rem; font-weight: bold;">By scrolling in swabe apparel
-                        & collections</h1>s
+                    <h1 class="text-warning"">Find Your Style</h1>
+                    <h1 class="text-warning">Discover the latest trends and exclusive collections at Swabe Apparel</h1>
+                    <p class="text">Elevate your wardrobe with our carefully curated selection of premium clothing. From casual essentials to statement pieces, find the perfect addition to your style.</p>
                 </div>
             </div>
             <div class="col-md-6 right-column d-flex align-items-center">
-                <p class="text mt-2" style="font-size: 1.5rem; letter-spacing: 1px; color: #ffff; margin-bottom: 0;">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde architecto totam, molestias
-                    perferendis rem!
-                </p>
+                <div class="text-center w-100">
+                    <div class="row">
+                        <div class="col-4 mb-4">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-tshirt fa-3x text-warning mb-3"></i>
+                                <p class="text-white">Premium Quality</p>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-4">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-truck-fast fa-3x text-warning mb-3"></i>
+                                <p class="text-white">Fast Delivery</p>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-4">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-tags fa-3x text-warning mb-3"></i>
+                                <p class="text-white">Best Prices</p>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-4">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-undo fa-3x text-warning mb-3"></i>
+                                <p class="text-white">Easy Returns</p>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-4">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
+                                <p class="text-white">Secure Shopping</p>
+                            </div>
+                        </div>
+                        <div class="col-4 mb-4">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-headset fa-3x text-warning mb-3"></i>
+                                <p class="text-white">24/7 Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -42,43 +82,22 @@
         <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
-          include '../assets/js/products.php'; 
-          
-          $productsPerPage = 12; // 12 per page meaning 2 row per load
-          $limitedProducts = array_slice($products, 0, $productsPerPage);
-          
-          foreach ($limitedProducts as $index => $product) {
-            $isLeft = $index < 6 ? 'left' : 'right';
-        ?>
-            <div class="col-md-2 mb-4 product-item">
-                <div class="card-container <?php echo $isLeft; ?>">
-                    <div class="card product-card" style="width: 100%; height: 300px; cursor:pointer;"
-                        data-name="<?php echo htmlspecialchars($product['name'] ?? ''); ?>"
-                        data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
-                        data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
-                        data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
-                        data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>">
-                        <img src="<?php echo $product['image'] ?? ''; ?>" class="card-img-top"
-                            alt="<?php echo $product['name'] ?? ''; ?>" style="height: 100%; object-fit: cover" />
-                    </div>
-                    <div class="buy-text">View</div>
-                </div>
-                <div class="card-actions">
-                    <button class="btn favorite-btn" title="Add to Favorites">
-                        <i class="far fa-heart"></i>
-                    </button>
-                    <button class="btn cart-btn" title="Add to Cart">
-                        <i class="fas fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </div>
-            <?php
-          }
-        ?>
+            include '../back-end/user-side/get_products.php';
+            $productsPerPage = 12;
+            $limitedProducts = getInitialProducts($conn, $productsPerPage);
+            
+            if (isset($limitedProducts['error'])) {
+                echo '<div class="col-12 text-center"><p class="text-danger">Error loading products: ' . $limitedProducts['error'] . '</p></div>';
+            } else {
+                foreach ($limitedProducts as $index => $product) {
+                    $isLeft = $index < 6 ? 'left' : 'right';
+                    include './components/products-card.php';
+                }
+            }
+            ?>
         </div>
         <!-- Load More Button -->
-        <div class="text-center my-4" id="load-more-container"
-            style="display: <?php echo count($products) > $productsPerPage ? 'block' : 'none'; ?>">
+        <div class="text-center my-4" id="load-more-container">
             <button id="load-more-btn" class="btn btn-primary">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
