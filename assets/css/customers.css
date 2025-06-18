@@ -22,7 +22,7 @@
   color: #333;
 }
 
-.customers-page .small-box {
+.small-box {
   border-radius: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -30,10 +30,11 @@
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding: 40px;
+  padding: 20px;
+  min-height: 120px;
 }
 
-.customers-page .small-box:hover {
+.small-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   border-radius: 30px;
