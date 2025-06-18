@@ -9,21 +9,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stock    = (int)$_POST['stock'];
     $price    = (float)$_POST['price'];
     
-    $imagePath = null;
-    if (!empty($_FILES['product_image']['tmp_name'])) {
-        $uploadDir = '../../user-side/uploads/';
-        $fileName = basename($_FILES['product_image']['name']);
-        $targetPath = $uploadDir . time() . '_' . $fileName;
-
-        if (move_uploaded_file($_FILES['product_image']['tmp_name'], $targetPath)) {
-            // Store the path relative to the root
-            $imagePath = 'user-side/uploads/' . time() . '_' . $fileName;
+    $image = '';
+    if (isset($_FILES['product_image']) && $_FILES['product_image']['error'] == 0) {
+        $target_dir = "../../user-side/uploads/"; 
+        $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
+        
+        // file checker & format identification
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $allowed_types = ['jpg', 'jpeg', 'png', 'gif']; 
+        
+        if (in_array($imageFileType, $allowed_types)) {
+            // Move the uploaded file to the server directory
+            if (move_uploaded_file($_FILES["product_image"]["tmp_name"], $target_file)) {
+                $image = basename($_FILES["product_image"]["name"]);
+            } else {
+                echo "Error uploading file.";
+                exit();
+            }
+        } else {
+            echo "Invalid file format. Only JPG, JPEG, PNG, and GIF are allowed.";
+            exit();
         }
     }
 
     // execute SQL
     $stmt = $conn->prepare("INSERT INTO inventory (product_name, category, size, color, stock, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$name, $category, $size, $color, $stock, $price, $imagePath]);
+    $stmt->execute([$name, $category, $size, $color, $stock, $price, $image]);
 
     header("Location: ../../admin-side/main.php?page=inventory");
     exit;

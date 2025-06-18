@@ -13,51 +13,67 @@
 
 <body>
     <?php include('components/navigationbar.php'); ?>
-    <?php include('../components/loader.php'); ?>
+    <?php include('../components/loader.php')?>
 
     <!-- cards -->
     <div class="container section-content">
         <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
-          include '../../assets/js/products.php'; 
-          
-          $productsPerPage = 12; // 12 per page meaning 2 row per load
-          $limitedProducts = array_slice($products, 0, $productsPerPage);
-          
-          foreach ($limitedProducts as $index => $product) {
-            $isLeft = $index < 6 ? 'left' : 'right';
-        ?>
-            <div class="col-md-2 mb-4 product-item">
-                <div class="card-container <?php echo $isLeft; ?>">
-                    <div class="card product-card" style="width: 100%; height: 300px; cursor:pointer;"
-                        data-name="<?php echo htmlspecialchars($product['name'] ?? ''); ?>"
-                        data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
-                        data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
-                        data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
-                        data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>">
-                        <img src="<?php echo $product['image'] ?? ''; ?>" class="card-img-top"
-                            alt="<?php echo $product['name'] ?? ''; ?>" style="height: 100%; object-fit: cover" />
+            // Include database connection and get products function
+            include '../../connection/connection.php';
+            include '../../back-end/user-side/get_products.php';
+            
+            $productsPerPage = 12; // 12 per page meaning 2 row per load
+            $limitedProducts = getInitialProducts($conn, $productsPerPage, '../uploads/');
+            
+            // Debug: Check what we're getting
+            if (isset($limitedProducts['error'])) {
+                echo '<div class="col-12 text-center"><p class="text-danger">Error loading products: ' . $limitedProducts['error'] . '</p></div>';
+            } else {
+                // Debug: Print the first product to see the image path
+                if (!empty($limitedProducts)) {
+                    echo '<script>console.log("First product image path:", "' . $limitedProducts[0]['image_path'] . '");</script>';
+                }
+                
+                foreach ($limitedProducts as $index => $product) {
+                    $isLeft = $index < 6 ? 'left' : 'right';
+            ?>
+                <div class="col-md-2 mb-4 product-item">
+                    <div class="card-container <?php echo $isLeft; ?>">
+                        <div class="card product-card" style="width: 100%; height: 300px; cursor:pointer;"
+                            data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
+                            data-image="<?php echo htmlspecialchars($product['image_path'] ?? ''); ?>"
+                            data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
+                            data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
+                            data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>">
+                            <img src="<?php echo htmlspecialchars($product['image_path'] ?? ''); ?>" 
+                                 class="card-img-top"
+                                 alt="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>" 
+                                 style="width: 100%; height: 100%; object-fit: cover; display: block;" 
+                                 onerror="this.src='../../assets/img/placeholder.jpg'; console.log('Image failed to load:', this.src);"
+                                 onload="console.log('Image loaded successfully:', this.src);" />
+                        </div>
+                        <div class="buy-text">View</div>
                     </div>
-                    <div class="buy-text">View</div>
+                    <div class="card-actions">
+                        <button class="btn favorite-btn" title="Add to Favorites">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="btn cart-btn" title="Add to Cart">
+                            <i class="fas fa-cart-shopping"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="card-actions">
-                    <button class="btn favorite-btn" title="Add to Favorites">
-                        <i class="far fa-heart"></i>
-                    </button>
-                    <button class="btn cart-btn" title="Add to Cart">
-                        <i class="fas fa-cart-shopping"></i>
-                    </button>
-                </div>
-            </div>
             <?php
-          }
-        ?>
+                }
+            }
+            ?>
         </div>
 
         <!-- Load More Button -->
         <div class="text-center my-4" id="load-more-container"
-            style="display: <?php echo count($products) > $productsPerPage ? 'block' : 'none'; ?>">
+            style="display: <?php echo count($limitedProducts) > $productsPerPage ? 'block' : 'none'; ?>">
             <button id="load-more-btn" class="btn btn-primary">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
@@ -69,7 +85,7 @@
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
     // loadmore feature
-    const productsData = <?php echo json_encode($products); ?>;
+    const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>

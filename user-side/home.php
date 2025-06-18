@@ -17,9 +17,8 @@
     // Add database connection
     include '../connection/connection.php';
     ?>
-    <?php include('./components/loader.php'); ?>
     <?php include('./components/navigationbar.php'); ?>
-
+    <?php include('./components/loader.php'); ?>
     <?php include('./components/productscard.php'); ?>
 
     <div class="section-content mb-0 bg-primary" id="section-content"
@@ -84,14 +83,14 @@
             <?php
             include '../back-end/user-side/get_products.php';
             $productsPerPage = 12;
-            $limitedProducts = getInitialProducts($conn, $productsPerPage);
+            $limitedProducts = getInitialProducts($conn, $productsPerPage, './uploads/');
             
             if (isset($limitedProducts['error'])) {
                 echo '<div class="col-12 text-center"><p class="text-danger">Error loading products: ' . $limitedProducts['error'] . '</p></div>';
             } else {
                 foreach ($limitedProducts as $index => $product) {
                     $isLeft = $index < 6 ? 'left' : 'right';
-                    include './components/product-card.php';
+                    include './components/productcard.php';
                 }
             }
             ?>
@@ -108,7 +107,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script>
     // loadmore feature
-    const productsData = <?php echo json_encode($products); ?>;
+    const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     </script>
     <script src="../assets/js/load-more.js"></script>
     <script>
