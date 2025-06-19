@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const start = currentPage * productsPerPage;
         
         // Fetch next batch of products from server
-        fetch(`../assets/js/get_products.php?start=${start}&limit=${productsPerPage}`)
+        fetch(`../back-end/user-side/get_products.php?start=${start}&limit=${productsPerPage}`)
             .then(response => response.json())
             .then(nextProducts => {
                 if (nextProducts.length > 0) {

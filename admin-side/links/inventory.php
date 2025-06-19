@@ -220,6 +220,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const categorySelect = document.getElementById('categorySelect');
     const sizeSelect = document.getElementById('sizeSelect');
+    const colorInput = document.querySelector('input[name="color"]');
 
     // init choices
     const sizeChoices = new Choices(sizeSelect, {
@@ -249,6 +250,10 @@ document.addEventListener('DOMContentLoaded', function() {
         sizeChoices.clearChoices();
         if (category !== 'collection') {
             sizeChoices.setChoices(options, 'value', 'label', true);
+        }
+        // Disable color input for collection
+        if (colorInput) {
+            colorInput.disabled = (category === 'collection');
         }
     }
 
