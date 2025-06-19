@@ -4,8 +4,8 @@ require '../../connection/connection.php';
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name     = $_POST['product_name'];
     $category = $_POST['category'];
-    $size     = $_POST['size'] ?? null;
-    $color    = $_POST['color'];
+    $size     = isset($_POST['size']) ? implode(',', $_POST['size']) : null;
+    $color    = isset($_POST['color']) ? $_POST['color'] : '';
     $stock    = (int)$_POST['stock'];
     $price    = (float)$_POST['price'];
     
