@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid py-4">
     <!-- Header Section -->
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -9,7 +11,14 @@
 
     <!-- Filters section -->
     <div class="card mb-4" style="border-radius: 12px; margin-left: 10px; margin-right: 10px;">
-        <div class="card-body" style="border-radius: 12px;">
+        <div class="card-body" style="border-radius: 12px;">        
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter price"
+          name="price"
+          required
+        />
             <div class="row g-3">
                 <!-- Search bar -->
                 <div class="col-md-4">
@@ -74,8 +83,16 @@
                             <td>50</td>
                             <td><span class="badge bg-success" style="border-radius: 12px;">In Stock</span></td>
                             <td>
-                                <button class="btn btn-sm btn-info me-1" style="border-radius: 5px;" title="Edit">
-                                    <i class="bi bi-pencil"></i>
+                                <button
+                                  class="btn btn-sm btn-info me-1 edit-btn"
+                                  style="border-radius: 5px;"
+                                  title="Edit"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#addInventoryModal"
+                                  data-category="Shirts"
+                                  data-size="M"
+                                >
+                                  <i class="bi bi-pencil"></i>
                                 </button>
                                 <button class="btn btn-sm btn-danger" style="border-radius: 5px;" title="Delete">
                                     <i class="bi bi-trash"></i>
@@ -93,8 +110,16 @@
                             <td>25</td>
                             <td><span class="badge bg-warning" style="border-radius: 12px;">Low Stock</span></td>
                             <td>
-                                <button class="btn btn-sm btn-info me-1" style="border-radius: 5px;" title="Edit">
-                                    <i class="bi bi-pencil"></i>
+                                <button
+                                  class="btn btn-sm btn-info me-1 edit-btn"
+                                  style="border-radius: 5px;"
+                                  title="Edit"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#addInventoryModal"
+                                  data-category="Shoes"
+                                  data-size="42"
+                                >
+                                  <i class="bi bi-pencil"></i>
                                 </button>
                                 <button class="btn btn-sm btn-danger" style="border-radius: 5px;" title="Delete">
                                     <i class="bi bi-trash"></i>
@@ -153,16 +178,8 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Size</label>
-                            <select class="form-select" style="border-radius: 8px;" name="size" id="sizeSelect" required>
-                                <option value="">Select Size</option>
-                                <?php
-                                // Default sizes
-                                $sizes = ['S', 'M', 'L', 'XL'];
-                                foreach ($sizes as $size) {
-                                    echo "<option value='$size'>$size</option>";
-                                }
-                                ?>
-                            </select>
+                            <select class="form-select" name="size[]" id="sizeSelect" multiple required></select>
+                            <small class="form-text text-muted">Select one or more sizes for this product.</small>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Color</label>
@@ -174,7 +191,15 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Price</label>
-                            <input type="number" step="0.01" name="price" required>
+                            <input 
+                                type="number" 
+                                step="0.01" 
+                                name="price" 
+                                class="form-control" 
+                                style="border-radius: 8px;" 
+                                placeholder="Enter price" 
+                                required
+                            >
                         </div>
                         <div class="col-12">
                             <label class="form-label">Product Image</label>
@@ -196,39 +221,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const categorySelect = document.getElementById('categorySelect');
     const sizeSelect = document.getElementById('sizeSelect');
 
-    categorySelect.addEventListener('change', function() {
-        const selectedCategory = this.value;
-        
-        // Clear current options
-        sizeSelect.innerHTML = '<option value="">Select Size</option>';
-        
-        if (selectedCategory === 'collection') {
-            // Disable size select for collection
-            sizeSelect.disabled = true;
-            sizeSelect.value = ''; // Clear the value
-        } else {
-            // Enable size select for other categories
-            sizeSelect.disabled = false;
-            
-            if (selectedCategory === 'shoes') {
-                // Add shoe sizes
-                for (let i = 39; i <= 45; i++) {
-                    const option = document.createElement('option');
-                    option.value = i;
-                    option.textContent = i;
-                    sizeSelect.appendChild(option);
-                }
-            } else {
-                // Add regular sizes
-                const regularSizes = ['S', 'M', 'L', 'XL'];
-                regularSizes.forEach(size => {
-                    const option = document.createElement('option');
-                    option.value = size;
-                    option.textContent = size;
-                    sizeSelect.appendChild(option);
-                });
+    // init choices
+    const sizeChoices = new Choices(sizeSelect, {
+        removeItemButton: true,
+        placeholder: true,
+        placeholderValue: 'Select Size(s)',
+        searchEnabled: false
+    });
+
+    // options for sizes exp: s,m,l, adn 39,40 and so on
+    function setSizeOptions(category) {
+        let options = [];
+        if (category === 'shoes') {
+            for (let i = 39; i <= 45; i++) {
+                options.push({ value: i, label: i });
             }
+        } else if (category === 'shirts' || category === '') {
+            options = [
+                { value: 'S', label: 'S' },
+                { value: 'M', label: 'M' },
+                { value: 'L', label: 'L' },
+                { value: 'XL', label: 'XL' }
+            ];
         }
+        // disabler function for not sizeable products
+        sizeSelect.disabled = (category === 'collection');
+        sizeChoices.clearChoices();
+        if (category !== 'collection') {
+            sizeChoices.setChoices(options, 'value', 'label', true);
+        }
+    }
+
+    // Initial load
+    setSizeOptions(categorySelect.value);
+
+    // categ changer
+    categorySelect.addEventListener('change', function() {
+        setSizeOptions(this.value);
     });
 });
 </script>
+
+<!-- Choices.js CSS * its just a library not a manual code-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+<!-- Choices.js JS -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
