@@ -21,12 +21,20 @@
         <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
-          include '../../assets/js/products.php'; 
+          include '../../back-end/user-side/get_products.php';
           
           $productsPerPage = 12; // 12 per page meaning 2 row per load
-          $limitedProducts = array_slice($products, 0, $productsPerPage);
           
-          foreach ($limitedProducts as $index => $product) {
+          // Get total product count
+          $totalProducts = 0;
+          $stmt = $conn->query("SELECT COUNT(*) FROM inventory");
+          if ($stmt) {
+              $totalProducts = $stmt->fetchColumn();
+          }
+          
+          $products = getProducts($conn, 0, $productsPerPage, '../uploads/');
+          
+          foreach ($products as $index => $product) {
             $isLeft = $index < 6 ? 'left' : 'right';
         ?>
             <div class="col-md-2 mb-4 product-item">
@@ -58,7 +66,7 @@
 
         <!-- Load More Button -->
         <div class="text-center my-4" id="load-more-container"
-            style="display: <?php echo count($products) > $productsPerPage ? 'block' : 'none'; ?>">
+            style="display: <?php echo $totalProducts > $productsPerPage ? 'block' : 'none'; ?>">
             <button id="load-more-btn" class="btn btn-primary">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
@@ -72,60 +80,22 @@
     // loadmore feature
     const productsData = <?php echo json_encode($products); ?>;
     </script>
+    <script>
+    window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
+    </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Select all product cards
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
-            card.addEventListener('click', function() {
-                // Set modal content
-                document.getElementById('modalProductImage').src = this.getAttribute(
-                    'data-image');
-                document.getElementById('modalProductName').textContent = this.getAttribute(
-                    'data-name');
-                document.getElementById('modalProductColor').textContent = this.getAttribute(
-                    'data-color');
-                document.getElementById('modalProductSize').textContent = this.getAttribute(
-                    'data-size');
-                document.getElementById('modalProductPrice').textContent = this.getAttribute(
-                    'data-price');
-                // Show modal
-                var modal = new bootstrap.Modal(document.getElementById('productModal'));
-                modal.show();
-            });
-        });
-
-        // Lightbox for full image view
-        const imgContainer = document.querySelector('#productModal .img-hover-container');
-        const img = document.getElementById('modalProductImage');
-        const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
-        const lightboxImage = document.getElementById('lightboxImage');
-
-        if (imgContainer && img && lightboxImage) {
-            imgContainer.addEventListener('click', function() {
-                if (img.src) {
-                    lightboxImage.src = img.src;
-                    lightboxModal.show();
-                }
-            });
+    document.getElementById('products-container').addEventListener('click', function(e) {
+        const card = e.target.closest('.product-card');
+        if (card) {
+            document.getElementById('modalProductImage').src = card.getAttribute('data-image');
+            document.getElementById('modalProductName').textContent = card.getAttribute('data-name');
+            document.getElementById('modalProductColor').textContent = card.getAttribute('data-color');
+            document.getElementById('modalProductSize').textContent = card.getAttribute('data-size');
+            document.getElementById('modalProductPrice').textContent = card.getAttribute('data-price');
+            var modal = new bootstrap.Modal(document.getElementById('productModal'));
+            modal.show();
         }
-
-        // Fix for lingering modal backdrop and modal-open class
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(function(modal) {
-            modal.addEventListener('hidden.bs.modal', function() {
-                // Remove any lingering backdrops
-                document.querySelectorAll('.modal-backdrop').forEach(function(backdrop) {
-                    backdrop.parentNode.removeChild(backdrop);
-                });
-                // Remove modal-open from body if no modals are open
-                if (!document.querySelector('.modal.show')) {
-                    document.body.classList.remove('modal-open');
-                    document.body.style = '';
-                }
-            });
-        });
     });
     </script>
     <footer class="bg-dark text-white py-5 mt-5" style="font-size: 0.95rem;">
