@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('load-more-btn');
     let currentPage = 1;
     const productsPerPage = 12;
+    const getProductsUrl = window.GET_PRODUCTS_URL;
+    
+    if (!getProductsUrl) {
+        console.error('GET_PRODUCTS_URL is not set!');
+        return;
+    }
     
     // Create modal instance once
     const productModal = new bootstrap.Modal(document.getElementById('productModal'));
@@ -19,14 +25,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    if (!loadMoreBtn) {
+        console.error('Load More button not found!');
+        return;
+    }
+    
     loadMoreBtn.addEventListener('click', function() {
+        console.log('Load More button clicked');
         const start = currentPage * productsPerPage;
+        console.log('Fetching from:', getProductsUrl, 'with start:', start, 'and limit:', productsPerPage);
+        const url = `${getProductsUrl}?start=${start}&limit=${productsPerPage}`;
+        console.log('Fetching:', url);
         
-        // Fetch next batch of products from server
-        fetch(`../back-end/user-side/get_products.php?start=${start}&limit=${productsPerPage}`)
+        fetch(url)
             .then(response => response.json())
             .then(nextProducts => {
-                if (nextProducts.length > 0) {
+                console.log('Fetched products:', nextProducts);
+                if (Array.isArray(nextProducts) && nextProducts.length > 0) {
                     nextProducts.forEach((product, index) => {
                         const isRight = (start + index) >= (start + 6) ? 'right' : '';
                         const productHTML = `

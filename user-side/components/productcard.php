@@ -2,11 +2,11 @@
     <div class="card-container <?php echo $isLeft; ?>">
         <div class="card product-card" style="width: 100%; height: 300px; cursor:pointer;"
             data-name="<?php echo htmlspecialchars($product['product_name']); ?>"
-            data-image="<?php echo htmlspecialchars($product['image_path']); ?>"
+            data-image="<?php echo htmlspecialchars($product['image']); ?>"
             data-color="<?php echo htmlspecialchars($product['color']); ?>"
             data-size="<?php echo htmlspecialchars($product['size']); ?>"
             data-price="Price not available">
-            <img src="<?php echo htmlspecialchars($product['image_path']); ?>" 
+            <img src="<?php echo htmlspecialchars($product['image']); ?>" 
                  class="card-img-top"
                  alt="<?php echo htmlspecialchars($product['product_name']); ?>" 
                  style="width: 100%; height: 100%; object-fit: cover; display: block;" 

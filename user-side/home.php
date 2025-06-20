@@ -14,7 +14,6 @@
 
 <body>
     <?php 
-    // Add database connection
     include '../connection/connection.php';
     ?>
     <?php include('./components/navigationbar.php'); ?>
@@ -83,7 +82,7 @@
             <?php
             include '../back-end/user-side/get_products.php';
             $productsPerPage = 12;
-            $limitedProducts = getInitialProducts($conn, $productsPerPage, './uploads/');
+            $limitedProducts = getProducts($conn, 0, $productsPerPage, './uploads/');
             
             if (isset($limitedProducts['error'])) {
                 echo '<div class="col-12 text-center"><p class="text-danger">Error loading products: ' . $limitedProducts['error'] . '</p></div>';
