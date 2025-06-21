@@ -16,6 +16,10 @@
   color: #000;
 }
 
+.navbar .nav-item .nav-link {
+  color: #fff;
+}
+
 .input-group .form-control {
   border-right: none;
 }
@@ -88,4 +92,22 @@
   border-radius: 50%;
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrap {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
 }
