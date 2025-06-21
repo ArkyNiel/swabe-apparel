@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentPage = 1;
     const productsPerPage = 12;
     const getProductsUrl = window.GET_PRODUCTS_URL;
+    const productCategory = window.PRODUCT_CATEGORY;
     
     if (!getProductsUrl) {
         console.error('GET_PRODUCTS_URL is not set!');
@@ -34,7 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Load More button clicked');
         const start = currentPage * productsPerPage;
         console.log('Fetching from:', getProductsUrl, 'with start:', start, 'and limit:', productsPerPage);
-        const url = `${getProductsUrl}?start=${start}&limit=${productsPerPage}`;
+        let url = `${getProductsUrl}?start=${start}&limit=${productsPerPage}`;
+        if (productCategory) {
+            url += `&category=${productCategory}`;
+        }
         console.log('Fetching:', url);
         
         fetch(url)

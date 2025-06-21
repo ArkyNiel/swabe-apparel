@@ -24,7 +24,7 @@
             include '../../back-end/user-side/get_products.php';
             
             $productsPerPage = 12; // 12 per page meaning 2 row per load
-            $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/');
+            $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', null);
             
             if (isset($limitedProducts['error'])) {
                 echo '<div class="col-12 text-center"><p class="text-danger">Error loading products: ' . $limitedProducts['error'] . '</p></div>';
@@ -81,6 +81,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
+    window.PRODUCT_CATEGORY = null;
     // loadmore feature
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
