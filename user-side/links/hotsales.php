@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <div class="content-wrap">
     <?php include('components/navigationbar.php'); ?>
     <?php include('../components/loader.php')?>
 
@@ -75,6 +76,7 @@
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
         </div>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -142,7 +144,7 @@
         });
     });
     </script>
-    <footer class="bg-dark text-white py-5 mt-5" style="font-size: 0.95rem;">
+    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem;">
         <div class="container text-center">
             <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
             <br>
