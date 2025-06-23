@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (Array.isArray(nextProducts) && nextProducts.length > 0) {
                     nextProducts.forEach((product, index) => {
                         const isRight = (index % 12) >= 6 ? 'right' : '';
+                        const imgSrc = product.image;
                         const productHTML = `
                             <div class="col-md-2 mb-4 product-item">
                                 <div class="card-container ${isRight}">
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         data-size="${product.size || 'N/A'}"
                                         data-price="${product.price || 'N/A'}"
                                     >
-                                        <img src="${product.image}"
+                                        <img src="${product.image || ''}"
                                             class="card-img-top"
                                             alt="${product.product_name || ''}"
                                             style="height: 100%; object-fit: cover"
@@ -96,6 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     loadMoreBtn.style.display = 'none';
                 }
+                const event = new Event('productsAppended');
+                document.dispatchEvent(event);
             })
             .catch(error => {
                 console.error('Error loading more products:', error);
@@ -110,4 +113,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
-window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
+window.GET_PRODUCTS_URL = './../back-end/user-side/get_products.php';

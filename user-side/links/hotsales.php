@@ -97,7 +97,8 @@
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    // --- BEGIN: Move event listener logic into a function ---
+    function attachProductCardListeners() {
         const productCards = document.querySelectorAll('.product-card');
         productCards.forEach(card => {
             card.addEventListener('click', function() {
@@ -115,6 +116,11 @@
                 modal.show();
             });
         });
+    }
+    // --- END ---
+
+    document.addEventListener('DOMContentLoaded', function() {
+        attachProductCardListeners(); // Attach on initial load
 
         const imgContainer = document.querySelector('#productModal .img-hover-container');
         const img = document.getElementById('modalProductImage');
@@ -141,6 +147,11 @@
                     document.body.style = '';
                 }
             });
+        });
+
+        // Listen for custom event after load-more.js adds new products
+        document.addEventListener('productsAppended', function() {
+            attachProductCardListeners(); // Re-attach to new cards
         });
     });
     </script>
