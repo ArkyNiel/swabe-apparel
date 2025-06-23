@@ -2,12 +2,12 @@
 require '../../connection/connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name     = $_POST['product_name'];
-    $category = $_POST['category'];
-    $size     = isset($_POST['size']) ? implode(',', $_POST['size']) : null;
-    $color    = isset($_POST['color']) ? $_POST['color'] : '';
-    $stock    = (int)$_POST['stock'];
-    $price    = (float)$_POST['price'];
+    $name     = $_POST['product_name'] ?? '';
+    $category = $_POST['category'] ?? '';
+    $size     = isset($_POST['size']) ? (is_array($_POST['size']) ? implode(',', $_POST['size']) : $_POST['size']) : '';
+    $color    = $_POST['color'] ?? '';
+    $stock    = isset($_POST['stock']) ? (int)$_POST['stock'] : 0;
+    $price    = isset($_POST['price']) ? (float)$_POST['price'] : 0;
     
     $image = '';
     if (isset($_FILES['product_image']) && $_FILES['product_image']['error'] == 0) {
@@ -36,7 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = $conn->prepare("INSERT INTO inventory (product_name, category, size, color, stock, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([$name, $category, $size, $color, $stock, $price, $image]);
 
-    header("Location: ../../admin-side/main.php?page=inventory");
+    header('Content-Type: application/json');
+    echo json_encode(['success' => true, 'message' => 'Product added successfully!']);
     exit;
 }
 ?>
