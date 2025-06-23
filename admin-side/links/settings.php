@@ -70,7 +70,7 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <button class="btn btn-outline-primary">
+                        <button class="btn btn-outline-primary" id="backup-db-btn">
                             <i class="fas fa-database"></i> Backup Database
                         </button>
                         <button class="btn btn-outline-warning">
@@ -110,6 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form validation
     const form = document.querySelector('form');
     form.addEventListener('submit', function(e) {
+    });
+
+    // Backup Database button
+    document.getElementById('backup-db-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = './../back-end/admin-side/backup_db.php';
     });
 });
 </script>
