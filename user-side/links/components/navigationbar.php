@@ -1,6 +1,8 @@
 <?php
 session_start();
 ?>
+
+<link rel="stylesheet" href="./../navigationbar.css">
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column">
         <div class="w-100 py-2 border-bottom">
             <div class="d-flex justify-content-between align-items-center w-100 px-4">
