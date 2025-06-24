@@ -33,6 +33,6 @@ if (basename(__FILE__) == basename($_SERVER['SCRIPT_FILENAME'])) {
     header('Content-Type: application/json');
     $start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
     $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 12;
-    echo json_encode(getProducts($conn, $start, $limit, '../uploads/'));
+    echo json_encode(getProducts($conn, $start, $limit, 'uploads/'));
 }
 ?>

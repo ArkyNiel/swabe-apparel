@@ -88,9 +88,6 @@
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
     window.PRODUCT_CATEGORY = null;
-    // loadmore feature
-    const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
-    let offset = productsData.length;
     </script>
     <script>
         const productsPerPage = 12;
@@ -99,33 +96,9 @@
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     </script>
-    <script src="../../assets/js/load-more.js"></script>
+    <script src="./../assets/js/load-more.js"></script>
     <script>
-    // --- BEGIN: Move event listener logic into a function ---
-    function attachProductCardListeners() {
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
-            card.addEventListener('click', function() {
-                document.getElementById('modalProductImage').src = this.getAttribute(
-                    'data-image');
-                document.getElementById('modalProductName').textContent = this.getAttribute(
-                    'data-name');
-                document.getElementById('modalProductColor').textContent = this.getAttribute(
-                    'data-color');
-                document.getElementById('modalProductSize').textContent = this.getAttribute(
-                    'data-size');
-                document.getElementById('modalProductPrice').textContent = this.getAttribute(
-                    'data-price');
-                var modal = new bootstrap.Modal(document.getElementById('productModal'));
-                modal.show();
-            });
-        });
-    }
-    // --- END ---
-
     document.addEventListener('DOMContentLoaded', function() {
-        attachProductCardListeners(); // Attach on initial load
-
         const imgContainer = document.querySelector('#productModal .img-hover-container');
         const img = document.getElementById('modalProductImage');
         const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
@@ -151,11 +124,6 @@
                     document.body.style = '';
                 }
             });
-        });
-
-        // Listen for custom event after load-more.js adds new products
-        document.addEventListener('productsAppended', function() {
-            attachProductCardListeners(); // Re-attach to new cards
         });
     });
     </script>
