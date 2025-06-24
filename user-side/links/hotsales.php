@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOT SALES | SWABE APPAREL</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
+    <link rel="stylesheet" href="../navigationbar.css">
     <link rel="stylesheet" href="../../assets/css/products-card-animation.css">
     <link rel="stylesheet" href="../../assets/css/item-cards.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
+<style>
+    
+</style>
 
 <body>
     <div class="content-wrap">
@@ -24,7 +28,7 @@
             include '../../connection/connection.php';
             include '../../back-end/user-side/get_products.php';
             
-            $productsPerPage = 12; // 12 per page meaning 2 row per load
+            $productsPerPage = 12; // 12 per page and 2 rows per load
             $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', null);
             
             if (isset($limitedProducts['error'])) {

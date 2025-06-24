@@ -5,25 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWABE APPAREL | ONLINE STORE</title>
     <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../assets/css/products-card-animation.css">
     <link rel="stylesheet" href="../assets/css/item-cards.css">
     <link rel="stylesheet" href="../assets/css/icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+
 <body>
-    <?php 
-    include '../connection/connection.php';
-    ?>
     <?php include('./components/navigationbar.php'); ?>
     <?php include('./components/loader.php'); ?>
     <?php include('./components/productscard.php'); ?>
 
     <div class="section-content mb-0 bg-primary" id="section-content"
-        style="padding: 0px 70px; min-height: 0px; display: flex; align-items: center; margin-top: -130px;">
+        style="margin-top: -120px;">
         <div class="row w-100">
-            <div class="col-md-6 left-column" style="padding: 70px;">
+            <div class="col-md-6 left-column" style="padding: 100px;">
                 <div class="content-wrapper" style="max-width: 500px;">
                     <h1 class="text-warning"">Find Your Style</h1>
                     <h1 class="text-warning">Discover the latest trends and exclusive collections at Swabe Apparel</h1>
