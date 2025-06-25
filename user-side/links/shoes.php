@@ -72,7 +72,7 @@
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
-    window.PRODUCT_CATEGORY = 'Shoes';
+    window.UPLOAD_PREFIX = '../uploads/';
     // loadmore feature
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
