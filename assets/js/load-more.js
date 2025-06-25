@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (productCategory) {
             url += `&category=${productCategory}`;
         }
+        if (window.UPLOAD_PREFIX) {
+            url += `&prefix=${encodeURIComponent(window.UPLOAD_PREFIX)}`;
+        }
         console.log('Fetching:', url);
         
         fetch(url)
@@ -112,5 +115,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 100);
 });
-
-window.GET_PRODUCTS_URL = './../back-end/user-side/get_products.php';
