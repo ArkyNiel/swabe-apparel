@@ -28,11 +28,12 @@ function getProducts($conn, $start, $limit, $imagePathPrefix = './uploads/') {
 }
 
 // json output and path of image
-
+// pre loaded new products/cards
 if (basename(__FILE__) == basename($_SERVER['SCRIPT_FILENAME'])) {
     header('Content-Type: application/json');
     $start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
     $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 12;
-    echo json_encode(getProducts($conn, $start, $limit, 'uploads/'));
+    $prefix = isset($_GET['prefix']) ? $_GET['prefix'] : 'uploads/';
+    echo json_encode(getProducts($conn, $start, $limit, $prefix));
 }
 ?>

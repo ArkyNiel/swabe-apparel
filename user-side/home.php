@@ -105,6 +105,10 @@
     // loadmore feature
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     </script>
+    <script>
+    window.GET_PRODUCTS_URL = '../back-end/user-side/get_products.php';
+    window.UPLOAD_PREFIX = 'uploads/';
+    </script>
     <script src="../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
