@@ -71,9 +71,9 @@ session_start();
                 </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav mx-auto my-2 my-lg-0 justify-content-center w-100">
-                        <li class="nav-item"><a class="nav-link link-hover" href="hotsales.php">Hot Sales 🔥</a></li>
-                        <li class="nav-item"><a class="nav-link link-hover" href="allproducts.php">All Products</a></li>
-                        <li class="nav-item"><a class="nav-link link-hover" href="newproducts.php">New Products</a></li>
+                        <li class="nav-item"><a class="nav-link link-hover" href="hot_sales.php">Hot Sales 🔥</a></li>
+                        <li class="nav-item"><a class="nav-link link-hover" href="all_products.php">All Products</a></li>
+                        <li class="nav-item"><a class="nav-link link-hover" href="new_products.php">New Products</a></li>
                         <li class="nav-item">
                             <a class="nav-link icon-hover link-hover" href="shoes.php">
                                 <span class="text">Shoes</span>

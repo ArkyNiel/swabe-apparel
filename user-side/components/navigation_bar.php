@@ -38,7 +38,7 @@ session_start();
                             <i class="fa-solid fa-store" style="font-size: 20px; line-height: 1;"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item link-hover" href="./links/aboutus.php">About Us</a></li>
+                            <li><a class="dropdown-item link-hover" href="./links/about_us.php">About Us</a></li>
                             <li><a class="dropdown-item link-hover" href="./links/location.php">Location</a></li>
                         </ul>
                     </li>
@@ -49,7 +49,7 @@ session_start();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <?php if(isset($_SESSION['user_id'])): ?>
-                                <li><a class="dropdown-item link-hover" href="./links/manageaccount.php">Manage Account</a></li>
+                                <li><a class="dropdown-item link-hover" href="./links/manage_account.php">Manage Account</a></li>
                                 <li><a class="dropdown-item link-hover" href="./links/feedback.php">Give us Feedback</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -73,11 +73,11 @@ session_start();
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav mx-auto my-2 my-lg-0 justify-content-center w-100">
-                    <li class="nav-item"><a class="nav-link link-hover" href="./links/hotsales.php">Hot Sales 🔥</a>
+                    <li class="nav-item"><a class="nav-link link-hover" href="./links/hot_sales.php">Hot Sales 🔥</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link link-hover" href="./links/allproducts.php">All Products</a>
+                    <li class="nav-item"><a class="nav-link link-hover" href="./links/all_products.php">All Products</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link link-hover" href="./links/newproducts.php">New products</a>
+                    <li class="nav-item"><a class="nav-link link-hover" href="./links/new_products.php">New products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-hover" href="./links/shoes.php">

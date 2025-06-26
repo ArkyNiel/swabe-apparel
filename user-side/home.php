@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWABE APPAREL | ONLINE STORE</title>
     <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/products-card-animation.css">
-    <link rel="stylesheet" href="../assets/css/item-cards.css">
+    <link rel="stylesheet" href="../assets/css/products_card_animation.css">
+    <link rel="stylesheet" href="../assets/css/item_cards.css">
     <link rel="stylesheet" href="../assets/css/icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 
 <body>
-    <?php include('./components/navigationbar.php'); ?>
+    <?php include('./components/navigation_bar.php'); ?>
     <?php include('./components/loader.php'); ?>
-    <?php include('./components/productscard.php'); ?>
+    <?php
+    include '../back-end/user-side/get_products.php';
+    $bannerProducts = getProducts($conn, 0, 12, './uploads/'); // fetch latest 12 products
+    ?>
+    <?php include('./components/product_banner.php'); ?>
 
     <div class="section-content mb-0 bg-primary" id="section-content"
         style="margin-top: -120px;">
@@ -77,7 +81,6 @@
         <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
-            include '../back-end/user-side/get_products.php';
             $productsPerPage = 12;
             $limitedProducts = getProducts($conn, 0, $productsPerPage, './uploads/');
             
@@ -86,7 +89,7 @@
             } else {
                 foreach ($limitedProducts as $index => $product) {
                     $isLeft = $index < 6 ? 'left' : 'right';
-                    include './components/productcard.php';
+                    include './components/product_card.php';
                 }
             }
             ?>
