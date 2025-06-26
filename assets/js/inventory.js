@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <button class="btn btn-sm btn-info me-1 edit-btn" style="border-radius: 5px;" title="Edit" data-bs-toggle="modal" data-bs-target="#addInventoryModal" data-category="${product.category}" data-size="${product.size}">
                             <i class="bi bi-pencil"></i>
                         </button>
-                        <button class="btn btn-sm btn-danger" style="border-radius: 5px;" title="Delete">
+                        <button class="btn btn-sm btn-danger delete-btn" style="border-radius: 5px;" title="Delete" data-product-id="${product.id}">
                             <i class="bi bi-trash"></i>
                         </button>
                     </td>
@@ -307,6 +307,46 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
         });
     }
+
+    let productIdToDelete = null;
+
+    document.getElementById('inventory-table-body').addEventListener('click', function (e) {
+        if (e.target.closest('.delete-btn')) {
+            const btn = e.target.closest('.delete-btn');
+            productIdToDelete = btn.getAttribute('data-product-id');
+            // Show the confirmation modal
+            const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+            deleteModal.show();
+        }
+    });
+
+    document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+        if (!productIdToDelete) return;
+        fetch('./../back-end/admin-side/delete_item.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'product_id=' + encodeURIComponent(productIdToDelete)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                fetchProducts();
+                showSuccessAlert(data.message);
+            } else {
+                showErrorAlert(data.message);
+            }
+        })
+        .catch(error => {
+            showErrorAlert('Error deleting product.');
+        })
+        .finally(() => {
+            const deleteModal = bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal'));
+            if (deleteModal) deleteModal.hide();
+            productIdToDelete = null;
+        });
+    });
 
     // Initial fetch
     fetchProducts();
