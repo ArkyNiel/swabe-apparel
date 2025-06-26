@@ -13,7 +13,7 @@
 
 <body>
     <div class="content-wrap">
-    <?php include('components/navigationbar.php'); ?>
+    <?php include('components/navigation_bar.php'); ?>
     <?php include('../components/loader.php'); ?>
 
     <!-- cards -->
@@ -128,9 +128,9 @@
         <div class="container text-center">
             <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
             <br>
-            <a href="privacypolicy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
+            <a href="privacy_policy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
                 Policy</a>
-            <a href="termsofservice.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
+            <a href="terms_of_service.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
                 Service</a>
         </div>
     </footer>

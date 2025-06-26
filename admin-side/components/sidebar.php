@@ -54,7 +54,7 @@
 
             <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Reports</small>
             <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=salesreport" class="nav-link text-white">
+                <a href="main.php?page=sales_report" class="nav-link text-white">
                     <i class="bi bi-graph-up me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Sales Report</span>
                 </a>

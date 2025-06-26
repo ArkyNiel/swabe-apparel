@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./../assets/css/salesreport.css">
+<link rel="stylesheet" href="./../assets/css/sales_report.css">
 
 <?php
 $topProducts = [
