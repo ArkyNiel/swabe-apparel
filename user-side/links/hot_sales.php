@@ -28,7 +28,7 @@
             include '../../connection/connection.php';
             include '../../back-end/user-side/get_products.php';
             
-            $productsPerPage = 12; // 12 per page and 2 rows per load
+            $productsPerPage = 24; // 12 per page and 2 rows per load
             $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', null);
             
             if (isset($limitedProducts['error'])) {

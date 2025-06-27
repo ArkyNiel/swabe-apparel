@@ -24,7 +24,7 @@
           include '../../connection/connection.php';
           include '../../back-end/user-side/get_products.php';
           
-          $productsPerPage = 12; // 12 per page meaning 2 row per load
+          $productsPerPage = 24; // 12 per page meaning 2 row per load
           $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', 'Shoes');
           
           foreach ($limitedProducts as $index => $product) {

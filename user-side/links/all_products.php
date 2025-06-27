@@ -22,9 +22,7 @@
             <?php
           include '../../back-end/user-side/get_products.php';
           
-          $productsPerPage = 12; // 12 per page meaning 2 row per load
-          
-          // Get total product count
+          $productsPerPage = 24; // 12 per page meaning 2 row per load
           $totalProducts = 0;
           $stmt = $conn->query("SELECT COUNT(*) FROM inventory");
           if ($stmt) {
