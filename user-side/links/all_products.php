@@ -7,7 +7,7 @@
     <title>ALL PRODUCTS | SWABE APPAREL</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/products-card-animation.css">
-    <link rel="stylesheet" href="../../assets/css/item-cards.css">
+    <link rel="stylesheet" href="../../assets/css/card_icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 

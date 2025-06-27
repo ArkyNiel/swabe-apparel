@@ -1,0 +1,15 @@
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0px; 
+    margin-right: -20px;
+    margin-top: -10px;
+}
+
+.favorite-btn, .cart-btn {
+        font-size: 19px;
+}
+
+.favorite-btn {
+        margin-right: -40px;
+}
