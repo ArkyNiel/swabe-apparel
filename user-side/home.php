@@ -81,7 +81,7 @@
         <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
-            $productsPerPage = 12;
+            $productsPerPage = 24;
             $limitedProducts = getProducts($conn, 0, $productsPerPage, './uploads/');
             
             if (isset($limitedProducts['error'])) {
