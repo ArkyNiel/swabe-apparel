@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOCATION | SWABE APPAREL</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
+    <link rel="stylesheet" href="../../assets/css/custom_navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -49,7 +49,7 @@ body {
 </style>
 
 <body>
-    <?php include('components/navigationbar.php'); ?>
+    <?php include('components/navigation_bar.php'); ?>
     <?php include('../components/loader.php'); ?>
 
     <div class="content-wrapper">

@@ -11,7 +11,7 @@
 </head>
 
 <body>    
-    <?php include('components/navigationbar.php'); ?>
+    <?php include('components/navigation_bar.php'); ?>
     <?php include('../components/loader.php'); ?>
     
     <!--contents-->

@@ -37,7 +37,7 @@ session_start();
                             <i class="fa-solid fa-store" style="font-size: 20px; line-height: 1;"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item link-hover" href="aboutus.php">About Us</a></li>
+                            <li><a class="dropdown-item link-hover" href="about_us.php">About Us</a></li>
                             <li><a class="dropdown-item link-hover" href="location.php">Location</a></li>
                         </ul>
                     </li>
