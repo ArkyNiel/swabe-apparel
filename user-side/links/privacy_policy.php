@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRIVACY AND POLICY | SWABE APPAREL</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
-    <link rel="stylesheet" href="../../assets/css/about-us.css">
+    <link rel="stylesheet" href="../../assets/css/custom_navbar.css">
+    <link rel="stylesheet" href="../../assets/css/about_us.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     <div class="container py-3 mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="mb-5 p-5 rounded bg-dark aboutus-bg">
+                <div class="mb-5 p-5 rounded aboutus-bg">
                     <div class="text-center mb-3">
                         <h1 class="display-4 fw-bold mb-2">Privacy Policy</h1>
                         <p class="lead mb-0">Last Updated: March 2024</p>
