@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../assets/css/icons.css">
     <link rel="stylesheet" href="../assets/css/card_icons.css">
+    <link rel="stylesheet" href="../assets/css/cards_hover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 
 <body>
     <?php include('./components/navigation_bar.php'); ?>
-    <?php include('./components/loader.php'); ?>
     <?php
     include '../back-end/user-side/get_products.php';
-    $bannerProducts = getProducts($conn, 0, 12, './uploads/'); // fetch latest 12 products
+    $bannerProducts = getProducts($conn, 0, 24, './uploads/'); // fetch latest 12 products
     ?>
     <?php include('./components/product_banner.php'); ?>
 
