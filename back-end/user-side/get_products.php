@@ -2,9 +2,14 @@
 $rootPath = dirname(dirname(__DIR__));
 include $rootPath . '/connection/connection.php';
 
-function getProducts($conn, $start, $limit, $imagePathPrefix = './uploads/') {
+function getProducts($conn, $start, $limit, $imagePathPrefix = './uploads/', $category = null) {
     try {
-        $stmt = $conn->prepare("SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` FROM `inventory` LIMIT :start, :limit");
+        if ($category) {
+            $stmt = $conn->prepare("SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` FROM `inventory` WHERE `category` = :category LIMIT :start, :limit");
+            $stmt->bindValue(':category', $category, PDO::PARAM_STR);
+        } else {
+            $stmt = $conn->prepare("SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` FROM `inventory` LIMIT :start, :limit");
+        }
         $stmt->bindValue(':start', (int)$start, PDO::PARAM_INT);
         $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
         $stmt->execute();
@@ -34,6 +39,7 @@ if (basename(__FILE__) == basename($_SERVER['SCRIPT_FILENAME'])) {
     $start = isset($_GET['start']) ? (int)$_GET['start'] : 0;
     $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 12;
     $prefix = isset($_GET['prefix']) ? $_GET['prefix'] : 'uploads/';
-    echo json_encode(getProducts($conn, $start, $limit, $prefix));
+    $category = isset($_GET['category']) ? $_GET['category'] : null;
+    echo json_encode(getProducts($conn, $start, $limit, $prefix, $category));
 }
 ?>

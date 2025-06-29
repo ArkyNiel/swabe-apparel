@@ -30,7 +30,7 @@
           include '../../back-end/user-side/get_products.php';
           
           $productsPerPage = 24; // 24 per page meaning 4 row per load
-          $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', null);
+          $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', 'collection');
           
           foreach ($limitedProducts as $index => $product) {
             $isLeft = $index < 6 ? 'left' : 'right';
@@ -78,6 +78,7 @@
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
+    window.CATEGORY = 'collection';
     // loadmore feature
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
