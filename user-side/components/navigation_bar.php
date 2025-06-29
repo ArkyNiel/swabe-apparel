@@ -3,6 +3,7 @@ session_start();
 ?>
 
 <link rel="stylesheet" href="./navigationbar.css">
+<link rel="stylesheet" href="./../assets/css/search.css">
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column" style="margin-bottom: -20px;">
         <div class="w-100 py-2 border-bottom">
@@ -11,15 +12,18 @@ session_start();
                     <a class="navbar-brand fw-bold" href="#">SWABE APPAREL</a>
                 </div>
                 <div class="search-container flex-grow-1 mx-4">
-                    <form class="d-flex" role="search">
+                    <form class="d-flex" role="search" id="searchForm">
                         <div class="input-group">
                             <input class="form-control" type="search" placeholder="Search products..."
-                                aria-label="Search">
+                                aria-label="Search" id="searchInput" autocomplete="off">
                             <button class="btn btn-dark" type="submit">
                                 <i class="fas fa-search"></i> Search
                             </button>
                         </div>
                     </form>
+                    <div class="search-results" id="searchResults">
+                        <!-- Search results will be populated here -->
+                    </div>
                 </div>
                 <div class="d-flex align-items-center">
                     <li class="nav-item list-unstyled" style="margin-right: 5px !important;">
@@ -101,3 +105,127 @@ session_start();
 </nav>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    const searchForm = document.getElementById('searchForm');
+    let searchTimeout;
+    let currentSearchRequest;
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+        
+        clearTimeout(searchTimeout);
+        
+        if (currentSearchRequest) {
+            currentSearchRequest.abort();
+        }
+        
+        if (query.length < 2) {
+            searchResults.style.display = 'none';
+            return;
+        }
+        
+        // Show loading
+        searchResults.innerHTML = '<div class="search-loading">Searching...</div>';
+        searchResults.style.display = 'block';
+        
+        // Debounce search
+        searchTimeout = setTimeout(() => {
+            performSearch(query);
+        }, 300);
+    });
+
+    // Handle form submission
+    searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        if (query) {
+            // Redirect to search results page
+            window.location.href = `../links/search_results.php?search=${encodeURIComponent(query)}`;
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+
+    // Handle search result clicks
+    searchResults.addEventListener('click', function(e) {
+        const resultItem = e.target.closest('.search-result-item');
+        if (resultItem) {
+            // Fill modal fields
+            document.getElementById('modalProductImage').src = resultItem.dataset.productImage;
+            document.getElementById('modalProductName').textContent = resultItem.dataset.productName;
+            document.getElementById('modalProductColor').textContent = resultItem.dataset.productColor;
+            document.getElementById('modalProductSize').textContent = resultItem.dataset.productSize;
+            document.getElementById('modalProductPrice').textContent = resultItem.dataset.productPrice;
+            
+            // Show the modal
+            const modal = new bootstrap.Modal(document.getElementById('productModal'));
+            modal.show();
+            
+            searchResults.style.display = 'none';
+            searchInput.value = resultItem.dataset.productName;
+        }
+    });
+
+    function performSearch(query) {
+        const searchUrl = '../back-end/user-side/search_products.php';
+        const url = `${searchUrl}?q=${encodeURIComponent(query)}&limit=8&prefix=./uploads/`;
+        
+        // Create new AbortController for this request
+        const controller = new AbortController();
+        currentSearchRequest = controller;
+        
+        fetch(url, { signal: controller.signal })
+            .then(response => response.json())
+            .then(data => {
+                if (controller.signal.aborted) return;
+                
+                displaySearchResults(data, query);
+            })
+            .catch(error => {
+                if (error.name === 'AbortError') return;
+                
+                console.error('Search error:', error);
+                searchResults.innerHTML = '<div class="no-results">Error occurred while searching</div>';
+            });
+    }
+
+    function displaySearchResults(products, query) {
+        if (!Array.isArray(products) || products.length === 0) {
+            searchResults.innerHTML = '<div class="no-results">No products found for "' + query + '"</div>';
+            return;
+        }
+
+        const resultsHTML = products.map(product => `
+            <div class="search-result-item" 
+                 data-product-id="${product.id}" 
+                 data-product-name="${product.product_name}"
+                 data-product-image="${product.image || './assets/img/logo.jpg'}"
+                 data-product-color="${product.color || 'N/A'}"
+                 data-product-size="${product.size || 'N/A'}"
+                 data-product-price="${product.price || 'N/A'}">
+                <img src="${product.image || './assets/img/logo.jpg'}" 
+                     alt="${product.product_name}" 
+                     class="search-result-image"
+                     onerror="this.src='./assets/img/logo.jpg'">
+                <div class="search-result-info">
+                    <div class="search-result-name">${product.product_name}</div>
+                    <div class="search-result-details">
+                        ${product.category} • ${product.color} • ${product.size}
+                    </div>
+                </div>
+                <div class="search-result-price">₱${product.price}</div>
+            </div>
+        `).join('');
+
+        searchResults.innerHTML = resultsHTML;
+    }
+});
+</script>
