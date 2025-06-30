@@ -162,31 +162,46 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="card hover-card">
-                                        <div class="card-body">
-                                            <h5>Nike Air Max</h5>
-                                            <p class="text-muted">Shoes Category</p>
-                                            <h4>₱5,999</h4>
-                                            <p class="text-success">Sold: 45 units</p>
+                                        <div class="card-body d-flex align-items-center">
+                                            <div class="icon-circle bg-primary mr-3">
+                                                <i class="fas fa-shoe-prints text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">Nike Air Max</h5>
+                                                <p class="text-muted small mb-1">Shoes Category</p>
+                                                <h4 class="mb-1">₱5,999</h4>
+                                                <p class="text-success mb-0">Sold: 45 units</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="card hover-card">
-                                        <div class="card-body">
-                                            <h5>Classic White Tee</h5>
-                                            <p class="text-muted">Shirts Category</p>
-                                            <h4>₱999</h4>
-                                            <p class="text-success">Sold: 78 units</p>
+                                        <div class="card-body d-flex align-items-center">
+                                            <div class="icon-circle bg-info mr-3">
+                                                <i class="fas fa-tshirt text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">Classic White Tee</h5>
+                                                <p class="text-muted small mb-1">Shirts Category</p>
+                                                <h4 class="mb-1">₱999</h4>
+                                                <p class="text-success mb-0">Sold: 78 units</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="card hover-card">
-                                        <div class="card-body">
-                                            <h5>Summer Collection Set</h5>
-                                            <p class="text-muted">Collections Category</p>
-                                            <h4>₱2,499</h4>
-                                            <p class="text-success">Sold: 32 units</p>
+                                        <div class="card-body d-flex align-items-center">
+                                            <div class="icon-circle bg-warning mr-3">
+                                                <i class="fas fa-box-open text-white"></i>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">Summer Collection Set</h5>
+                                                <p class="text-muted small mb-1">Collections Category</p>
+                                                <h4 class="mb-1">₱2,499</h4>
+                                                <p class="text-success mb-0">Sold: 32 units</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
