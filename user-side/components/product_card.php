@@ -15,12 +15,15 @@
         </div>
         <div class="buy-text">View</div>
     </div>
-    <div class="card-actions">
-        <button class="btn favorite-btn" title="Add to Favorites">
-            <i class="far fa-heart"></i>
-        </button>
-        <button class="btn cart-btn" title="Add to Cart">
-            <i class="fas fa-cart-shopping"></i>
-        </button>
+    <div class="card-actions d-flex justify-content-between align-items-center mt-2">
+        <h5 class="product-price ">₱<?php echo htmlspecialchars($product['price']); ?></h5>
+        <div>
+            <button class="btn favorite-btn" title="Add to Favorites">
+                <i class="far fa-heart"></i>
+            </button>
+            <button class="btn cart-btn" title="Add to Cart">
+                <i class="fas fa-cart-shopping"></i>
+            </button>
+        </div>
     </div>
 </div> 
