@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $user_id = date("y") . rand(100000000, 999999999);
+    $user_id = date("y") . rand(1000000, 9999999);
 
     $stmt = $conn->prepare("SELECT * FROM account WHERE username = ?");
     $stmt->execute([$username]);
