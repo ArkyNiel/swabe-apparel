@@ -13,7 +13,22 @@
 </head>
 
 <style>
-    
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.content-wrap {
+    flex: 1 0 auto;
+}
+footer {
+    flex-shrink: 0;
+}
 </style>
 
 <body>
@@ -82,18 +97,16 @@
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
     window.CATEGORY = 'collection';
-    // loadmore feature
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Select all product cards
         const productCards = document.querySelectorAll('.product-card');
         productCards.forEach(card => {
             card.addEventListener('click', function() {
-                // Set modal content
+                // content
                 document.getElementById('modalProductImage').src = this.getAttribute(
                     'data-image');
                 document.getElementById('modalProductName').textContent = this.getAttribute(
@@ -104,13 +117,11 @@
                     'data-size');
                 document.getElementById('modalProductPrice').textContent = this.getAttribute(
                     'data-price');
-                // Show modal
                 var modal = new bootstrap.Modal(document.getElementById('productModal'));
                 modal.show();
             });
         });
 
-        // Lightbox for full image view
         const imgContainer = document.querySelector('#productModal .img-hover-container');
         const img = document.getElementById('modalProductImage');
         const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
@@ -125,7 +136,6 @@
             });
         }
 
-        // Fix for lingering modal backdrop and modal-open class
         const modals = document.querySelectorAll('.modal');
         modals.forEach(function(modal) {
             modal.addEventListener('hidden.bs.modal', function() {
@@ -133,7 +143,6 @@
                 document.querySelectorAll('.modal-backdrop').forEach(function(backdrop) {
                     backdrop.parentNode.removeChild(backdrop);
                 });
-                // Remove modal-open from body if no modals are open
                 if (!document.querySelector('.modal.show')) {
                     document.body.classList.remove('modal-open');
                     document.body.style = '';
