@@ -48,6 +48,18 @@
     </div>
 </div>
 
+<!-- Add to Cart Modal -->
+<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
+        <div class="modal-content border-0 rounded-1 shadow">
+            <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-4">
+                <?php include(__DIR__ . '/add_to_cart.php'); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
 .img-hover-container {
     position: relative;

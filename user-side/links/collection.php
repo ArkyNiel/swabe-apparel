@@ -9,9 +9,27 @@
     <link rel="stylesheet" href="../../assets/css/card_icons.css">
     <link rel="stylesheet" href="../../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../../assets/css/cards_hover.css">
-    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.content-wrap {
+    flex: 1 0 auto;
+}
+footer {
+    flex-shrink: 0;
+}
+</style>
 
 <body>
     <div class="content-wrap">
@@ -51,7 +69,11 @@
                         <button class="btn favorite-btn" title="Add to Favorites">
                             <i class="far fa-heart"></i>
                         </button>
-                        <button class="btn cart-btn" title="Add to Cart">
+                        <button class="btn cart-btn" title="Add to Cart"
+                            data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
+                            data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
+                            data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
+                            data-quantity="1">
                             <i class="fas fa-cart-shopping"></i>
                         </button>
                     </div>
@@ -121,6 +143,7 @@
         const modals = document.querySelectorAll('.modal');
         modals.forEach(function(modal) {
             modal.addEventListener('hidden.bs.modal', function() {
+                // Remove any lingering backdrops
                 document.querySelectorAll('.modal-backdrop').forEach(function(backdrop) {
                     backdrop.parentNode.removeChild(backdrop);
                 });
@@ -129,6 +152,31 @@
                     document.body.style = '';
                 }
             });
+        });
+
+        // Add to Cart functionality
+        document.querySelectorAll('.cart-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+
+                const name = btn.getAttribute('data-name');
+                const image = btn.getAttribute('data-image');
+                const price = btn.getAttribute('data-price');
+                const quantity = btn.getAttribute('data-quantity') || 1;
+
+                document.getElementById('cartProductName').textContent = name;
+                document.getElementById('cartProductImage').src = image;
+                document.getElementById('cartProductPrice').textContent = '₱' + price;
+                document.getElementById('cartProductQuantity').textContent = 'Quantity: ' + quantity;
+
+                document.getElementById('addToCartContainer').style.display = 'flex';
+            });
+        });
+
+        document.getElementById('addToCartContainer').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
         });
     });
     </script>
@@ -144,6 +192,7 @@
     </footer>
 
     <?php include(__DIR__ . '/../components/modal.php'); ?>
+    <?php include('../components/add_to_cart.php'); ?>
 </body>
 
 </html>

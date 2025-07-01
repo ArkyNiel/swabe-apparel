@@ -78,14 +78,12 @@
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
-    // loadmore feature
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Event delegation for product cards
         document.getElementById('products-container').addEventListener('click', function(e) {
             const card = e.target.closest('.product-card');
             if (card) {
@@ -99,7 +97,6 @@
             }
         });
 
-        // Lightbox for full image view
         const imgContainer = document.querySelector('#productModal .img-hover-container');
         const img = document.getElementById('modalProductImage');
         const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
@@ -114,7 +111,6 @@
             });
         }
 
-        // Fix for lingering modal backdrop and modal-open class
         const modals = document.querySelectorAll('.modal');
         modals.forEach(function(modal) {
             modal.addEventListener('hidden.bs.modal', function() {
