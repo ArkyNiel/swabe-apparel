@@ -9,12 +9,9 @@
     <link rel="stylesheet" href="../../assets/css/card_icons.css">
     <link rel="stylesheet" href="../../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../../assets/css/cards_hover.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
-<style>
-    
-</style>
 
 <body>
     <div class="content-wrap">
@@ -82,18 +79,16 @@
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
     window.CATEGORY = 'collection';
-    // loadmore feature
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Select all product cards
         const productCards = document.querySelectorAll('.product-card');
         productCards.forEach(card => {
             card.addEventListener('click', function() {
-                // Set modal content
+                // content
                 document.getElementById('modalProductImage').src = this.getAttribute(
                     'data-image');
                 document.getElementById('modalProductName').textContent = this.getAttribute(
@@ -104,13 +99,11 @@
                     'data-size');
                 document.getElementById('modalProductPrice').textContent = this.getAttribute(
                     'data-price');
-                // Show modal
                 var modal = new bootstrap.Modal(document.getElementById('productModal'));
                 modal.show();
             });
         });
 
-        // Lightbox for full image view
         const imgContainer = document.querySelector('#productModal .img-hover-container');
         const img = document.getElementById('modalProductImage');
         const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
@@ -125,15 +118,12 @@
             });
         }
 
-        // Fix for lingering modal backdrop and modal-open class
         const modals = document.querySelectorAll('.modal');
         modals.forEach(function(modal) {
             modal.addEventListener('hidden.bs.modal', function() {
-                // Remove any lingering backdrops
                 document.querySelectorAll('.modal-backdrop').forEach(function(backdrop) {
                     backdrop.parentNode.removeChild(backdrop);
                 });
-                // Remove modal-open from body if no modals are open
                 if (!document.querySelector('.modal.show')) {
                     document.body.classList.remove('modal-open');
                     document.body.style = '';
