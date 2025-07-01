@@ -1,0 +1,190 @@
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content {
+  padding-bottom: 20px;
+}
+
+.small-box {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 40px;
+  margin-top: 10px;
+}
+
+.small-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.small-box .inner {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.small-box h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+  padding: 0;
+  color: #fff;
+}
+
+.small-box p {
+  font-size: 1.1rem;
+  margin-top: 5px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.small-box .icon {
+  display: none;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: none;
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
+}
+
+.table td,
+.table th {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+/* Badge styling */
+.badge {
+  padding: 6px 12px;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+.badge-danger {
+  background-color: #dc3545;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.col-md-4 .card {
+  transition: transform 0.3s ease;
+}
+
+.col-md-4 .card:hover {
+  transform: translateY(-5px);
+}
+
+.col-md-4 .card-body {
+  padding: 25px;
+}
+
+.col-md-4 .card h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.col-md-4 .card h4 {
+  color: #28a745;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.col-md-4 .card .text-success {
+  font-weight: 500;
+}
+
+.hover-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-circle i {
+  font-size: 1.2rem;
+}
+
+.table > :not(caption) > * > * {
+  padding: 1rem;
+}
+
+.table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0,0,0,0.02);
+}

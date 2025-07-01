@@ -1,0 +1,49 @@
+.section-content .feature-icon-wrapper {
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.section-content .feature-icon-wrapper:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.section-content .feature-icon-wrapper i {
+    transition: transform 0.2s ease-out, color 0.2s ease-out;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
+
+.section-content .feature-icon-wrapper:hover i {
+    transform: scale(1.1);
+    color: #ffc107 !important;
+}
+
+.section-content .feature-icon-wrapper p {
+    transition: color 0.2s ease-out;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-content .feature-icon-wrapper:hover p {
+    color: #ffc107 !important;
+}
+
+.section-content .feature-icon-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+    transition: box-shadow 0.2s ease-out;
+    z-index: 0;
+}

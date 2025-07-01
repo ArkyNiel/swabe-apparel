@@ -10,7 +10,7 @@ include("../../back-end/user-side/session_check.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback | Swabe Apparel</title>
+    <title>Swabe apparel - feedback</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
     <style>

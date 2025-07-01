@@ -1,0 +1,98 @@
+.custom-navbar {
+  padding: 0;
+}
+
+#navbarScroll .nav-link {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.search-container {
+  max-width: 800px;
+}
+
+.navbar .nav-link {
+  color: #000;
+  font-size: 14px;
+  padding: 0.5rem 0.1rem;
+}
+
+.navbar .nav-link:hover {
+  color: #333;
+}
+
+.navbar .nav-item .nav-link {
+  color: #000;
+}
+
+.input-group .form-control {
+  border-right: none;
+}
+
+.input-group .btn {
+  border-left: none;
+}
+
+.nav-item.dropdown {
+  margin-left: 1rem;
+}
+
+.list-unstyled {
+  margin-bottom: 0;
+}
+
+.dropdown-toggle {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu {
+  position: absolute !important;
+  right: 0;
+  left: auto !important;
+  min-width: 200px;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 0.25rem 0;
+}
+
+.dropdown-item {
+  padding: 0.25rem 1rem;
+}
+
+.dropdown-menu.show {
+  display: block;
+  transform: translate3d(0px, 13px, 0px) !important;
+}
+
+@media (max-width: 991.98px) {
+  .dropdown-menu {
+    position: static !important;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.fa-cart-shopping,
+.fa-heart {
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.fa-cart-shopping:hover,
+.fa-heart:hover {
+  color: #1b1b1b;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}

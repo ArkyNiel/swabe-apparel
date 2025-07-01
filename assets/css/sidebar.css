@@ -1,0 +1,160 @@
+/* Main Sidebar Styles */
+.sidebar {
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: #212529;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Collapsed Sidebar Styles */
+.sidebar.collapsed {
+  width: 80px !important;
+  min-width: 80px !important;
+  padding: 1rem 0.5rem !important;
+}
+
+.sidebar.collapsed .d-none.d-sm-inline {
+  display: none !important;
+}
+
+.sidebar.collapsed .nav-link {
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar.collapsed .nav-link i {
+  margin: 0 !important;
+  font-size: 1.2rem;
+}
+
+.sidebar.collapsed .nav-item {
+  text-align: center;
+  width: 100%;
+}
+
+.sidebar.collapsed small {
+  display: none !important;
+}
+
+.sidebar.collapsed h3 {
+  display: none !important;
+}
+
+.sidebar.collapsed .nav-pills {
+  align-items: center !important;
+}
+
+.sidebar.collapsed .nav-pills .nav-item {
+  margin: 0.5rem 0;
+}
+
+/* Toggle Button Styles */
+#sidebarToggle {
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
+#sidebarToggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Navigation Link Styles */
+.nav-link {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  margin: 4px 0;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  transform: translateX(5px);
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Headers */
+.sidebar small {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+/* Icons */
+.nav-link i {
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.nav-link:hover i {
+  transform: scale(1.1);
+}
+
+/* Main Content Adjustment */
+.sidebar.collapsed + .col {
+  margin-left: 80px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px !important;
+    min-width: 80px !important;
+  }
+
+  .sidebar .d-none.d-sm-inline {
+    display: none !important;
+  }
+
+  .sidebar .nav-link {
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .sidebar .nav-link i {
+    margin: 0 !important;
+  }
+
+  .sidebar small {
+    display: none !important;
+  }
+
+  .sidebar h3 {
+    display: none !important;
+  }
+}
+
+/* Logout Button Special Styling */
+.mt-5 .nav-link {
+  color: rgba(255, 255, 255, 0.7) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.mt-5 .nav-link:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
