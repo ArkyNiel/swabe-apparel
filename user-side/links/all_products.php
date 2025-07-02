@@ -95,7 +95,6 @@
     <script src="../../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Card click: show product details modal
         document.querySelectorAll('.product-card').forEach(function(card) {
             card.addEventListener('click', function() {
                 document.getElementById('productModalProductImage').src = this.getAttribute('data-image');
@@ -108,10 +107,9 @@
             });
         });
 
-        // Cart icon click: show add to cart modal
         document.querySelectorAll('.cart-btn').forEach(function(btn) {
             btn.addEventListener('click', function(event) {
-                event.stopPropagation(); // Prevent card click event
+                event.stopPropagation(); 
                 var name = this.getAttribute('data-name');
                 var image = this.getAttribute('data-image');
                 var size = this.getAttribute('data-size');
@@ -121,7 +119,6 @@
                 document.getElementById('cartModalProductImg').src = image;
                 document.getElementById('cartModalProductPrice').textContent = price;
 
-                // Optionally, set the size dropdown
                 var sizeSelect = document.getElementById('cartModalProductSize');
                 if (sizeSelect) {
                     for (let i = 0; i < sizeSelect.options.length; i++) {
@@ -131,7 +128,6 @@
                         }
                     }
                 }
-                // Reset quantity
                 var qty = document.getElementById('cartModalQuantity');
                 if (qty) qty.value = 1;
 
