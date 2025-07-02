@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../../assets/css/add_to_cart.css">
 <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width:900px;">
-    <div class="modal-content" style="width:900px; height:700px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="addToCartModalLabel">Add to Cart</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

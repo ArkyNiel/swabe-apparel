@@ -9,27 +9,9 @@
     <link rel="stylesheet" href="../../assets/css/card_icons.css">
     <link rel="stylesheet" href="../../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../../assets/css/cards_hover.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
-<style>
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-.content-wrap {
-    flex: 1 0 auto;
-}
-footer {
-    flex-shrink: 0;
-}
-</style>
 
 <body>
     <div class="content-wrap">
@@ -69,11 +51,14 @@ footer {
                         <button class="btn favorite-btn" title="Add to Favorites">
                             <i class="far fa-heart"></i>
                         </button>
-                        <button class="btn cart-btn" title="Add to Cart"
+                        <button 
+                            class="btn cart-btn" 
+                            title="Add to Cart"
                             data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
                             data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
+                            data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
                             data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
-                            data-quantity="1">
+                        >
                             <i class="fas fa-cart-shopping"></i>
                         </button>
                     </div>
@@ -86,7 +71,7 @@ footer {
 
         <!-- Load More Button -->
         <div class="text-center my-4" id="load-more-container"
-            style="display: <?php echo count($limitedProducts) >= $productsPerPage ? 'block' : 'none'; ?>">
+            style="display: <?php echo count($limitedProducts) >= $productsPerPage ? 'block' : 'none'; ?>;">
             <button id="load-more-btn" class="btn btn-primary">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
@@ -107,76 +92,45 @@ footer {
     <script src="../../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
+        document.querySelectorAll('.product-card').forEach(function(card) {
             card.addEventListener('click', function() {
-                // content
-                document.getElementById('modalProductImage').src = this.getAttribute(
-                    'data-image');
-                document.getElementById('modalProductName').textContent = this.getAttribute(
-                    'data-name');
-                document.getElementById('modalProductColor').textContent = this.getAttribute(
-                    'data-color');
-                document.getElementById('modalProductSize').textContent = this.getAttribute(
-                    'data-size');
-                document.getElementById('modalProductPrice').textContent = this.getAttribute(
-                    'data-price');
+                document.getElementById('productModalProductImage').src = this.getAttribute('data-image');
+                document.getElementById('productModalProductName').textContent = this.getAttribute('data-name');
+                document.getElementById('productModalProductColor').textContent = this.getAttribute('data-color');
+                document.getElementById('productModalProductSize').textContent = this.getAttribute('data-size');
+                document.getElementById('productModalProductPrice').textContent = this.getAttribute('data-price');
                 var modal = new bootstrap.Modal(document.getElementById('productModal'));
                 modal.show();
             });
         });
 
-        const imgContainer = document.querySelector('#productModal .img-hover-container');
-        const img = document.getElementById('modalProductImage');
-        const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
-        const lightboxImage = document.getElementById('lightboxImage');
-
-        if (imgContainer && img && lightboxImage) {
-            imgContainer.addEventListener('click', function() {
-                if (img.src) {
-                    lightboxImage.src = img.src;
-                    lightboxModal.show();
-                }
-            });
-        }
-
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(function(modal) {
-            modal.addEventListener('hidden.bs.modal', function() {
-                // Remove any lingering backdrops
-                document.querySelectorAll('.modal-backdrop').forEach(function(backdrop) {
-                    backdrop.parentNode.removeChild(backdrop);
-                });
-                if (!document.querySelector('.modal.show')) {
-                    document.body.classList.remove('modal-open');
-                    document.body.style = '';
-                }
-            });
-        });
-
-        // Add to Cart functionality
         document.querySelectorAll('.cart-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
+            btn.addEventListener('click', function(event) {
+                event.stopPropagation(); 
+                var name = this.getAttribute('data-name');
+                var image = this.getAttribute('data-image');
+                var size = this.getAttribute('data-size');
+                var price = this.getAttribute('data-price');
 
-                const name = btn.getAttribute('data-name');
-                const image = btn.getAttribute('data-image');
-                const price = btn.getAttribute('data-price');
-                const quantity = btn.getAttribute('data-quantity') || 1;
+                document.getElementById('cartModalProductName').textContent = name;
+                document.getElementById('cartModalProductImg').src = image;
+                document.getElementById('cartModalProductPrice').textContent = price;
 
-                document.getElementById('cartProductName').textContent = name;
-                document.getElementById('cartProductImage').src = image;
-                document.getElementById('cartProductPrice').textContent = '₱' + price;
-                document.getElementById('cartProductQuantity').textContent = 'Quantity: ' + quantity;
+                var sizeSelect = document.getElementById('cartModalProductSize');
+                if (sizeSelect) {
+                    for (let i = 0; i < sizeSelect.options.length; i++) {
+                        if (sizeSelect.options[i].value === size) {
+                            sizeSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                var qty = document.getElementById('cartModalQuantity');
+                if (qty) qty.value = 1;
 
-                document.getElementById('addToCartContainer').style.display = 'flex';
+                var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
+                modal.show();
             });
-        });
-
-        document.getElementById('addToCartContainer').addEventListener('click', function(e) {
-            if (e.target === this) {
-                this.style.display = 'none';
-            }
         });
     });
     </script>
@@ -192,7 +146,7 @@ footer {
     </footer>
 
     <?php include(__DIR__ . '/../components/modal.php'); ?>
-    <?php include('../components/add_to_cart.php'); ?>
+    <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
 </body>
 
 </html>
