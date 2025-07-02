@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../assets/css/icons.css">
     <link rel="stylesheet" href="../assets/css/card_icons.css">
-    <link rel="stylesheet" href="../assets/css/cards_hover.css">
+    <link rel="stylesheet" href="../assets/css/cards_hover.css"> 
+    <link rel="stylesheet" href="../assets/css/add_to_cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -115,20 +116,44 @@
     <script src="../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
+        // Product modal logic
+        document.querySelectorAll('.product-card').forEach(function(card) {
             card.addEventListener('click', function() {
-                document.getElementById('modalProductImage').src = this.getAttribute(
-                    'data-image');
-                document.getElementById('modalProductName').textContent = this.getAttribute(
-                    'data-name');
-                document.getElementById('modalProductColor').textContent = this.getAttribute(
-                    'data-color');
-                document.getElementById('modalProductSize').textContent = this.getAttribute(
-                    'data-size');
-                document.getElementById('modalProductPrice').textContent = this.getAttribute(
-                    'data-price');
+                document.getElementById('productModalProductImage').src = this.getAttribute('data-image');
+                document.getElementById('productModalProductName').textContent = this.getAttribute('data-name');
+                document.getElementById('productModalProductColor').textContent = this.getAttribute('data-color');
+                document.getElementById('productModalProductSize').textContent = this.getAttribute('data-size');
+                document.getElementById('productModalProductPrice').textContent = this.getAttribute('data-price');
                 var modal = new bootstrap.Modal(document.getElementById('productModal'));
+                modal.show();
+            });
+        });
+
+        document.querySelectorAll('.cart-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.stopPropagation(); 
+                var name = this.getAttribute('data-name');
+                var image = this.getAttribute('data-image');
+                var size = this.getAttribute('data-size');
+                var price = this.getAttribute('data-price');
+
+                document.getElementById('cartModalProductName').textContent = name;
+                document.getElementById('cartModalProductImg').src = image;
+                document.getElementById('cartModalProductPrice').textContent = price;
+
+                var sizeSelect = document.getElementById('cartModalProductSize');
+                if (sizeSelect) {
+                    for (let i = 0; i < sizeSelect.options.length; i++) {
+                        if (sizeSelect.options[i].value === size) {
+                            sizeSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                var qty = document.getElementById('cartModalQuantity');
+                if (qty) qty.value = 1;
+
+                var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
                 modal.show();
             });
         });
@@ -136,6 +161,7 @@
     </script>
     <?php include('./components/footer.php'); ?>
     <?php include('./components/modal.php'); ?>
+    <?php include('./components/add_to_cart.php'); ?>
 </body>
 
 </html>
