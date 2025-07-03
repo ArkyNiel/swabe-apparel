@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let searchTimeout;
     let currentSearchRequest;
 
-    // Search as user types
     searchInput.addEventListener('input', function() {
         const query = this.value.trim();
         
@@ -124,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Show loading
         searchResults.innerHTML = '<div class="search-loading">Searching...</div>';
         searchResults.style.display = 'block';
         
@@ -137,37 +135,23 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const query = searchInput.value.trim();
         if (query) {
-            window.location.href = `search_results.php?search=${encodeURIComponent(query)}`;
+            window.location.href = `search_page.php?search=${encodeURIComponent(query)}`;
         }
     });
 
-    // search colser 
     document.addEventListener('click', function(e) {
         if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
             searchResults.style.display = 'none';
         }
     });
 
-
-    // handle to modal
     searchResults.addEventListener('click', function(e) {
         const resultItem = e.target.closest('.search-result-item');
         if (resultItem) {
-            document.getElementById('modalProductImage').src = resultItem.dataset.productImage;
-            document.getElementById('modalProductName').textContent = resultItem.dataset.productName;
-            document.getElementById('modalProductColor').textContent = resultItem.dataset.productColor;
-            document.getElementById('modalProductSize').textContent = resultItem.dataset.productSize;
-            document.getElementById('modalProductPrice').textContent = resultItem.dataset.productPrice;
-
-            const modal = new bootstrap.Modal(document.getElementById('productModal'));
-            modal.show();
-
-            searchResults.style.display = 'none';
-            searchInput.value = resultItem.dataset.productName;
+            window.location.href = `search_page.php?search=${encodeURIComponent(resultItem.dataset.productName)}`;
         }
     });
 
-    // prefix upload di pa mag gana due to conflicts
     function performSearch(query) {
         const searchUrl = '../../back-end/user-side/search_products.php';
         const url = `${searchUrl}?q=${encodeURIComponent(query)}&limit=8&prefix=../uploads/`;
