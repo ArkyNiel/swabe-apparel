@@ -128,23 +128,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Show loading
         searchResults.innerHTML = '<div class="search-loading">Searching...</div>';
         searchResults.style.display = 'block';
         
-        // Debounce search
         searchTimeout = setTimeout(() => {
             performSearch(query);
         }, 300);
     });
 
-    // Handle form submission
     searchForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const query = searchInput.value.trim();
         if (query) {
-            // Redirect to search results page
-            window.location.href = `../links/search_results.php?search=${encodeURIComponent(query)}`;
+            window.location.href = `./links/search_page.php?search=${encodeURIComponent(query)}`;
         }
     });
 
@@ -154,23 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle search result clicks
     searchResults.addEventListener('click', function(e) {
         const resultItem = e.target.closest('.search-result-item');
         if (resultItem) {
-            // Fill modal fields
-            document.getElementById('modalProductImage').src = resultItem.dataset.productImage;
-            document.getElementById('modalProductName').textContent = resultItem.dataset.productName;
-            document.getElementById('modalProductColor').textContent = resultItem.dataset.productColor;
-            document.getElementById('modalProductSize').textContent = resultItem.dataset.productSize;
-            document.getElementById('modalProductPrice').textContent = resultItem.dataset.productPrice;
-            
-            // Show the modal
-            const modal = new bootstrap.Modal(document.getElementById('productModal'));
-            modal.show();
-            
-            searchResults.style.display = 'none';
-            searchInput.value = resultItem.dataset.productName;
+            window.location.href = `./links/search_page.php?search=${encodeURIComponent(resultItem.dataset.productName)}`;
         }
     });
 
@@ -178,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchUrl = '../back-end/user-side/search_products.php';
         const url = `${searchUrl}?q=${encodeURIComponent(query)}&limit=8&prefix=./uploads/`;
         
-        // Create new AbortController for this request
         const controller = new AbortController();
         currentSearchRequest = controller;
         
