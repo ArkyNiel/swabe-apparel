@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
                      class="search-result-image"
                      onerror="this.src='./assets/img/logo.jpg'">
                 <div class="search-result-info">
-                    <div class="search-result-name">${product.product_name}</div>
+                    <div class="search-result-name">${product.product_name}</wdiv>
                     <div class="search-result-details">
                         ${product.category} • ${product.color} • ${product.size}
                     </div>

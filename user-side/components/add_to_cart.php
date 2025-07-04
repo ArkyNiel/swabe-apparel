@@ -70,6 +70,22 @@
         if (value < 99) quantityInput.value = value + 1;
       });
     }
+
+ 
+    const modal = document.getElementById('addToCartModal');
+    if (modal) {
+      modal.addEventListener('show.bs.modal', function () {
+        setTimeout(function() {
+          modal.classList.add('slide-in');
+        }, 10); 
+      });
+      modal.addEventListener('hide.bs.modal', function () {
+        modal.classList.remove('slide-in');
+      });
+      modal.addEventListener('hidden.bs.modal', function () {
+        modal.classList.remove('slide-in');
+      });
+    }
   });
 </script>
 
@@ -188,5 +204,18 @@
     vertical-align: middle;
     font-size: 1rem;
     font-weight: 500;
+  }
+
+  #addToCartModal.slide-modal .modal-dialog {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(100%);
+    opacity: 1 !important;
+  }
+  #addToCartModal.slide-modal.slide-in .modal-dialog {
+    transform: translateX(0);
+  }
+  .modal-backdrop.show {
+    opacity: 0.5;
+    transition: opacity 0.2s linear;
   }
 </style>
