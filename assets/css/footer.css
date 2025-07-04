@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background: #000 !important;
 }
 body {
     min-height: 100vh;
@@ -13,4 +14,9 @@ body {
 }
 footer {
     flex-shrink: 0;
+    background: #000 !important;
+
+}
+footer a:hover {
+    text-decoration: underline !important;
 }
