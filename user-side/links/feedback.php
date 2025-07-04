@@ -87,7 +87,7 @@ include("../../back-end/user-side/session_check.php");
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-submit">
+                        <button type="submit" class="btn btn-primary btn-submit" style="background: #000 !important; border: 1px solid #000 !important;">
                             Submit Feedback
                         </button>
                     </form>

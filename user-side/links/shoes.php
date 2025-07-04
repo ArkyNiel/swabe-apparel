@@ -71,9 +71,9 @@
         </div>
 
         <!-- Load More Button -->
-        <div class="text-center my-4" id="load-more-container"
+        <div class="text-center my-4" id="load-more-container" 
             style="display: <?php echo count($limitedProducts) >= $productsPerPage ? 'block' : 'none'; ?>;">
-            <button id="load-more-btn" class="btn btn-primary">
+            <button id="load-more-btn" class="btn btn-primary" style="background: #000 !important; border: 1px solid #000 !important;">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
         </div>

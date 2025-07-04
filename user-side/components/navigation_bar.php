@@ -9,14 +9,14 @@ session_start();
         <div class="w-100 py-2 border-bottom">
             <div class="d-flex justify-content-between align-items-center w-100 px-4">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand fw-bold" href="#">SWABE APPAREL</a>
+                    <a class="navbar-brand fw-bold" href="#" style="font-weight: 1000 !important; letter-spacing: 2px !important; color: #000 !important;">SWABE APPAREL</a>
                 </div>
                 <div class="search-container flex-grow-1 mx-4">
                     <form class="d-flex" role="search" id="searchForm">
                         <div class="input-group">
                             <input class="form-control" type="search" placeholder="Search products..."
                                 aria-label="Search" id="searchInput" autocomplete="off">
-                            <button class="btn btn-dark" type="submit">
+                            <button class="btn btn-dark" type="submit" style="background: #000 !important; border: 1px solid #000 !important;">
                                 <i class="fas fa-search"></i> Search
                             </button>
                         </div>
@@ -42,8 +42,8 @@ session_start();
                             <i class="fa-solid fa-store" style="font-size: 20px; line-height: 1;"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item link-hover" href="./links/about_us.php">About Us</a></li>
-                            <li><a class="dropdown-item link-hover" href="./links/location.php">Location</a></li>
+                            <li><a class="dropdown-item link-hover" href="./links/about_us.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">About Us</a></li>
+                            <li><a class="dropdown-item link-hover" href="./links/location.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Location</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown list-unstyled">
@@ -53,14 +53,14 @@ session_start();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <?php if(isset($_SESSION['user_id'])): ?>
-                                <li><a class="dropdown-item link-hover" href="./links/manage_account.php">Manage Account</a></li>
-                                <li><a class="dropdown-item link-hover" href="./links/feedback.php">Give us Feedback</a></li>
+                                <li><a class="dropdown-item link-hover" href="./links/manage_account.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Manage Account</a></li>
+                                <li><a class="dropdown-item link-hover" href="./links/feedback.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Give us Feedback</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item link-hover" href="./links/logout.php">Log Out</a></li>
+                                <li><a class="dropdown-item link-hover" href="./links/logout.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Log Out</a></li>
                             <?php else: ?>
-                                <li><a class="dropdown-item link-hover" href="./links/login.php">Log In</a></li>
+                                <li><a class="dropdown-item link-hover" href="./links/login.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Log In</a></li>
                             <?php endif; ?>
                         </ul>
                     </li>
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const query = searchInput.value.trim();
         if (query) {
-            window.location.href = `./links/search_page.php?search=${encodeURIComponent(query)}`;
+            window.location.href = `./links/search_result.php?search=${encodeURIComponent(query)}`;
         }
     });
 

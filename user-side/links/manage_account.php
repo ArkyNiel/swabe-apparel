@@ -107,7 +107,7 @@
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                 required minlength="6">
                         </div>
-                        <button type="submit" class="btn btn-dark w-100">Update Account</button>
+                        <button type="submit" class="btn btn-dark w-100" style="background: #000 !important; border: 1px solid #000 !important;">Update Account</button>
                     </form>
                 </div>
             </div>

@@ -56,7 +56,7 @@
                             <label for="confirm_password" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password" required minlength="6">
                         </div>
-                        <button type="submit" class="btn btn-dark w-100">Create Account</button>
+                        <button type="submit" class="btn btn-dark w-100" style="background: #000 !important; border: 1px solid #000 !important;">Create Account</button>
                     </form>
                     <div class="mt-3 text-center">
                         <a href="login.php" class="text-decoration-none">Already have an account? Log in</a>

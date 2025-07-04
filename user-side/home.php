@@ -22,7 +22,7 @@
     ?>
     <?php include('./components/product_banner.php'); ?>
 
-    <div class="section-content mb-0 bg-primary" id="section-content"
+    <div class="section-content" style="background: #000 !important; height: 52vh; padding-top: -70px; padding-left: 100px; padding-right: 100px;" id="section-content"
         style="margin-top: -120px;">
         <div class="row w-100">
             <div class="col-md-6 left-column" style="padding: 100px;">
@@ -97,7 +97,7 @@
         </div>
         <!-- Load More Button -->
         <div class="text-center my-4" id="load-more-container">
-            <button id="load-more-btn" class="btn btn-primary">
+            <button id="load-more-btn" class="btn btn-primary" style="background: #000 !important; border: 1px solid #000 !important;">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
         </div>
