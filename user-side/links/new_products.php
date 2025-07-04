@@ -133,7 +133,7 @@
         });
     });
     </script>
-    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem;">
+    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
         <div class="container text-center">
             <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
             <br>
@@ -143,6 +143,12 @@
                 Service</a>
         </div>
     </footer>
+
+    <style>
+        footer a:hover {
+            text-decoration: underline !important;
+        }
+    </style>
 
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
