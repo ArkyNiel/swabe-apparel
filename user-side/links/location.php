@@ -72,8 +72,8 @@ body {
                 <div class="col-md-4">
                     <div class="card h-100">
                         <img src="../../assets/img/banner1.jpg" class="card-img-top" alt="Storefront">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Storefront</h5>
+                        <div class="card-body text-center" style="background: #000 !important; color: #fff !important;" >
+                            <h5 class="card-title mt-2">Storefront</h5>
                             <p class="card-text">The main entrance of Swabe Apparel along Rizal Avenue.</p>
                         </div>
                     </div>
@@ -81,8 +81,8 @@ body {
                 <div class="col-md-4">
                     <div class="card h-100">
                         <img src="../../assets/img/insideview-1.jpg" class="card-img-top" alt="Inside View">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Inside View</h5>
+                        <div class="card-body text-center" style="background: #000 !important; color: #fff !important;" >
+                            <h5 class="card-title mt-2">Inside View</h5>
                             <p class="card-text">A glimpse of our cozy and stylish interior.</p>
                         </div>
                     </div>
@@ -90,9 +90,9 @@ body {
                 <div class="col-md-4">
                     <div class="card h-100">
                         <img src="../../assets/img/front.png" class="card-img-top" alt="Nearby Landmark">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Nearby Landmark</h5>
-                            <p class="card-text">Located near [Insert Landmark Here] for your convenience.</p>
+                        <div class="card-body text-center" style="background: #000 !important; color: #fff !important;" >
+                            <h5 class="card-title mt-2">Nearby Landmark</h5>
+                            <p class="card-text">Located near Mc Donald for your convenience.</p>
                         </div>
                     </div>
                 </div>
@@ -101,16 +101,22 @@ body {
     </div>
 
 
-    <footer class="bg-dark text-white py-5 mt-5" style="font-size: 0.95rem;">
+    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
         <div class="container text-center">
             <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
             <br>
-            <a href="privacypolicy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
+            <a href="privacy_policy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
                 Policy</a>
-            <a href="termsofservice.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
+            <a href="terms_of_service.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
                 Service</a>
         </div>
     </footer>
+
+    <style>
+        footer a:hover {
+            text-decoration: underline !important;
+        }
+    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>

@@ -68,6 +68,7 @@
     display: flex;
     pointer-events: auto;
 }
+
 </style>
 
 <script>

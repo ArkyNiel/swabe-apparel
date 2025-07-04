@@ -53,7 +53,7 @@
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-dark w-100">Login</button>
+                        <button type="submit" class="btn btn-dark w-100" style="background: #000 !important; border: 1px solid #000 !important;">Login</button>
                     </form>
 
                     <div class="mt-3 text-center">
