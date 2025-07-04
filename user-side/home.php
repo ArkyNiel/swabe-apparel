@@ -16,6 +16,7 @@
 
 <body>
     <?php include('./components/navigation_bar.php'); ?>
+    <?php include('./components/loader.php'); ?>
     <?php
     include '../back-end/user-side/get_products.php';
     $bannerProducts = getProducts($conn, 0, 24, './uploads/'); // fetch latest 12 products
