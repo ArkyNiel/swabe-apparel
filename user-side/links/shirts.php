@@ -50,10 +50,12 @@ footer a:hover {
           include '../../back-end/user-side/get_products.php';
           
           $productsPerPage = 24; // 12 per page meaning 2 row per load
-          $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', 'Shirts');
+          $limitedProductsData = getProducts($conn, 0, $productsPerPage, '../uploads/', 'Shirts');
+          $limitedProducts = isset($limitedProductsData['products']) ? $limitedProductsData['products'] : $limitedProductsData;
           
-          foreach ($limitedProducts as $index => $product) {
-            $isLeft = $index < 6 ? 'left' : 'right';
+          if (is_array($limitedProducts)) {
+            foreach ($limitedProducts as $index => $product) {
+              $isLeft = $index < 6 ? 'left' : 'right';
         ?>
             <div class="col-md-2 mb-4 product-item">
                 <div class="card-container <?php echo $isLeft; ?>">
@@ -88,13 +90,16 @@ footer a:hover {
                 </div>
             </div>
             <?php
+            }
+          } else {
+            echo '<div class="col-12 text-center"><p class="text-danger">Error: Invalid product data format</p></div>';
           }
         ?>
         </div>
 
         <!-- Load More Button -->
         <div class="text-center my-4" id="load-more-container"
-            style="display: <?php echo count($limitedProducts) >= $productsPerPage ? 'block' : 'none'; ?>">
+            style="display: <?php echo (is_array($limitedProducts) && count($limitedProducts) >= $productsPerPage) ? 'block' : 'none'; ?>">
             <button id="load-more-btn" class="btn btn-primary" style="background: #000 !important; border: 1px solid #000 !important;">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
@@ -108,6 +113,7 @@ footer a:hover {
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
+    window.PRODUCT_CATEGORY = 'Shirts';
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
     </script>

@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const productsPerPage = 12;
     const getProductsUrl = window.GET_PRODUCTS_URL;
     const productCategory = window.PRODUCT_CATEGORY;
+    const initialProductsCount = window.INITIAL_PRODUCTS_COUNT || 0;
     
     if (!getProductsUrl) {
         console.error('GET_PRODUCTS_URL is not set!');
@@ -46,8 +47,21 @@ document.addEventListener('DOMContentLoaded', function() {
         
         fetch(url)
             .then(response => response.json())
-            .then(nextProducts => {
+            .then(data => {
+                console.log('Fetched data:', data);
+                
+                // Check if we have an error
+                if (data.error) {
+                    console.error('Error from server:', data.error);
+                    return;
+                }
+                
+                const nextProducts = data.products || data; // Handle both new and old format
+                const hasMore = data.hasMore !== undefined ? data.hasMore : (nextProducts.length === productsPerPage);
+                
                 console.log('Fetched products:', nextProducts);
+                console.log('Has more products:', hasMore);
+                
                 if (Array.isArray(nextProducts) && nextProducts.length > 0) {
                     nextProducts.forEach((product, index) => {
                         const isRight = (index % 12) >= 6 ? 'right' : '';
@@ -104,11 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     currentPage++;
                     
-                    if (nextProducts.length < productsPerPage) {
+                    // Hide button if no more products
+                    if (!hasMore) {
                         loadMoreBtn.style.display = 'none';
+                        console.log('No more products to load, hiding button');
                     }
                 } else {
                     loadMoreBtn.style.display = 'none';
+                    console.log('No products returned, hiding button');
                 }
                 const event = new Event('productsAppended');
                 document.dispatchEvent(event);

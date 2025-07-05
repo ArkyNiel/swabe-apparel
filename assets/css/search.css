@@ -96,11 +96,14 @@
 
 #searchInput:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #ffc107;
-    border-color: #ffc107;
+    box-shadow: 0 0 0 1px #000;
+    border-color: #000;
+    transition: all 0.3s ease;
 }
 #searchForm .btn:focus, #searchForm .btn:active {
     outline: none;
-    box-shadow: 0 0 0 2px #ffc107;
-    border-color: #ffc107;
+    box-shadow: 0 0 0 2px #000;
+    border-color: #000;
+    background-color: #000;
+    transition: all 0.3s ease;
 }
