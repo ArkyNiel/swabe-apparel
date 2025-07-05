@@ -72,13 +72,23 @@ document.addEventListener('DOMContentLoaded', function() {
                                     </div>
                                     <div class="buy-text">View</div>
                                 </div>
-                                <div class="card-actions">
-                                    <button class="btn favorite-btn" title="Add to Favorites">
-                                        <i class="far fa-heart"></i>
-                                    </button>
-                                    <button class="btn cart-btn" title="Add to Cart">
-                                        <i class="fas fa-cart-shopping"></i>
-                                    </button>
+                                <div class="card-actions d-flex justify-content-between align-items-center mt-2">
+                                    <h5 class="product-price">₱${product.price || 'N/A'}</h5>
+                                    <div>
+                                        <button class="btn favorite-btn" title="Add to Favorites">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                        <button 
+                                            class="btn cart-btn" 
+                                            title="Add to Cart"
+                                            data-name="${product.product_name || ''}"
+                                            data-image="${product.image || ''}"
+                                            data-size="${product.size || 'N/A'}"
+                                            data-price="${product.price || 'N/A'}"
+                                        >
+                                            <i class="fas fa-cart-shopping"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         `;
