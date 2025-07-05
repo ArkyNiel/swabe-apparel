@@ -50,9 +50,11 @@ footer a:hover {
           include '../../back-end/user-side/get_products.php';
           
           $productsPerPage = 24; // 12 per page meaning 2 row per load
-          $limitedProducts = getProducts($conn, 0, $productsPerPage, '../uploads/', 'Shoes');
+          $limitedProductsData = getProducts($conn, 0, $productsPerPage, '../uploads/', 'Shoes');
+          $limitedProducts = isset($limitedProductsData['products']) ? $limitedProductsData['products'] : $limitedProductsData;
           
-          foreach ($limitedProducts as $index => $product) {
+          if (is_array($limitedProducts)) {
+            foreach ($limitedProducts as $index => $product) {
             $isLeft = $index < 6 ? 'left' : 'right';
         ?>
             <div class="col-md-2 mb-4 product-item">
@@ -89,6 +91,9 @@ footer a:hover {
             </div>
             <?php
           }
+          } else {
+            echo '<div class="col-12 text-center"><p class="text-danger">Error: Invalid product data format</p></div>';
+          }
         ?>
         </div>
 
@@ -108,6 +113,7 @@ footer a:hover {
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
+    window.PRODUCT_CATEGORY = 'Shoes';
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
     </script>

@@ -18,7 +18,8 @@
     <?php include('./components/navigation_bar.php'); ?>
     <?php
     include '../back-end/user-side/get_products.php';
-    $bannerProducts = getProducts($conn, 0, 24, './uploads/'); // fetch latest 12 products
+    $bannerProductsData = getProducts($conn, 0, 24, './uploads/'); // fetch latest 24 products
+    $bannerProducts = isset($bannerProductsData['products']) ? $bannerProductsData['products'] : $bannerProductsData;
     ?>
     <?php include('./components/product_banner.php'); ?>
 
@@ -88,9 +89,16 @@
             if (isset($limitedProducts['error'])) {
                 echo '<div class="col-12 text-center"><p class="text-danger">Error loading products: ' . $limitedProducts['error'] . '</p></div>';
             } else {
-                foreach ($limitedProducts as $index => $product) {
-                    $isLeft = $index < 6 ? 'left' : 'right';
-                    include './components/product_card.php';
+                // Handle the new format where getProducts returns an object
+                $products = isset($limitedProducts['products']) ? $limitedProducts['products'] : $limitedProducts;
+                
+                if (is_array($products)) {
+                    foreach ($products as $index => $product) {
+                        $isLeft = $index < 6 ? 'left' : 'right';
+                        include './components/product_card.php';
+                    }
+                } else {
+                    echo '<div class="col-12 text-center"><p class="text-danger">Error: Invalid product data format</p></div>';
                 }
             }
             ?>
@@ -107,11 +115,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script>
     // loadmore feature
-    const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
+    const productsData = <?php echo json_encode(isset($limitedProducts['products']) ? $limitedProducts['products'] : ($limitedProducts ?? [])); ?>;
+    const initialProductsCount = <?php echo count(isset($limitedProducts['products']) ? $limitedProducts['products'] : ($limitedProducts ?? [])); ?>;
     </script>
     <script>
     window.GET_PRODUCTS_URL = '../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = 'uploads/';
+    window.INITIAL_PRODUCTS_COUNT = initialProductsCount;
     </script>
     <script src="../assets/js/load-more.js"></script>
     <script>

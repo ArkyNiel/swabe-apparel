@@ -45,6 +45,7 @@ footer a:hover {
         <h1 class="mb-5 mt-5 text-center">recommend items</h1>
         <div class="row" id="products-container">
             <?php
+          include '../../connection/connection.php';
           include '../../back-end/user-side/get_products.php';
           
           $productsPerPage = 24; // 12 per page meaning 2 row per load
@@ -54,21 +55,24 @@ footer a:hover {
               $totalProducts = $stmt->fetchColumn();
           }
           
-          $products = getProducts($conn, 0, $productsPerPage, '../uploads/');
+          $productsData = getProducts($conn, 0, $productsPerPage, '../uploads/');
           
-          foreach ($products as $index => $product) {
-            $isLeft = $index < 6 ? 'left' : 'right';
+          $products = isset($productsData['products']) ? $productsData['products'] : $productsData;
+          
+          if (is_array($products)) {
+            foreach ($products as $index => $product) {
+              $isLeft = $index < 6 ? 'left' : 'right';
         ?>
             <div class="col-md-2 mb-4 product-item">
                 <div class="card-container <?php echo $isLeft; ?>">
                     <div class="card product-card" style="width: 100%; height: 300px; cursor:pointer;"
-                        data-name="<?php echo htmlspecialchars($product['name'] ?? ''); ?>"
+                        data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
                         data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
                         data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
                         data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
                         data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>">
                         <img src="<?php echo $product['image'] ?? ''; ?>" class="card-img-top"
-                            alt="<?php echo $product['name'] ?? ''; ?>" style="height: 100%; object-fit: cover" />
+                            alt="<?php echo $product['product_name'] ?? ''; ?>" style="height: 100%; object-fit: cover" />
                     </div>
                     <div class="buy-text">View</div>
                 </div>
@@ -81,7 +85,7 @@ footer a:hover {
                         <button 
                             class="btn cart-btn" 
                             title="Add to Cart"
-                            data-name="<?php echo htmlspecialchars($product['name'] ?? ''); ?>"
+                            data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
                             data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
                             data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
                             data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
@@ -92,13 +96,16 @@ footer a:hover {
                 </div>
             </div>
             <?php
+            }
+          } else {
+            echo '<div class="col-12 text-center"><p class="text-danger">Error: Invalid product data format</p></div>';
           }
         ?>
         </div>
 
         <!-- Load More Button -->
         <div class="text-center my-4" id="load-more-container"
-            style="display: <?php echo $totalProducts > $productsPerPage ? 'block' : 'none'; ?>;">
+            style="display: <?php echo (is_array($products) && count($products) >= $productsPerPage) ? 'block' : 'none'; ?>;">
             <button id="load-more-btn" class="btn btn-primary" style="background: #000 !important; border: 1px solid #000 !important;">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
@@ -109,7 +116,7 @@ footer a:hover {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
-    const productsData = <?php echo json_encode($products); ?>;
+    const productsData = <?php echo json_encode($products ?? []); ?>;
     </script>
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
