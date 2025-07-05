@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const getProductsUrl = window.GET_PRODUCTS_URL;
     const productCategory = window.PRODUCT_CATEGORY;
     const initialProductsCount = window.INITIAL_PRODUCTS_COUNT || 0;
+    const searchQuery = window.SEARCH_QUERY || '';
     
     if (!getProductsUrl) {
         console.error('GET_PRODUCTS_URL is not set!');
@@ -36,10 +37,21 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Load More button clicked');
         const start = currentPage * productsPerPage;
         console.log('Fetching from:', getProductsUrl, 'with start:', start, 'and limit:', productsPerPage);
-        let url = `${getProductsUrl}?start=${start}&limit=${productsPerPage}`;
-        if (productCategory) {
-            url += `&category=${productCategory}`;
+        
+        // Determine which endpoint to use based on search query
+        let url;
+        if (searchQuery) {
+            // Use search endpoint
+            url = '../../back-end/user-side/search_products.php';
+            url += `?start=${start}&limit=${productsPerPage}&search=${encodeURIComponent(searchQuery)}`;
+        } else {
+            // Use regular products endpoint
+            url = `${getProductsUrl}?start=${start}&limit=${productsPerPage}`;
+            if (productCategory) {
+                url += `&category=${productCategory}`;
+            }
         }
+        
         if (window.UPLOAD_PREFIX) {
             url += `&prefix=${encodeURIComponent(window.UPLOAD_PREFIX)}`;
         }
