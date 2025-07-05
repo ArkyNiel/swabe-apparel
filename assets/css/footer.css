@@ -14,3 +14,6 @@ body {
 footer {
     flex-shrink: 0;
 }
+footer a:hover {
+    text-decoration: underline !important;
+}

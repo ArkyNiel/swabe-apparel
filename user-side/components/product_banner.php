@@ -1,4 +1,4 @@
-<div class="parallax-container">
+<div class="parallax-container" style="padding-top: -100px; height: 90vh;" >
   <div class="parallax-images">
     <?php
     $totalImages = 12;
@@ -17,7 +17,6 @@
         "../assets/img/shirt3.jpg"
       ];
     }
-    // Output images twice for seamless looping
     foreach (array_merge($images, $images) as $i => $img): ?>
       <img src="<?php echo htmlspecialchars($img); ?>" alt="Product <?php echo $i + 1; ?>" />
     <?php endforeach; ?>

@@ -11,14 +11,14 @@ session_start();
         <div class="w-100 py-2 border-bottom">
             <div class="d-flex justify-content-between align-items-center w-100 px-4">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand fw-bold" href="../home.php">SWABE APPAREL</a>
+                    <a class="navbar-brand fw-bold" href="../home.php" style="font-weight: 1000 !important; letter-spacing: 2px !important; color: #000 !important;">SWABE APPAREL</a>
                 </div>
                 <div class="search-container flex-grow-1 mx-4">
                     <form class="d-flex" role="search" id="searchForm">
                         <div class="input-group">
-                            <input class="form-control" type="search" placeholder="Search products..."
+                            <input class="form-control" type="search" placeholder="Search products..." style="font-weight: 600 !important; color: #000 !important;"
                                 aria-label="Search" id="searchInput" autocomplete="off">
-                            <button class="btn btn-dark" type="submit">
+                            <button class="btn btn-dark" type="submit" style="background: #000 !important; border: 1px solid #000 !important;">
                                 <i class="fas fa-search"></i> Search
                             </button>
                         </div>
@@ -43,8 +43,8 @@ session_start();
                             <i class="fa-solid fa-store" style="font-size: 20px; line-height: 1;"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item link-hover" href="about_us.php">About Us</a></li>
-                            <li><a class="dropdown-item link-hover" href="location.php">Location</a></li>
+                            <li><a class="dropdown-item link-hover" href="about_us.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">About Us</a></li>
+                            <li><a class="dropdown-item link-hover" href="location.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Location</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown list-unstyled">
@@ -54,14 +54,14 @@ session_start();
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <?php if(isset($_SESSION['user_id'])): ?>
-                                <li><a class="dropdown-item link-hover" href="manageaccount.php">Manage Account</a></li>
-                                <li><a class="dropdown-item link-hover" href="feedback.php">Give us Feedback</a></li>
+                                <li><a class="dropdown-item link-hover" href="manageaccount.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Manage Account</a></li>
+                                <li><a class="dropdown-item link-hover" href="feedback.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Give us Feedback</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item link-hover" href="logout.php">Log Out</a></li>
+                                <li><a class="dropdown-item link-hover" href="logout.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;" >Log Out</a></li>
                             <?php else: ?>
-                                <li><a class="dropdown-item link-hover" href="login.php">Log In</a></li>
+                                <li><a class="dropdown-item link-hover" href="login.php" style="color: #000 !important; text-decoration: none !important; text-transform: uppercase !important;">Log In</a></li>
                             <?php endif; ?>
                         </ul>
                     </li>
@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let searchTimeout;
     let currentSearchRequest;
 
-    // Search as user types
     searchInput.addEventListener('input', function() {
         const query = this.value.trim();
         
@@ -124,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Show loading
         searchResults.innerHTML = '<div class="search-loading">Searching...</div>';
         searchResults.style.display = 'block';
         
@@ -137,37 +135,23 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const query = searchInput.value.trim();
         if (query) {
-            window.location.href = `search_results.php?search=${encodeURIComponent(query)}`;
+            window.location.href = `search_page.php?search=${encodeURIComponent(query)}`;
         }
     });
 
-    // search colser 
     document.addEventListener('click', function(e) {
         if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
             searchResults.style.display = 'none';
         }
     });
 
-
-    // handle to modal
     searchResults.addEventListener('click', function(e) {
         const resultItem = e.target.closest('.search-result-item');
         if (resultItem) {
-            document.getElementById('modalProductImage').src = resultItem.dataset.productImage;
-            document.getElementById('modalProductName').textContent = resultItem.dataset.productName;
-            document.getElementById('modalProductColor').textContent = resultItem.dataset.productColor;
-            document.getElementById('modalProductSize').textContent = resultItem.dataset.productSize;
-            document.getElementById('modalProductPrice').textContent = resultItem.dataset.productPrice;
-
-            const modal = new bootstrap.Modal(document.getElementById('productModal'));
-            modal.show();
-
-            searchResults.style.display = 'none';
-            searchInput.value = resultItem.dataset.productName;
+            window.location.href = `search_result.php?search=${encodeURIComponent(resultItem.dataset.productName)}`;
         }
     });
 
-    // prefix upload di pa mag gana due to conflicts
     function performSearch(query) {
         const searchUrl = '../../back-end/user-side/search_products.php';
         const url = `${searchUrl}?q=${encodeURIComponent(query)}&limit=8&prefix=../uploads/`;

@@ -10,7 +10,7 @@
                     style="min-height: 320px;">
                     <div class="img-hover-container w-100 h-100 d-flex align-items-center justify-content-center position-relative"
                         style="cursor: pointer;">
-                        <img id="modalProductImage" src="" alt="Product Image"
+                        <img id="productModalProductImage" src="" alt="Product Image"
                             class="img-fluid rounded-1 border w-100 h-100"
                             style="max-height: 260px; object-fit: contain;" />
                         <div class="img-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center rounded-1"
@@ -22,14 +22,14 @@
                 </div>
                 <!-- Info Section -->
                 <div class="col-md-6 p-4 d-flex flex-column justify-content-center rounded-end-4 bg-white">
-                    <h4 id="modalProductName" class="fw-semibold mb-3"></h4>
+                    <h4 id="productModalProductName" class="fw-semibold mb-3"></h4>
                     <dl class="row mb-4">
                         <dt class="col-4 text-muted small">Color</dt>
-                        <dd class="col-8 mb-2" id="modalProductColor"></dd>
+                        <dd class="col-8 mb-2" id="productModalProductColor"></dd>
                         <dt class="col-4 text-muted small">Size</dt>
-                        <dd class="col-8 mb-2" id="modalProductSize"></dd>
+                        <dd class="col-8 mb-2" id="productModalProductSize"></dd>
                         <dt class="col-4 text-muted small">Price</dt>
-                        <dd class="col-8 mb-0 fw-bold" id="modalProductPrice"></dd>
+                        <dd class="col-8 mb-0 fw-bold" id="productModalProductPrice"></dd>
                     </dl>
                     <button type="button" class="btn w-100 mt-auto rounded-1" data-bs-dismiss="modal">Close</button>
                 </div>
@@ -44,18 +44,6 @@
         <div class="modal-content border-0 bg-transparent shadow-none p-0" style="background: transparent;">
             <img id="lightboxImage" src="" alt="Full View"
                 style="width: 500px; height: 700px; object-fit: contain; display: block;" />
-        </div>
-    </div>
-</div>
-
-<!-- Add to Cart Modal -->
-<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
-        <div class="modal-content border-0 rounded-1 shadow">
-            <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-body p-4">
-                <?php include(__DIR__ . '/add_to_cart.php'); ?>
-            </div>
         </div>
     </div>
 </div>
@@ -80,12 +68,13 @@
     display: flex;
     pointer-events: auto;
 }
+
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const imgContainer = document.querySelector('#productModal .img-hover-container');
-    const img = document.getElementById('modalProductImage');
+    const img = document.getElementById('productModalProductImage');
     const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
     const lightboxImage = document.getElementById('lightboxImage');
 
