@@ -5,7 +5,7 @@ include $rootPath . '/connection/connection.php';
 header('Content-Type: application/json');
 
 try {
-    $searchTerm = isset($_GET['q']) ? trim($_GET['q']) : '';
+    $searchTerm = isset($_GET['search']) ? trim($_GET['search']) : (isset($_GET['q']) ? trim($_GET['q']) : '');
     $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;
     
     if (empty($searchTerm)) {
@@ -13,20 +13,20 @@ try {
         exit;
     }
     
-    // Search in product name, category, color, and size
     $stmt = $conn->prepare("
         SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` 
         FROM `inventory` 
-        WHERE `product_name` LIKE :search 
+        WHERE (`product_name` LIKE :search 
         OR `category` LIKE :search 
         OR `color` LIKE :search 
-        OR `size` LIKE :search 
+        OR `size` LIKE :search)
         AND `stock` > 0
         ORDER BY 
             CASE 
-                WHEN `product_name` LIKE :exact_search THEN 1
+                WHEN `product_name` = :exact_search THEN 1
                 WHEN `product_name` LIKE :start_search THEN 2
-                ELSE 3
+                WHEN `product_name` LIKE :search THEN 3
+                ELSE 4
             END,
             `product_name` ASC
         LIMIT :limit
@@ -44,7 +44,6 @@ try {
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Process image paths
     $imagePrefix = isset($_GET['prefix']) ? $_GET['prefix'] : '../uploads/';
     foreach ($products as &$product) {
         if (!empty($product['image_path'])) {
