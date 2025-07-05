@@ -12,6 +12,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+<!-- footer style -->
+<style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.content-wrap {
+    flex: 1 0 auto;
+}
+footer {
+    flex-shrink: 0;
+}
+footer a:hover {
+    text-decoration: underline !important;
+}
+
+</style>
+
 <body>
     <div class="content-wrap">
     <?php include('components/navigation_bar.php'); ?>
