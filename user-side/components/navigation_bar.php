@@ -5,6 +5,7 @@ session_start();
 <link rel="stylesheet" href="./navigationbar.css">
 <link rel="stylesheet" href="./../assets/css/search.css">
 
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column" style="margin-bottom: -20px;">
         <div class="w-100 py-2 border-bottom">
             <div class="d-flex justify-content-between align-items-center w-100 px-4">
@@ -22,7 +23,6 @@ session_start();
                         </div>
                     </form>
                     <div class="search-results" id="searchResults">
-                        <!-- Search results will be populated here -->
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -153,13 +153,13 @@ document.addEventListener('DOMContentLoaded', function() {
     searchResults.addEventListener('click', function(e) {
         const resultItem = e.target.closest('.search-result-item');
         if (resultItem) {
-            window.location.href = `./links/search_page.php?search=${encodeURIComponent(resultItem.dataset.productName)}`;
+            window.location.href = `./links/search_result.php?search=${encodeURIComponent(resultItem.dataset.productName)}`;
         }
     });
 
     function performSearch(query) {
         const searchUrl = '../back-end/user-side/search_products.php';
-        const url = `${searchUrl}?q=${encodeURIComponent(query)}&limit=8&prefix=./uploads/`;
+        const url = `${searchUrl}?search=${encodeURIComponent(query)}&limit=8&prefix=./uploads/`;
         
         const controller = new AbortController();
         currentSearchRequest = controller;
