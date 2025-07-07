@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom_navbar.css">
     <link rel="stylesheet" href="../../assets/css/products_card_animation.css">
-    <link rel="stylesheet" href="../../assets/css/card_icons.css">
+    <link rel="stylesheet" href="../../assets/css/fav_icons.css">
     <link rel="stylesheet" href="../../assets/css/cards_hover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -33,7 +33,6 @@ footer {
 footer a:hover {
     text-decoration: underline !important;
 }
-
 </style>
 
 <body>
@@ -157,6 +156,17 @@ footer a:hover {
 
                 var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
                 modal.show();
+            });
+        });
+
+        // Add this for favorite button functionality
+        document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.stopPropagation(); 
+                const icon = this.querySelector('.fa-heart');
+                icon.classList.toggle('red');
+                icon.classList.toggle('fas'); 
+                icon.classList.toggle('far'); 
             });
         });
     });

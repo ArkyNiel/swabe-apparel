@@ -1,0 +1,46 @@
+.card-actions {
+    display: flex;
+    justify-content: space-between; /* space between price and buttons */
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.card-actions > h5.product-price {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card-actions > div {
+    display: flex;
+    gap: 8px; 
+}
+
+.favorite-btn, .cart-btn {
+    font-size: 19px;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.favorite-btn .fa-heart {
+    transition: transform 0.2s cubic-bezier(.4,2,.6,1), color 0.2s;
+}
+.favorite-btn .fa-heart.red {
+    color: #ff3445 !important;
+    transform: scale(1.2);
+}
+.favorite-btn:active .fa-heart {
+    transform: scale(1.3);
+}
