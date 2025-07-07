@@ -1,8 +1,9 @@
 <?php
 session_start();
 ?>
-<link rel="stylesheet" href="./../navigationbar.css">
 <link rel="stylesheet" href="../../assets/css/search.css">
+<link rel="stylesheet" href="../../assets/css/navbar.css">
+
 <style>
 
 </style>
