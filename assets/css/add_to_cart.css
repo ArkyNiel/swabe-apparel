@@ -15,7 +15,7 @@
     border-radius: 10px;
 }
 #addToCartModal .modal-body {
-    height: 350px; /* Adjust as needed for your content */
+    height: 350px; 
     overflow-y: auto;
 }
 @media (max-width: 991.98px) {

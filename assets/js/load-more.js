@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Create modal instance once
     const productModal = new bootstrap.Modal(document.getElementById('productModal'));
     
     productsContainer.addEventListener('click', function(e) {
@@ -38,14 +37,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const start = currentPage * productsPerPage;
         console.log('Fetching from:', getProductsUrl, 'with start:', start, 'and limit:', productsPerPage);
         
-        // Determine which endpoint to use based on search query
         let url;
         if (searchQuery) {
-            // Use search endpoint
             url = '../../back-end/user-side/search_products.php';
             url += `?start=${start}&limit=${productsPerPage}&search=${encodeURIComponent(searchQuery)}`;
         } else {
-            // Use regular products endpoint
             url = `${getProductsUrl}?start=${start}&limit=${productsPerPage}`;
             if (productCategory) {
                 url += `&category=${productCategory}`;
@@ -62,13 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 console.log('Fetched data:', data);
                 
-                // Check if we have an error
                 if (data.error) {
                     console.error('Error from server:', data.error);
                     return;
                 }
                 
-                const nextProducts = data.products || data; // Handle both new and old format
+                const nextProducts = data.products || data; 
                 const hasMore = data.hasMore !== undefined ? data.hasMore : (nextProducts.length === productsPerPage);
                 
                 console.log('Fetched products:', nextProducts);
@@ -130,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     currentPage++;
                     
-                    // Hide button if no more products
                     if (!hasMore) {
                         loadMoreBtn.style.display = 'none';
                         console.log('No more products to load, hiding button');

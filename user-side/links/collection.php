@@ -6,7 +6,7 @@
     <title>COLLECTION | SWABE APPAREL</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom_navbar.css">
-    <link rel="stylesheet" href="../../assets/css/card_icons.css">
+    <link rel="stylesheet" href="../../assets/css/fav_icons.css">
     <link rel="stylesheet" href="../../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../../assets/css/cards_hover.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
@@ -22,7 +22,7 @@
 }
 body {
     min-height: 100vh;
-    display: flex;
+    display: flex;  
     flex-direction: column;
 }
 .content-wrap {
@@ -53,7 +53,6 @@ footer a:hover {
           $productsPerPage = 24; // 24 per page meaning 4 row per load
           $limitedProductsData = getProducts($conn, 0, $productsPerPage, '../uploads/', 'collection');
           
-          // Handle the new format where getProducts returns an object
           $limitedProducts = isset($limitedProductsData['products']) ? $limitedProductsData['products'] : $limitedProductsData;
           
           if (is_array($limitedProducts)) {
@@ -124,7 +123,10 @@ footer a:hover {
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.product-card').forEach(function(card) {
-            card.addEventListener('click', function() {
+            card.addEventListener('click', function(event) {
+                if (event.target.closest('.card-actions')) {
+                    return;
+                }
                 document.getElementById('productModalProductImage').src = this.getAttribute('data-image');
                 document.getElementById('productModalProductName').textContent = this.getAttribute('data-name');
                 document.getElementById('productModalProductColor').textContent = this.getAttribute('data-color');
@@ -137,7 +139,7 @@ footer a:hover {
 
         document.querySelectorAll('.cart-btn').forEach(function(btn) {
             btn.addEventListener('click', function(event) {
-                event.stopPropagation(); 
+                event.stopPropagation();
                 var name = this.getAttribute('data-name');
                 var image = this.getAttribute('data-image');
                 var size = this.getAttribute('data-size');
@@ -161,6 +163,16 @@ footer a:hover {
 
                 var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
                 modal.show();
+            });
+        });
+
+        document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.stopPropagation(); 
+                const icon = this.querySelector('.fa-heart');
+                icon.classList.toggle('red');
+                icon.classList.toggle('fas'); 
+                icon.classList.toggle('far'); 
             });
         });
     });
