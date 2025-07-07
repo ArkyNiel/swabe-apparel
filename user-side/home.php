@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../assets/css/icons.css">
-    <link rel="stylesheet" href="../assets/css/card_icons.css">
+    <link rel="stylesheet" href="../assets/css/fav_icons.css">
     <link rel="stylesheet" href="../assets/css/cards_hover.css"> 
     <link rel="stylesheet" href="../assets/css/add_to_cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -89,7 +89,6 @@
             if (isset($limitedProducts['error'])) {
                 echo '<div class="col-12 text-center"><p class="text-danger">Error loading products: ' . $limitedProducts['error'] . '</p></div>';
             } else {
-                // Handle the new format where getProducts returns an object
                 $products = isset($limitedProducts['products']) ? $limitedProducts['products'] : $limitedProducts;
                 
                 if (is_array($products)) {
@@ -165,6 +164,17 @@
 
                 var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
                 modal.show();
+            });
+        });
+
+        // Add this for favorite button functionality
+        document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.stopPropagation(); 
+                const icon = this.querySelector('.fa-heart');
+                icon.classList.toggle('red');
+                icon.classList.toggle('fas'); 
+                icon.classList.toggle('far'); 
             });
         });
     });
