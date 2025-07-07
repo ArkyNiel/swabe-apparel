@@ -1,4 +1,6 @@
 <?php
+session_start(); // <-- Add this line at the very top
+
 // Check if user is not logged in
 // manageaccount*
 // addtocart*

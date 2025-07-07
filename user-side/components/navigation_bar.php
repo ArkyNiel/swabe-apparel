@@ -4,6 +4,7 @@ session_start();
 
 <link rel="stylesheet" href="./navigationbar.css">
 <link rel="stylesheet" href="./../assets/css/search.css">
+<link rel="stylesheet" href="./../assets/css/navbar.css">
 
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column" style="margin-bottom: -20px;">

@@ -12,7 +12,7 @@ include("../../back-end/user-side/session_check.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swabe apparel - feedback</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
+    <link rel="stylesheet" href="../../assets/css/custom_navbar.css">
     <style>
     .auth-container {
         min-height: 100vh;
