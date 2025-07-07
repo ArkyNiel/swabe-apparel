@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
 
-    // Initial animation
     setTimeout(() => {
         document.querySelectorAll('.card-container').forEach(card => {
             card.classList.add('visible');
