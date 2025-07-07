@@ -147,3 +147,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 100);
 });
+
+function attachFavoriteBtnHandler() {
+    document.querySelectorAll('.favorite-btn').forEach(function(btn) {
+        btn.onclick = function(event) {
+            event.stopPropagation();
+            const icon = this.querySelector('.fa-heart');
+            icon.classList.toggle('red');
+            icon.classList.toggle('fas');
+            icon.classList.toggle('far');
+        };
+    });
+}
+
+document.addEventListener('productsAppended', function() {
+    attachFavoriteBtnHandler();
+});
