@@ -48,28 +48,7 @@
     </div>
 </div>
 
-<style>
-.img-hover-container {
-    position: relative;
-    overflow: hidden;
-}
-
-.img-hover-overlay {
-    background: rgba(30, 30, 30, 0.45);
-    backdrop-filter: blur(3px);
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
-}
-
-.img-hover-container:hover .img-hover-overlay,
-.img-hover-container:focus .img-hover-overlay {
-    opacity: 1;
-    display: flex;
-    pointer-events: auto;
-}
-
-</style>
+<link rel="stylesheet" href="../assets/css/modal_transition.css">
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

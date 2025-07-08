@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWABE APPAREL | ONLINE STORE</title>
     <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../assets/css/icons.css">
     <link rel="stylesheet" href="../assets/css/fav_icons.css">
     <link rel="stylesheet" href="../assets/css/cards_hover.css"> 
@@ -21,7 +20,7 @@
     $bannerProductsData = getProducts($conn, 0, 24, './uploads/'); // fetch latest 24 products
     $bannerProducts = isset($bannerProductsData['products']) ? $bannerProductsData['products'] : $bannerProductsData;
     ?>
-    <?php include('./components/product_banner.php'); ?>
+    <?php include('./components/swabe_apparel.php'); ?>
 
     <div class="section-content" style="background: #000 !important; height: 52vh; padding-top: -70px; padding-left: 100px; padding-right: 100px;" id="section-content"
         style="margin-top: -120px;">
