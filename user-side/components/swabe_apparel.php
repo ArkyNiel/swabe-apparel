@@ -5,13 +5,13 @@
         <img src="../assets/img/temp1.jpg" class="d-block w-100" alt="Banner 1" style="width: 100%; height: 88vh; object-fit: cover;">
       </div>
       <div class="carousel-item">
-        <img src="../assets/img/temp2.jpg" class="d-block w-100" alt="Shirt 1" style="width: 100%; height: 85vh; object-fit: cover;">
+        <img src="../assets/img/temp2.jpg" class="d-block w-100" alt="Shirt 1" style="width: 100%; height: 88vh; object-fit: cover;">
       </div>
       <div class="carousel-item">
-        <img src="../assets/img/temp3.jpg" class="d-block w-100" alt="Shoes" style="width: 100%; height: 85vh; object-fit: cover;">
+        <img src="../assets/img/temp3.jpg" class="d-block w-100" alt="Shoes" style="width: 100%; height: 88vh; object-fit: cover;">
       </div>
       <div class="carousel-item">
-        <img src="../assets/img/temp4.jpg" class="d-block w-100" alt="Shirt 2" style="width: 100%; height: 85vh; object-fit: cover;">
+        <img src="../assets/img/temp4.jpg" class="d-block w-100" alt="Shirt 2" style="width: 100%; height: 88vh; object-fit: cover;">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#swabeCarousel" data-bs-slide="prev">
@@ -24,7 +24,7 @@
     </button>
 
     <div class="floating-cards-wrapper">
-      <div class="floating-cards-inner">
+      <div class="floating-cards-inner" id="floatingCardsInner">
         <div class="floating-card"><img src="../assets/img/temp1.jpg" alt="Card 1" /></div>
         <div class="floating-card"><img src="../assets/img/temp2.jpg" alt="Card 2" /></div>
         <div class="floating-card"><img src="../assets/img/temp3.jpg" alt="Card 3" /></div>
@@ -37,7 +37,7 @@
         <div class="floating-card"><img src="../assets/img/temp2.jpg" alt="Card 10" /></div>
         <div class="floating-card"><img src="../assets/img/temp3.jpg" alt="Card 11" /></div>
         <div class="floating-card"><img src="../assets/img/temp4.jpg" alt="Card 12" /></div>
-        <div class="floating-card"><img src="../assets/img/temp1.jpg" alt="Card 1" /></div>
+        <div class="floating-card"><img src="../assets/img/temp1.jpg" alt="Card 13" /></div>
       </div>
     </div>
 
@@ -58,15 +58,17 @@
   gap: 20px;
   width: 90vw;
   z-index: 10;
-  width: 1500px; 
+  width: 1800px; 
   overflow: hidden;
   pointer-events: none; 
+  mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
 }
 
 .floating-cards-inner {
   display: flex;
   gap: 20px;
-  animation: scroll-left 20s linear infinite;
+  will-change: transform;
 }
 
 @keyframes scroll-left {
@@ -101,3 +103,31 @@
   box-shadow: 0 16px 32px rgba(0,0,0,0.22);
 }
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const inner = document.getElementById('floatingCardsInner');
+  const cards = Array.from(inner.children);
+  const cardCount = cards.length;
+
+  const cardStyle = getComputedStyle(cards[0]);
+  const cardWidth = cards[0].offsetWidth;
+  const gap = parseInt(cardStyle.marginRight) || 20; 
+  const totalWidth = cardCount * (cardWidth + gap);
+
+  cards.forEach(card => {
+    inner.appendChild(card.cloneNode(true));
+  });
+
+  inner.style.animation = `scroll-left ${cardCount * 2}s linear infinite`;
+
+  const styleSheet = document.createElement("style");
+  styleSheet.innerHTML = `
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-${totalWidth}px); }
+    }
+  `;
+  document.head.appendChild(styleSheet);
+});
+</script>
