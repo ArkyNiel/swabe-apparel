@@ -27,9 +27,9 @@
         <div class="row w-100">
             <div class="col-md-6 left-column" style="padding: 100px;">
                 <div class="content-wrapper" style="max-width: 500px;">
-                    <h1 class="text-warning"">Find Your Style</h1>
-                    <h1 class="text-warning">Discover the latest trends and exclusive collections at Swabe Apparel</h1>
-                    <p class="text">Elevate your wardrobe with our carefully curated selection of premium clothing. From casual essentials to statement pieces, find the perfect addition to your style.</p>
+                    <h1 class="text-warning">Find Your Style</h1>
+                    <h1 class="text-white">Discover the latest trends and exclusive collections at Swabe Apparel</h1>
+                    <p class="text-white">Elevate your wardrobe with our carefully curated selection of premium clothing. From casual essentials to statement pieces, find the perfect addition to your style.</p>
                 </div>
             </div>
             <div class="col-md-6 right-column d-flex align-items-center">
