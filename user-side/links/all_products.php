@@ -125,25 +125,27 @@ footer a:hover {
     <script src="../../assets/js/load-more.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.product-card').forEach(function(card) {
-            card.addEventListener('click', function() {
-                document.getElementById('productModalProductImage').src = this.getAttribute('data-image');
-                document.getElementById('productModalProductName').textContent = this.getAttribute('data-name');
-                document.getElementById('productModalProductColor').textContent = this.getAttribute('data-color');
-                document.getElementById('productModalProductSize').textContent = this.getAttribute('data-size');
-                document.getElementById('productModalProductPrice').textContent = this.getAttribute('data-price');
+        document.getElementById('products-container').addEventListener('click', function(event) {
+            const card = event.target.closest('.product-card');
+            if (card && !event.target.closest('.card-actions')) {
+                document.getElementById('productModalProductImage').src = card.getAttribute('data-image');
+                document.getElementById('productModalProductName').textContent = card.getAttribute('data-name');
+                document.getElementById('productModalProductColor').textContent = card.getAttribute('data-color');
+                document.getElementById('productModalProductSize').textContent = card.getAttribute('data-size');
+                document.getElementById('productModalProductPrice').textContent = card.getAttribute('data-price');
                 var modal = new bootstrap.Modal(document.getElementById('productModal'));
                 modal.show();
-            });
+            }
         });
 
-        document.querySelectorAll('.cart-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(event) {
-                event.stopPropagation(); 
-                var name = this.getAttribute('data-name');
-                var image = this.getAttribute('data-image');
-                var size = this.getAttribute('data-size');
-                var price = this.getAttribute('data-price');
+        document.getElementById('products-container').addEventListener('click', function(event) {
+            const btn = event.target.closest('.cart-btn');
+            if (btn) {
+                event.stopPropagation();
+                var name = btn.getAttribute('data-name');
+                var image = btn.getAttribute('data-image');
+                var size = btn.getAttribute('data-size');
+                var price = btn.getAttribute('data-price');
 
                 document.getElementById('cartModalProductName').textContent = name;
                 document.getElementById('cartModalProductImg').src = image;
@@ -163,17 +165,18 @@ footer a:hover {
 
                 var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
                 modal.show();
-            });
+            }
         });
 
-        document.querySelectorAll('.favorite-btn').forEach(function(btn) {
-            btn.addEventListener('click', function(event) {
+        document.getElementById('products-container').addEventListener('click', function(event) {
+            const btn = event.target.closest('.favorite-btn');
+            if (btn) {
                 event.stopPropagation(); 
-                const icon = this.querySelector('.fa-heart');
+                const icon = btn.querySelector('.fa-heart');
                 icon.classList.toggle('red');
                 icon.classList.toggle('fas'); 
                 icon.classList.toggle('far'); 
-            });
+            }
         });
     });
     </script>
