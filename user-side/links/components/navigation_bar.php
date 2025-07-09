@@ -4,9 +4,19 @@ session_start();
 <link rel="stylesheet" href="../../assets/css/search.css">
 <link rel="stylesheet" href="../../assets/css/navbar.css">
 
-<style>
 
+<style>
+#searchInput {
+    border: 1px solid #000 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+#searchInput:focus {
+    border: 1px solid #000 !important;
+    outline: none !important;
+}
 </style>
+
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column">
         <div class="w-100 py-2 border-bottom">

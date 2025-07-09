@@ -175,3 +175,13 @@
     margin-top: 0;
   }
   }
+
+#searchInput {
+    border: 1px solid #ccc !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+#searchInput:focus {
+    border: 1px solid #000 !important;
+    outline: none !important;
+}
