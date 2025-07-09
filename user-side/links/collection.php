@@ -120,63 +120,7 @@ footer a:hover {
     let offset = productsData.length;
     </script>
     <script src="../../assets/js/load-more.js"></script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const card = event.target.closest('.product-card');
-        if (card && !event.target.closest('.card-actions')) {
-            document.getElementById('productModalProductImage').src = card.getAttribute('data-image');
-            document.getElementById('productModalProductName').textContent = card.getAttribute('data-name');
-            document.getElementById('productModalProductColor').textContent = card.getAttribute('data-color');
-            document.getElementById('productModalProductSize').textContent = card.getAttribute('data-size');
-            document.getElementById('productModalProductPrice').textContent = card.getAttribute('data-price');
-            var modal = new bootstrap.Modal(document.getElementById('productModal'));
-            modal.show();
-        }
-    });
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.cart-btn');
-        if (btn) {
-            event.stopPropagation();
-            var name = btn.getAttribute('data-name');
-            var image = btn.getAttribute('data-image');
-            var size = btn.getAttribute('data-size');
-            var price = btn.getAttribute('data-price');
-
-            document.getElementById('cartModalProductName').textContent = name;
-            document.getElementById('cartModalProductImg').src = image;
-            document.getElementById('cartModalProductPrice').textContent = price;
-
-            var sizeSelect = document.getElementById('cartModalProductSize');
-            if (sizeSelect) {
-                for (let i = 0; i < sizeSelect.options.length; i++) {
-                    if (sizeSelect.options[i].value === size) {
-                        sizeSelect.selectedIndex = i;
-                        break;
-                    }
-                }
-            }
-            var qty = document.getElementById('cartModalQuantity');
-            if (qty) qty.value = 1;
-
-            var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
-            modal.show();
-        }
-    });
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.favorite-btn');
-        if (btn) {
-            event.stopPropagation(); 
-            const icon = btn.querySelector('.fa-heart');
-            icon.classList.toggle('red');
-            icon.classList.toggle('fas'); 
-            icon.classList.toggle('far'); 
-        }
-    });
-});
-</script>
+    <script src="../../assets/js/cards.js"></script>
     <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
         <div class="container text-center">
             <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
