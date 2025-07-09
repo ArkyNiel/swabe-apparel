@@ -20,6 +20,7 @@
     $bannerProductsData = getProducts($conn, 0, 24, './uploads/'); // fetch latest 24 products
     $bannerProducts = isset($bannerProductsData['products']) ? $bannerProductsData['products'] : $bannerProductsData;
     ?>
+    <?php include('./components/switch_display.php'); ?>
     <?php include('./components/swabe_apparel.php'); ?>
 
     <div class="section-content" style="background: #000 !important; height: 52vh; padding-top: -70px; padding-left: 100px; padding-right: 100px;" id="section-content"
