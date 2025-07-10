@@ -1,4 +1,4 @@
-<div class="parallax-container" style="padding-top: -100px; height: 90vh;" >
+<div class="parallax-container" style="padding-top: -50px; height: 90vh;" >
   <div class="parallax-images">
     <?php
     $totalImages = 12;
