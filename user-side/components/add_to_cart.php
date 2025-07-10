@@ -1,3 +1,5 @@
+
+
 <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content p-0">
@@ -14,12 +16,19 @@
             <h3 id="cartModalProductName" class="mb-3" style="font-size:1.5rem; font-weight:500;">Product Name</h3>
             <div class="mb-3 d-flex align-items-center">
               <span class="me-2" style="font-weight:500;">Size:</span>
-              <select id="cartModalProductSize" class="form-select w-auto d-inline-block ms-2" style="min-width:100px;">
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-                <option>XL</option>
-              </select>
+              <div id="cartModalProductSizes" class="btn-group" role="group" aria-label="Product sizes">
+                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeSmall" autocomplete="off" value="Small" checked>
+                <label class="btn btn-outline-primary" for="sizeSmall">Small</label>
+
+                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeMedium" autocomplete="off" value="Medium">
+                <label class="btn btn-outline-primary" for="sizeMedium">Medium</label>
+
+                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeLarge" autocomplete="off" value="Large">
+                <label class="btn btn-outline-primary" for="sizeLarge">Large</label>
+
+                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeXL" autocomplete="off" value="XL">
+                <label class="btn btn-outline-primary" for="sizeXL">XL</label>
+              </div>
             </div>
             <h4 class="text-success mb-4" style="font-size:1.3rem;">₱<span id="cartModalProductPrice">999.00</span></h4>
             <div class="mb-4 d-flex align-items-center">
@@ -217,5 +226,21 @@
   .modal-backdrop.show {
     opacity: 0.5;
     transition: opacity 0.2s linear;
+  }
+  #cartModalProductSizes .btn {
+    border-radius: 8px;
+    min-width: 48px;
+    margin-right: 4px;
+    font-weight: 500;
+    padding: 0.375rem 0.75rem;
+    border: none;
+    background: #f5f5f5;
+    color: #333;
+    box-shadow: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  #cartModalProductSizes .btn-check:checked + .btn {
+    background: #198754;
+    color: #fff;
   }
 </style>

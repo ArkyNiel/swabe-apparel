@@ -26,19 +26,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 { value: 'XL', label: 'XL' }
             ];
         }
-        // disabler function for not sizeable products
         sizeSelect.disabled = (category === 'collection');
         sizeChoices.clearChoices();
         if (category !== 'collection') {
             sizeChoices.setChoices(options, 'value', 'label', true);
         }
-        // Disable color input for collection
         if (colorInput) {
             colorInput.disabled = (category === 'collection');
         }
     }
 
-    // Initial load
     setSizeOptions(categorySelect.value);
 
     // categ changer
@@ -66,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         products.forEach(product => {
-            // Format size as comma-separated with spaces
             let sizeDisplay = product.size ? product.size.split(',').map(s => s.trim()).join(', ') : '';
             tableBody.innerHTML += `
                 <tr data-price="${product.price}">
@@ -244,7 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
             }, 500);
         });
-        // Optional: search on Enter
         searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 clearTimeout(searchTimeout);
