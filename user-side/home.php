@@ -46,53 +46,10 @@
         style="margin-top: -120px;">
         <div class="row w-100">
             <div class="col-md-6 left-column" style="padding: 100px;">
-                <div class="content-wrapper" style="max-width: 500px;">
-                    <h1 class="text-warning">Find Your Style</h1>
-                    <h1 class="text-white">Discover the latest trends and exclusive collections at Swabe Apparel</h1>
-                    <p class="text-white">Elevate your wardrobe with our carefully curated selection of premium clothing. From casual essentials to statement pieces, find the perfect addition to your style.</p>
-                </div>
+                <?php include('./components/find_your_style.php'); ?>
             </div>
             <div class="col-md-6 right-column d-flex align-items-center">
-                <div class="text-center w-100">
-                    <div class="row">
-                        <div class="col-4 mb-4">
-                            <div class="feature-icon-wrapper">
-                                <i class="fas fa-tshirt fa-3x text-warning mb-3"></i>
-                                <p class="text-white">Premium Quality</p>
-                            </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="feature-icon-wrapper">
-                                <i class="fas fa-truck-fast fa-3x text-warning mb-3"></i>
-                                <p class="text-white">Fast Delivery</p>
-                            </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="feature-icon-wrapper">
-                                <i class="fas fa-tags fa-3x text-warning mb-3"></i>
-                                <p class="text-white">Best Prices</p>
-                            </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="feature-icon-wrapper">
-                                <i class="fas fa-undo fa-3x text-warning mb-3"></i>
-                                <p class="text-white">Easy Returns</p>
-                            </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="feature-icon-wrapper">
-                                <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
-                                <p class="text-white">Secure Shopping</p>
-                            </div>
-                        </div>
-                        <div class="col-4 mb-4">
-                            <div class="feature-icon-wrapper">
-                                <i class="fas fa-headset fa-3x text-warning mb-3"></i>
-                                <p class="text-white">24/7 Support</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php include('./components/feature_icons.php'); ?>
             </div>
         </div>
     </div>
