@@ -9,19 +9,38 @@
     <link rel="stylesheet" href="../assets/css/fav_icons.css">
     <link rel="stylesheet" href="../assets/css/cards_hover.css"> 
     <link rel="stylesheet" href="../assets/css/add_to_cart.css">
+    <link rel="stylesheet" href="../assets/css/toggle_switch.css">
+    <link rel="stylesheet" href="../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+
+</style>
 </head>
 
 
 <body>
     <?php include('./components/navigation_bar.php'); ?>
+    <div class="toggle-peek-container switch-box bg-white p-4 rounded shadow-sm d-flex flex-column align-items-center mt-5">
+        <div class="form-check form-switch mb-2" style="display: flex; align-items: center;">
+            <input class="form-check-input" type="checkbox" id="themeSwitch">
+            <label class="form-check-label ms-2" for="themeSwitch" style="font-size: 1.1rem;">
+                <span id="toggleLabelText">Show Banner</span>
+            </label>
+        </div>
+        <small class="text-muted text-center">Toggle between information and banner</small>
+    </div>
+    
     <?php
     include '../back-end/user-side/get_products.php';
     $bannerProductsData = getProducts($conn, 0, 24, './uploads/'); // fetch latest 24 products
     $bannerProducts = isset($bannerProductsData['products']) ? $bannerProductsData['products'] : $bannerProductsData;
     ?>
-    <?php include('./components/switch_display.php'); ?>
-    <?php include('./components/swabe_apparel.php'); ?>
+    <div id="swabeApparelSection">
+        <?php include('./components/swabe_apparel.php'); ?>
+    </div>
+    <div id="productBannerSection" style="display: none;">
+        <?php include('./components/product_banner.php'); ?>
+    </div>
 
     <div class="section-content" style="background: #000 !important; height: 52vh; padding-top: -70px; padding-left: 100px; padding-right: 100px;" id="section-content"
         style="margin-top: -120px;">
@@ -113,73 +132,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script>
-    // loadmore feature
-    const productsData = <?php echo json_encode(isset($limitedProducts['products']) ? $limitedProducts['products'] : ($limitedProducts ?? [])); ?>;
-    const initialProductsCount = <?php echo count(isset($limitedProducts['products']) ? $limitedProducts['products'] : ($limitedProducts ?? [])); ?>;
-    </script>
-    <script>
-    window.GET_PRODUCTS_URL = '../back-end/user-side/get_products.php';
-    window.UPLOAD_PREFIX = 'uploads/';
-    window.INITIAL_PRODUCTS_COUNT = initialProductsCount;
+        window.productsData = <?php echo json_encode(isset($limitedProducts['products']) ? $limitedProducts['products'] : ($limitedProducts ?? [])); ?>;
+        window.initialProductsCount = <?php echo count(isset($limitedProducts['products']) ? $limitedProducts['products'] : ($limitedProducts ?? [])); ?>;
     </script>
     <script src="../assets/js/load-more.js"></script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const card = event.target.closest('.product-card');
-        if (card && !event.target.closest('.card-actions')) {
-            document.getElementById('productModalProductImage').src = card.getAttribute('data-image');
-            document.getElementById('productModalProductName').textContent = card.getAttribute('data-name');
-            document.getElementById('productModalProductColor').textContent = card.getAttribute('data-color');
-            document.getElementById('productModalProductSize').textContent = card.getAttribute('data-size');
-            document.getElementById('productModalProductPrice').textContent = card.getAttribute('data-price');
-            var modal = new bootstrap.Modal(document.getElementById('productModal'));
-            modal.show();
-        }
-    });
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.cart-btn');
-        if (btn) {
-            event.stopPropagation();
-            var name = btn.getAttribute('data-name');
-            var image = btn.getAttribute('data-image');
-            var size = btn.getAttribute('data-size');
-            var price = btn.getAttribute('data-price');
-
-            document.getElementById('cartModalProductName').textContent = name;
-            document.getElementById('cartModalProductImg').src = image;
-            document.getElementById('cartModalProductPrice').textContent = price;
-
-            var sizeSelect = document.getElementById('cartModalProductSize');
-            if (sizeSelect) {
-                for (let i = 0; i < sizeSelect.options.length; i++) {
-                    if (sizeSelect.options[i].value === size) {
-                        sizeSelect.selectedIndex = i;
-                        break;
-                    }
-                }
-            }
-            var qty = document.getElementById('cartModalQuantity');
-            if (qty) qty.value = 1;
-
-            var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
-            modal.show();
-        }
-    });
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.favorite-btn');
-        if (btn) {
-            event.stopPropagation(); 
-            const icon = btn.querySelector('.fa-heart');
-            icon.classList.toggle('red');
-            icon.classList.toggle('fas'); 
-            icon.classList.toggle('far'); 
-        }
-    });
-});
-</script>
+    <script src="../assets/js/home_cards.js"></script>
+    <script src="../assets/js/toggle_switch.js"></script>
     <?php include('./components/footer.php'); ?>
     <?php include('./components/modal.php'); ?>
     <?php include('./components/add_to_cart.php'); ?>
