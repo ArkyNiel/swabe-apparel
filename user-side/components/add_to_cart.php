@@ -17,17 +17,7 @@
             <div class="mb-3 d-flex align-items-center">
               <span class="me-2" style="font-weight:500;">Size:</span>
               <div id="cartModalProductSizes" class="btn-group" role="group" aria-label="Product sizes">
-                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeSmall" autocomplete="off" value="Small" checked>
-                <label class="btn btn-outline-primary" for="sizeSmall">Small</label>
-
-                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeMedium" autocomplete="off" value="Medium">
-                <label class="btn btn-outline-primary" for="sizeMedium">Medium</label>
-
-                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeLarge" autocomplete="off" value="Large">
-                <label class="btn btn-outline-primary" for="sizeLarge">Large</label>
-
-                <input type="radio" class="btn-check" name="cartModalProductSize" id="sizeXL" autocomplete="off" value="XL">
-                <label class="btn btn-outline-primary" for="sizeXL">XL</label>
+                <!-- Size options will be dynamically generated -->
               </div>
             </div>
             <h4 class="text-success mb-4" style="font-size:1.3rem;">₱<span id="cartModalProductPrice">999.00</span></h4>
@@ -80,7 +70,49 @@
       });
     }
 
- 
+    // Function to populate size options dynamically
+    function populateSizeOptions(availableSizes, selectedSize) {
+      const sizeContainer = document.getElementById('cartModalProductSizes');
+      sizeContainer.innerHTML = '';
+      
+      // Split available sizes if they come as comma-separated string
+      const sizes = availableSizes.split(',').map(s => s.trim());
+      
+      sizes.forEach((size, index) => {
+        const inputId = `size${index}`;
+        const isChecked = size === selectedSize;
+        
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.className = 'btn-check';
+        input.name = 'cartModalProductSize';
+        input.id = inputId;
+        input.value = size;
+        input.autocomplete = 'off';
+        if (isChecked) input.checked = true;
+        
+        const label = document.createElement('label');
+        label.className = 'btn btn-outline-primary';
+        label.htmlFor = inputId;
+        label.textContent = size;
+        
+        sizeContainer.appendChild(input);
+        sizeContainer.appendChild(label);
+      });
+    }
+
+    // Global function to be called from other scripts
+    window.populateCartModal = function(name, image, price, availableSizes, selectedSize) {
+      document.getElementById('cartModalProductName').textContent = name;
+      document.getElementById('cartModalProductImg').src = image;
+      document.getElementById('cartModalProductPrice').textContent = price;
+      populateSizeOptions(availableSizes, selectedSize);
+      
+      // Reset quantity
+      const qty = document.getElementById('cartModalQuantity');
+      if (qty) qty.value = 1;
+    };
+
     const modal = document.getElementById('addToCartModal');
     if (modal) {
       modal.addEventListener('show.bs.modal', function () {

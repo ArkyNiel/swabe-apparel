@@ -174,21 +174,10 @@
             var size = btn.getAttribute('data-size');
             var price = btn.getAttribute('data-price');
 
-            document.getElementById('cartModalProductName').textContent = name;
-            document.getElementById('cartModalProductImg').src = image;
-            document.getElementById('cartModalProductPrice').textContent = price;
-
-            var sizeSelect = document.getElementById('cartModalProductSize');
-            if (sizeSelect) {
-                for (let i = 0; i < sizeSelect.options.length; i++) {
-                    if (sizeSelect.options[i].value === size) {
-                        sizeSelect.selectedIndex = i;
-                        break;
-                    }
-                }
+            // Use the global function to populate the modal
+            if (window.populateCartModal) {
+                window.populateCartModal(name, image, price, size, size);
             }
-            var qty = document.getElementById('cartModalQuantity');
-            if (qty) qty.value = 1;
 
             var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
             modal.show();
