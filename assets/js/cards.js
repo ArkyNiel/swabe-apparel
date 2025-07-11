@@ -22,8 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
             var size = btn.getAttribute('data-size');
             var price = btn.getAttribute('data-price');
 
-            // Use the global function to populate the modal
-            // Use the global function to populate the modal
             if (window.populateCartModal) {
                 window.populateCartModal(name, image, price, size, size);
             }

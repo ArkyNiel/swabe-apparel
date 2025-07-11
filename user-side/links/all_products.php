@@ -126,7 +126,7 @@ footer a:hover {
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('products-container').addEventListener('click', function(event) {
         const card = event.target.closest('.product-card');
         if (card && !event.target.closest('.card-actions')) {
