@@ -18,7 +18,6 @@
             <div class="mb-3 d-flex align-items-center">
               <span class="me-2" style="font-weight:500;">Size:</span>
               <div id="cartModalProductSizes" class="btn-group" role="group" aria-label="Product sizes">
-                <!-- Size options will be dynamically generated -->
               </div>
             </div>
             <h4 class="text-success mb-4" style="font-size:1.3rem;">₱<span id="cartModalProductPrice">999.00</span></h4>
