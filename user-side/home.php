@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../assets/css/add_to_cart.css">
     <link rel="stylesheet" href="../assets/css/toggle_switch.css">
     <link rel="stylesheet" href="../assets/css/products_card_animation.css">
+    <link rel="stylesheet" href="../assets/css/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -135,9 +136,12 @@
     <script src="../assets/js/load-more.js"></script>
     <script src="../assets/js/home_cards.js"></script>
     <script src="../assets/js/toggle_switch.js"></script>
+    <script src="../assets/js/add_to_cart.js"></script>
+
     <?php include('./components/footer.php'); ?>
     <?php include('./components/modal.php'); ?>
     <?php include('./components/add_to_cart.php'); ?>
+    
 </body>
 
 </html>
