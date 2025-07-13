@@ -98,6 +98,37 @@
     </div>
 </div>
 
+<style>
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    padding-right: 0 !important;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal {
+    transition: opacity 0.15s linear;
+}
+
+.modal-dialog {
+    transition: transform 0.15s ease-out;
+}
+
+body.modal-open {
+    overflow: hidden;
+    padding-right: 0 !important;
+}
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Image hover effect
@@ -135,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Fix backdrop and scroll issue after modal close
     document.addEventListener('hidden.bs.modal', function () {
         var backdrops = document.querySelectorAll('.modal-backdrop');
         backdrops.forEach(function(el) { el.remove(); });
