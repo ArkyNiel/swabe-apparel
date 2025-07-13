@@ -1,63 +1,123 @@
 <!-- Product Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 700px;">
-        <div class="modal-content border-0 rounded-1 shadow">
-            <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
-                aria-label="Close"></button>
+    <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 800px;">
+        <div class="modal-content border-0 rounded-3 shadow-lg">
+            <button type="button" class="btn-close position-absolute end-0 top-0 m-3 bg-white rounded-circle p-2" 
+                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050;">
+                <span class="visually-hidden">Close</span>
+            </button>
             <div class="modal-body d-flex flex-column flex-md-row p-0">
-                <!-- Overlay -->
-                <div class="col-md-6 d-flex align-items-center justify-content-center bg-light rounded-start-1 p-4 position-relative"
-                    style="min-height: 320px;">
+
+            <div class="col-md-6 d-flex align-items-center justify-content-center bg-light rounded-start-3 p-4 position-relative"
+                    style="min-height: 400px;">
                     <div class="img-hover-container w-100 h-100 d-flex align-items-center justify-content-center position-relative"
-                        style="cursor: pointer;">
+                        style="cursor: pointer; transition: all 0.3s ease;">
                         <img id="productModalProductImage" src="" alt="Product Image"
-                            class="img-fluid rounded-1 border w-100 h-100"
-                            style="max-height: 260px; object-fit: contain;" />
-                        <div class="img-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center rounded-1"
-                            style="display: none;">
-                            <span class="text-white fw-semibold fs-5"
-                                style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Full View</span>
+                            class="img-fluid rounded-2 border shadow-sm w-100 h-100"
+                            style="max-height: 320px; object-fit: contain; transition: transform 0.3s ease;" />
+                        <div class="img-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center rounded-2"
+                            style="background: rgba(0,0,0,0.7); opacity: 0; transition: opacity 0.3s ease;">
+                            <span class="text-white fw-semibold fs-5 d-flex align-items-center"
+                                style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+                                <i class="fas fa-expand me-2"></i>Full View
+                            </span>
                         </div>
                     </div>
                 </div>
-                <!-- Info Section -->
-                <div class="col-md-6 p-4 d-flex flex-column justify-content-center rounded-end-4 bg-white">
-                    <h4 id="productModalProductName" class="fw-semibold mb-3"></h4>
-                    <dl class="row mb-4">
-                        <dt class="col-4 text-muted small">Color</dt>
-                        <dd class="col-8 mb-2" id="productModalProductColor"></dd>
-                        <dt class="col-4 text-muted small">Size</dt>
-                        <dd class="col-8 mb-2" id="productModalProductSize"></dd>
-                        <dt class="col-4 text-muted small">Price</dt>
-                        <dd class="col-8 mb-0 fw-bold" id="productModalProductPrice"></dd>
-                    </dl>
-                    <button type="button" class="btn w-100 mt-auto rounded-1" data-bs-dismiss="modal">Close</button>
+
+                <div class="col-md-6 p-5 d-flex flex-column justify-content-center rounded-end-3 bg-white">
+                    <div class="mb-4">
+                        <h3 id="productModalProductName" class="fw-bold mb-4 text-dark" style="font-size: 1.5rem; line-height: 1.3;"></h3>
+                        
+                        <div class="product-details">
+                            <div class="detail-item d-flex align-items-center mb-3">
+                                <div class="detail-label me-3">
+                                    <span class="badge bg-light text-dark px-3 py-2 rounded-pill fw-medium">Color</span>
+                                </div>
+                                <div class="detail-value">
+                                    <span id="productModalProductColor" class="fw-semibold text-dark"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item d-flex align-items-center mb-3">
+                                <div class="detail-label me-3">
+                                    <span class="badge bg-light text-dark px-3 py-2 rounded-pill fw-medium">Size</span>
+                                </div>
+                                <div class="detail-value">
+                                    <span id="productModalProductSize" class="fw-semibold text-dark"></span>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item d-flex align-items-center mb-4">
+                                <div class="detail-label me-3">
+                                    <span class="badge bg-primary text-white px-3 py-2 rounded-pill fw-medium">Price</span>
+                                </div>
+                                <div class="detail-value">
+                                    <span id="productModalProductPrice" class="fw-bold text-primary fs-4">₱</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-auto">
+                        <button type="button" class="btn btn-outline-secondary w-100 py-3 rounded-3 fw-semibold" 
+                            data-bs-dismiss="modal" style="border-width: 2px;">
+                            <i class="fas fa-times me-2"></i>Close
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!--Full Image View -->
-<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 450px;">
-        <div class="modal-content border-0 bg-transparent shadow-none p-0" style="background: transparent;">
-            <img id="lightboxImage" src="" alt="Full View"
-                style="width: 500px; height: 700px; object-fit: contain; display: block;" />
+<!-- Full Image View -->
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 90vw;">
+        <div class="modal-content border-0 bg-transparent shadow-none p-0 d-flex justify-content-center align-items-center" style="background: rgba(0,0,0,0.5);">
+            <div class="position-relative">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-2 bg-white rounded-circle p-2" 
+                    data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; opacity: 0.9; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                </button>
+                <img id="lightboxImage" src="" alt="Full View"
+                    style="
+                        max-width: 90vw;
+                        max-height: 80vh;
+                        object-fit: contain;
+                        display: block;
+                        border-radius: 0.5rem;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                        user-select: none;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        pointer-events: none;
+                    " />
+            </div>
         </div>
     </div>
 </div>
 
-<link rel="stylesheet" href="../assets/css/modal_transition.css">
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const imgContainer = document.querySelector('#productModal .img-hover-container');
-    const img = document.getElementById('productModalProductImage');
-    const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
-    const lightboxImage = document.getElementById('lightboxImage');
+    // Image hover effect
+    var imgContainer = document.querySelector('#productModal .img-hover-container');
+    var img = document.getElementById('productModalProductImage');
+    var lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+    var lightboxImage = document.getElementById('lightboxImage');
+    var priceElem = document.getElementById('productModalProductPrice');
 
-    if (imgContainer && img && lightboxImage) {
+    if (imgContainer) {
+        imgContainer.addEventListener('mouseenter', function() {
+            var overlay = imgContainer.querySelector('.img-hover-overlay');
+            if (overlay) overlay.style.opacity = 1;
+            img.style.transform = 'scale(1.04)';
+        });
+        imgContainer.addEventListener('mouseleave', function() {
+            var overlay = imgContainer.querySelector('.img-hover-overlay');
+            if (overlay) overlay.style.opacity = 0;
+            img.style.transform = 'scale(1)';
+        });
         imgContainer.addEventListener('click', function() {
             if (img.src) {
                 lightboxImage.src = img.src;
@@ -65,5 +125,22 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // piso
+    if (priceElem) {
+        priceElem.addEventListener('DOMSubtreeModified', function() {
+            if (!priceElem.textContent.trim().startsWith('₱')) {
+                priceElem.textContent = '₱' + priceElem.textContent.replace(/^₱/, '').trim();
+            }
+        });
+    }
+
+    // Fix backdrop and scroll issue after modal close
+    document.addEventListener('hidden.bs.modal', function () {
+        var backdrops = document.querySelectorAll('.modal-backdrop');
+        backdrops.forEach(function(el) { el.remove(); });
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+    });
 });
 </script>
