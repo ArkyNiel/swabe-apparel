@@ -20,7 +20,6 @@
               <div id="cartModalProductSizes" class="btn-group" role="group" aria-label="Product sizes">
               </div>
             </div>
-            <h4 class="text-success mb-4" style="font-size:1.3rem;">₱<span id="cartModalProductPrice">999.00</span></h4>
             <div class="mb-4 d-flex align-items-center">
               <label for="cartModalQuantity" class="form-label me-2 mb-0" style="font-weight:500;">Quantity:</label>
               <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-center" id="decreaseQuantity" style="width:32px; height:32px;">
@@ -39,6 +38,7 @@
                 <i class="bi bi-plus"></i>
               </button>
             </div>
+            <h4 class="mb-4" style="font-size:1.3rem; color: #000000;"><span style="color: #000000;">₱</span><span id="cartModalProductPrice">999.00</span></h4>
           </div>
         </div>
       </div>
