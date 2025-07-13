@@ -1,0 +1,28 @@
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    padding-right: 0 !important;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal {
+    transition: opacity 0.15s linear;
+}
+
+.modal-dialog {
+    transition: transform 0.15s ease-out;
+}
+
+body.modal-open {
+    overflow: hidden;
+    padding-right: 0 !important;
+} 
