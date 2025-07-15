@@ -25,4 +25,8 @@ body {
 body.modal-open {
     overflow: hidden;
     padding-right: 0 !important;
+}
+
+.btn-close {
+    background-color: #ffc107 !important;
 } 

@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 800px;">
         <div class="modal-content border-0 rounded-3 shadow-lg">
             <button type="button" class="btn-close position-absolute end-0 top-0 m-3 bg-white rounded-circle p-2" 
-                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050;">
+                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; background-color: #ffc107;">
                 <span class="visually-hidden">Close</span>
             </button>
             <div class="modal-body d-flex flex-column flex-md-row p-0">
@@ -77,7 +77,7 @@
         <div class="modal-content border-0 bg-transparent shadow-none p-0 d-flex justify-content-center align-items-center" style="background: rgba(0,0,0,0.5);">
             <div class="position-relative">
                 <button type="button" class="btn-close position-absolute top-0 end-0 m-2 bg-white rounded-circle p-2" 
-                    data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; opacity: 0.9; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">
+                    data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; opacity: 0.9; box-shadow: 0 2px 8px rgba(0,0,0,0.3); background-color: #ffc107;">
                 </button>
                 <img id="lightboxImage" src="" alt="Full View"
                     style="
@@ -98,5 +98,5 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="../assets/css/modal.css">
-<script src="../assets/js/modal.js"></script>
+<link rel="stylesheet" href="../../assets/css/modal.css">
+<script src="../../assets/js/modal.js"></script>
