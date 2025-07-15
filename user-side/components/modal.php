@@ -98,5 +98,5 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="../assets/css/modal.css">
-<script src="../assets/js/modal.js"></script>
+<link rel="stylesheet" href="../../assets/css/modal.css">
+<script src="../../assets/js/modal.js"></script>
