@@ -13,7 +13,6 @@
                  onerror="this.src='../assets/img/placeholder.jpg'; console.log('Image failed to load:', this.src);"
                  onload="console.log('Image loaded successfully:', this.src);" />
         </div>
-        <div class="buy-text">View</div>
     </div>
     <div class="card-actions d-flex justify-content-between align-items-center mt-2">
         <h5 class="product-price ">₱<?php echo htmlspecialchars($product['price']); ?></h5>
@@ -23,7 +22,7 @@
             </button>
             <button 
                 class="btn cart-btn" 
-                title="Add to Cart"
+                title="Add to Cart"     
                 data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
                 data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
                 data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"

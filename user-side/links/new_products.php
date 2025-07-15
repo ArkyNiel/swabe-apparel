@@ -113,6 +113,8 @@ footer a:hover {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
+
+        // prefix loc file error when trying to seperate the js from this file*
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
