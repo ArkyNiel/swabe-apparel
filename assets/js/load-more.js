@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                             style="height: 100%; object-fit: cover"
                                         />
                                     </div>
-                                    <div class="buy-text">View</div>
                                 </div>
                                 <div class="card-actions d-flex justify-content-between align-items-center mt-2">
                                     <h5 class="product-price">₱${product.price || 'N/A'}</h5>

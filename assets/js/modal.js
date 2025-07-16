@@ -17,11 +17,17 @@ document.addEventListener('DOMContentLoaded', function() {
             if (overlay) overlay.style.opacity = 0;
             img.style.transform = 'scale(1)';
         });
-        imgContainer.addEventListener('click', function() {
-            if (img.src) {
-                lightboxImage.src = img.src;
-                lightboxModal.show();
-            }
+    }
+
+    const viewPictureBtn = document.getElementById('viewPictureBtn');
+    const productImg = document.getElementById('productModalProductImage');
+    const lightboxImg = document.getElementById('lightboxImage');
+
+    if (viewPictureBtn && productImg && lightboxImg) {
+        viewPictureBtn.addEventListener('click', function () {
+            lightboxImg.src = productImg.src;
+            const lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+            lightboxModal.show();
         });
     }
 
