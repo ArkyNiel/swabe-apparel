@@ -56,42 +56,7 @@ footer a:hover {
           if (is_array($limitedProducts)) {
             foreach ($limitedProducts as $index => $product) {
             $isLeft = $index < 6 ? 'left' : 'right';
-        ?>
-            <div class="col-md-2 mb-4 product-item">
-                <div class="card-container <?php echo $isLeft; ?>">
-                    <div class="card product-card" style="width: 100%; height: 300px; cursor:pointer;"
-                        data-id="<?php echo htmlspecialchars($product['id'] ?? ''); ?>"
-                        data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
-                        data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
-                        data-color="<?php echo htmlspecialchars($product['color'] ?? 'N/A'); ?>"
-                        data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
-                        data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>">
-                        <img src="<?php echo $product['image'] ?? ''; ?>" class="card-img-top"
-                            alt="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>" style="height: 100%; object-fit: cover" />
-                    </div>
-                    <div class="buy-text">View</div>
-                </div>
-                <div class="card-actions d-flex justify-content-between align-items-center mt-2">
-                    <h5 class="product-price">₱<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?></h5>
-                    <div>
-                        <button class="btn favorite-btn" title="Add to Favorites">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <button 
-                            class="btn cart-btn" 
-                            title="Add to Cart"
-                            data-id="<?php echo htmlspecialchars($product['id'] ?? ''); ?>"
-                            data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
-                            data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
-                            data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
-                            data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
-                        >
-                            <i class="fas fa-cart-shopping"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <?php
+            include '../components/product_card.php';
           }
         } else {
             echo '<div class="col-12 text-center"><p class="text-danger">Error: Invalid product data format</p></div>';

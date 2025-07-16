@@ -29,4 +29,16 @@ body.modal-open {
 
 .btn-close {
     background-color: #ffc107 !important;
+}
+
+.btn-outline-gold {
+    border-color: #ffc107 !important;
+    color: #ffc107 !important;
+    background-color: transparent !important;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-outline-gold:hover, .btn-outline-gold:focus {
+    background-color: #ffc107 !important;
+    color: #212529 !important; /* dark text for contrast */
+    border-color: #ffc107 !important;
 } 
