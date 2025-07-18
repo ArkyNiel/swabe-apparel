@@ -46,4 +46,34 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('modal-open');
         document.body.style.overflow = '';
     });
+
+    // Ensure DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get elements
+        const productImage = document.getElementById('productModalProductImage');
+        const imgHoverContainer = document.querySelector('.img-hover-container');
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImage = document.getElementById('lightboxImage');
+
+        if (imgHoverContainer && productImage && lightboxModal && lightboxImage) {
+            // Show overlay on hover (optional, for effect)
+            const imgHoverOverlay = imgHoverContainer.querySelector('.img-hover-overlay');
+            imgHoverContainer.addEventListener('mouseenter', function () {
+                if (imgHoverOverlay) imgHoverOverlay.style.opacity = 1;
+            });
+            imgHoverContainer.addEventListener('mouseleave', function () {
+                if (imgHoverOverlay) imgHoverOverlay.style.opacity = 0;
+            });
+
+            imgHoverContainer.addEventListener('click', function () {
+                lightboxImage.src = productImage.src;
+                if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                    const modal = new bootstrap.Modal(lightboxModal);
+                    modal.show();
+                } else {
+                    $(lightboxModal).modal('show');
+                }
+            });
+        }
+    });
 }); 

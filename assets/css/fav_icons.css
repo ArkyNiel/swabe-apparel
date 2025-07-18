@@ -1,6 +1,6 @@
 .card-actions {
     display: flex;
-    justify-content: space-between; /* space between price and buttons */
+    justify-content: space-between; 
     align-items: center;
     gap: 8px;
     margin: 0;
