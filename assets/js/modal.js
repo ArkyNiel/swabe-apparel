@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const lightboxImage = document.getElementById('lightboxImage');
 
         if (imgHoverContainer && productImage && lightboxModal && lightboxImage) {
-            // Show overlay on hover (optional, for effect)
             const imgHoverOverlay = imgHoverContainer.querySelector('.img-hover-overlay');
             imgHoverContainer.addEventListener('mouseenter', function () {
                 if (imgHoverOverlay) imgHoverOverlay.style.opacity = 1;

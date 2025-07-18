@@ -39,6 +39,6 @@ body.modal-open {
 }
 .btn-outline-gold:hover, .btn-outline-gold:focus {
     background-color: #ffc107 !important;
-    color: #212529 !important; /* dark text for contrast */
+    color: #212529 !important;
     border-color: #ffc107 !important;
 } 

@@ -154,7 +154,6 @@ footer a:hover {
     });
 });
 </script>
-    <script src="../../assets/js/cards.js"></script>
     <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
         <div class="container text-center">
             <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>

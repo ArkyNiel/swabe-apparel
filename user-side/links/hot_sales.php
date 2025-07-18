@@ -85,8 +85,7 @@ footer a:hover {
     let offset = productsData.length;
     </script>
     <script src="../../assets/js/load-more.js"></script>
-    <script src="../../assets/js/cards.js"></script>
-    
+=    
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('products-container').addEventListener('click', function(event) {
