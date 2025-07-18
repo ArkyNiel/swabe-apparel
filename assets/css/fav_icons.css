@@ -44,3 +44,7 @@
 .favorite-btn:active .fa-heart {
     transform: scale(1.3);
 }
+
+.red {
+    color: red !important;
+}
