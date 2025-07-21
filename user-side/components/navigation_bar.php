@@ -28,7 +28,7 @@ session_start();
                     <form class="d-flex" role="search" id="searchForm">
                         <div class="input-group">
                             <input class="form-control" type="search" placeholder="Search products..."
-                                aria-label="Search" id="searchInput" autocomplete="off">
+                                aria-label="Search" id="searchInput" autocomplete="off" name="query">
                             <button class="btn btn-dark" type="submit" style="background: #000 !important; border: 1px solid #000 !important;">
                                 <i class="fas fa-search"></i> Search
                             </button>
