@@ -86,74 +86,8 @@ footer a:hover {
     let offset = productsData.length;
     </script>
     <script src="../../assets/js/load-more.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const card = event.target.closest('.product-card');
-        if (card && !event.target.closest('.card-actions')) {
-            document.getElementById('productModalProductImage').src = card.getAttribute('data-image');
-            document.getElementById('productModalProductName').textContent = card.getAttribute('data-name');
-            document.getElementById('productModalProductColor').textContent = card.getAttribute('data-color');
-            document.getElementById('productModalProductSize').textContent = card.getAttribute('data-size');
-            document.getElementById('productModalProductPrice').textContent = card.getAttribute('data-price');
-            var modal = new bootstrap.Modal(document.getElementById('productModal'));
-            modal.show();
-        }
-    });
+    <script src="../../assets/js/cards.js"></script>
 
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.cart-btn');
-        if (btn) {
-            event.stopPropagation();
-            var name = btn.getAttribute('data-name');
-            var image = btn.getAttribute('data-image');
-            var size = btn.getAttribute('data-size');
-            var price = btn.getAttribute('data-price');
-            var productId = btn.getAttribute('data-id');
-            
-            if (productId) {
-                fetch(`../../back-end/user-side/get_products_sizes.php?product_id=${productId}`)
-                    .then(response => response.json())
-                    .then(availableSizes => {
-                        const sizesString = availableSizes.join(',');
-                        
-                        if (window.populateCartModal) {
-                            window.populateCartModal(name, image, price, sizesString, size);
-                        }
-                        
-                        var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
-                        modal.show();
-                    })
-                    .catch(error => {
-                        console.error('Error fetching sizes:', error);
-                        if (window.populateCartModal) {
-                            window.populateCartModal(name, image, price, size, size);
-                        }
-                        var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
-                        modal.show();
-                    });
-            } else {
-                if (window.populateCartModal) {
-                    window.populateCartModal(name, image, price, size, size);
-                }
-                var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
-                modal.show();
-            }
-        }
-    });
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.favorite-btn');
-        if (btn) {
-            event.stopPropagation(); 
-            const icon = btn.querySelector('.fa-heart');
-            icon.classList.toggle('red');
-            icon.classList.toggle('fas'); 
-            icon.classList.toggle('far'); 
-        }
-    });
-});
-</script>
 
     <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
         <div class="container text-center">
