@@ -38,7 +38,7 @@ footer a:hover {
 </style>
 
 <body>
-    <?php include('navigation_bar.php'); ?>
+    <?php include('../components/navigation_bar.php'); ?>
     <?php include('../components/loader.php'); ?>
 
     <!-- cards -->
