@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const query = searchInput.value.trim();
         if (query) {
-            window.location.href = `./links/search_result.php?search=${encodeURIComponent(query)}`;
+            window.location.href = `search_page.php?search=${encodeURIComponent(query)}`;
         }
     });
 
@@ -44,13 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
     searchResults.addEventListener('click', function(e) {
         const resultItem = e.target.closest('.search-result-item');
         if (resultItem) {
-            window.location.href = `./links/search_result.php?search=${encodeURIComponent(resultItem.dataset.productName)}`;
+            window.location.href = `search_result.php?search=${encodeURIComponent(resultItem.dataset.productName)}`;
         }
     });
 
     function performSearch(query) {
-        const searchUrl = '../back-end/user-side/search_products.php';
-        const url = `${searchUrl}?search=${encodeURIComponent(query)}&limit=8&prefix=./uploads/`;
+        const searchUrl = '../../back-end/user-side/search_products.php';
+        const url = `${searchUrl}?q=${encodeURIComponent(query)}&limit=8&prefix=../uploads/`;
         
         const controller = new AbortController();
         currentSearchRequest = controller;
@@ -80,14 +80,14 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="search-result-item" 
                  data-product-id="${product.id}" 
                  data-product-name="${product.product_name}"
-                 data-product-image="${product.image || './assets/img/logo.jpg'}"
-                 data-product-color="${product.color || 'N/A'}"
-                 data-product-size="${product.size || 'N/A'}"
-                 data-product-price="${product.price || 'N/A'}">
-                <img src="${product.image || './assets/img/logo.jpg'}" 
+                 data-product-image="${product.image || '../../assets/img/logo.jpg'}"
+                 data-product-color="${product.color}"
+                 data-product-size="${product.size}"
+                 data-product-price="${product.price}">
+                <img src="${product.image || '../../assets/img/logo.jpg'}" 
                      alt="${product.product_name}" 
                      class="search-result-image"
-                     onerror="this.src='./assets/img/logo.jpg'">
+                     onerror="this.src='../../assets/img/logo.jpg'">
                 <div class="search-result-info">
                     <div class="search-result-name">${product.product_name}</div>
                     <div class="search-result-details">
