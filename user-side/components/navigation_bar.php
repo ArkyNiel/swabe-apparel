@@ -21,7 +21,7 @@ session_start();
         <div class="w-100 py-2 border-bottom">
             <div class="d-flex justify-content-between align-items-center w-100 px-4">
                 <div class="d-flex align-items-center">
-                    <a class="navbar-brand fw-bold" href="../../index.php" style="font-weight: 1000 !important; letter-spacing: 2px !important; color: #000 !important;">SWABE APPAREL</a>
+                    <a class="navbar-brand fw-bold" href="home.php" style="font-weight: 1000 !important; letter-spacing: 2px !important; color: #000 !important;">SWABE APPAREL</a>
                 </div>
                 <div class="search-container flex-grow-1 mx-4">
                     <form class="d-flex" role="search" id="searchForm">
