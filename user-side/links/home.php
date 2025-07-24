@@ -32,14 +32,21 @@
     
     <?php
     include '../../back-end/user-side/get_products.php';
-    $bannerProductsData = getProducts($conn, 0, 24, './uploads/'); // fetch latest 24 products
+    $bannerProductsData = getProducts($conn, 0, 24, '../uploads/'); // fetch latest 24 products
     $bannerProducts = isset($bannerProductsData['products']) ? $bannerProductsData['products'] : $bannerProductsData;
     ?>
     <div id="swabeApparelSection">
         <?php include('../components/swabe_apparel.php'); ?>
     </div>
     <div id="productBannerSection" style="display: none;">
-        <?php include('../components/product_banner.php'); ?>
+        <?php
+        // trying to debug this section possible error is prefix or link
+        if (isset($bannerProducts)) {
+            include('../components/product_banner.php');
+        } else {
+            echo '<div class="text-danger">No banner products found.</div>';
+        }
+        ?>
     </div>
 
     <div class="section-content" style="background: #000 !important; height: 52vh; padding-top: -70px; padding-left: 100px; padding-right: 100px;" id="section-content"
