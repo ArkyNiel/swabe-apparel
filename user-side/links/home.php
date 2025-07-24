@@ -146,7 +146,6 @@
     <script src="../../assets/js/cards.js"></script>
     <script src="../../assets/js/toggle_switch.js"></script>
     <script src="../../assets/js/add_to_cart.js"></script>
-    <script src="../../assets/js/modal.js"></script>
 
     <?php include('../components/footer.php'); ?>
     <?php include('../components/modal.php'); ?>
