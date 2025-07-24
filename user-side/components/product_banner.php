@@ -18,7 +18,7 @@
       ];
     }
     foreach (array_merge($images, $images) as $i => $img): ?>
-      <img src="<?php echo htmlspecialchars($img); ?>" alt="Product <?php echo $i + 1; ?>" />
+      <img src="<?php echo htmlspecialchars($img); ?>" alt="Product <?php echo $i + 1; ?>" onerror="this.style.border='2px solid red';" />
     <?php endforeach; ?>
   </div>
 </div>

@@ -46,31 +46,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 }); 
-
-// This code should run whenever you close a modal or full view
-
-function cleanupModalAndFullView() {
-    // Remove Bootstrap modal backdrop if it remains
-    document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-
-    // Remove custom full-view overlays if you have any
-    document.querySelectorAll('.your-fullview-overlay-class').forEach(el => el.remove());
-
-    // Remove modal-open class from body
-    document.body.classList.remove('modal-open');
-
-    // Remove any inline styles that block interaction
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-}
-
-// Example: Call this function after closing modal/full view
-// If you use jQuery and Bootstrap:
-$(document).on('hidden.bs.modal', function () {
-    cleanupModalAndFullView();
-});
-
-// If you have a custom close button for full view:
-document.querySelectorAll('.your-fullview-close-btn').forEach(btn => {
-    btn.addEventListener('click', cleanupModalAndFullView);
-}); 
