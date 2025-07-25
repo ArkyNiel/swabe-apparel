@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const query = searchInput.value.trim();
         if (query) {
-            window.location.href = `search_page.php?search=${encodeURIComponent(query)}`;
+            window.location.href = '../../user-side/links/search_result.php?search=' + encodeURIComponent(query);
         }
     });
 
