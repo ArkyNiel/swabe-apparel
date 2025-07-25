@@ -24,10 +24,10 @@ session_start();
                     <a class="navbar-brand fw-bold" href="home.php" style="font-weight: 1000 !important; letter-spacing: 2px !important; color: #000 !important;">SWABE APPAREL</a>
                 </div>
                 <div class="search-container flex-grow-1 mx-4">
-                    <form class="d-flex" role="search" id="searchForm">
+                    <form class="d-flex" role="search" id="searchForm" action="../../user-side/links/search_result.php" method="get">
                         <div class="input-group">
                             <input class="form-control" type="search" placeholder="Search products..."
-                                aria-label="Search" id="searchInput" autocomplete="off" name="query">
+                                aria-label="Search" id="searchInput" autocomplete="off" name="search">
                             <button class="btn btn-dark" type="submit" style="background: #000 !important; border: 1px solid #000 !important;">
                                 <i class="fas fa-search"></i> Search
                             </button>
