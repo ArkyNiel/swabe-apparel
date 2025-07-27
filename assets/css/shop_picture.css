@@ -1,0 +1,30 @@
+.landscape-img {
+    width: 100%;
+    height: 160px;        
+    object-fit: cover;
+    border-radius: 8px;
+    background: #f8f9fa;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.banner-col {
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+@media (max-width: 991.98px) {
+    .banner-col {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+}
+@media (max-width: 767.98px) {
+    .banner-col {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 575.98px) {
+    .banner-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
