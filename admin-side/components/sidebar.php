@@ -67,6 +67,15 @@
                     <span class="ms-1 d-none d-sm-inline">Settings</span>
                 </a>
             </li>
+
+            <!-- Customization Section -->
+            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Customization</small>
+            <li class="nav-item w-100 mt-3">
+                <a href="main.php?page=shop_picture" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'shop_picture') ? 'active' : ''; ?>">
+                    <i class="bi bi-image me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Shop Picture</span>
+                </a>
+            </li>
         </ul>
     </div>
 
