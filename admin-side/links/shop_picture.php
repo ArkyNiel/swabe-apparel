@@ -1,23 +1,25 @@
+<?php
+include __DIR__ . '/../../back-end/admin-side/add_shop_picture.php';
+?>
 <link rel="stylesheet" href="./../assets/css/shop_picture.css">
-
 
 <div class="container-fluid"
      style="height: calc(100vh - 60px); overflow-y: auto; margin-top: 30px; padding-left: 24px; padding-right: 24px;">
     <h2 class="mb-4">Update Swabe Page Banner</h2>
 
-    <?php if (isset($_GET['message'])): ?>
-        <div class="alert alert-info">
-            <?= htmlspecialchars($_GET['message']) ?>
-        </div>
-    <?php endif; ?>
-
-    <form method="POST" enctype="multipart/form-data" action="./../back-end/admin-side/add_shop_picture.php">
+    <form id="bannerForm" method="POST" enctype="multipart/form-data">
         <div class="mb-3" style="max-width: 400px;">
             <label for="banner_img" class="form-label">Upload New Banner Image</label>
             <input class="form-control" type="file" id="banner_img" name="banner_img" accept="image/*" required>
         </div>
         <button type="submit" class="btn btn-primary">Upload Banner</button>
     </form>
+
+    <?php if (isset($msg)): ?>
+        <div class="alert alert-<?php echo $success ? 'success' : 'danger'; ?> mt-3">
+            <?php echo htmlspecialchars($msg); ?>
+        </div>
+    <?php endif; ?>
 
     <div class="mt-5">
         <h4>Current Banners</h4>
