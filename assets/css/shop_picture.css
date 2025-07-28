@@ -28,3 +28,13 @@
         max-width: 100%;
     }
 }
+
+.animated-fade {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.animated-fade.show {
+    opacity: 1;
+    visibility: visible;
+}
