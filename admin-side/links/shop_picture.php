@@ -23,57 +23,67 @@ include __DIR__ . '/../../back-end/admin-side/add_shop_picture.php';
         </div>
     <?php endif; ?>
 
+    <?php
+    // Fetch only the latest 20 banners for the gallery
+    $banner_images = [];
+    if (isset($conn)) {
+        $sql = "SELECT `id`, `image_path`, `uploaded_at` FROM `shop_banners` ORDER BY `uploaded_at` DESC LIMIT 20";
+        $result = $conn->query($sql);
+        if ($result && $result->rowCount() > 0) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                $banner_images[] = $row;
+            }
+        }
+    }
+    ?>
+
     <div class="mt-5">
         <h4>Current Banners</h4>
         <div class="row g-3">
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Current Banner 1">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Current Banner 2">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Current Banner 3">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Current Banner 4">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Current Banner 5">
-            </div>
+            <?php if (!empty($banner_images)): ?>
+                <?php foreach (array_slice($banner_images, 0, 5) as $banner): ?>
+                    <div class="banner-col">
+                        <img src="./../assets/img/<?php echo htmlspecialchars($banner['image_path']); ?>"
+                             class="img-fluid rounded landscape-img"
+                             alt="Current Banner <?php echo $banner['id']; ?>">
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12">
+                    <p class="text-muted">No banners uploaded yet.</p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 
     <div class="mt-5">
         <h4>Banner Gallery</h4>
         <div class="row g-3">
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Banner 1">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Banner 2">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Banner 3">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Banner 4">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Banner 5">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Banner 6">
-            </div>
-            <div class="banner-col">
-                <img src="./../assets/img/temp1.jpg" class="img-fluid rounded landscape-img" alt="Banner 7">
-            </div>
+            <?php if (!empty($banner_images)): ?>
+                <?php foreach ($banner_images as $banner): ?>
+                    <div class="banner-col">
+                        <img src="./../assets/img/<?php echo htmlspecialchars($banner['image_path']); ?>" 
+                             class="img-fluid rounded landscape-img"
+                             alt="Banner <?php echo $banner['id']; ?>"
+                             loading="lazy">
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12">
+                    <p class="text-muted">No banners in the gallery yet.</p>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
 
 <style>
-
+/* In your CSS file */
+.landscape-img {
+    max-width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
