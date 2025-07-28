@@ -1,8 +1,7 @@
 .landscape-img {
-    height: 160px;
-    width: 100%;
+    max-width: 100%;
+    max-height: 120px;
     object-fit: cover;
-    display: block;
 }
 .banner-col {
     flex: 0 0 20%;
@@ -35,4 +34,11 @@
 .animated-fade.show {
     opacity: 1;
     visibility: visible;
+}
+
+.landscape-img {
+    height: 160px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
 }

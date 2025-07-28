@@ -11,12 +11,10 @@
     <div class="d-flex">
         <?php include('components/sidebar.php'); ?>
         
-        <!-- Main Content Area -->
         <div class="flex-grow-1">
             <?php
             $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
             
-            // page copntent from links folder
             $page_path = "links/{$page}.php";
             if (file_exists($page_path)) {
                 include($page_path);

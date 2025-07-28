@@ -80,14 +80,7 @@
     </div>
 
     <div class="mt-5">
-        <ul class="nav flex-column align-items-center">
-            <li class="nav-item w-100">
-                <a href="../back-end/logout.php" class="nav-link text-white">
-                    <i class="bi bi-box-arrow-right me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Logout</span>
-                </a>
-            </li>
-        </ul>
+       
     </div>
 </div>
 

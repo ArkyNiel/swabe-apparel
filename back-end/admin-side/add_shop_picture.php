@@ -1,5 +1,4 @@
 <?php
-// Only run if this is included, not directly accessed
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['banner_img'])) {
     require_once __DIR__ . '/../../connection/connection.php';
     $msg = null;

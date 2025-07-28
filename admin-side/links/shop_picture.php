@@ -1,5 +1,8 @@
 <?php
 include __DIR__ . '/../../back-end/admin-side/add_shop_picture.php';
+if (!isset($conn)) {
+    include __DIR__ . '/../../connection/connection.php';
+}
 ?>
 <link rel="stylesheet" href="./../assets/css/shop_picture.css">
 
@@ -7,7 +10,7 @@ include __DIR__ . '/../../back-end/admin-side/add_shop_picture.php';
      style="height: calc(100vh - 60px); overflow-y: auto; margin-top: 30px; padding-left: 24px; padding-right: 24px;">
     <h2 class="mb-4">Update Swabe Page Banner</h2>
 
-    <form id="bannerForm" method="POST" enctype="multipart/form-data">
+    <form id="bannerForm" method="POST" enctype="multipart/form-data" action="shop_picture.php">
         <div class="mb-3" style="max-width: 400px;">
             <label for="banner_img" class="form-label">Upload New Banner Image</label>
             <input class="form-control" type="file" id="banner_img" name="banner_img" accept="image/*" required>
@@ -23,66 +26,28 @@ include __DIR__ . '/../../back-end/admin-side/add_shop_picture.php';
         </div>
     <?php endif; ?>
 
-    <?php
-    // Fetch only the latest 20 banners for the gallery
-    $banner_images = [];
-    if (isset($conn)) {
-        $sql = "SELECT `id`, `image_path`, `uploaded_at` FROM `shop_banners` ORDER BY `uploaded_at` DESC LIMIT 20";
-        $result = $conn->query($sql);
-        if ($result && $result->rowCount() > 0) {
-            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                $banner_images[] = $row;
-            }
-        }
-    }
-    ?>
-
     <div class="mt-5">
         <h4>Current Banners</h4>
-        <div class="row g-3">
-            <?php if (!empty($banner_images)): ?>
-                <?php foreach (array_slice($banner_images, 0, 5) as $banner): ?>
-                    <div class="banner-col">
-                        <img src="./../assets/img/<?php echo htmlspecialchars($banner['image_path']); ?>"
-                             class="img-fluid rounded landscape-img"
-                             alt="Current Banner <?php echo $banner['id']; ?>">
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="col-12">
-                    <p class="text-muted">No banners uploaded yet.</p>
-                </div>
-            <?php endif; ?>
+        <div class="row g-3" id="current-banners">
+            <!-- Current banners will be loaded here by JS -->
         </div>
     </div>
 
     <div class="mt-5">
         <h4>Banner Gallery</h4>
-        <div class="row g-3">
-            <?php if (!empty($banner_images)): ?>
-                <?php foreach ($banner_images as $banner): ?>
-                    <div class="banner-col">
-                        <img src="./../assets/img/<?php echo htmlspecialchars($banner['image_path']); ?>" 
-                             class="img-fluid rounded landscape-img"
-                             alt="Banner <?php echo $banner['id']; ?>"
-                             loading="lazy">
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="col-12">
-                    <p class="text-muted">No banners in the gallery yet.</p>
-                </div>
-            <?php endif; ?>
+        <div class="row g-3" id="banner-gallery">
+        </div>
+        <div class="mt-3 d-flex justify-content-center" id="banner-pagination">
         </div>
     </div>
 </div>
 
 <style>
-/* In your CSS file */
 .landscape-img {
-    max-width: 100%;
-    max-height: 120px;
+    height: 160px;
+    width: 100%;
     object-fit: cover;
+    display: block;
 }
 </style>
 <script>
@@ -100,5 +65,97 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300); // fade out
         }, 2500);
     }
+});
+
+function renderBanners(banners) {
+    const gallery = document.getElementById('banner-gallery');
+    gallery.innerHTML = '';
+    if (!banners.length) {
+        gallery.innerHTML = '<div class="col-12"><p class="text-muted">No banners in the gallery yet.</p></div>';
+        return;
+    }
+    banners.forEach(banner => {
+        gallery.innerHTML += `
+            <div class="banner-col">
+                <img src="./../assets/img/${banner.image_path}" 
+                     class="img-fluid rounded landscape-img"
+                     alt="Banner ${banner.id}"
+                     loading="lazy">
+            </div>
+        `;
+    });
+}
+
+function renderPagination(current, total) {
+    const pag = document.getElementById('banner-pagination');
+    if (total <= 1) {
+        pag.innerHTML = '';
+        return;
+    }
+    let html = `<nav><ul class="pagination pagination-sm m-0">`;
+    html += `<li class="page-item${current <= 1 ? ' disabled' : ''}">
+                <a class="page-link" href="#" data-page="${current - 1}">Previous</a>
+            </li>`;
+    for (let i = 1; i <= total; i++) {
+        html += `<li class="page-item${i === current ? ' active' : ''}">
+                    <a class="page-link" href="#" data-page="${i}">${i}</a>
+                 </li>`;
+    }
+    html += `<li class="page-item${current >= total ? ' disabled' : ''}">
+                <a class="page-link" href="#" data-page="${current + 1}">Next</a>
+            </li>`;
+    html += `</ul></nav>`;
+    pag.innerHTML = html;
+
+    // Add click listeners
+    pag.querySelectorAll('a.page-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = parseInt(this.getAttribute('data-page'));
+            if (!isNaN(page) && page >= 1 && page <= total) {
+                loadBanners(page);
+            }
+        });
+    });
+}
+
+function loadBanners(page = 1) {
+    fetch('./../back-end/admin-side/get_banners.php?page=' + page)
+        .then(res => res.json())
+        .then(data => {
+            renderBanners(data.banners);
+            renderPagination(data.page, data.total_pages);
+        });
+}
+
+function loadCurrentBanners() {
+    fetch('./../back-end/admin-side/get_banners.php?page=1&limit=5')
+        .then(res => res.json())
+        .then(data => {
+            renderCurrentBanners(data.banners);
+        });
+}
+
+function renderCurrentBanners(banners) {
+    const current = document.getElementById('current-banners');
+    current.innerHTML = '';
+    if (!banners.length) {
+        current.innerHTML = '<div class="col-12"><p class="text-muted">No banners uploaded yet.</p></div>';
+        return;
+    }
+    banners.forEach(banner => {
+        current.innerHTML += `
+            <div class="banner-col">
+                <img src="../../assets/img/${banner.image_path}" 
+                     class="img-fluid rounded landscape-img"
+                     alt="Current Banner ${banner.id}">
+            </div>
+        `;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    loadCurrentBanners();
+    loadBanners();
 });
 </script>
