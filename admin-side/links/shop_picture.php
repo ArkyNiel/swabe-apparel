@@ -29,7 +29,6 @@ if (!isset($conn)) {
     <div class="mt-5">
         <h4>Current Banners</h4>
         <div class="row g-3" id="current-banners">
-            <!-- Current banners will be loaded here by JS -->
         </div>
     </div>
 
@@ -107,7 +106,6 @@ function renderPagination(current, total) {
     html += `</ul></nav>`;
     pag.innerHTML = html;
 
-    // Add click listeners
     pag.querySelectorAll('a.page-link').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -146,12 +144,17 @@ function renderCurrentBanners(banners) {
     banners.forEach(banner => {
         current.innerHTML += `
             <div class="banner-col">
-                <img src="../../assets/img/${banner.image_path}" 
+                <img src="${getBannerImgPath(banner.image_path)}" 
                      class="img-fluid rounded landscape-img"
                      alt="Current Banner ${banner.id}">
             </div>
         `;
     });
+}
+
+function getBannerImgPath(imagePath) {
+    imagePath = imagePath.replace(/^\/+/, '');
+    return './../assets/img/' + imagePath;
 }
 
 document.addEventListener('DOMContentLoaded', function() {

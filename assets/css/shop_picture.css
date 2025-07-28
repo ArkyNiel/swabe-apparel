@@ -1,44 +1,52 @@
 .landscape-img {
-    max-width: 100%;
-    max-height: 120px;
-    object-fit: cover;
+  max-width: 100%;
+  max-height: 120px;
+  object-fit: cover;
 }
 .banner-col {
-    flex: 0 0 20%;
-    max-width: 20%;
+  flex: 0 0 20%;
+  max-width: 20%;
 }
 @media (max-width: 991.98px) {
-    .banner-col {
-        flex: 0 0 33.3333%;
-        max-width: 33.3333%;
-    }
+  .banner-col {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
 }
 @media (max-width: 767.98px) {
-    .banner-col {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
+  .banner-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }
 @media (max-width: 575.98px) {
-    .banner-col {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
+  .banner-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 
 .animated-fade {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 .animated-fade.show {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .landscape-img {
-    height: 160px;
-    width: 100%;
-    object-fit: cover;
-    display: block;
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-container {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  margin-top: 30px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
