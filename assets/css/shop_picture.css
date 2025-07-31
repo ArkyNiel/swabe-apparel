@@ -1,29 +1,18 @@
-.landscape-img {
-  max-width: 100%;
-  max-height: 120px;
-  object-fit: cover;
-}
 .banner-col {
-  flex: 0 0 20%;
-  max-width: 20%;
+    width: 100%;
+    aspect-ratio: 3/2; /* Ensures all banners have the same aspect ratio */
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-@media (max-width: 991.98px) {
-  .banner-col {
-    flex: 0 0 33.3333%;
-    max-width: 33.3333%;
-  }
-}
-@media (max-width: 767.98px) {
-  .banner-col {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-}
-@media (max-width: 575.98px) {
-  .banner-col {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+.landscape-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .animated-fade {
@@ -34,13 +23,6 @@
 .animated-fade.show {
   opacity: 1;
   visibility: visible;
-}
-
-.landscape-img {
-  height: 160px;
-  width: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 .banner-container {

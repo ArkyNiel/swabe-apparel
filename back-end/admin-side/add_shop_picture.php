@@ -27,5 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['banner_img'])) {
         $msg = "No file uploaded or upload error.";
         $success = false;
     }
+
+    // Return JSON for AJAX
+    header('Content-Type: application/json');
+    echo json_encode(['success' => $success, 'msg' => $msg]);
+    exit;
 }
 ?>
