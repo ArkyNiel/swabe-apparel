@@ -76,6 +76,13 @@
                     <span class="ms-1 d-none d-sm-inline">Shop Picture</span>
                 </a>
             </li>
+
+            <li class="nav-item w-100 mt-2">
+                <a href="main.php?page=top_trends" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'top_trends') ? 'active' : ''; ?>">
+                    <i class="bi bi-graph-up-arrow me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Top Trends</span>
+                </a>
+            </li>
         </ul>
     </div>
 
