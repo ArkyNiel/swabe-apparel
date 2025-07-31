@@ -3,6 +3,28 @@ include __DIR__ . '/../../back-end/admin-side/add_shop_picture.php';
 if (!isset($conn)) {
     include __DIR__ . '/../../connection/connection.php';
 }
+
+// --- PHP Banner Fetching Logic ---
+// Pagination setup
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$limit = 12; // banners per page
+$offset = ($page - 1) * $limit;
+
+// Fetch total banners count
+$totalStmt = $conn->query("SELECT COUNT(*) FROM shop_banners");
+$total_banners = $totalStmt->fetchColumn();
+$total_pages = ceil($total_banners / $limit);
+
+// Fetch banners for gallery
+$stmt = $conn->prepare("SELECT * FROM shop_banners ORDER BY id DESC LIMIT :offset, :limit");
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+$stmt->execute();
+$banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetch current banners (e.g., latest 5)
+$currentStmt = $conn->query("SELECT * FROM shop_banners ORDER BY id DESC LIMIT 5");
+$current_banners = $currentStmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <link rel="stylesheet" href="./../assets/css/shop_picture.css">
 
@@ -10,7 +32,7 @@ if (!isset($conn)) {
      style="height: calc(100vh - 60px); overflow-y: auto; margin-top: 30px; padding-left: 24px; padding-right: 24px;">
     <h2 class="mb-4">Update Swabe Page Banner</h2>
 
-    <form id="bannerForm" method="POST" enctype="multipart/form-data" action="shop_picture.php">
+    <form id="bannerForm" method="POST" enctype="multipart/form-data" action="../admin-side/links/shop_picture.php">
         <div class="mb-3" style="max-width: 400px;">
             <label for="banner_img" class="form-label">Upload New Banner Image</label>
             <input class="form-control" type="file" id="banner_img" name="banner_img" accept="image/*" required>
@@ -29,14 +51,54 @@ if (!isset($conn)) {
     <div class="mt-5">
         <h4>Current Banners</h4>
         <div class="row g-3" id="current-banners">
+            <?php if (empty($current_banners)): ?>
+                <div class="col-12"><p class="text-muted">No banners uploaded yet.</p></div>
+            <?php else: ?>
+                <?php foreach ($current_banners as $banner): ?>
+                    <div class="banner-col">
+                        <img src="<?php echo './../assets/img/' . ltrim($banner['image_path'], '/'); ?>"
+                             class="img-fluid rounded landscape-img"
+                             alt="Current Banner <?php echo $banner['id']; ?>">
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 
     <div class="mt-5">
         <h4>Banner Gallery</h4>
         <div class="row g-3" id="banner-gallery">
+            <?php if (empty($banners)): ?>
+                <div class="col-12"><p class="text-muted">No banners in the gallery yet.</p></div>
+            <?php else: ?>
+                <?php foreach ($banners as $banner): ?>
+                    <div class="banner-col">
+                        <img src="<?php echo './../assets/img/' . ltrim($banner['image_path'], '/'); ?>"
+                             class="img-fluid rounded landscape-img"
+                             alt="Banner <?php echo $banner['id']; ?>"
+                             loading="lazy">
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
         <div class="mt-3 d-flex justify-content-center" id="banner-pagination">
+            <?php if ($total_pages > 1): ?>
+                <nav>
+                    <ul class="pagination pagination-sm m-0">
+                        <li class="page-item<?php if ($page <= 1) echo ' disabled'; ?>">
+                            <a class="page-link" href="#" data-page="<?php echo $page - 1; ?>">Previous</a>
+                        </li>
+                        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                            <li class="page-item<?php if ($i == $page) echo ' active'; ?>">
+                                <a class="page-link" href="#" data-page="<?php echo $i; ?>"><?php echo $i; ?></a>
+                            </li>
+                        <?php endfor; ?>
+                        <li class="page-item<?php if ($page >= $total_pages) echo ' disabled'; ?>">
+                            <a class="page-link" href="#" data-page="<?php echo $page + 1; ?>">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -49,116 +111,29 @@ if (!isset($conn)) {
     display: block;
 }
 </style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var popup = document.getElementById('successPopup');
-    if (popup) {
-        setTimeout(function() {
-            popup.classList.add('show');
-        }, 10); // fade in
-
-        setTimeout(function() {
-            popup.classList.remove('show');
-            setTimeout(function() {
-                if (popup.parentNode) popup.parentNode.removeChild(popup);
-            }, 300); // fade out
-        }, 2500);
-    }
-});
-
-function renderBanners(banners) {
-    const gallery = document.getElementById('banner-gallery');
-    gallery.innerHTML = '';
-    if (!banners.length) {
-        gallery.innerHTML = '<div class="col-12"><p class="text-muted">No banners in the gallery yet.</p></div>';
-        return;
-    }
-    banners.forEach(banner => {
-        gallery.innerHTML += `
-            <div class="banner-col">
-                <img src="./../assets/img/${banner.image_path}" 
-                     class="img-fluid rounded landscape-img"
-                     alt="Banner ${banner.id}"
-                     loading="lazy">
-            </div>
-        `;
-    });
-}
-
-function renderPagination(current, total) {
-    const pag = document.getElementById('banner-pagination');
-    if (total <= 1) {
-        pag.innerHTML = '';
-        return;
-    }
-    let html = `<nav><ul class="pagination pagination-sm m-0">`;
-    html += `<li class="page-item${current <= 1 ? ' disabled' : ''}">
-                <a class="page-link" href="#" data-page="${current - 1}">Previous</a>
-            </li>`;
-    for (let i = 1; i <= total; i++) {
-        html += `<li class="page-item${i === current ? ' active' : ''}">
-                    <a class="page-link" href="#" data-page="${i}">${i}</a>
-                 </li>`;
-    }
-    html += `<li class="page-item${current >= total ? ' disabled' : ''}">
-                <a class="page-link" href="#" data-page="${current + 1}">Next</a>
-            </li>`;
-    html += `</ul></nav>`;
-    pag.innerHTML = html;
-
-    pag.querySelectorAll('a.page-link').forEach(link => {
-        link.addEventListener('click', function(e) {
+    // Delegate click for pagination links
+    document.getElementById('banner-pagination').addEventListener('click', function(e) {
+        if (e.target.classList.contains('page-link')) {
             e.preventDefault();
-            const page = parseInt(this.getAttribute('data-page'));
-            if (!isNaN(page) && page >= 1 && page <= total) {
-                loadBanners(page);
+            const page = e.target.getAttribute('data-page');
+            if (page) {
+                fetchGallery(page);
             }
-        });
+        }
     });
-}
-
-function loadBanners(page = 1) {
-    fetch('./../back-end/admin-side/get_banners.php?page=' + page)
-        .then(res => res.json())
-        .then(data => {
-            renderBanners(data.banners);
-            renderPagination(data.page, data.total_pages);
-        });
-}
-
-function loadCurrentBanners() {
-    fetch('./../back-end/admin-side/get_banners.php?page=1&limit=5')
-        .then(res => res.json())
-        .then(data => {
-            renderCurrentBanners(data.banners);
-        });
-}
-
-function renderCurrentBanners(banners) {
-    const current = document.getElementById('current-banners');
-    current.innerHTML = '';
-    if (!banners.length) {
-        current.innerHTML = '<div class="col-12"><p class="text-muted">No banners uploaded yet.</p></div>';
-        return;
-    }
-    banners.forEach(banner => {
-        current.innerHTML += `
-            <div class="banner-col">
-                <img src="${getBannerImgPath(banner.image_path)}" 
-                     class="img-fluid rounded landscape-img"
-                     alt="Current Banner ${banner.id}">
-            </div>
-        `;
-    });
-}
-
-function getBannerImgPath(imagePath) {
-    imagePath = imagePath.replace(/^\/+/, '');
-    return './../assets/img/' + imagePath;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadCurrentBanners();
-    loadBanners();
 });
+
+function fetchGallery(page) {
+    fetch('banner_gallery_partial.php?page=' + page)
+        .then(res => res.text())
+        .then(html => {
+            // Replace the gallery and pagination
+            const temp = document.createElement('div');
+            temp.innerHTML = html;
+            document.getElementById('banner-gallery').parentNode.innerHTML = temp.innerHTML;
+        });
+}
 </script>
