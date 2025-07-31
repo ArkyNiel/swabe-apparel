@@ -14,24 +14,24 @@
 
     <div class="mt-5">
         <h4>Current Banners</h4>
-        <div class="row g-3" id="current-banners">
+        <div class="row g-3" id="current-banners" >
             <div class="col-md-4 mb-3">
                 <div class="banner-col">
-                    <img src="./../assets/img/banner1.jpg" 
+                    <img src="./../assets/img/Rise.jpg"  
                          class="img-fluid rounded landscape-img"
                          alt="Current Banner 1">
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="banner-col">
-                    <img src="./../assets/img/banner1.jpg" 
+                    <img src="./../assets/img/Rise.jpg" 
                          class="img-fluid rounded landscape-img"
                          alt="Current Banner 2">
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="banner-col">
-                    <img src="./../assets/img/banner1.jpg" 
+                    <img src="./../assets/img/Rise.jpg" 
                          class="img-fluid rounded landscape-img"
                          alt="Current Banner 3">
                 </div>
