@@ -8,7 +8,7 @@
         <i class="bi bi-list fs-4"></i>
     </button>
 
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white flex-grow-1" style="margin-top: 2rem;">
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white flex-grow-1" style="margin-top: 2rem; overflow-y: auto;">
         <h3 class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <span class="fs-5 d-none d-sm-inline">Swabe Apparel</span>
         </h3>
@@ -83,6 +83,13 @@
                     <span class="ms-1 d-none d-sm-inline">Top Trends</span>
                 </a>
             </li>
+
+            <li class="nav-item w-100 mt-2">
+                <a href="main.php?page=featured_product" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'featured_product') ? 'active' : ''; ?>">
+                    <i class="bi bi-star me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Featured Product</span>
+                </a>
+            </li>
         </ul>
     </div>
 
@@ -106,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 .sidebar {
     transition: all 0.3s ease;
     position: relative;
+    overflow-y: auto;
 }
 
 #sidebarToggle {
@@ -141,5 +149,23 @@ document.addEventListener('DOMContentLoaded', function() {
     background-color: rgba(255, 255, 255, 0.15) !important;
     color: #fff !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 </style>
