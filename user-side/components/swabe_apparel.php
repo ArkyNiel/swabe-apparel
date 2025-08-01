@@ -10,9 +10,9 @@ try {
     $banners = []; // error handling
 }
 
-// top trends loading - get all trends
+// top trends loading - get all trends, but must need to limit only 10
 try {
-    $stmt = $conn->prepare("SELECT image_path, product_name, product_price FROM top_trends ORDER BY uploaded_at DESC");
+    $stmt = $conn->prepare("SELECT image_path, product_name, product_price FROM top_trends ORDER BY uploaded_at DESC LIMIT 10");
     $stmt->execute();
     $trends = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
@@ -125,41 +125,25 @@ try {
 </div>
 
 <script>
-// Auto cycle trends every 6 seconds
-document.addEventListener('DOMContentLoaded', function() {
-    const trends = <?php echo json_encode($trends); ?>;
-    let currentIndex = 0;
-    let autoInterval;
-    
+// simple trend cycling
+const trends = <?php echo json_encode($trends); ?>;
+let current = 0;
+
+function nextTrend() {
     if (trends.length > 1) {
-        const trendImg = document.querySelector('.swabe-trend-img-round');
-        const trendLabel = document.querySelector('.swabe-trend-label');
-        const trendPrice = document.querySelector('.swabe-trend-price');
+        current = (current + 1) % trends.length;
+        const trend = trends[current];
         
-        function changeTrend() {
-            currentIndex = (currentIndex + 1) % trends.length;
-            const trend = trends[currentIndex];
-            
-            trendImg.src = '../../assets/img/' + trend.image_path;
-            trendImg.onerror = function() {
-                this.src = '../../assets/img/temp1.jpg';
-            };
-            trendLabel.textContent = trend.product_name;
-            trendPrice.textContent = '₱' + trend.product_price;
-        }
-        
-        // Start auto cycle
-        autoInterval = setInterval(changeTrend, 6000);
-        
-        // Make nextTrend function global
-        window.nextTrend = function() {
-            changeTrend();
-            // Reset timer when manually clicked
-            clearInterval(autoInterval);
-            autoInterval = setInterval(changeTrend, 6000);
-        };
+        document.querySelector('.swabe-trend-img-round').src = '../../assets/img/' + trend.image_path;
+        document.querySelector('.swabe-trend-label').textContent = trend.product_name;
+        document.querySelector('.swabe-trend-price').textContent = '₱' + trend.product_price;
     }
-});
+}
+
+// auto change every 6 seconds
+if (trends.length > 1) {
+    setInterval(nextTrend, 6000);
+}
 </script>
 
 
