@@ -137,6 +137,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+// next step
+// - need to limit img size 4mb - 5mb
+// - need to limit img type jpeg, jpg, png,
+// - need to limit number of banners only 5
+// - need to create a function to select banner to display first second and so on
+// - also need to automatically delete previous banner after 3 days
+// - then lastly need an undo feature when deleting banner
+
 </script>
 
 <style>

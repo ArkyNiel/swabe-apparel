@@ -9,6 +9,15 @@ try {
 } catch (Exception $e) {
     $banners = []; // error handling
 }
+
+// top trends loading - get all trends
+try {
+    $stmt = $conn->prepare("SELECT image_path, product_name, product_price FROM top_trends ORDER BY uploaded_at DESC");
+    $stmt->execute();
+    $trends = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $trends = []; // error handling
+}
 ?>
 
 <link rel="stylesheet" href="../../assets/css/swabe_apparel.css">
@@ -44,12 +53,12 @@ try {
       <div id="swabeCarousel" class="carousel slide carousel-fade swabe-custom-carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
           <?php if (empty($banners)): ?>
-            <!-- Default banner if no banners in DB -->
+            <!-- Default banner if no banners  -->
             <div class="carousel-item active">
               <img src="../../assets/img/banner1.jpg" class="d-block w-100 swabe-carousel-img" alt="Default Banner">
             </div>
           <?php else: ?>
-            <!-- Dynamic banners from DB -->
+            <!-- Dynamic banners from db -->
             <?php foreach ($banners as $index => $banner): ?>
               <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                 <img src="../../assets/img/<?php echo htmlspecialchars($banner['image_path']); ?>" 
@@ -75,10 +84,23 @@ try {
       <div class="swabe-trends-title" style="font-size:22px; margin-bottom:20px; color:#222; letter-spacing:1px;">Top <b>Trends</b></div>
       <div class="swabe-trends-grid" style="grid-template-columns: 1fr;">
         <div class="swabe-trend-item" style="border:none; box-shadow:none; background:transparent; padding:0; display:flex; flex-direction:column; align-items:center;">
-          <img src="../../assets/img/temp1.jpg" alt="Trend Product" class="swabe-trend-img-round">
-          <div class="swabe-trend-label" style="font-size:18px; color:#222; margin:1px 0 6px 0; font-weight:600;">Product Name</div>
-          <div class="swabe-trend-price" style="font-size:20px; color:#ffc107; font-weight:700;">₱999</div>
-          <button class="swabe-trend-next-btn mt-3">Next</button>
+          <?php if (!empty($trends)): ?>
+            <img src="../../assets/img/<?php echo htmlspecialchars($trends[0]['image_path']); ?>" 
+                 alt="Trend Product" 
+                 class="swabe-trend-img-round"
+                 onerror="this.src='../../assets/img/temp1.jpg'">
+            <div class="swabe-trend-label" style="font-size:18px; color:#222; margin:1px 0 6px 0; font-weight:600;">
+              <?php echo htmlspecialchars($trends[0]['product_name']); ?>
+            </div>
+            <div class="swabe-trend-price" style="font-size:20px; color:#ffc107; font-weight:700;">
+              ₱<?php echo htmlspecialchars($trends[0]['product_price']); ?>
+            </div>
+          <?php else: ?>
+            <img src="../../assets/img/temp1.jpg" alt="Trend Product" class="swabe-trend-img-round">
+            <div class="swabe-trend-label" style="font-size:18px; color:#222; margin:1px 0 6px 0; font-weight:600;">Product Name</div>
+            <div class="swabe-trend-price" style="font-size:20px; color:#ffc107; font-weight:700;">₱999</div>
+          <?php endif; ?>
+          <button class="swabe-trend-next-btn mt-3" onclick="nextTrend()">Next</button>
         </div>
       </div>
     </div>
@@ -101,6 +123,44 @@ try {
     <button class="swabe-code-btn">Join the Raffle</button>
   </div>
 </div>
+
+<script>
+// Auto cycle trends every 6 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    const trends = <?php echo json_encode($trends); ?>;
+    let currentIndex = 0;
+    let autoInterval;
+    
+    if (trends.length > 1) {
+        const trendImg = document.querySelector('.swabe-trend-img-round');
+        const trendLabel = document.querySelector('.swabe-trend-label');
+        const trendPrice = document.querySelector('.swabe-trend-price');
+        
+        function changeTrend() {
+            currentIndex = (currentIndex + 1) % trends.length;
+            const trend = trends[currentIndex];
+            
+            trendImg.src = '../../assets/img/' + trend.image_path;
+            trendImg.onerror = function() {
+                this.src = '../../assets/img/temp1.jpg';
+            };
+            trendLabel.textContent = trend.product_name;
+            trendPrice.textContent = '₱' + trend.product_price;
+        }
+        
+        // Start auto cycle
+        autoInterval = setInterval(changeTrend, 6000);
+        
+        // Make nextTrend function global
+        window.nextTrend = function() {
+            changeTrend();
+            // Reset timer when manually clicked
+            clearInterval(autoInterval);
+            autoInterval = setInterval(changeTrend, 6000);
+        };
+    }
+});
+</script>
 
 
 
