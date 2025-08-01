@@ -6,25 +6,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $input['id'] ?? null;
     $filename = $input['filename'] ?? null;
 
-    // Check if we have the required data
+    // check if data is missing
     if (!$id || !$filename) {
         echo json_encode(['success' => false, 'msg' => 'Missing data']);
         exit;
     }
 
     try {
-        // Delete from database first
+        // delete function
         $stmt = $conn->prepare("DELETE FROM shop_banners WHERE id = ?");
         $result = $stmt->execute([$id]);
         
         if ($result && $stmt->rowCount() > 0) {
-            // Delete file from server
+            // server side
             $filePath = __DIR__ . '/../../assets/img/' . $filename;
             if (file_exists($filePath)) {
                 unlink($filePath);
             }
             
-            // Make sure we send proper JSON response
+            // json response
             header('Content-Type: application/json');
             echo json_encode(['success' => true, 'msg' => 'Banner deleted successfully']);
         } else {

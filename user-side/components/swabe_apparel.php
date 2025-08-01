@@ -1,3 +1,16 @@
+<?php
+// banner loading
+require_once __DIR__ . '/../../connection/connection.php';
+
+try {
+    $stmt = $conn->prepare("SELECT image_path FROM shop_banners ORDER BY uploaded_at DESC");
+    $stmt->execute();
+    $banners = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $banners = []; // error handling
+}
+?>
+
 <link rel="stylesheet" href="../../assets/css/swabe_apparel.css">
 
 <div class="swabe-hero-container mt-5">
@@ -30,18 +43,22 @@
     <div class="swabe-card swabe-carousel swabe-carousel-wide">
       <div id="swabeCarousel" class="carousel slide carousel-fade swabe-custom-carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="../../assets/img/banner1.jpg" class="d-block w-100 swabe-carousel-img" alt="Banner 1">
-          </div>
-          <div class="carousel-item">
-            <img src="../../assets/img/temp1.jpg" class="d-block w-100 swabe-carousel-img" alt="Temp 1">
-          </div>
-          <div class="carousel-item">
-            <img src="../../assets/img/temp2.jpg" class="d-block w-100 swabe-carousel-img" alt="Temp 2">
-          </div>
-          <div class="carousel-item">
-            <img src="../../assets/img/temp3.jpg" class="d-block w-100 swabe-carousel-img" alt="Temp 3">
-          </div>
+          <?php if (empty($banners)): ?>
+            <!-- Default banner if no banners in DB -->
+            <div class="carousel-item active">
+              <img src="../../assets/img/banner1.jpg" class="d-block w-100 swabe-carousel-img" alt="Default Banner">
+            </div>
+          <?php else: ?>
+            <!-- Dynamic banners from DB -->
+            <?php foreach ($banners as $index => $banner): ?>
+              <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                <img src="../../assets/img/<?php echo htmlspecialchars($banner['image_path']); ?>" 
+                     class="d-block w-100 swabe-carousel-img" 
+                     alt="Banner <?php echo $index + 1; ?>"
+                     onerror="this.src='../../assets/img/banner1.jpg'">
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#swabeCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
