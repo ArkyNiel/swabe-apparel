@@ -2,14 +2,14 @@
 
 <?php
 $topProducts = [
-    ["product" => "Nike Air Max", "category" => "Shoes", "units" => 320, "sales" => "₱1,920,000"],
-    ["product" => "Classic White Tee", "category" => "Shirts", "units" => 210, "sales" => "₱209,790"],
-    ["product" => "Summer Collection Set", "category" => "Collections", "units" => 150, "sales" => "₱374,850"],
+    ["product" => "Head and Shoulder", "category" => "Shoes", "units" => 320, "sales" => "₱1,920,000"],
+    ["product" => "Head and Shoulder", "category" => "Shirts", "units" => 210, "sales" => "₱209,790"],
+    ["product" => "Head and Shoulder", "category" => "Collections", "units" => 150, "sales" => "₱374,850"],
 ];
 $recentSales = [
-    ["date" => "2024-03-15", "order_id" => "#ORD-2024-001", "customer" => "Niel Arky", "amount" => "₱3,500", "status" => "Completed"],
-    ["date" => "2024-03-15", "order_id" => "#ORD-2024-002", "customer" => "Niel Arky", "amount" => "₱2,800", "status" => "Processing"],
-    ["date" => "2024-03-14", "order_id" => "#ORD-2024-004", "customer" => "Niel Arky", "amount" => "₱1,200", "status" => "Cancelled"],
+    ["date" => "2025-03-15", "order_id" => "#ORD-2024-001", "customer" => "Niel Arky", "amount" => "₱3,500", "status" => "Completed"],
+    ["date" => "2025-03-15", "order_id" => "#ORD-2024-002", "customer" => "Niel Arky", "amount" => "₱2,800", "status" => "Processing"],
+    ["date" => "2025-03-14", "order_id" => "#ORD-2024-004", "customer" => "Niel Arky", "amount" => "₱1,200", "status" => "Cancelled"],
 ];
 $statusBadge = [
     "Completed" => "success",

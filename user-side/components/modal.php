@@ -99,17 +99,7 @@
 </div>
 
 <style>
-    .btn-outline-gold {
-    border-color: #ffc107 !important;
-    color: #ffc107 !important;
-    background-color: transparent !important;
-    transition: background 0.2s, color 0.2s;
-}
-.btn-outline-gold:hover, .btn-outline-gold:focus {
-    background-color: #ffc107 !important;
-    color: #212529 !important;
-    border-color: #ffc107 !important;
-} 
+
 </style>
 
 <link rel="stylesheet" href="../../assets/css/modal.css">
