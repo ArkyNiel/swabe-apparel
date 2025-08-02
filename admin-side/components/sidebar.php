@@ -46,6 +46,13 @@
             </li>
 
             <li class="nav-item w-100 mt-2">
+                <a href="main.php?page=add_sales" class="nav-link text-white">
+                    <i class="bi bi-plus-circle me-2"></i>
+                    <span class="ms-1 d-none d-sm-inline">Add Sales</span>
+                </a>
+            </li>
+
+            <li class="nav-item w-100 mt-2">
                 <a href="main.php?page=customers" class="nav-link text-white">
                     <i class="bi bi-people me-2"></i>
                     <span class="ms-1 d-none d-sm-inline">Customers</span>

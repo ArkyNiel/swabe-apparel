@@ -15,7 +15,6 @@
 <?php include __DIR__ . '/../components/error.php'; ?>
 
 <div class="container-fluid py-4">
-    <!-- Header Section -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 style="margin-left: 10px; margin-right: 10px;">Inventory Management</h2>
         <button class="btn btn-primary" style="border-radius: 25px; margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#addInventoryModal">
@@ -23,11 +22,9 @@
         </button>
     </div>
 
-    <!-- Filters section -->
     <div class="card mb-4" style="border-radius: 12px; margin-left: 10px; margin-right: 10px;">
         <div class="card-body" style="border-radius: 12px;">
             <div class="row g-3">
-                <!-- Search bar -->
                 <div class="col-md-4">
                     <div class="input-group" style="border-radius: 8px;">
                         <span class="input-group-text" style="border-radius: 8px 0 0 8px;">
@@ -37,7 +34,6 @@
                     </div>
                 </div>
                 
-                <!-- Category filter -->
                 <div class="col-md-4">
                     <select class="form-select" style="border-radius: 8px;">
                         <option selected>All Categories</option>
@@ -47,7 +43,6 @@
                     </select>
                 </div>
 
-                <!-- Status Filter -->
                 <div class="col-md-4">
                     <select class="form-select" style="border-radius: 8px;">
                         <option selected>All Status</option>
@@ -60,7 +55,6 @@
         </div>
     </div>
 
-    <!-- Inventory table -->
     <div class="card" style="border-radius: 12px; margin-left: 10px; margin-right: 10px;">
         <div class="card-body" style="border-radius: 12px;">
             <div class="table-responsive" style="border-radius: 12px; overflow:hidden;">
@@ -81,7 +75,6 @@
                             </tr>
                         </thead>
                         <tbody id="inventory-table-body">
-                            <!-- Products will be inserted here by JS -->
                         </tbody>
                     </table>
                 </div>
@@ -91,7 +84,6 @@
     </div>
 </div>
 
-<!-- Add New Inventory Modal -->
 <div class="modal fade" id="addInventoryModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content" style="border-radius: 12px;">
@@ -156,7 +148,6 @@
     </div>
 </div>
 
-<!-- Success Modal -->
 <div class="modal fade" id="successModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -167,7 +158,6 @@
     </div>
   </div>
 </div>
-<!-- Error Modal -->
 <div class="modal fade" id="errorModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -179,7 +169,6 @@
   </div>
 </div>
 
-<!-- Delete Confirmation Modal -->
 <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content" style="border-radius: 12px;">
