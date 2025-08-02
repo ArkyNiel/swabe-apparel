@@ -126,19 +126,19 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Nike Air Max</td>
+                                            <td>Head and Shoulder</td>
                                             <td>Shoes</td>
                                             <td>3</td>
                                             <td><span class="badge badge-danger">Critical</span></td>
                                         </tr>
                                         <tr>
-                                            <td>Classic White Tee</td>
+                                            <td>Head and Shoulder</td>
                                             <td>Shirts</td>
                                             <td>7</td>
                                             <td><span class="badge badge-warning">Low</span></td>
                                         </tr>
                                         <tr>
-                                            <td>Summer Collection Set</td>
+                                            <td>Head and Shoulder</td>
                                             <td>Collections</td>
                                             <td>4</td>
                                             <td><span class="badge badge-danger">Critical</span></td>
@@ -167,7 +167,7 @@
                                                 <i class="fas fa-shoe-prints text-white"></i>
                                             </div>
                                             <div>
-                                                <h5 class="mb-0">Nike Air Max</h5>
+                                                <h5 class="mb-0">Head and Shoulder</h5>
                                                 <p class="text-muted small mb-1">Shoes Category</p>
                                                 <h4 class="mb-1">₱5,999</h4>
                                                 <p class="text-success mb-0">Sold: 45 units</p>
@@ -182,7 +182,7 @@
                                                 <i class="fas fa-tshirt text-white"></i>
                                             </div>
                                             <div>
-                                                <h5 class="mb-0">Classic White Tee</h5>
+                                                <h5 class="mb-0">Head and Shoulder</h5>
                                                 <p class="text-muted small mb-1">Shirts Category</p>
                                                 <h4 class="mb-1">₱999</h4>
                                                 <p class="text-success mb-0">Sold: 78 units</p>
@@ -197,7 +197,7 @@
                                                 <i class="fas fa-box-open text-white"></i>
                                             </div>
                                             <div>
-                                                <h5 class="mb-0">Summer Collection Set</h5>
+                                                <h5 class="mb-0">Head and Shoulder</h5>
                                                 <p class="text-muted small mb-1">Collections Category</p>
                                                 <h4 class="mb-1">₱2,499</h4>
                                                 <p class="text-success mb-0">Sold: 32 units</p>
