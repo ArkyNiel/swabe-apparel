@@ -55,11 +55,11 @@
                 $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : '';
 
                 if ($searchQuery !== '') {
-                    $stmt = $conn->prepare("SELECT COUNT(*) FROM inventory WHERE product_name LIKE :search OR category LIKE :search OR color LIKE :search OR size LIKE :search");
+                    $stmt = $conn->prepare("SELECT COUNT(*) FROM inventory WHERE product_name LIKE :search");
                     $stmt->execute(['search' => "%$searchQuery%"]);
                     $totalProducts = $stmt->fetchColumn();
 
-                    $stmt = $conn->prepare("SELECT * FROM inventory WHERE product_name LIKE :search OR category LIKE :search OR color LIKE :search OR size LIKE :search LIMIT :offset, :limit");
+                    $stmt = $conn->prepare("SELECT * FROM inventory WHERE product_name LIKE :search LIMIT :offset, :limit");
                     $offset = 0;
                     $stmt->bindValue(':search', "%$searchQuery%", PDO::PARAM_STR);
                     $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
