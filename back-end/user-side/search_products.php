@@ -17,9 +17,7 @@ try {
         SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` 
         FROM `inventory` 
         WHERE (`product_name` LIKE :search 
-        OR `category` LIKE :search 
-        OR `color` LIKE :search 
-        OR `size` LIKE :search)
+        OR `category` LIKE :search)
         AND `stock` > 0
         ORDER BY 
             CASE 
