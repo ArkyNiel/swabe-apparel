@@ -8,6 +8,7 @@
     <title>Sign Up for swabe apparel</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .auth-container {
             min-height: 100vh;
@@ -50,11 +51,21 @@
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="fas fa-eye" id="eyeIcon"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="confirm_password" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required minlength="6">
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required minlength="6">
+                                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye" id="confirmEyeIcon"></i>
+                                </button>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-dark w-100" style="background: #000 !important; border: 1px solid #000 !important;">Create Account</button>
                     </form>
@@ -66,5 +77,6 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/password_toggle.js"></script>
 </body>
 </html>
