@@ -1,11 +1,11 @@
 .swabe-hero-container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto 24px auto;
+    width: 100%;
+    max-width: none;
+    margin: 0 auto 16px auto;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-    padding: 0 0 24px 0;
+    padding: 0 0 16px 0;
     color: #000;
   }
   
@@ -14,10 +14,10 @@
     justify-content: space-between;
     align-items: center;
     background: #f7f7f7;
-    padding: 18px 36px;
-    font-size: 18px;
+    padding: 12px 24px;
+    font-size: 16px;
     border-bottom: 2px solid #000;
-    gap: 16px;
+    gap: 12px;
     border-radius: 10px 10px 0 0;
   }
   
@@ -44,8 +44,8 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    padding: 18px 8px 8px 8px;
-    gap: 16px;
+    padding: 12px 8px 8px 8px;
+    gap: 12px;
     background: #fff;
   }
   
@@ -57,11 +57,11 @@
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    padding: 18px 12px;
-    min-width: 240px;
+    padding: 12px 8px;
+    min-width: 200px;
     flex: 1 1 0;
     margin: 0 4px;
-    height: 340px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -69,8 +69,8 @@
   
   .swabe-carousel-wide {
     flex: 2 1 0;
-    max-width: 650px;
-    height: 340px;
+    max-width: 550px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -130,7 +130,7 @@
   }
   .swabe-carousel-img {
     width: 100% !important;
-    height: 340px !important;
+    height: 280px !important;
     object-fit: cover;
     border-radius: 10px;
   }
@@ -191,21 +191,21 @@
     justify-content: space-between;
     background: #fff;
     border-top: 2px solid #222 !important;
-    padding: 22px 36px;
-    margin-top: 16px;
-    font-size: 20px;
-    gap: 32px;
+    padding: 16px 24px;
+    margin-top: 12px;
+    font-size: 18px;
+    gap: 24px;
   }
   .swabe-raffle {
     background: #fff;
     border-radius: 10px;
-    padding: 6px 15px; 
+    padding: 6px 12px; 
     text-align: center;
     font-weight: bold;
-    min-width: 280px;
-    width: 280px;
+    min-width: 220px;
+    width: 220px;
     border: 1.5px solid #222 !important;
-    height: 190px; 
+    height: 140px; 
     display: flex;          
     flex-direction: column;  
     justify-content: center;
@@ -241,22 +241,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 180px; 
+    min-height: 140px; 
   }
   .swabe-logo-title {
     margin-bottom: 6px; 
   }
   .swabe-logo-img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 50%;    
     border: 1.5px solid #222 !important;
     background: #fff;
   }
   .swabe-facebook-desc {
-    font-size: 16px;
-    margin-bottom: 18px;
+    font-size: 14px;
+    margin-bottom: 12px;
     color: #000;
   }
   .swabe-facebook-btn {
@@ -265,10 +265,10 @@
     color: #fff;
     font-weight: bold;
     border-radius: 10px; 
-    padding: 12px 28px;
+    padding: 8px 20px;
     text-decoration: none;
-    font-size: 12px; 
-    margin-bottom: 8px; 
+    font-size: 11px; 
+    margin-bottom: 6px; 
     transition: background 0.2s, color 0.2s;
     border: 1.5px solid #222 !important;
   }
@@ -284,41 +284,41 @@
     margin-top: 2px;
   }
   .swabe-trends-title {
-    font-size: 20px;
-    margin-bottom: 18px;
+    font-size: 18px;
+    margin-bottom: 12px;
   }
   
   .swabe-trends-grid {
-    gap: 16px;
+    gap: 12px;
   }
   
   .swabe-trend-item {
-    font-size: 15px;
-    padding: 10px;
+    font-size: 13px;
+    padding: 8px;
   }
   
   .swabe-trend-label {
-    font-size: 15px;
+    font-size: 13px;
   }
   
   .swabe-trend-price {
-    font-size: 17px;
+    font-size: 15px;
   }
   
   .swabe-trend-next-btn {
-    margin-top: 16px;
-    padding: 8px 28px;
+    margin-top: 12px;
+    padding: 6px 20px;
     background: #000;         
     color: #fff;             
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     width: 100%;             
-    max-width: 220px;         
+    max-width: 180px;         
     display: block;         
   }
   
@@ -339,7 +339,7 @@
   }
   .swabe-custom-carousel {
     width: 100%;
-    max-width: 550px; 
+    max-width: 500px; 
     margin: 0 auto;
     height: 100%;
   }
@@ -356,8 +356,8 @@
   }
   
   .swabe-raffle-3rd, .swabe-raffle-2nd {
-    height: 140px;
+    height: 120px;
   }
   .swabe-raffle-1st {
-    height: 160px;
+    height: 140px;
   }
