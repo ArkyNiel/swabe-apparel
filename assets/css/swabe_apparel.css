@@ -7,6 +7,10 @@
     box-shadow: none;
     padding: 0;
     color: #000;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
   }
   
   .swabe-top-bar {
@@ -14,15 +18,16 @@
     justify-content: space-between;
     align-items: center;
     background: #f7f7f7;
-    padding: 6px 12px;
-    font-size: 12px;
+    padding: 12px 20px;
+    font-size: 14px;
     border-bottom: 1px solid #ddd;
-    gap: 4px;
-    border-radius: 8px 8px 0 0;
+    gap: 8px;
+    border-radius: 0px;
+    flex-shrink: 0;
   }
   
   .swabe-top-bar div { flex: 1; text-align: center; }
-  .swabe-top-bar i { margin-right: 2px; color: #ffc107; } 
+  .swabe-top-bar i { margin-right: 4px; color: #ffc107; } 
   
   .swabe-top-bar > div {
     position: relative;
@@ -44,10 +49,11 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    padding: 8px;
-    gap: 8px;
+    padding: 16px;
+    gap: 16px;
     background: #fff;
-    min-height: 180px;
+    flex: 1 1 auto;
+    min-height: 0;
   }
   
   .swabe-card,
@@ -58,11 +64,11 @@
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    padding: 8px;
-    min-width: 140px;
+    padding: 16px;
+    min-width: 180px;
     flex: 1 1 0;
     margin: 0;
-    height: 180px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -70,8 +76,8 @@
   
   .swabe-carousel-wide {
     flex: 2 1 0;
-    max-width: 300px;
-    height: 180px;
+    max-width: 400px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,7 +137,8 @@
   }
   .swabe-carousel-img {
     width: 100% !important;
-    height: 180px !important;
+    height: auto !important;
+    max-height: 300px;
     object-fit: cover;
     border-radius: 8px;
   }
@@ -197,21 +204,22 @@
     justify-content: space-between;
     background: #fff;
     border-top: 1px solid #e0e0e0 !important;
-    padding: 8px 12px;
+    padding: 16px 20px;
     margin-top: 0;
-    font-size: 12px;
-    gap: 8px;
+    font-size: 14px;
+    gap: 16px;
+    flex-shrink: 0;
   }
   .swabe-raffle {
     background: #fff;
     border-radius: 8px;
-    padding: 6px; 
+    padding: 12px; 
     text-align: center;
     font-weight: bold;
-    min-width: 100px;
-    width: 100px;
+    min-width: 140px;
+    width: 140px;
     border: 1px solid #e0e0e0 !important;
-    height: 60px; 
+    height: 100px; 
     display: flex;          
     flex-direction: column;  
     justify-content: center;
@@ -247,35 +255,35 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 180px; 
+    min-height: auto; 
   }
   .swabe-logo-title {
-    margin-bottom: 8px; 
+    margin-bottom: 16px; 
   }
   .swabe-logo-img {
-    width: 40px;
-    height: 40px;
+    width: 65px;
+    height: 65px;
     object-fit: cover;
     border-radius: 50%;    
     border: 2px solid #222 !important;
     background: #fff;
   }
   .swabe-facebook-desc {
-    font-size: 10px;
-    margin-bottom: 8px;
+    font-size: 14px;
+    margin-bottom: 16px;
     color: #000;
-    line-height: 1.2;
+    line-height: 1.4;
   }
   .swabe-facebook-btn {
     display: inline-block;
     background: #000;
     color: #fff;
     font-weight: bold;
-    border-radius: 6px; 
-    padding: 6px 10px;
+    border-radius: 8px; 
+    padding: 10px 18px;
     text-decoration: none;
-    font-size: 10px; 
-    margin-bottom: 6px; 
+    font-size: 12px; 
+    margin-bottom: 12px; 
     transition: background 0.2s, color 0.2s;
     border: 1px solid #000 !important;
   }
@@ -290,41 +298,41 @@
     margin-top: 4px;
   }
   .swabe-trends-title {
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 16px;
+    margin-bottom: 16px;
   }
   
   .swabe-trends-grid {
-    gap: 8px;
+    gap: 12px;
   }
   
   .swabe-trend-item {
-    font-size: 10px;
-    padding: 8px;
+    font-size: 12px;
+    padding: 12px;
   }
   
   .swabe-trend-label {
-    font-size: 10px;
-  }
-  
-  .swabe-trend-price {
     font-size: 12px;
   }
   
+  .swabe-trend-price {
+    font-size: 14px;
+  }
+  
   .swabe-trend-next-btn {
-    margin-top: 8px;
-    padding: 4px 8px;
+    margin-top: 12px;
+    padding: 8px 12px;
     background: #000;         
     color: #fff;             
     border: none;
     border-radius: 6px;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     width: 100%;             
-    max-width: 80px;         
+    max-width: 100px;         
     display: block;         
   }
   
@@ -362,8 +370,8 @@
   }
   
   .swabe-raffle-3rd, .swabe-raffle-2nd {
-    height: 60px;
+    height: 100px;
   }
   .swabe-raffle-1st {
-    height: 60px;
+    height: 100px;
   }
