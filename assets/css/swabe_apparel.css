@@ -1,11 +1,11 @@
 .swabe-hero-container {
     width: 100%;
     max-width: none;
-    margin: 0 auto 16px auto;
+    margin: 0;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-    padding: 0 0 16px 0;
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 0;
     color: #000;
   }
   
@@ -14,15 +14,15 @@
     justify-content: space-between;
     align-items: center;
     background: #f7f7f7;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-bottom: 2px solid #000;
-    gap: 12px;
-    border-radius: 10px 10px 0 0;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+    gap: 4px;
+    border-radius: 8px 8px 0 0;
   }
   
   .swabe-top-bar div { flex: 1; text-align: center; }
-  .swabe-top-bar i { margin-right: 5px; color: #ffc107; } 
+  .swabe-top-bar i { margin-right: 2px; color: #ffc107; } 
   
   .swabe-top-bar > div {
     position: relative;
@@ -44,24 +44,25 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    padding: 12px 8px 8px 8px;
-    gap: 12px;
+    padding: 8px;
+    gap: 8px;
     background: #fff;
+    min-height: 180px;
   }
   
   .swabe-card,
   .swabe-facebook-promo,
   .swabe-top-trends,
   .swabe-raffle {
-    border: 1.5px solid #222 !important;
+    border: 1px solid #e0e0e0 !important;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    padding: 12px 8px;
-    min-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    padding: 8px;
+    min-width: 140px;
     flex: 1 1 0;
-    margin: 0 4px;
-    height: 280px;
+    margin: 0;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -69,8 +70,8 @@
   
   .swabe-carousel-wide {
     flex: 2 1 0;
-    max-width: 550px;
-    height: 280px;
+    max-width: 300px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -130,9 +131,9 @@
   }
   .swabe-carousel-img {
     width: 100% !important;
-    height: 280px !important;
+    height: 180px !important;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
   }
   .swabe-carousel-btn {
     background: #ffc107;
@@ -152,10 +153,10 @@
   
   .swabe-top-trends {
     background: #fafafa !important;
-    border: none !important;
-    box-shadow: none !important;
+    border: 1px solid #e0e0e0 !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
   }
-  .swabe-trends-title { font-weight: bold; margin-bottom: 10px; font-size: 14px; color: #000; }
+  .swabe-trends-title { font-weight: bold; margin-bottom: 16px; font-size: 16px; color: #000; }
   .swabe-trends-grid {
     display: grid;
     grid-template-columns: 1fr; 
@@ -163,174 +164,179 @@
   }
   .swabe-trend-item {
     background: #fff;
-    border-radius: 10px;
-    padding: 4px; 
+    border-radius: 8px;
+    padding: 12px; 
     text-align: center;
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    border: 1px solid #000;
+    border: 1px solid #e0e0e0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   
   .swabe-trend-img-round {
-    width: 120px !important;
-    height: 120px !important;
+    width: 100px !important;
+    height: 100px !important;
     aspect-ratio: 1 / 1;
     border-radius: 50% !important;
     object-fit: cover;
     border: none !important;
-    margin: 0 auto 10px auto;
+    margin: 0 auto 12px auto;
     display: block;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
-  .swabe-trend-label { font-size: 10px; color: #000; margin: 1px 0; }
-  .swabe-trend-price { color: #ffc107; font-weight: bold; font-size: 11px; }
+  .swabe-trend-label { font-size: 14px; color: #000; margin: 4px 0; font-weight: 600; }
+  .swabe-trend-price { color: #ffc107; font-weight: bold; font-size: 16px; }
   
   .swabe-bottom-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #fff;
-    border-top: 2px solid #222 !important;
-    padding: 16px 24px;
-    margin-top: 12px;
-    font-size: 18px;
-    gap: 24px;
+    border-top: 1px solid #e0e0e0 !important;
+    padding: 8px 12px;
+    margin-top: 0;
+    font-size: 12px;
+    gap: 8px;
   }
   .swabe-raffle {
     background: #fff;
-    border-radius: 10px;
-    padding: 6px 12px; 
+    border-radius: 8px;
+    padding: 6px; 
     text-align: center;
     font-weight: bold;
-    min-width: 220px;
-    width: 220px;
-    border: 1.5px solid #222 !important;
-    height: 140px; 
+    min-width: 100px;
+    width: 100px;
+    border: 1px solid #e0e0e0 !important;
+    height: 60px; 
     display: flex;          
     flex-direction: column;  
     justify-content: center;
     align-items: center;    
   }
-  .swabe-raffle span { color: #ffc107; font-size: 18px; }
+  .swabe-raffle span { color: #ffc107; font-size: 14px; }
   .swabe-note { font-size: 10px; color: #000; }
   .swabe-code-btn {
     background: #000; 
     color: #fff;
-    border-radius: 10px; 
-    padding: 6px 15px; 
+    border-radius: 8px; 
+    padding: 12px 20px; 
     font-weight: bold;
     height: 50px;
-    width: 190px;
-    font-size: 16px;
-    border: 1.5px solid #222 !important;
+    width: 140px;
+    font-size: 14px;
+    border: 1px solid #000 !important;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border 0.2s;
   }
   .swabe-code-btn:hover {
     background: #fff;
     color: #000;
-    border: 1.5px solid #000 !important;
+    border: 1px solid #000 !important;
   }
   
   .swabe-facebook-promo {
     text-align: center;
     background: #fff;
-    box-shadow: none;
-    border: 2px solid #ffc107;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e0e0e0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 140px; 
+    min-height: 180px; 
   }
   .swabe-logo-title {
-    margin-bottom: 6px; 
+    margin-bottom: 8px; 
   }
   .swabe-logo-img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     border-radius: 50%;    
-    border: 1.5px solid #222 !important;
+    border: 2px solid #222 !important;
     background: #fff;
   }
   .swabe-facebook-desc {
-    font-size: 14px;
-    margin-bottom: 12px;
+    font-size: 10px;
+    margin-bottom: 8px;
     color: #000;
+    line-height: 1.2;
   }
   .swabe-facebook-btn {
     display: inline-block;
     background: #000;
     color: #fff;
     font-weight: bold;
-    border-radius: 10px; 
-    padding: 8px 20px;
+    border-radius: 6px; 
+    padding: 6px 10px;
     text-decoration: none;
-    font-size: 11px; 
+    font-size: 10px; 
     margin-bottom: 6px; 
     transition: background 0.2s, color 0.2s;
-    border: 1.5px solid #222 !important;
+    border: 1px solid #000 !important;
   }
   .swabe-facebook-btn:hover {
     background: #fff;
     color: #000;
-    border: 1.5px solid #000 !important;
+    border: 1px solid #000 !important;
   }
   .swabe-facebook-handle {
-    font-size: 10px; 
-    color: #000;
-    opacity: 0.7;
-    margin-top: 2px;
+    font-size: 12px; 
+    color: #666;
+    margin-top: 4px;
   }
   .swabe-trends-title {
-    font-size: 18px;
-    margin-bottom: 12px;
+    font-size: 14px;
+    margin-bottom: 8px;
   }
   
   .swabe-trends-grid {
-    gap: 12px;
+    gap: 8px;
   }
   
   .swabe-trend-item {
-    font-size: 13px;
+    font-size: 10px;
     padding: 8px;
   }
   
   .swabe-trend-label {
-    font-size: 13px;
+    font-size: 10px;
   }
   
   .swabe-trend-price {
-    font-size: 15px;
+    font-size: 12px;
   }
   
   .swabe-trend-next-btn {
-    margin-top: 12px;
-    padding: 6px 20px;
+    margin-top: 8px;
+    padding: 4px 8px;
     background: #000;         
     color: #fff;             
     border: none;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 10px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     width: 100%;             
-    max-width: 180px;         
+    max-width: 80px;         
     display: block;         
   }
   
   .swabe-trend-next-btn:hover {
     background: #fff;        
     color: #000;          
-    border: 1.5px solid #000; 
+    border: 1px solid #000; 
   }
   @media (max-width: 900px) {
     .swabe-hero-container {
-      width: 95%;
-      border-radius: 10px;
+      width: 100%;
+      border-radius: 8px;
     }
     .swabe-main-row { flex-direction: column; gap: 12px; }
     .swabe-card { max-width: 100%; min-width: 0; margin: 0 0 8px 0; }
@@ -339,7 +345,7 @@
   }
   .swabe-custom-carousel {
     width: 100%;
-    max-width: 500px; 
+    max-width: 100%; 
     margin: 0 auto;
     height: 100%;
   }
@@ -352,12 +358,12 @@
   
   .swabe-carousel-img {
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
   }
   
   .swabe-raffle-3rd, .swabe-raffle-2nd {
-    height: 120px;
+    height: 60px;
   }
   .swabe-raffle-1st {
-    height: 140px;
+    height: 60px;
   }
