@@ -40,7 +40,6 @@ try {
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    /* No height adjustment, keep original content height */
   }
   .swabe-modal-close {
     position: absolute;
@@ -98,7 +97,7 @@ try {
                   <img src="../../assets/img/banner1.jpg" class="d-block w-100 swabe-carousel-img" alt="Default Banner">
                 </div>
               <?php else: ?>
-                <!-- Dynamic banners from db -->
+                <!-- Dynamic banners from db * must change to modal--> 
                 <?php foreach ($banners as $index => $banner): ?>
                   <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                     <img src="../../assets/img/<?php echo htmlspecialchars($banner['image_path']); ?>" 
@@ -121,7 +120,7 @@ try {
         </div>
 
         <div class="swabe-card swabe-top-trends" style="box-shadow:none; border:none; background:#fafafa;">
-          <div class="swabe-trends-title" style="font-size:22px; margin-bottom:20px; color:#222; letter-spacing:1px;">Top <b>Trends</b></div>
+          <div class="swabe-trends-title" style="font-size:22px; margin-bottom:10px; color:#222; letter-spacing:1px;">Top <b>Trends</b></div>
           <div class="swabe-trends-grid" style="grid-template-columns: 1fr;">
             <div class="swabe-trend-item" style="border:none; box-shadow:none; background:transparent; padding:0; display:flex; flex-direction:column; align-items:center;">
               <?php if (!empty($trends)): ?>
@@ -140,7 +139,7 @@ try {
                 <div class="swabe-trend-label" style="font-size:18px; color:#222; margin:1px 0 6px 0; font-weight:600;">Product Name</div>
                 <div class="swabe-trend-price" style="font-size:20px; color:#ffc107; font-weight:700;">₱999</div>
               <?php endif; ?>
-              <button class="swabe-trend-next-btn mt-3" onclick="nextTrend()">Next</button>
+              <button class="swabe-trend-next-btn mt-0" onclick="nextTrend()">Next</button>
             </div>
           </div>
         </div>
