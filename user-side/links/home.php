@@ -20,27 +20,32 @@
 
 <body>
     <?php include('../components/navigation_bar.php'); ?>
-    <div class="toggle-peek-container switch-box bg-white p-4 rounded shadow-sm d-flex flex-column align-items-center mt-5">
-        <div class="form-check form-switch mb-2" style="display: flex; align-items: center;">
-            <input class="form-check-input" type="checkbox" id="themeSwitch">
-            <label class="form-check-label ms-2" for="themeSwitch" style="font-size: 1.1rem;">
-                <span id="toggleLabelText">Show Banner</span>
-            </label>
-        </div>
-        <small class="text-muted text-center">Toggle between information and product</small>
-    </div>
     
     <?php
     include '../../back-end/user-side/get_products.php';
     $bannerProductsData = getProducts($conn, 0, 24, '../uploads/'); // fetch latest 24 products
     $bannerProducts = isset($bannerProductsData['products']) ? $bannerProductsData['products'] : $bannerProductsData;
     ?>
-    <div id="swabeApparelSection">
-        <?php include('../components/swabe_apparel.php'); ?>
+    
+    <!-- Auto-show modal for swabe apparel -->
+    <div id="swabeModal" class="modal fade" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="swabeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" onclick="closeSwabeModal()" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <?php include('../components/swabe_apparel.php'); ?>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="productBannerSection" style="display: none;">
+    
+    <!-- Modal backdrop -->
+    <div id="modalBackdrop" class="modal-backdrop fade" style="display: none;"></div>
+    
+    <div id="productBannerSection">
         <?php
-        // trying to debug this section possible error is prefix or link
         if (isset($bannerProducts)) {
             include('../components/product_banner.php');
         } else {
@@ -151,8 +156,56 @@
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
-    <script src="../../assets/js/toggle_switch.js"></script>
     <script src="../../assets/js/add_to_cart.js"></script>
+    
+    <!-- Simple modal script -->
+    <script>
+        // Global function to close modal
+        function closeSwabeModal() {
+            const modal = document.getElementById('swabeModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            
+            // Hide modal and backdrop
+            modal.style.display = 'none';
+            modal.classList.remove('show');
+            backdrop.style.display = 'none';
+            backdrop.classList.remove('show');
+            
+            // Remove modal-open class from body
+            document.body.classList.remove('modal-open');
+            
+            // Remove any inline styles that might cause issues
+            modal.removeAttribute('style');
+            backdrop.removeAttribute('style');
+        }
+        
+        // Auto-show modal on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('swabeModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            
+            // Show modal immediately
+            modal.style.display = 'block';
+            modal.classList.add('show');
+            backdrop.style.display = 'block';
+            backdrop.classList.add('show');
+            document.body.classList.add('modal-open');
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeSwabeModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeSwabeModal();
+                }
+            });
+        });
+    </script>
 
     <?php include('../components/footer.php'); ?>
     <?php include('../components/modal.php'); ?>
