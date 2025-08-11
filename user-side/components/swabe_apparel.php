@@ -21,6 +21,7 @@ try {
 ?>
 
 <link rel="stylesheet" href="../../assets/css/swabe_apparel.css">
+<script src="../../assets/js/card_cycler.js"></script>
 <style>
   .swabe-modal-overlay {
     position: fixed;
@@ -61,7 +62,7 @@ try {
 <div class="swabe-modal-overlay" id="swabeModalOverlay">
   <div class="swabe-modal">
     <button class="swabe-modal-close" id="swabeModalClose" aria-label="Close">&times;</button>
-    <div class="swabe-hero-container mt-5">
+    <div class="swabe-hero-container mt-5"">
       <div class="swabe-top-bar">
         <div><i class="fa fa-bullhorn"></i> <b>We're Open</b> <span>Monday to Sunday</span></div>
         <div class="swabe-separator">|</div>
@@ -166,25 +167,8 @@ try {
 </div>
 
 <script>
-// simple trend cycling
-const trends = <?php echo json_encode($trends); ?>;
-let current = 0;
-
-function nextTrend() {
-    if (trends.length > 1) {
-        current = (current + 1) % trends.length;
-        const trend = trends[current];
-        
-        document.querySelector('.swabe-trend-img-round').src = '../../assets/img/' + trend.image_path;
-        document.querySelector('.swabe-trend-label').textContent = trend.product_name;
-        document.querySelector('.swabe-trend-price').textContent = '₱' + trend.product_price;
-    }
-}
-
-// auto change every 6 seconds
-if (trends.length > 1) {
-    setInterval(nextTrend, 6000);
-}
+// Make trends data available to the external JavaScript file
+window.trendsData = <?php echo json_encode($trends); ?>;
 </script>
 <script>
 document.getElementById('swabeModalClose').onclick = function() {
