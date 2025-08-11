@@ -1,70 +1,89 @@
 .swabe-hero-container {
     width: 100%;
-    max-width: none;
-    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     padding: 0;
-    color: #000;
-    height: 550px;
+    color: #222;
+    height: auto;
+    min-height: 600px;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-  }
-  
-  .swabe-top-bar {
+    overflow: hidden;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.swabe-top-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #f7f7f7;
-    padding: 12px 20px;
-    font-size: 14px;
-    border-bottom: 1px solid #ddd;
-    gap: 8px;
-    border-radius: 0px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    padding: 24px 32px 20px 32px;
+    font-size: 16px;
+    border-bottom: 2px solid #f0f0f0;
+    gap: 16px;
+    border-radius: 16px 16px 0 0;
     flex-shrink: 0;
-  }
-  
-  .swabe-top-bar div { flex: 1; text-align: center; }
-  .swabe-top-bar i { margin-right: 4px; color: #ffc107; } 
-  
-  .swabe-top-bar > div {
-    position: relative;
-  }
-  
-  .swabe-top-bar > div:not(:last-child)::after {
+}
+
+.swabe-top-bar div { 
+    flex: 1; 
+    text-align: center; 
+    font-weight: 500; 
+    color: #333; 
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.swabe-top-bar div:hover {
+    background-color: rgba(0,0,0,0.04);
+}
+
+.swabe-top-bar i { 
+    margin-right: 8px; 
+    color: #ffc107; 
+    font-size: 18px;
+}
+
+.swabe-top-bar > div { 
+    position: relative; 
+}
+
+.swabe-top-bar > div:not(:last-child)::after {
     content: "";
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    height: 60%;
-    width: 1px;
-    background: #e0e0e0; 
-    opacity: 0.7;
-  }
-  
-  .swabe-main-row {
+    height: 70%;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #e0e0e0, transparent);
+    opacity: 0.8;
+}
+
+.swabe-main-row {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    padding: 16px;
-    gap: 16px;
+    padding: 32px 32px 24px 32px;
+    gap: 24px;
     background: #fff;
     flex: 1 1 auto;
     min-height: 0;
-  }
-  
-  .swabe-card,
-  .swabe-facebook-promo,
-  .swabe-top-trends,
-  .swabe-raffle {
-    border: 1px solid #e0e0e0 !important;
+}
+
+.swabe-card,
+.swabe-facebook-promo,
+.swabe-top-trends,
+.swabe-raffle {
+    border: 2px solid #f8f9fa !important;
     background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    padding: 24px 20px;
     min-width: 180px;
     flex: 1 1 0;
     margin: 0;
@@ -72,306 +91,325 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-  }
-  
-  .swabe-carousel-wide {
+    transition: all 0.3s ease;
+}
+
+.swabe-card:hover,
+.swabe-facebook-promo:hover,
+.swabe-top-trends:hover,
+.swabe-raffle:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-color: #e5e7eb !important;
+}
+
+.swabe-carousel-wide {
     flex: 2 1 0;
-    max-width: 400px;
+    max-width: 450px;
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  
-  .swabe-app-promo {
-    text-align: center;
-    background: #fff;
-    box-shadow: none;
-    border: 2px solid #ffc107;
-  }
-  .swabe-app-title { font-weight: bold; font-size: 16px; margin-bottom: 6px; }
-  .swabe-app-highlight { color: #ffc107; font-size: 12px; }
-  .swabe-app-offers { margin-bottom: 6px; }
-  .swabe-app-offer { display: inline-block; background: #fff; border-radius: 4px; padding: 3px 8px; margin: 1px; font-weight: bold; color: #000; border: 2px solid #ffc107; }
-  .swabe-app-offer span { color: #ffc107; }
-  .swabe-app-code { margin-bottom: 6px; font-size: 11px; }
-  .swabe-qr { width: 60px; margin: 6px auto; display: block; border: 1px solid #000; border-radius: 4px; }
-  .swabe-app-buttons img { width: 90px; margin: 2px; filter: grayscale(1); }
-  
-  .swabe-carousel {
-    min-width: 0;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    box-shadow: none;
-    background: none;
-    border: none;
-    height: 100%; 
-  }
-  .swabe-carousel-placeholder {
-    width: 100%;
-    height: 150px;
-    background: #fff;
-    border: 1.5px dashed #e0e0e0 !important;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000;
-    font-size: 18px; 
-    font-style: italic;
-  }
-  
-  .swabe-carousel-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 200px; 
-    background: #fff;
-    border: 1.5px dashed #e0e0e0 !important; 
-    border-radius: 10px;
-    position: relative;
-  }
-  .swabe-carousel-img {
+}
+
+.swabe-carousel-img {
     width: 100% !important;
     height: auto !important;
     max-height: 300px;
     object-fit: cover;
-    border-radius: 8px;
-  }
-  .swabe-carousel-btn {
-    background: #ffc107;
-    border: none;
-    color: #000;
-    font-size: 20px; 
-    border-radius: 50%;
-    width: 32px; 
-    height: 32px; 
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .swabe-carousel-btn:hover {
-    background: #000;
-    color: #ffc107;
-  }
-  
-  .swabe-top-trends {
-    background: #fafafa !important;
-    border: 1px solid #e0e0e0 !important;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
-  }
-  .swabe-trends-title { font-weight: bold; margin-bottom: 16px; font-size: 16px; color: #000; }
-  .swabe-trends-grid {
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 8px; 
-  }
-  .swabe-trend-item {
-    background: #fff;
-    border-radius: 8px;
-    padding: 12px; 
+    border-radius: 16px;
+    background: #fafbfc;
+    transition: transform 0.3s ease;
+}
+
+.swabe-carousel-img:hover {
+    transform: scale(1.02);
+}
+
+.swabe-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-top: 2px solid #f0f0f0 !important;
+    padding: 24px 32px 24px 32px;
+    margin-top: 0;
+    font-size: 16px;
+    gap: 20px;
+    flex-shrink: 0;
+    border-radius: 0 0 16px 16px;
+}
+
+.swabe-raffle {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-radius: 16px;
+    padding: 20px 16px;
     text-align: center;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    border: 1px solid #e0e0e0;
+    font-weight: 500;
+    min-width: 160px;
+    width: 160px;
+    border: 2px solid #f8f9fa !important;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.swabe-raffle:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-color: #e5e7eb !important;
+}
+
+.swabe-raffle span { 
+    color: #ffc107; 
+    font-size: 16px; 
+    font-weight: 600; 
+    margin-bottom: 8px;
+}
+
+.swabe-raffle div {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.swabe-note { 
+    font-size: 12px; 
+    color: #666; 
+    font-weight: 400; 
+    font-style: italic;
+}
+
+.swabe-code-btn {
+    background: linear-gradient(135deg, #222 0%, #333 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-weight: 600;
+    height: 56px;
+    width: 160px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.swabe-code-btn:hover {
+    background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+.swabe-facebook-promo {
+    text-align: center;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border: 2px solid #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
+    padding: 28px 20px;
+}
+
+.swabe-logo-title { 
+    margin-bottom: 16px; 
+}
+
+.swabe-logo-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ffc107 !important;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(255, 193, 7, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.swabe-logo-img:hover {
+    transform: scale(1.1);
+}
+
+.swabe-facebook-desc {
+    font-size: 14px;
+    margin-bottom: 16px;
+    color: #444;
+    line-height: 1.5;
+    font-weight: 400;
+    max-width: 200px;
+}
+
+.swabe-facebook-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #222 0%, #333 100%);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 12px;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.swabe-facebook-btn:hover {
+    background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+.swabe-facebook-handle {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+    font-weight: 400;
+}
+
+.swabe-trends-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+.swabe-trends-grid { 
+    gap: 16px; 
+}
+
+.swabe-trend-item {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border: 2px solid #f8f9fa;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  
-  .swabe-trend-img-round {
+    transition: all 0.3s ease;
+}
+
+.swabe-trend-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-color: #e5e7eb;
+}
+
+.swabe-trend-img-round {
     width: 100px !important;
     height: 100px !important;
     aspect-ratio: 1 / 1;
     border-radius: 50% !important;
     object-fit: cover;
-    border: none !important;
-    margin: 0 auto 12px auto;
+    border: 3px solid #ffc107 !important;
+    margin: 0 auto 16px auto;
     display: block;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  .swabe-trend-label { font-size: 14px; color: #000; margin: 4px 0; font-weight: 600; }
-  .swabe-trend-price { color: #ffc107; font-weight: bold; font-size: 16px; }
-  
-  .swabe-bottom-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #fff;
-    border-top: 1px solid #e0e0e0 !important;
-    padding: 16px 20px;
-    margin-top: 0;
-    font-size: 14px;
-    gap: 16px;
-    flex-shrink: 0;
-  }
-  .swabe-raffle {
-    background: #fff;
-    border-radius: 8px;
-    padding: 12px; 
-    text-align: center;
-    font-weight: bold;
-    min-width: 140px;
-    width: 140px;
-    border: 1px solid #e0e0e0 !important;
-    height: 100px; 
-    display: flex;          
-    flex-direction: column;  
-    justify-content: center;
-    align-items: center;    
-  }
-  .swabe-raffle span { color: #ffc107; font-size: 14px; }
-  .swabe-note { font-size: 10px; color: #000; }
-  .swabe-code-btn {
-    background: #000; 
-    color: #fff;
-    border-radius: 8px; 
-    padding: 12px 20px; 
-    font-weight: bold;
-    height: 50px;
-    width: 140px;
-    font-size: 14px;
-    border: 1px solid #000 !important;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, border 0.2s;
-  }
-  .swabe-code-btn:hover {
-    background: #fff;
-    color: #000;
-    border: 1px solid #000 !important;
-  }
-  
-  .swabe-facebook-promo {
-    text-align: center;
-    background: #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    border: 1px solid #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: auto; 
-  }
-  .swabe-logo-title {
-    margin-bottom: 16px; 
-  }
-  .swabe-logo-img {
-    width: 65px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 50%;    
-    border: 2px solid #222 !important;
-    background: #fff;
-  }
-  .swabe-facebook-desc {
-    font-size: 14px;
+    box-shadow: 0 4px 16px rgba(255, 193, 7, 0.3);
+    background: #fafbfc;
+    transition: transform 0.3s ease;
+}
+
+.swabe-trend-img-round:hover {
+    transform: scale(1.05);
+}
+
+.swabe-trend-label { 
+    font-size: 16px; 
+    color: #222; 
+    margin: 8px 0; 
+    font-weight: 600; 
+}
+
+.swabe-trend-price { 
+    color: #ffc107; 
+    font-weight: 700; 
+    font-size: 18px; 
     margin-bottom: 16px;
-    color: #000;
-    line-height: 1.4;
-  }
-  .swabe-facebook-btn {
-    display: inline-block;
-    background: #000;
+}
+
+.swabe-trend-next-btn {
+    margin-top: 16px;
+    padding: 12px 0;
+    background: linear-gradient(135deg, #222 0%, #333 100%);
     color: #fff;
-    font-weight: bold;
-    border-radius: 8px; 
-    padding: 10px 18px;
-    text-decoration: none;
-    font-size: 12px; 
-    margin-bottom: 12px; 
-    transition: background 0.2s, color 0.2s;
-    border: 1px solid #000 !important;
-  }
-  .swabe-facebook-btn:hover {
-    background: #fff;
-    color: #000;
-    border: 1px solid #000 !important;
-  }
-  .swabe-facebook-handle {
-    font-size: 12px; 
-    color: #666;
-    margin-top: 4px;
-  }
-  .swabe-trends-title {
-    font-size: 16px;
-    margin-bottom: 16px;
-  }
-  
-  .swabe-trends-grid {
-    gap: 12px;
-  }
-  
-  .swabe-trend-item {
-    font-size: 12px;
-    padding: 12px;
-  }
-  
-  .swabe-trend-label {
-    font-size: 12px;
-  }
-  
-  .swabe-trend-price {
-    font-size: 14px;
-  }
-  
-  .swabe-trend-next-btn {
-    margin-top: 12px;
-    padding: 8px 12px;
-    background: #000;         
-    color: #fff;             
     border: none;
-    border-radius: 6px;
-    font-size: 11px;
+    border-radius: 12px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    width: 100%;             
-    max-width: 100px;         
-    display: block;         
-  }
-  
-  .swabe-trend-next-btn:hover {
-    background: #fff;        
-    color: #000;          
-    border: 1px solid #000; 
-  }
-  @media (max-width: 900px) {
-    .swabe-hero-container {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .swabe-main-row { flex-direction: column; gap: 12px; }
-    .swabe-card { max-width: 100%; min-width: 0; margin: 0 0 8px 0; }
-    .swabe-carousel { min-width: 0; max-width: 100%; }
-    .swabe-bottom-bar { flex-direction: column; gap: 6px; }
-  }
-  .swabe-custom-carousel {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     width: 100%;
-    max-width: 100%; 
-    margin: 0 auto;
-    height: 100%;
-  }
-  
-  .swabe-custom-carousel .carousel-inner,
-  .swabe-custom-carousel .carousel-item {
-    width: 100% !important;
-    height: 100% !important;
-  }
-  
-  .swabe-carousel-img {
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .swabe-raffle-3rd, .swabe-raffle-2nd {
-    height: 100px;
-  }
-  .swabe-raffle-1st {
-    height: 100px;
-  }
+    max-width: 120px;
+    display: block;
+}
+
+.swabe-trend-next-btn:hover {
+    background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+.swabe-raffle-3rd, .swabe-raffle-2nd, .swabe-raffle-1st {
+    height: 120px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .swabe-hero-container {
+        max-width: 100%;
+        margin: 0 16px;
+        border-radius: 12px;
+    }
+    
+    .swabe-top-bar {
+        padding: 20px 20px 16px 20px;
+        font-size: 14px;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .swabe-top-bar > div:not(:last-child)::after {
+        display: none;
+    }
+    
+    .swabe-main-row {
+        padding: 24px 20px 20px 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .swabe-carousel-wide {
+        max-width: 100%;
+    }
+    
+    .swabe-bottom-bar {
+        padding: 20px 20px 20px 20px;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .swabe-raffle {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .swabe-code-btn {
+        width: 100%;
+    }
+}
