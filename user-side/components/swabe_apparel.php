@@ -126,7 +126,6 @@ try {
 </div>
 
 <script>
-// Make trends data available to the external JavaScript file
 window.trendsData = <?php echo json_encode($trends); ?>;
 </script>
 
