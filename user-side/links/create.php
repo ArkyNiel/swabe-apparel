@@ -14,7 +14,7 @@
             min-height: 100vh;
         }
         .auth-branding {
-            background: #f8f9fa;
+            background: #172532;
         }
         .brand-logo {
             max-width: 120px;
@@ -29,8 +29,8 @@
             <!-- Branding -->
             <div class="col-md-6 d-none d-md-flex flex-column align-items-center justify-content-center auth-branding">
                 <img src="../../assets/img/logo.jpg" alt="Swabe Apparel Logo" class="brand-logo mb-3">
-                <h3 class="fw-bold text-center">SWABE APPAREL</h3>
-                <p class="text-muted text-center px-4">Find your fashion. Shop the latest trends with us!</p>
+                <h3 class="fw-bold text-center" style="color: #fff !important;">SWABE APPAREL</h3>
+                <p class="text-muted text-center px-4" style="color: #fff !important;">Find your fashion. Shop the latest trends with us!</p>
             </div>
             <!-- Create Account Form -->
             <div class="col-md-6 bg-white d-flex align-items-center justify-content-center">
@@ -67,7 +67,7 @@
                                 </button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark w-100" style="background: #000 !important; border: 1px solid #000 !important;">Create Account</button>
+                        <button type="submit" class="btn btn-dark w-100" style="background: #172532 !important; border: 1px solid #000 !important;">Create Account</button>
                     </form>
                     <div class="mt-3 text-center">
                         <a href="login.php" class="text-decoration-none">Already have an account? Log in</a>
