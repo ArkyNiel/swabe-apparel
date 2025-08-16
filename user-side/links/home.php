@@ -20,7 +20,6 @@
 
 <body>
     <?php include('../components/navigation_bar.php'); ?>
-    
     <?php
     include '../../back-end/user-side/get_products.php';
     $bannerProductsData = getProducts($conn, 0, 24, '../uploads/'); // fetch latest 24 products
@@ -35,8 +34,7 @@
                     <button type="button" class="btn-close" onclick="closeSwabeModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
-                    <?php include('../components/swabe_apparel.php'); ?>
-                </div>
+                </div>   
             </div>
         </div>
     </div>
