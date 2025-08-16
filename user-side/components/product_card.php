@@ -17,7 +17,7 @@
     <div class="card-actions d-flex justify-content-between align-items-center mt-2">
         <h5 class="product-price ">₱<?php echo htmlspecialchars($product['price']); ?></h5>
         <div>
-            <button class="btn favorite-btn" title="Add to Favorites">
+            <button class="btn favorite-btn" title="Add to Favorites" >
                 <i class="far fa-heart"></i>
             </button>
             <button 
@@ -28,7 +28,7 @@
                 data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
                 data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
             >
-                <i class="fas fa-cart-shopping"></i>
+                <i class="fas fa-cart-shopping" style="color: #101820 !important;"></i>
             </button>
         </div>
     </div>

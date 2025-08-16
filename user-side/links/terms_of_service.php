@@ -14,7 +14,7 @@
     <div class="container py-3 mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="mb-5 p-5 rounded bg-dark" style="background: #000 !important; color: #fff !important;">
+                <div class="mb-5 p-5 rounded bg-dark" style="background: #101820 !important; color: #fee715 !important;">
                     <div class="text-center mb-3">
                         <h1 class="display-4 fw-bold mb-2" style="color: #fff !important;">Terms of Service</h1>
                         <p class="lead mb-0">Last Updated: March 2024</p>
