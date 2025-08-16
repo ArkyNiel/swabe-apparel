@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+<style>
+    body {
+        background-color: #fcfcea !important;
+    }
+</style>
 
 <body>
     <?php include('../components/navigation_bar.php'); ?>
