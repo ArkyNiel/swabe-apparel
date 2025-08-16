@@ -14,7 +14,7 @@
             min-height: 100vh;
         }
         .auth-branding {
-            background: #172532;
+            background: #101820;
         }
         .brand-logo {
             max-width: 120px;
@@ -25,11 +25,11 @@
 <body>
 <?php include('../components/loader.php'); ?>
     <div class="container-fluid auth-container d-flex align-items-center justify-content-center">
-        <div class="row w-100 shadow rounded-1 overflow-hidden" style="max-width: 800px; background: #172532 !important;">
+        <div class="row w-100 shadow rounded-1 overflow-hidden" style="max-width: 900px; background: #101820 !important;">
             <!-- Branding -->
             <div class="col-md-6 d-none d-md-flex flex-column align-items-center justify-content-center auth-branding">
                 <img src="../../assets/img/logo.jpg" alt="Swabe Apparel Logo" class="brand-logo mb-3">
-                <h3 class="fw-bold text-center" style="color: #fff !important;">SWABE APPAREL</h3>
+                <h3 class="fw-bold text-center" style="color: #fee715 !important;">SWABE APPAREL</h3>
                 <p class="text-muted text-center px-4" style="color: #fff !important;">Find your fashion. Shop the latest trends with us!</p>
             </div>
             <!-- Login Form -->
@@ -54,12 +54,12 @@
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="password" name="password" required>
-                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <button class="btn" type="button" id="togglePassword">
                                     <i class="fas fa-eye" id="eyeIcon"></i>
                                 </button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark w-100" style="background: #172532 !important; border: 1px solid #000 !important;">Login</button>
+                        <button type="submit" class="btn btn-dark w-100" style="background: #101820 !important; border: 1px solid #000 !important;">Login</button>
                     </form>
 
                     <div class="mt-3 text-center">

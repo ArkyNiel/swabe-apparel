@@ -26,7 +26,7 @@ session_start();
                 <div class="search-container flex-grow-1 mx-4">
                     <form class="d-flex" role="search" id="searchForm" action="../../user-side/links/search_result.php" method="get">
                         <div class="input-group">
-                            <input class="form-control" type="search" placeholder="Search products..." style="color: #fff !important;"
+                            <input class="form-control" type="search" placeholder="Search products..." style="color: #101820 !important;"
                                 aria-label="Search" id="searchInput" autocomplete="off" name="search">
                             <button class="btn btn-dark" type="submit" style= "background: #fee715 !important; border: 1px solid #fee715 !important; color: #101820 !important; ">
                                 <i class="fas fa-search" style="color: #101820 !important;"></i> Search
