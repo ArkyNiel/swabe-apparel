@@ -19,6 +19,7 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #fcfcea !important;
 }
 body {
     min-height: 100vh;
