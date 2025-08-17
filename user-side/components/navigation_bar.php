@@ -6,15 +6,6 @@ session_start();
 <link rel="stylesheet" href="../../assets/css/navbar.css">
 
 <style>
-#searchInput {
-    border: 1px solid #172532 !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-#searchInput:focus {
-    border: 1px solid #172532 !important;
-    outline: none !important;
-}
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column pt-1" style="margin-bottom: -20px; background: #101820 !important;">

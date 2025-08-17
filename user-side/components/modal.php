@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 800px;">
         <div class="modal-content border-0 rounded-3 shadow-lg">
             <button type="button" class="btn-close position-absolute end-0 top-0 m-3 bg-white rounded-circle p-2" 
-                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; background-color: #ffc107;">
+                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; background-color: #fee715;">
                 <span class="visually-hidden">Close</span>
             </button>
             <div class="modal-body d-flex flex-column flex-md-row p-0">
@@ -61,7 +61,7 @@
                     
                     <div class="mt-auto">
                         <button type="button" class="btn btn-outline-secondary btn-outline-gold w-100 py-3 rounded-3 fw-semibold" 
-                            data-bs-dismiss="modal" style="border-width: 1px; border-color: #ffc107; color: #ffc107;">
+                            data-bs-dismiss="modal" style="border-width: 1px; border-color: #fee715; color: #fee715;">
                             <i class="fas fa-times me-2"></i>Close
                         </button>
                     </div>
