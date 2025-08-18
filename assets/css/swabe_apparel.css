@@ -1,14 +1,14 @@
 .swabe-hero-container {
     width: 100%;
-    max-width: 1700px;
+    max-width: 1400px;
     margin: 0 auto;
     background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
     padding: 0;
     color: #222;
     height: auto;
-    min-height: 600px;
+    min-height: 650px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -20,11 +20,11 @@
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    padding: 24px 32px 20px 32px;
-    font-size: 16px;
+    padding: 28px 40px 24px 40px;
+    font-size: 15px;
     border-bottom: 2px solid #f0f0f0;
-    gap: 16px;
-    border-radius: 16px 16px 0 0;
+    gap: 20px;
+    border-radius: 20px 20px 0 0;
     flex-shrink: 0;
 }
 
@@ -68,8 +68,8 @@
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    padding: 32px 32px 24px 32px;
-    gap: 24px;
+    padding: 36px 40px 28px 40px;
+    gap: 28px;
     background: #fff;
     flex: 1 1 auto;
     min-height: 0;
@@ -81,10 +81,10 @@
 .swabe-raffle {
     border: 2px solid #f8f9fa !important;
     background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    padding: 24px 20px;
-    min-width: 180px;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    padding: 28px 24px;
+    min-width: 200px;
     flex: 1 1 0;
     margin: 0;
     height: auto;
@@ -104,8 +104,8 @@
 }
 
 .swabe-carousel-wide {
-    flex: 2 1 0;
-    max-width: 450px;
+    flex: 2.5 1 0;
+    max-width: 500px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -115,9 +115,9 @@
 .swabe-carousel-img {
     width: 100% !important;
     height: auto !important;
-    max-height: 300px;
+    max-height: 320px;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 18px;
     background: #fafbfc;
     transition: transform 0.3s ease;
 }
@@ -132,24 +132,24 @@
     justify-content: space-between;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border-top: 2px solid #f0f0f0 !important;
-    padding: 24px 32px 24px 32px;
+    padding: 28px 40px 28px 40px;
     margin-top: 0;
-    font-size: 16px;
-    gap: 20px;
+    font-size: 15px;
+    gap: 24px;
     flex-shrink: 0;
-    border-radius: 0 0 16px 16px;
+    border-radius: 0 0 20px 20px;
 }
 
 .swabe-raffle {
     background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border-radius: 16px;
-    padding: 20px 16px;
+    border-radius: 18px;
+    padding: 24px 20px;
     text-align: center;
     font-weight: 500;
-    min-width: 160px;
-    width: 160px;
+    min-width: 170px;
+    width: 170px;
     border: 2px solid #f8f9fa !important;
-    height: 120px;
+    height: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -209,14 +209,14 @@
 .swabe-facebook-promo {
     text-align: center;
     background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
     border: 2px solid #f8f9fa;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: auto;
-    padding: 28px 20px;
+    padding: 32px 24px;
 }
 
 .swabe-logo-title { 
@@ -224,13 +224,13 @@
 }
 
 .swabe-logo-img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #ffc107 !important;
+    border: 4px solid #ffc107 !important;
     background: #fff;
-    box-shadow: 0 4px 16px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
     transition: transform 0.3s ease;
 }
 
@@ -290,10 +290,10 @@
 
 .swabe-trend-item {
     background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 18px;
+    padding: 24px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.08);
     border: 2px solid #f8f9fa;
     flex: 1;
     display: flex;
@@ -310,15 +310,15 @@
 }
 
 .swabe-trend-img-round {
-    width: 100px !important;
-    height: 100px !important;
+    width: 110px !important;
+    height: 110px !important;
     aspect-ratio: 1 / 1;
     border-radius: 50% !important;
     object-fit: cover;
-    border: 3px solid #ffc107 !important;
-    margin: 0 auto 16px auto;
+    border: 4px solid #ffc107 !important;
+    margin: 0 auto 20px auto;
     display: block;
-    box-shadow: 0 4px 16px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
     background: #fafbfc;
     transition: transform 0.3s ease;
 }
@@ -366,21 +366,22 @@
 }
 
 .swabe-raffle-3rd, .swabe-raffle-2nd, .swabe-raffle-1st {
-    height: 120px;
+    height: 130px;
 }
 
 @media (max-width: 768px) {
     .swabe-hero-container {
         max-width: 100%;
         margin: 0 16px;
-        border-radius: 12px;
+        border-radius: 16px;
+        min-height: 700px;
     }
     
     .swabe-top-bar {
-        padding: 20px 20px 16px 20px;
+        padding: 24px 24px 20px 24px;
         font-size: 14px;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
     }
     
     .swabe-top-bar > div:not(:last-child)::after {
@@ -388,28 +389,37 @@
     }
     
     .swabe-main-row {
-        padding: 24px 20px 20px 20px;
+        padding: 28px 24px 24px 24px;
         flex-direction: column;
-        gap: 20px;
+        gap: 24px;
     }
     
     .swabe-carousel-wide {
         max-width: 100%;
+        order: -1;
     }
     
     .swabe-bottom-bar {
-        padding: 20px 20px 20px 20px;
+        padding: 24px 24px 24px 24px;
         flex-direction: column;
-        gap: 16px;
+        gap: 20px;
     }
     
     .swabe-raffle {
         width: 100%;
         min-width: auto;
+        height: 100px;
     }
     
     .swabe-code-btn {
         width: 100%;
+        height: 50px;
+    }
+    
+    .swabe-card,
+    .swabe-facebook-promo,
+    .swabe-top-trends {
+        padding: 24px 20px;
     }
 }
 
