@@ -6,6 +6,7 @@
     <title>LOCATION | SWABE APPAREL</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom_navbar.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -49,7 +50,7 @@ body {
 </style>
 
 <body>
-    <?php include('components/navigation_bar.php'); ?>
+    <?php include('../components/navigation_bar.php'); ?>
     <?php include('../components/loader.php'); ?>
 
     <div class="content-wrapper">
@@ -72,7 +73,7 @@ body {
                 <div class="col-md-4">
                     <div class="card h-100">
                         <img src="../../assets/img/banner1.jpg" class="card-img-top" alt="Storefront">
-                        <div class="card-body text-center" style="background: #000 !important; color: #fff !important;" >
+                        <div class="card-body text-center" style="background: #101820 !important; color: #fff !important;" >
                             <h5 class="card-title mt-2">Storefront</h5>
                             <p class="card-text">The main entrance of Swabe Apparel along Rizal Avenue.</p>
                         </div>
@@ -81,7 +82,7 @@ body {
                 <div class="col-md-4">
                     <div class="card h-100">
                         <img src="../../assets/img/insideview-1.jpg" class="card-img-top" alt="Inside View">
-                        <div class="card-body text-center" style="background: #000 !important; color: #fff !important;" >
+                        <div class="card-body text-center" style="background: #101820 !important; color: #fff !important;" >
                             <h5 class="card-title mt-2">Inside View</h5>
                             <p class="card-text">A glimpse of our cozy and stylish interior.</p>
                         </div>
@@ -90,7 +91,7 @@ body {
                 <div class="col-md-4">
                     <div class="card h-100">
                         <img src="../../assets/img/front.png" class="card-img-top" alt="Nearby Landmark">
-                        <div class="card-body text-center" style="background: #000 !important; color: #fff !important;" >
+                        <div class="card-body text-center" style="background: #101820 !important; color: #fff !important;" >
                             <h5 class="card-title mt-2">Nearby Landmark</h5>
                             <p class="card-text">Located near Mc Donald for your convenience.</p>
                         </div>
@@ -101,22 +102,8 @@ body {
     </div>
 
 
-    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
-        <div class="container text-center">
-            <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
-            <br>
-            <a href="privacy_policy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
-                Policy</a>
-            <a href="terms_of_service.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
-                Service</a>
-        </div>
-    </footer>
+    <?php include('../components/footer.php'); ?>
 
-    <style>
-        footer a:hover {
-            text-decoration: underline !important;
-        }
-    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
