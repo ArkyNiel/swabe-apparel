@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
     <link rel="stylesheet" href="../../assets/css/about-us.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>    
-    <?php include('components/navigation_bar.php'); ?>
+    <?php include('../components/navigation_bar.php'); ?>
     <?php include('../components/loader.php'); ?>
     
     <!--contents-->
     <div class="container py-3 mt-5">
         <div class="row justify-content-center" >
             <div class="col-lg-8" >
-                <div class="mb-5 p-5 rounded aboutus-bg" style="background: #000 !important; color: #fff !important;">
+                <div class="mb-5 p-5 rounded aboutus-bg" style="background: #101820 !important; color: #fcfcea  !important;">
                     <div class="text-center mb-3" >
-                        <h1 class="display-4 fw-bold mb-2" style="color: #fff !important;">About Swabe Apparel</h1>
+                        <h1 class="display-4 fw-bold mb-2" style="color: #fcfcea !important;">About Swabe Apparel</h1>
                         <p class="lead mb-0">Express Your Unique Style with Confidence and Comfort</p>
                     </div>
                     <p class="fs-5 text-center mb-0">
@@ -81,22 +82,8 @@
         </div>
     </div>
 
-    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
-        <div class="container text-center">
-            <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
-            <br>
-            <a href="privacy_policy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
-                Policy</a>
-            <a href="terms_of_service.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
-                Service</a>
-        </div>
-    </footer>
+    <?php include('../components/footer.php'); ?>
 
-    <style>
-        footer a:hover {
-            text-decoration: underline !important;
-        }
-    </style>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

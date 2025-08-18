@@ -20,7 +20,6 @@ try {
 }
 ?>
 
-<link rel="stylesheet" href="../../assets/css/swabe_apparel.css">
 <script src="../../assets/js/card_cycler.js"></script>
 
 <div class="swabe-hero-container mt-5" >
