@@ -548,3 +548,92 @@
         width: 100%;
     }
 }
+
+/* Banner Modal Styles - Minimal Black & White */
+.swabe-banner-modal {
+    background: #ffffff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.swabe-banner-modal-header {
+    background: #000000;
+    color: #ffffff;
+    border-bottom: 1px solid #333333;
+    padding: 20px 30px;
+    border-radius: 0;
+}
+
+.swabe-banner-modal-header .modal-title {
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.swabe-banner-close {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 300;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swabe-banner-close:hover {
+    opacity: 1;
+    color: #ffffff;
+}
+
+.swabe-banner-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.swabe-banner-modal-body {
+    padding: 0;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.swabe-banner-modal-img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    display: block;
+}
+
+.modal-backdrop.show {
+    opacity: 0.9;
+    background-color: #000000;
+}
+
+@media (max-width: 768px) {
+    .swabe-banner-modal-header {
+        padding: 15px 20px;
+    }
+    
+    .swabe-banner-modal-header .modal-title {
+        font-size: 16px;
+    }
+    
+    .swabe-banner-modal-body {
+        min-height: 50vh;
+    }
+    
+    .swabe-banner-modal-img {
+        max-height: 70vh;
+    }
+}
