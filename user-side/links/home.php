@@ -17,10 +17,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+<style>
+    body {
+        background-color: #fcfcea !important;
+    }
+</style>
 
 <body>
     <?php include('../components/navigation_bar.php'); ?>
-    
     <?php
     include '../../back-end/user-side/get_products.php';
     $bannerProductsData = getProducts($conn, 0, 24, '../uploads/'); // fetch latest 24 products
@@ -35,8 +39,7 @@
                     <button type="button" class="btn-close" onclick="closeSwabeModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
-                    <?php include('../components/swabe_apparel.php'); ?>
-                </div>
+                </div>   
             </div>
         </div>
     </div>
@@ -54,14 +57,14 @@
         ?>
     </div>
 
-    <div class="section-content" style="background: #000 !important; height: 52vh; padding-top: -70px; padding-left: 100px; padding-right: 100px;" id="section-content"
+    <div class="section-content" style="background: #101820 !important; height: 52vh; padding-top: -70px; padding-left: 100px; padding-right: 100px;" id="section-content"
         style="margin-top: -120px;">
         <div class="row w-100">
             <div class="col-md-6 left-column" style="padding: 100px;">
                 <div class="content-wrapper" style="max-width: 500px;">
-                    <h1 class="text-warning">Find Your Style</h1>
-                    <h1 class="text-white">Discover the latest trends and exclusive collections at Swabe Apparel</h1>
-                    <p class="text-white">Elevate your wardrobe with our carefully curated selection of premium clothing. From casual essentials to statement pieces, find the perfect addition to your style.</p>
+                    <h1 class="text-warning" style="color: #fee715 !important;">Find Your Style</h1>
+                    <h1 class="text-white" style="color: #fee715 !important;">Discover the latest trends and exclusive collections at Swabe Apparel</h1>
+                    <p class="text-white" >Elevate your wardrobe with our carefully curated selection of premium clothing. From casual essentials to statement pieces, find the perfect addition to your style.</p>
                 </div>
             </div>
             <div class="col-md-6 right-column d-flex align-items-center">
@@ -69,37 +72,37 @@
                     <div class="row">
                         <div class="col-4 mb-4">
                             <div class="feature-icon-wrapper">
-                                <i class="fas fa-tshirt fa-3x text-warning mb-3"></i>
+                                <i class="fas fa-tshirt fa-3x mb-3" style="color: #fee715 !important;"></i>
                                 <p class="text-white">Premium Quality</p>
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="feature-icon-wrapper">
-                                <i class="fas fa-truck-fast fa-3x text-warning mb-3"></i>
+                                <i class="fas fa-truck-fast fa-3x mb-3" style="color: #fee715 !important;"></i>
                                 <p class="text-white">Fast Delivery</p>
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="feature-icon-wrapper">
-                                <i class="fas fa-tags fa-3x text-warning mb-3"></i>
+                                <i class="fas fa-tags fa-3x mb-3" style="color: #fee715 !important;"></i>
                                 <p class="text-white">Best Prices</p>
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="feature-icon-wrapper">
-                                <i class="fas fa-undo fa-3x text-warning mb-3"></i>
+                                <i class="fas fa-undo fa-3x mb-3" style="color: #fee715 !important;"></i>
                                 <p class="text-white">Easy Returns</p>
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="feature-icon-wrapper">
-                                <i class="fas fa-shield-alt fa-3x text-warning mb-3"></i>
+                                <i class="fas fa-shield-alt fa-3x mb-3" style="color: #fee715 !important;"></i>
                                 <p class="text-white">Secure Shopping</p>
                             </div>
                         </div>
                         <div class="col-4 mb-4">
                             <div class="feature-icon-wrapper">
-                                <i class="fas fa-headset fa-3x text-warning mb-3"></i>
+                                <i class="fas fa-headset fa-3x mb-3" style="color: #fee715 !important;"></i>
                                 <p class="text-white">24/7 Support</p>
                             </div>
                         </div>
@@ -134,8 +137,8 @@
             ?>
         </div>
         <!-- Load More Button -->
-        <div class="text-center my-4" id="load-more-container">
-            <button id="load-more-btn" class="btn btn-primary" style="background: #000 !important; border: 1px solid #000 !important;">
+        <div class="text-center my-4" id="load-more-container" >
+            <button id="load-more-btn" class="btn btn-primary" style="background: #101820 !important; border: 1px solid #101820 !important;">
                 <i class="fas fa-chevron-down"></i> Load More
             </button>
         </div>
@@ -158,40 +161,39 @@
     <script src="../../assets/js/cards.js"></script>
     <script src="../../assets/js/add_to_cart.js"></script>
     
-    <!-- Simple modal script -->
     <script>
-        // Global function to close modal
         function closeSwabeModal() {
             const modal = document.getElementById('swabeModal');
             const backdrop = document.getElementById('modalBackdrop');
             
-            // Hide modal and backdrop
+            // bug sa backdrop
             modal.style.display = 'none';
-            modal.classList.remove('show');
             backdrop.style.display = 'none';
-            backdrop.classList.remove('show');
             
-            // Remove modal-open class from body
+            modal.classList.remove('show', 'fade');
+            backdrop.classList.remove('show', 'fade');
+            
             document.body.classList.remove('modal-open');
             
-            // Remove any inline styles that might cause issues
             modal.removeAttribute('style');
             backdrop.removeAttribute('style');
+            
+            backdrop.style.zIndex = '-1';
+            
+            backdrop.style.backgroundColor = 'transparent';
+            backdrop.style.background = 'transparent';
         }
         
-        // Auto-show modal on page load
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('swabeModal');
             const backdrop = document.getElementById('modalBackdrop');
             
-            // Show modal immediately
             modal.style.display = 'block';
             modal.classList.add('show');
             backdrop.style.display = 'block';
             backdrop.classList.add('show');
             document.body.classList.add('modal-open');
             
-            // Close modal when clicking outside
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     closeSwabeModal();

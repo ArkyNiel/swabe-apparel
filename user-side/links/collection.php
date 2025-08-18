@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../assets/css/cards_hover.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="../../assets/css/cards_radius.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -90,23 +91,7 @@ footer a:hover {
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
 
-    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
-        <div class="container text-center">
-            <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
-            <br>
-            <a href="privacy_policy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
-                Policy</a>
-            <a href="terms_of_service.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
-                Service</a>
-        </div>
-    </footer>
-
-    <style>
-        footer a:hover {
-            text-decoration: underline !important;
-        }
-    </style>
-
+    <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
 </body>

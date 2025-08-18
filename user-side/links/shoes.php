@@ -19,6 +19,7 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #fcfcea !important;
 }
 body {
     min-height: 100vh;
@@ -88,24 +89,7 @@ footer a:hover {
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
 
-
-    <footer class="footer bg-dark text-white py-5 mt-5" style="font-size: 0.95rem; background: #000 !important; ">
-        <div class="container text-center">
-            <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
-            <br>
-            <a href="privacy_policy.php" class="text-warning text-decoration-none mx-2" target="_blank">Privacy
-                Policy</a>
-            <a href="terms_of_service.php" class="text-warning text-decoration-none mx-2" target="_blank">Terms of
-                Service</a>
-        </div>
-    </footer>
-
-    <style>
-        footer a:hover {
-            text-decoration: underline !important;
-        }
-    </style>
-
+    <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
 </body>

@@ -8,13 +8,18 @@
     <title>Sign Up for swabe apparel</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom-navbar.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        body {
+            background-color: #fcfcea;
+        }
+
         .auth-container {
             min-height: 100vh;
         }
         .auth-branding {
-            background: #f8f9fa;
+            background: #101820;
         }
         .brand-logo {
             max-width: 120px;
@@ -29,12 +34,12 @@
             <!-- Branding -->
             <div class="col-md-6 d-none d-md-flex flex-column align-items-center justify-content-center auth-branding">
                 <img src="../../assets/img/logo.jpg" alt="Swabe Apparel Logo" class="brand-logo mb-3">
-                <h3 class="fw-bold text-center">SWABE APPAREL</h3>
-                <p class="text-muted text-center px-4">Find your fashion. Shop the latest trends with us!</p>
+                <h3 class="fw-bold text-center" style="color: #fee715 !important;">SWABE APPAREL</h3>
+                <p class="text-muted text-center px-4" style="color: #fff !important;">Find your fashion. Shop the latest trends with us!</p>
             </div>
             <!-- Create Account Form -->
             <div class="col-md-6 bg-white d-flex align-items-center justify-content-center">
-                <div class="w-100 p-4" style="max-width: 450px;">
+                <div class="w-100 p-4" style="max-width: 450px;" >
                     <h2 class="mb-4 text-center">Create Account</h2>
 
                     <?php if (isset($_SESSION['alert'])): ?>
@@ -53,7 +58,7 @@
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="password" name="password" required minlength="6">
-                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <button class="btn" type="button" id="togglePassword">
                                     <i class="fas fa-eye" id="eyeIcon"></i>
                                 </button>
                             </div>
@@ -62,12 +67,12 @@
                             <label for="confirm_password" class="form-label">Confirm Password</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" required minlength="6">
-                                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                <button class="btn" type="button" id="toggleConfirmPassword">
                                     <i class="fas fa-eye" id="confirmEyeIcon"></i>
                                 </button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark w-100" style="background: #000 !important; border: 1px solid #000 !important;">Create Account</button>
+                        <button type="submit" class="btn btn-dark w-100" style="background: #172532 !important; border: 1px solid #101820 !important;">Create Account</button>
                     </form>
                     <div class="mt-3 text-center">
                         <a href="login.php" class="text-decoration-none">Already have an account? Log in</a>
