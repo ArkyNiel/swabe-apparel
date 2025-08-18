@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../assets/css/cart.css">
     <link rel="stylesheet" href="../../assets/css/modal.css">
     <link rel="stylesheet" href="../../assets/css/cards_radius.css">
+    <link rel="stylesheet" href="../../assets/css/swabe_apparel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -39,6 +40,7 @@
                     <button type="button" class="btn-close" onclick="closeSwabeModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
+                    <?php include('../components/swabe_apparel.php'); ?>
                 </div>   
             </div>
         </div>

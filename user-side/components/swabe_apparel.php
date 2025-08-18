@@ -22,8 +22,8 @@ try {
 
 <script src="../../assets/js/card_cycler.js"></script>
 
-<div class="swabe-hero-container mt-5" >
-  <div class="swabe-top-bar">
+<div class="swabe-hero-container mt-5" style="background: #fcfcea;">
+  <div class="swabe-top-bar" style="color: #101820;">
     <div><i class="fa fa-bullhorn"></i> <b>We're Open</b> <span>Monday to Sunday</span></div>
     <div class="swabe-separator">|</div>
     <div><i class="fa fa-clock"></i> <b>Time</b> <span>9am to 8pm</span></div>
@@ -80,8 +80,8 @@ try {
       </div>
     </div>
 
-    <div class="swabe-card swabe-top-trends" style="box-shadow:none; border:none; background:#fafafa;">
-      <div class="swabe-trends-title" style="font-size:22px; margin-bottom:10px; color:#222; letter-spacing:1px;">Top <b>Trends</b></div>
+    <div class="swabe-card swabe-top-trends" style="box-shadow:none; border:none; background:#fcfcea;">
+      <div class="swabe-trends-title" style="font-size:22px; margin-bottom:10px; color:#101820; letter-spacing:1px;">Top <b>Trends</b></div>
       <div class="swabe-trends-grid" style="grid-template-columns: 1fr;">
         <div class="swabe-trend-item" style="border:none; box-shadow:none; background:transparent; padding:0; display:flex; flex-direction:column; align-items:center;">
           <?php if (!empty($trends)): ?>
@@ -89,16 +89,16 @@ try {
                  alt="Trend Product" 
                  class="swabe-trend-img-round"
                  onerror="this.src='../../assets/img/temp1.jpg'">
-            <div class="swabe-trend-label" style="font-size:18px; color:#222; margin:1px 0 6px 0; font-weight:600;">
+            <div class="swabe-trend-label" style="font-size:18px; color:#101820; margin:1px 0 6px 0; font-weight:600;">
               <?php echo htmlspecialchars($trends[0]['product_name']); ?>
             </div>
-            <div class="swabe-trend-price" style="font-size:20px; color:#ffc107; font-weight:700;">
+            <div class="swabe-trend-price" style="font-size:20px; color:#fee715; font-weight:700;">
               ₱<?php echo htmlspecialchars($trends[0]['product_price']); ?>
             </div>
           <?php else: ?>
             <img src="../../assets/img/temp1.jpg" alt="Trend Product" class="swabe-trend-img-round">
-            <div class="swabe-trend-label" style="font-size:18px; color:#222; margin:1px 0 6px 0; font-weight:600;">Product Name</div>
-            <div class="swabe-trend-price" style="font-size:20px; color:#ffc107; font-weight:700;">₱999</div>
+            <div class="swabe-trend-label" style="font-size:18px; color:#101820; margin:1px 0 6px 0; font-weight:600;">Product Name</div>
+            <div class="swabe-trend-price" style="font-size:20px; color:#fee715; font-weight:700;">₱999</div>
           <?php endif; ?>
           <button class="swabe-trend-next-btn mt-0" onclick="nextTrend()">Next</button>
         </div>
