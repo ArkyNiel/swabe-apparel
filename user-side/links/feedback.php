@@ -1,5 +1,4 @@
 <?php 
-define('LOADER_INCLUDED', true);
 include("../../back-end/user-side/session_check.php");
 ?>
 
@@ -13,13 +12,16 @@ include("../../back-end/user-side/session_check.php");
     <title>Swabe apparel - feedback</title>
     <link rel="stylesheet" href="../../assets/bootswatch/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/custom_navbar.css">
+    <link rel="stylesheet" href="../../assets/css/global.css">
     <style>
+
+
     .auth-container {
         min-height: 100vh;
     }
 
     .auth-branding {
-        background: #f8f9fa;
+        background: #101820;
     }
 
     .brand-logo {
@@ -47,8 +49,8 @@ include("../../back-end/user-side/session_check.php");
             <!-- Branding -->
             <div class="col-md-6 d-none d-md-flex flex-column align-items-center justify-content-center auth-branding">
                 <img src="../../assets/img/logo.jpg" alt="Swabe Apparel Logo" class="brand-logo mb-3">
-                <h3 class="fw-bold text-center">SWABE APPAREL</h3>
-                <p class="text-muted text-center px-4">Let swabe apparel know your shopping experience through checking
+                <h3 class="fw-bold text-center" style="color: #fee715">SWABE APPAREL</h3>
+                <p class="text-white text-center px-4">Let swabe apparel know your shopping experience through checking
                     online!</p>
             </div>
             <!-- Feedback Form -->
@@ -87,7 +89,7 @@ include("../../back-end/user-side/session_check.php");
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-submit" style="background: #000 !important; border: 1px solid #000 !important;">
+                        <button type="submit" class="btn btn-primary btn-submit" style="background: #101820 !important; border: 1px solid #101820 !important;">
                             Submit Feedback
                         </button>
                     </form>
