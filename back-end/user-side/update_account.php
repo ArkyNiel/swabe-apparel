@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'type' => 'warning',
             'message' => 'Password must be at least 6 characters long!'
         ];
-        header('Location: ../../user-side/links/manageaccount.php');
+        header('Location: ../../user-side/links/manage_account.php');
         exit;
     }
     
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
     }
     
-    header('Location: ../../user-side/links/manageaccount.php');
+    header('Location: ../../user-side/links/manage_account.php');
     exit;
 }
 ?>

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
             
             // path
-            header('Location: ../../user-side/home.php');
+            header('Location: ../../user-side/links/home.php');
             exit;
         } else {
             $_SESSION['alert'] = [

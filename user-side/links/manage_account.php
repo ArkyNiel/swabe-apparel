@@ -1,5 +1,4 @@
 <?php 
-  session_start();
   include("../../back-end/user-side/session_check.php");
 ?>
 
@@ -15,12 +14,14 @@
     <link rel="stylesheet" href="../../assets/css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+ 
+
     .auth-container {
         min-height: 100vh;
     }
 
     .auth-branding {
-        background: #f8f9fa;
+        background: #101820 !important;
     }
 
     .brand-logo {
@@ -54,8 +55,8 @@
             <!-- Branding -->
             <div class="col-md-6 d-none d-md-flex flex-column align-items-center justify-content-center auth-branding">
                 <img src="../../assets/img/logo.jpg" alt="Swabe Apparel Logo" class="brand-logo mb-3">
-                <h3 class="fw-bold text-center">SWABE APPAREL</h3>
-                <p class="text-muted text-center px-4">Configure your account</p>
+                <h3 class="fw-bold text-center" style="color: #fee715 !important;">SWABE APPAREL</h3>
+                <p class="text-white text-center px-4">Configure your account</p>
             </div>
 
             <!-- Manage Account Form -->
@@ -87,7 +88,7 @@
                     <?php unset($_SESSION['alert']); ?>
                     <?php endif; ?>
 
-                    <form action="../../back-end/user-side/update_account_process.php" method="POST" autocomplete="off">
+                    <form action="../../back-end/user-side/update_account.php" method="POST" autocomplete="off">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" id="username" name="username" required>
@@ -107,7 +108,7 @@
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                 required minlength="6">
                         </div>
-                        <button type="submit" class="btn btn-dark w-100" style="background: #000 !important; border: 1px solid #000 !important;">Update Account</button>
+                        <button type="submit" class="btn btn-dark w-100" style="background: #101820 !important; border: 1px solid #101820 !important;">Update Account</button>
                     </form>
                 </div>
             </div>
