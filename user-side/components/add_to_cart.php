@@ -4,8 +4,8 @@
 <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content p-0">
-      <div class="modal-title-bar position-relative py-3">
-        <h5 class="modal-title text-center w-100 m-0" id="addToCartModalLabel" style="font-weight:600; letter-spacing:1px;">Add to Cart</h5>
+      <div class="modal-title-bar position-relative py-3" style="background-color: #101820 !important;">
+        <h5 class="modal-title text-center w-100 m-0" id="addToCartModalLabel" style="font-weight:600; letter-spacing:1px; color: #fcfcea;">Add to Cart</h5>
         <button type="button" class="btn-close position-absolute top-50 end-0 translate-middle-y me-3" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body h-100 p-0">
@@ -13,8 +13,8 @@
           <div class="flex-shrink-0 d-flex align-items-center justify-content-center img-container" style="background:#fafafa; border-bottom:1px solid #eee;">
             <img id="cartModalProductImg" src="assets/img/shirt1.jpg" alt="Product Image">
           </div>
-          <div class="flex-grow-1 d-flex flex-column justify-content-end px-5 py-4" style="min-height: 0;">
-            <h3 id="cartModalProductName" class="mb-3" style="font-size:1.5rem; font-weight:500;">Product Name</h3>
+          <div class="flex-grow-1 d-flex flex-column justify-content-end px-5 py-4" style="min-height: 0; ">
+            <h3 id="cartModalProductName" class="mb-3" style="font-size:1.5rem; font-weight:500; ">Product Name</h3>
             <div class="mb-3 d-flex align-items-center">
               <span class="me-2" style="font-weight:500;">Size:</span>
               <div id="cartModalProductSizes" class="btn-group" role="group" aria-label="Product sizes">
