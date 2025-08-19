@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="../../assets/css/about-us.css">
 </head>
 
+<style>
+    body {
+        background-color: #fcfcea;
+    }
+</style>
+
 <body>
     <?php include('../components/loader.php'); ?>
     <div class="container py-3 mt-5">
