@@ -27,10 +27,15 @@
 
 .input-group .form-control {
   border-right: none;
+  min-width: 0;
 }
 
 .input-group .btn {
   border-left: none;
+}
+
+.input-group {
+  width: 100%;
 }
 
 .nav-item.dropdown {
@@ -188,4 +193,10 @@
 .dropdown.show .dropdown-icon,
 .dropdown-menu.show .dropdown-icon {
   transform: rotate(180deg);
+}
+
+.search-container {
+  max-width: 800px;
+  width: 100%;
+  overflow-x: hidden;
 }
