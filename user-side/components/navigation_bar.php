@@ -6,6 +6,162 @@ session_start();
 <link rel="stylesheet" href="../../assets/css/navbar.css">
 
 <style>
+    .search-container {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: none;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item:nth-child(odd) {
+  background-color: #f9f7e8;
+  color: #2c3e50;
+}
+
+.search-result-item:nth-child(even) {
+  background-color: #2c3e50;
+  color: #f9f7e8;
+}
+
+.search-result-item:nth-child(odd) .search-result-name,
+.search-result-item:nth-child(odd) .search-result-details,
+.search-result-item:nth-child(odd) .search-result-price {
+  color: #2c3e50 !important;
+}
+
+.search-result-item:nth-child(even) .search-result-name,
+.search-result-item:nth-child(even) .search-result-details,
+.search-result-item:nth-child(even) .search-result-price {
+  color: #f9f7e8 !important;
+}
+
+.search-result-item:hover {
+  opacity: 0.9;
+  transform: translateX(2px);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-result-name {
+  font-weight: 500;
+  color: #000 !important;
+  margin-bottom: 2px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-details {
+  font-size: 12px;
+  color: #000 !important;
+}
+
+.search-result-price {
+  font-weight: 600;
+  color: #000 !important;
+  font-size: 14px;
+}
+
+.no-results {
+  padding: 15px;
+  text-align: center;
+  color: #000 !important;
+  font-style: italic;
+}
+
+.search-loading {
+  padding: 15px;
+  text-align: center;
+  color: #666;
+}
+
+.search-loading::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  border-top-color: #007bff;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+#searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #000;
+  border-color: #000;
+  transition: all 0.3s ease;
+}
+#searchForm .btn:focus,
+#searchForm .btn:active {
+  outline: none;
+  box-shadow: 0 0 0 2px #000;
+  border-color: #000;
+  background-color: #000;
+  transition: all 0.3s ease;
+}
+
+#searchInput {
+  border: 1px solid #ccc !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+#searchInput:focus {
+  border: 1px solid #000 !important;
+  outline: none !important;
+}
+
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column pt-1" style="margin-bottom: -20px; background: #101820 !important;">
