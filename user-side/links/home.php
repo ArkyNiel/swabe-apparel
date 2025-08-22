@@ -40,7 +40,6 @@
                     <button type="button" class="btn-close" onclick="closeSwabeModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
-                    <?php include('../components/swabe_apparel.php'); ?>
                 </div>   
             </div>
         </div>
