@@ -23,44 +23,20 @@ session_start();
   z-index: 1000;
   max-height: 400px;
   overflow-y: auto;
-  overflow-x: hidden;
   display: none;
 }
 
 .search-result-item {
   display: flex;
   align-items: center;
-  padding: 12px 15px;
+  padding: 10px 15px;
+  border-bottom: 1px solid #f0f0f0;
   cursor: pointer;
-  transition: all 0.2s ease;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.search-result-item:nth-child(odd) {
-  background-color: #f9f7e8;
-  color: #2c3e50;
-}
-
-.search-result-item:nth-child(even) {
-  background-color: #2c3e50;
-  color: #f9f7e8;
-}
-
-.search-result-item:nth-child(odd) .search-result-name,
-.search-result-item:nth-child(odd) .search-result-details,
-.search-result-item:nth-child(odd) .search-result-price {
-  color: #2c3e50 !important;
-}
-
-.search-result-item:nth-child(even) .search-result-name,
-.search-result-item:nth-child(even) .search-result-details,
-.search-result-item:nth-child(even) .search-result-price {
-  color: #f9f7e8 !important;
+  transition: background-color 0.2s;
 }
 
 .search-result-item:hover {
-  opacity: 0.9;
-  transform: translateX(2px);
+  background-color: #f8f9fa;
 }
 
 .search-result-item:last-child {
@@ -77,7 +53,6 @@ session_start();
 
 .search-result-info {
   flex: 1;
-  min-width: 0;
 }
 
 .search-result-name {
@@ -85,9 +60,6 @@ session_start();
   color: #000 !important;
   margin-bottom: 2px;
   font-size: 14px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .search-result-details {
@@ -115,7 +87,7 @@ session_start();
 }
 
 .search-loading::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -127,14 +99,7 @@ session_start();
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.search-result-info {
-  flex: 1;
-  min-width: 0;
+  to { transform: rotate(360deg); }
 }
 
 #searchInput:focus {
@@ -143,8 +108,7 @@ session_start();
   border-color: #000;
   transition: all 0.3s ease;
 }
-#searchForm .btn:focus,
-#searchForm .btn:active {
+#searchForm .btn:focus, #searchForm .btn:active {
   outline: none;
   box-shadow: 0 0 0 2px #000;
   border-color: #000;
@@ -161,7 +125,6 @@ session_start();
   border: 1px solid #000 !important;
   outline: none !important;
 }
-
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column pt-1" style="margin-bottom: -20px; background: #101820 !important;">
