@@ -5,6 +5,7 @@
   
 </style>
 
+
 <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
     <div class="modal-content">
