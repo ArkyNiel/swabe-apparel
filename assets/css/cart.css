@@ -4,10 +4,9 @@
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   margin: 0 !important;
-  max-width: 800px !important;
-  width: 800px !important;
-  height: auto !important;
-  max-height: 70vh !important;
+  max-width: 960px !important;
+  width: 960px !important;
+  max-height: 85vh !important;
 }
 
 #addToCartModal .modal-content {
@@ -48,7 +47,7 @@
 
 #cartModalProductImg {
   width: 100%;
-  height: 300px;
+  height: 360px;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -98,7 +97,7 @@
 
 #addToCartModal .size-options {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -262,13 +261,12 @@
 
 @media (max-width: 991.98px) {
   #addToCartModal .modal-dialog {
-    position: fixed !important;
+    max-width: 95vw !important;
+    width: 95vw !important;
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     margin: 0 !important;
-    max-width: 95vw !important;
-    width: 95vw !important;
   }
   
   #addToCartModal .modal-layout {
@@ -280,7 +278,7 @@
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #e5e7eb;
-    min-height: 250px;
+    min-height: 280px;
     padding: 1.5rem;
   }
   
@@ -290,6 +288,6 @@
   }
 
   #addToCartModal .size-options {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
