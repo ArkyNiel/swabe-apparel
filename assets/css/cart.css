@@ -1,10 +1,13 @@
 #addToCartModal .modal-dialog {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
   max-width: 800px !important;
   width: 800px !important;
   height: auto !important;
   max-height: 70vh !important;
-  margin: 2rem auto !important;
-  position: relative !important;
 }
 
 #addToCartModal .modal-content {
@@ -259,9 +262,13 @@
 
 @media (max-width: 991.98px) {
   #addToCartModal .modal-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
     max-width: 95vw !important;
     width: 95vw !important;
-    margin: 1rem auto !important;
   }
   
   #addToCartModal .modal-layout {
