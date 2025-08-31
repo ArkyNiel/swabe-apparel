@@ -37,6 +37,24 @@
   margin-left: 1rem;
 }
 
+/* Consistent spacing for navigation icons */
+.navbar .d-flex.align-items-center > li {
+  margin-right: 5px !important;
+}
+
+.navbar .d-flex.align-items-center > li:last-child {
+  margin-right: 0 !important;
+}
+
+/* Ensure proper spacing between notification and account icons */
+#notificationDropdown {
+  margin-right: 5px !important;
+}
+
+#accountDropdown {
+  margin-left: 5px !important;
+}
+
 .list-unstyled {
   margin-bottom: 0;
 }
