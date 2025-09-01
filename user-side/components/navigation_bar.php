@@ -167,7 +167,7 @@ session_start();
 
 /* Consistent spacing for navigation icons */
 .navbar .d-flex.align-items-center > li {
-  margin-right: 5px !important;
+  margin-right: 0 !important;
 }
 
 .navbar .d-flex.align-items-center > li:last-child {
@@ -176,11 +176,11 @@ session_start();
 
 /* Ensure proper spacing between notification and account icons */
 #notificationDropdown {
-  margin-right: 5px !important;
+  margin-right: 0 !important;
 }
 
 #accountDropdown {
-  margin-left: 5px !important;
+  margin-left: 0 !important;
 }
 
 .list-unstyled {
@@ -335,6 +335,49 @@ border-top: 1px solid #ececec;
 .dropdown-menu.show .dropdown-icon {
   transform: rotate(180deg);
 }
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+.navbar-icons .nav-item {
+    margin: 0 !important;
+}
+
+.navbar-icons .nav-link {
+    padding: 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-icons .nav-link:hover {
+    background-color: rgba(252, 252, 234, 0.1);
+}
+
+.navbar-icons .nav-link i {
+    font-size: 16px;
+    line-height: 1;
+    color: #fcfcea !important;
+}
+
+/* Remove old conflicting styles */
+.navbar .d-flex.align-items-center > li {
+    margin-right: 0 !important;
+}
+
+.navbar .d-flex.align-items-center > li:last-child {
+    margin-right: 0 !important;
+}
+
+#notificationDropdown {
+    margin-right: 0 !important;
+}
+
+#accountDropdown {
+    margin-left: 0 !important;
+}
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-navbar sticky-top flex-column pt-1" style="margin-bottom: -20px; background: #101820 !important;">
@@ -356,54 +399,45 @@ border-top: 1px solid #ececec;
                     <div class="search-results" id="searchResults">
                     </div>
                 </div>
-                <div class="d-flex align-items-center">
-                    <li class="nav-item list-unstyled" style="margin-right: 5px !important;">
-                        <a class="nav-link d-flex align-items-center" href="../../user-side/links/cart.php">
-                            <i class="fa-solid fa-cart-shopping" style="font-size: 16px; line-height: 1; color: #fcfcea !important;"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item list-unstyled" style="margin-right: -10px !important;">
-                        <a class="nav-link d-flex align-items-center" href="../../user-side/links/wishlist.php">
-                            <i class="fa-regular fa-heart" style="font-size: 16px; line-height: 1; color: #fcfcea !important;"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown list-unstyled" style="margin-right: -10px !important;" >
-                        <a class="nav-link d-flex align-items-center" href="#" id="pagesDropdown"
-                            role="button" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-store" style="font-size: 16px; line-height: 1; color: #fcfcea !important; "></i>
+                <div class="navbar-icons">
+                    <a class="nav-link" href="../../user-side/links/cart.php">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                    <a class="nav-link" href="../../user-side/links/wishlist.php">
+                        <i class="fa-regular fa-heart"></i>
+                    </a>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-store"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important;">
                             <li><a class="dropdown-item link-hover" href="../../user-side/links/about_us.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">About Us</a></li>
                             <li><a class="dropdown-item link-hover" href="../../user-side/links/location.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Location</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item list-unstyled" style="margin-right: 5px !important;">
-                        <a class="nav-link d-flex align-items-center" href="#" id="notificationDropdown"
-                            role="button" data-bs-toggle="dropdown">
-                            <i class="fa-regular fa-bell" style="font-size: 16px; line-height: 1; color: #fcfcea !important;"></i>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fa-regular fa-bell"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important;">
                             <li><a class="dropdown-item link-hover" href="#" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">No new notifications</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item dropdown list-unstyled" style="margin-left: 5px !important;">
-                        <a class="nav-link d-flex align-items-center" href="#" id="accountDropdown"
-                            role="button" data-bs-toggle="dropdown" >
-                            <i class="fa-regular fa-user" style="font-size: 16px; line-height: 1; color: #fcfcea !important;"></i>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fa-regular fa-user"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end"  style="background-color: #fcfcea !important;">
+                        <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important;">
                             <?php if(isset($_SESSION['user_id'])): ?>
-                                <li><a class="dropdown-item link-hover" href="../../user-side/links/manage_account.php" style=" color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Manage Account</a></li>
+                                <li><a class="dropdown-item link-hover" href="../../user-side/links/manage_account.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Manage Account</a></li>
                                 <li><a class="dropdown-item link-hover" href="../../user-side/links/feedback.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Give us Feedback</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
+                                <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item link-hover" href="../../user-side/links/logout.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Log Out</a></li>
                             <?php else: ?>
                                 <li><a class="dropdown-item link-hover" href="../../user-side/links/login.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Log In</a></li>
                             <?php endif; ?>
                         </ul>
-                    </li>
+                    </div>
                 </div>
             </div>
         </div>
