@@ -42,7 +42,7 @@ session_start();
                         <a class="nav-link" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">
                             <i class="fa-regular fa-user"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important;">
+                        <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important; min-width: 200px !important;">
                             <?php if(isset($_SESSION['user_id'])): ?>
                                 <li><a class="dropdown-item link-hover" href="../../user-side/links/manage_account.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Manage Account</a></li>
                                 <li><a class="dropdown-item link-hover" href="../../user-side/links/feedback.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Give us Feedback</a></li>
