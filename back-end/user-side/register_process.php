@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $insert = $conn->prepare("INSERT INTO account (user_id, username, password) VALUES (?, ?, ?)");
         if ($insert->execute([$user_id, $username, $hashedPassword])) {
-            $_SESSION['alert'] = ['type' => 'success', 'message' => 'Account created successfully!'];
+            $_SESSION['alert'] = ['type' => 'success', 'message' => 'Account created successfully! <a href="login.php" class="alert-link">Click here to log in</a>'];
         } else {
             $_SESSION['alert'] = ['type' => 'danger', 'message' => 'Failed to create account.'];
         }
