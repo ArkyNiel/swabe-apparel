@@ -27,17 +27,17 @@ session_start();
                 <div class="navbar-icons">
                     <?php include 'cart.php'; ?>
                     <?php include 'wishlist.php'; ?>
+                    <!-- Notification path-->
+                    <?php include 'notification.php'; ?>
                     <div class="nav-item dropdown">
                         <a class="nav-link" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
                             <i class="fa-solid fa-store"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important;">
+                        <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important; min-width: 200px !important;">
                             <li><a class="dropdown-item link-hover" href="../../user-side/links/about_us.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">About Us</a></li>
                             <li><a class="dropdown-item link-hover" href="../../user-side/links/location.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Location</a></li>
                         </ul>
                     </div>
-                    <!-- Notification path-->
-                    <?php include 'notification.php'; ?>
                     <div class="nav-item dropdown">
                         <a class="nav-link" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown">
                             <i class="fa-regular fa-user"></i>
