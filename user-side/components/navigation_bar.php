@@ -26,9 +26,7 @@ session_start();
                 </div>
                 <div class="navbar-icons">
                     <?php include 'cart.php'; ?>
-                    <a class="nav-link" href="../../user-side/links/wishlist.php">
-                        <i class="fa-regular fa-heart"></i>
-                    </a>
+                    <?php include 'wishlist.php'; ?>
                     <div class="nav-item dropdown">
                         <a class="nav-link" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
                             <i class="fa-solid fa-store"></i>

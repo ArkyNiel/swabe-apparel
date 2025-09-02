@@ -1,6 +1,6 @@
 <style>
 .dropdown-menu {
-    min-width: 400px !important;
+    min-width: 450px !important;
     max-height: 400px !important;
     overflow-y: auto !important;
 }
@@ -23,7 +23,7 @@
     background: #a8a8a8;
 }
 
-.cart-item {
+.wishlist-item {
     padding: 12px 16px;
     border-bottom: 1px solid #f0f0f0;
     transition: background-color 0.2s ease;
@@ -32,50 +32,40 @@
     cursor: pointer;
 }
 
-.cart-item:hover {
+.wishlist-item:hover {
     background-color: #f8f9fa !important;
 }
 
-.cart-item:last-child {
+.wishlist-item:last-child {
     border-bottom: none;
 }
 
-.cart-header {
+.wishlist-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 4px;
 }
 
-.cart-title {
+.wishlist-title {
     font-weight: 600;
     color: #101820 !important;
     font-size: 13px;
     text-transform: uppercase;
 }
 
-.cart-time {
+.wishlist-time {
     font-size: 11px;
     color: #666 !important;
 }
 
-.cart-content {
+.wishlist-content {
     color: #101820 !important;
     font-size: 12px;
     line-height: 1.4;
 }
 
-.cart-badge {
-    background-color: #dc3545;
-    color: white;
-    border-radius: 50%;
-    width: 8px;
-    height: 8px;
-    display: inline-block;
-    margin-right: 8px;
-}
-
-.cart-header-text {
+.wishlist-header-text {
     display: flex;
     align-items: center;
     color: #101820 !important;
@@ -90,100 +80,87 @@
     background-color: #fcfcea;
     z-index: 1;
 }
+
+.remove-wishlist {
+    color: #dc3545;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+}
 </style>
 
 <div class="nav-item dropdown">
-    <a class="nav-link" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown">
-        <i class="fa-solid fa-cart-shopping"></i>
+    <a class="nav-link" href="#" id="wishlistDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+        <i class="fa-solid fa-heart" style="color: #fee715;"></i>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important;">
-        <li class="cart-header-text">
-            <i class="fa-solid fa-cart-shopping" style="margin-right: 8px; color: #101820;"></i>
-            Cart
+        <li class="wishlist-header-text">
+            <i class="fa-solid fa-heart" style="margin-right: 8px; color: #fee715;"></i>
+            Wishlist
         </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
+        <li class="wishlist-item">
+            <div class="wishlist-header">
+                <span class="wishlist-title">
                     Nike Air Max Added
                 </span>
-                <span class="cart-time">Just now</span>
+                <span class="wishlist-time">Just now</span>
+                <i class="fa-solid fa-heart remove-wishlist" title="Remove from wishlist"></i>
             </div>
-            <div class="cart-content">
+            <div class="wishlist-content">
                 <img src="../../assets/img/logo.jpg" alt="Nike Air Max" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Nike Air Max shoes have been added to your cart. Size: 10, Qty: 1.
+                Nike Air Max shoes added to wishlist. Size: 10.
             </div>
         </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
+        <li class="wishlist-item">
+            <div class="wishlist-header">
+                <span class="wishlist-title">
                     Polo Shirt Added
                 </span>
-                <span class="cart-time">5m ago</span>
+                <span class="wishlist-time">5m ago</span>
+                <i class="fa-solid fa-heart remove-wishlist" title="Remove from wishlist"></i>
             </div>
-            <div class="cart-content">
+            <div class="wishlist-content">
                 <img src="../../assets/img/logo.jpg" alt="Polo Shirt" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Polo Ralph Lauren shirt added to cart. Size: M, Qty: 2.
+                Polo Ralph Lauren shirt added to wishlist. Size: M.
             </div>
         </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
+        <li class="wishlist-item">
+            <div class="wishlist-header">
+                <span class="wishlist-title">
                     Air Jordan Added
                 </span>
-                <span class="cart-time">10m ago</span>
+                <span class="wishlist-time">10m ago</span>
+                <i class="fa-solid fa-heart remove-wishlist" title="Remove from wishlist"></i>
             </div>
-            <div class="cart-content">
+            <div class="wishlist-content">
                 <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
+                Air Jordan sneakers added to wishlist. Size: 9.
             </div>
         </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Air Jordan Added
+        <li class="wishlist-item">
+            <div class="wishlist-header">
+                <span class="wishlist-title">
+                    Supreme Hoodie Added
                 </span>
-                <span class="cart-time">10m ago</span>
+                <span class="wishlist-time">1h ago</span>
+                <i class="fa-solid fa-heart remove-wishlist" title="Remove from wishlist"></i>
             </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
+            <div class="wishlist-content">
+                <img src="../../assets/img/logo.jpg" alt="Supreme Hoodie" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
+                Supreme hoodie added to wishlist. Size: L.
             </div>
         </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Air Jordan Added
+        <li class="wishlist-item">
+            <div class="wishlist-header">
+                <span class="wishlist-title">
+                    View Full Wishlist
                 </span>
-                <span class="cart-time">10m ago</span>
+                <span class="wishlist-time"></span>
             </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
-            </div>
-        </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Air Jordan Added
-                </span>
-                <span class="cart-time">10m ago</span>
-            </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
+            <div class="wishlist-content">
+                <a href="../../user-side/links/wishlist.php" style="color: #101820; text-decoration: underline;">Click here to view your full wishlist</a>
             </div>
         </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    View Full Cart
-                </span>
-                <span class="cart-time"></span>
-            </div>
-            <div class="cart-content">
-                <a href="../../user-side/components/cart.php" style="color: #101820; text-decoration: underline;">Click here to view your full cart</a>
-            </div>
-        </li>
-        
+
     </ul>
 </div>

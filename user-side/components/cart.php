@@ -1,6 +1,6 @@
 <style>
 .dropdown-menu {
-    min-width: 400px !important;
+    min-width: 450px !important;
     max-height: 400px !important;
     overflow-y: auto !important;
 }
@@ -93,7 +93,7 @@
 </style>
 
 <div class="nav-item dropdown">
-    <a class="nav-link" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown">
+    <a class="nav-link" href="#" id="cartDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
         <i class="fa-solid fa-cart-shopping"></i>
     </a>
     <ul class="dropdown-menu dropdown-menu-end" style="background-color: #fcfcea !important;">
