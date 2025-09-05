@@ -20,16 +20,13 @@
             <button class="btn favorite-btn" title="Add to Favorites" >
                 <i class="far fa-heart"></i>
             </button>
-            <button 
-                class="btn cart-btn" 
-                title="Add to Cart"     
-                data-name="<?php echo htmlspecialchars($product['product_name'] ?? ''); ?>"
-                data-image="<?php echo htmlspecialchars($product['image'] ?? ''); ?>"
-                data-size="<?php echo htmlspecialchars($product['size'] ?? 'N/A'); ?>"
-                data-price="<?php echo htmlspecialchars($product['price'] ?? 'N/A'); ?>"
+            <a
+                class="btn cart-btn"
+                title="Add to Cart"
+                href="?add_to_cart=1&name=<?php echo urlencode($product['product_name'] ?? ''); ?>&image=<?php echo urlencode($product['image'] ?? ''); ?>&size=<?php echo urlencode($product['size'] ?? 'N/A'); ?>&price=<?php echo urlencode($product['price'] ?? 'N/A'); ?>"
             >
                 <i class="fas fa-cart-shopping" style="color: #101820 !important;"></i>
-            </button>
+            </a>
         </div>
     </div>
 </div> 
