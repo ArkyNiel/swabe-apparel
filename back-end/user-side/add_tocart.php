@@ -9,26 +9,23 @@ function addToCart($user_id, $product_name, $image, $size, $price, $quantity) {
     $stmt->execute([$user_id, $product_name, $image, $size, $price, $quantity]);
 
     if ($stmt->rowCount() > 0) {
-        return json_encode([
+        return [
             'status' => 'success',
             'message' => 'Product added to cart successfully!'
-        ]);
+        ];
     } else {
-        return json_encode([
+        return [
             'status' => 'error',
             'message' => 'Failed to add product to cart.'
-        ]);
+        ];
     }
 }
 
-// Handle AJAX POST request
+// Handle POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_to_cart') {
     // Check if user is logged in
     if (!isset($_SESSION['user_id'])) {
-        echo json_encode([
-            'status' => 'login_required',
-            'message' => 'Please login to add items to cart!'
-        ]);
+        header('Location: ../../user-side/links/login.php?message=' . urlencode('Please login to add items to cart!'));
         exit;
     }
 
@@ -39,7 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $price = $_POST['price'] ?? '';
     $quantity = (int)($_POST['quantity'] ?? 1);
 
-    echo addToCart($user_id, $product_name, $image, $size, $price, $quantity);
+    $result = addToCart($user_id, $product_name, $image, $size, $price, $quantity);
+
+    if ($result['status'] === 'success') {
+        $_SESSION['alert'] = ['type' => 'success', 'message' => $result['message']];
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    } else {
+        $_SESSION['alert'] = ['type' => 'danger', 'message' => $result['message']];
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
     exit;
 }
 ?>
