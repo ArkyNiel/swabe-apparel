@@ -39,8 +39,11 @@ footer a:hover {
 
 <body>
     <div class="content-wrap">
-    <?php include('../components/navigation_bar.php'); ?>
-    <?php include('../components/loader.php'); ?>
+    <?php
+    session_start();
+    include('../components/navigation_bar.php');
+    include('../components/loader.php');
+    ?>
 
     <!-- cards -->
     <div class="container section-content">
@@ -88,6 +91,23 @@ footer a:hover {
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
+
+    <?php if (isset($_SESSION['alert'])): ?>
+        <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">
+            <?php echo htmlspecialchars($_SESSION['alert']['message']); ?>
+        </div>
+        <?php unset($_SESSION['alert']); ?>
+    <?php endif; ?>
+
+    <script>
+    setTimeout(() => {
+        const alert = document.getElementById('successAlert');
+        if (alert) {
+            alert.classList.remove('show');
+            setTimeout(() => alert.remove(), 150);
+        }
+    }, 5000);
+    </script>
 
     <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
