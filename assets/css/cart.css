@@ -31,7 +31,7 @@
 
 #addToCartModal .modal-layout {
   display: flex;
-  min-height: 400px; 
+  min-height: 400px;
 }
 
 #addToCartModal .image-column {
@@ -52,7 +52,7 @@
   border-radius: 8px;
 }
 
-#addToCartModal .details-column { 
+#addToCartModal .details-column {
   width: 55%;
   padding: 2rem;
   background: #fcfcea;
@@ -268,12 +268,12 @@
     transform: translate(-50%, -50%) !important;
     margin: 0 !important;
   }
-  
+
   #addToCartModal .modal-layout {
     flex-direction: column;
     min-height: auto;
   }
-  
+
   #addToCartModal .image-column {
     width: 100%;
     border-right: none;
@@ -281,7 +281,7 @@
     min-height: 280px;
     padding: 1.5rem;
   }
-  
+
   #addToCartModal .details-column {
     width: 100%;
     padding: 1.5rem;
@@ -290,4 +290,23 @@
   #addToCartModal .size-options {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Modal backdrop styling */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  z-index: 1040 !important;
+}
+
+.modal-backdrop.show {
+  opacity: 1 !important;
+}
+
+/* Ensure modal is above backdrop */
+#addToCartModal {
+  z-index: 1050 !important;
+}
+
+#addToCartModal.show {
+  display: block !important;
 }
