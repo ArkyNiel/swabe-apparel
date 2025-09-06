@@ -163,55 +163,6 @@
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
 
-    
-    <script>
-        function closeSwabeModal() {
-            const modal = document.getElementById('swabeModal');
-            const backdrop = document.getElementById('modalBackdrop');
-            
-            // bug sa backdrop
-            modal.style.display = 'none';
-            backdrop.style.display = 'none';
-            
-            modal.classList.remove('show', 'fade');
-            backdrop.classList.remove('show', 'fade');
-            
-            document.body.classList.remove('modal-open');
-            
-            modal.removeAttribute('style');
-            backdrop.removeAttribute('style');
-            
-            backdrop.style.zIndex = '-1';
-            
-            backdrop.style.backgroundColor = 'transparent';
-            backdrop.style.background = 'transparent';
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('swabeModal');
-            const backdrop = document.getElementById('modalBackdrop');
-            
-            modal.style.display = 'block';
-            modal.classList.add('show');
-            backdrop.style.display = 'block';
-            backdrop.classList.add('show');
-            document.body.classList.add('modal-open');
-            
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeSwabeModal();
-                }
-            });
-            
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeSwabeModal();
-                }
-            });
-        });
-    </script>
-
     <?php if (isset($_SESSION['alert'])): ?>
         <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">
             <?php echo htmlspecialchars($_SESSION['alert']['message']); ?>
@@ -232,7 +183,18 @@
     <?php include('../components/footer.php'); ?>
     <?php include('../components/modal.php'); ?>
     <?php include('../components/add_to_cart.php'); ?>
-    
+
+    <script src="../../assets/js/home_add_to_cart.js"></script>
+    <script src="../../assets/js/home_modal.js"></script>
+
+    <style>
+        #cartModalProductImg {
+            width: 100% !important;
+            height: 320px !important;
+            object-fit: cover !important;
+            border-radius: 8px !important;
+        }
+    </style>
 </body>
 
 </html>
