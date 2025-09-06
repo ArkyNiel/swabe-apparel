@@ -23,7 +23,7 @@
             <a
                 class="btn cart-btn"
                 title="Add to Cart"
-                href="?add_to_cart=1&name=<?php echo urlencode($product['product_name'] ?? ''); ?>&image=<?php echo urlencode($product['image'] ?? ''); ?>&size=<?php echo urlencode($product['size'] ?? 'N/A'); ?>&price=<?php echo urlencode($product['price'] ?? 'N/A'); ?>"
+                href="?add_to_cart=1&name=<?php echo urlencode($product['product_name'] ?? ''); ?>&image=<?php echo urlencode($product['image'] ?? ''); ?>&size=<?php echo urlencode($product['size'] ?? 'N/A'); ?>&price=<?php echo urlencode($product['price'] ?? 'N/A'); ?>&id=<?php echo urlencode($product['id'] ?? ''); ?>&color=<?php echo urlencode($product['color'] ?? ''); ?>"
             >
                 <i class="fas fa-cart-shopping" style="color: #101820 !important;"></i>
             </a>

@@ -42,8 +42,11 @@ footer a:hover {
 
 <body>
     <div class="content-wrap">
-    <?php include('../components/navigation_bar.php'); ?>
-    <?php include('../components/loader.php'); ?>
+    <?php
+    session_start();
+    include('../components/navigation_bar.php');
+    include('../components/loader.php');
+    ?>
 
     <!-- cards -->
     <div class="container section-content">

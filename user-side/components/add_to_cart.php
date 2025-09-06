@@ -4,14 +4,18 @@ $productName = '';
 $productImage = '';
 $productPrice = '';
 $productSizes = [];
+$productId = '';
+$productColor = '';
 
 if (isset($_GET['add_to_cart'])) {
     $showModal = true;
+    $productId = $_GET['id'] ?? '';
     $productName = $_GET['name'] ?? '';
     $productImage = $_GET['image'] ?? '';
     $productPrice = $_GET['price'] ?? '';
     $sizesStr = $_GET['size'] ?? '';
     $productSizes = explode(',', $sizesStr);
+    $productColor = $_GET['color'] ?? '';
 }
 ?>
 
@@ -85,6 +89,7 @@ if (isset($_GET['add_to_cart'])) {
         </div>
 
         <input type="hidden" name="action" value="add_to_cart">
+        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($productId); ?>">
         <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($productName); ?>">
         <input type="hidden" name="image" value="<?php echo htmlspecialchars($productImage); ?>">
         <input type="hidden" name="price" value="<?php echo htmlspecialchars($productPrice); ?>">
