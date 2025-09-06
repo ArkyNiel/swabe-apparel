@@ -100,8 +100,6 @@ footer a:hover {
         <?php unset($_SESSION['alert']); ?>
     <?php endif; ?>
 
-    
-
     <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
