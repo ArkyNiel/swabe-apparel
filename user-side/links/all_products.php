@@ -96,7 +96,7 @@ footer a:hover {
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
-
+    <script src="../../assets/js/set_timeout.js"></script>
           
 
     <?php if (isset($_SESSION['alert'])): ?>
@@ -105,16 +105,6 @@ footer a:hover {
         </div>
         <?php unset($_SESSION['alert']); ?>
     <?php endif; ?>
-
-    <script>
-    setTimeout(() => {
-        const alert = document.getElementById('successAlert');
-        if (alert) {
-            alert.classList.remove('show');
-            setTimeout(() => alert.remove(), 150);
-        }
-    }, 5000);
-    </script>
 
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>

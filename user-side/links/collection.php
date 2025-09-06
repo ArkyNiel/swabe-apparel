@@ -101,20 +101,12 @@ footer a:hover {
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
+    <script src="../../assets/js/set_timeout.js"></script>
 
     <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
 
-    <script>
-    setTimeout(() => {
-        const alert = document.getElementById('successAlert');
-        if (alert) {
-            alert.classList.remove('show');
-            setTimeout(() => alert.remove(), 150);
-        }
-    }, 5000);
-    </script>
 </body>
 
 </html>
