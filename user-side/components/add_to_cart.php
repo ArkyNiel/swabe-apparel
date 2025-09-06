@@ -4,18 +4,14 @@ $productName = '';
 $productImage = '';
 $productPrice = '';
 $productSizes = [];
-$productId = '';
-$productColor = '';
 
 if (isset($_GET['add_to_cart'])) {
     $showModal = true;
-    $productId = $_GET['id'] ?? '';
     $productName = $_GET['name'] ?? '';
     $productImage = $_GET['image'] ?? '';
     $productPrice = $_GET['price'] ?? '';
     $sizesStr = $_GET['size'] ?? '';
     $productSizes = explode(',', $sizesStr);
-    $productColor = $_GET['color'] ?? '';
 }
 ?>
 
@@ -89,7 +85,6 @@ if (isset($_GET['add_to_cart'])) {
         </div>
 
         <input type="hidden" name="action" value="add_to_cart">
-        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($productId); ?>">
         <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($productName); ?>">
         <input type="hidden" name="image" value="<?php echo htmlspecialchars($productImage); ?>">
         <input type="hidden" name="price" value="<?php echo htmlspecialchars($productPrice); ?>">
@@ -97,3 +92,27 @@ if (isset($_GET['add_to_cart'])) {
     </div>
   </div>
 </div>
+
+<?php if ($showModal): ?>
+<div class="modal-backdrop fade show" style="z-index: 1040;"></div>
+<?php endif; ?>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('addToCartModal');
+    const closeBtn = modal.querySelector('.close-btn');
+    
+    closeBtn.addEventListener('click', function() {
+        modal.classList.remove('show');
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        // Redirect to remove the query parameter
+        window.location.href = window.location.pathname;
+    });
+    
+    // Initialize modal if it's shown
+    if (modal.classList.contains('show')) {
+        document.body.classList.add('modal-open');
+    }
+});
+</script>

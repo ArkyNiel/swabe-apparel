@@ -6,10 +6,10 @@
             data-color="<?php echo htmlspecialchars($product['color']); ?>"
             data-size="<?php echo htmlspecialchars($product['size']); ?>"
             data-price="<?php echo htmlspecialchars($product['price']); ?>">
-            <img src="<?php echo htmlspecialchars($product['image']); ?>" 
+            <img src="<?php echo htmlspecialchars($product['image']); ?>"
                  class="card-img-top"
-                 alt="<?php echo htmlspecialchars($product['product_name']); ?>" 
-                 style="width: 100%; height: 100%; object-fit: cover; display: block;" 
+                 alt="<?php echo htmlspecialchars($product['product_name']); ?>"
+                 style="width: 100%; height: 100%; object-fit: cover; display: block;"
                  onerror="this.src='../assets/img/placeholder.jpg'; console.log('Image failed to load:', this.src);"
                  onload="console.log('Image loaded successfully:', this.src);" />
         </div>
@@ -29,8 +29,8 @@
             </a>
         </div>
     </div>
-</div> 
+</div>
 
 <style>
-    
+
 </style>

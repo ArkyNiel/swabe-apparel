@@ -21,6 +21,55 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+  // Define the populateCartModal function
+  window.populateCartModal = function (
+    name,
+    image,
+    price,
+    availableSizes,
+    selectedSize
+  ) {
+    console.log("populateCartModal called with:", {
+      name,
+      image,
+      price,
+      availableSizes,
+      selectedSize,
+    });
+
+    // Populate modal fields
+    document.getElementById("cartModalProductImg").src = image;
+    document.getElementById("cartModalProductName").textContent = name;
+    document.getElementById("cartModalProductPrice").textContent = price;
+
+    // Handle sizes
+    const sizesContainer = document.getElementById("cartModalProductSizes");
+    if (sizesContainer) {
+      sizesContainer.innerHTML = "";
+      const sizes = availableSizes.split(",");
+      sizes.forEach((size, index) => {
+        const sizeTrimmed = size.trim();
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.className = "btn-check";
+        input.name = "size";
+        input.id = "size" + index;
+        input.value = sizeTrimmed;
+        if (sizeTrimmed === selectedSize || (index === 0 && !selectedSize)) {
+          input.checked = true;
+        }
+
+        const label = document.createElement("label");
+        label.className = "btn btn-outline-primary";
+        label.htmlFor = "size" + index;
+        label.textContent = sizeTrimmed;
+
+        sizesContainer.appendChild(input);
+        sizesContainer.appendChild(label);
+      });
+    }
+  };
+
   document
     .getElementById("products-container")
     .addEventListener("click", function (event) {
