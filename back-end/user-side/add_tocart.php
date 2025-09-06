@@ -13,7 +13,7 @@ function addToCart($user_id, $product_id, $product_name, $image, $size, $price, 
     if ($count > 0) {
         return [
             'status' => 'error',
-            'message' => 'This product is in your cart already'
+            'message' => 'This product with the selected size is already in your cart. Please select a different size.'
         ];
     }
 
