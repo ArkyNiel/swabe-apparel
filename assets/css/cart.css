@@ -13,7 +13,7 @@
 #addToCartModal .modal-content {
   width: 100% !important;
   height: auto !important;
-  border-radius: 12px !important;
+  border-radius: 16px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   background: #fcfcea;
   border: none;
@@ -57,7 +57,7 @@
 
 #addToCartModal .details-column {
   width: 55%;
-  padding: 1.5rem !important;
+  padding: 2rem !important;
   background: #fcfcea;
   display: flex;
   flex-direction: column;
@@ -152,15 +152,17 @@
 #addToCartModal .btn-outline-secondary {
   border: 1px solid #d1d5db;
   color: #6b7280;
-  border-radius: 4px;
-  width: 32px;
-  height: 32px;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   background: #ffffff;
   transition: all 0.2s ease;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 #addToCartModal .btn-outline-secondary:hover {
@@ -169,22 +171,17 @@
   color: #374151;
 }
 
-#cartModalQuantity {
+#quantityInput {
   width: 50px;
   text-align: center;
-  padding: 0.25rem;
+  padding: 0.5rem;
   border: 1px solid #d1d5db;
   color: #101820;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  border-radius: 6px;
+  font-size: 1rem;
   font-weight: 500;
   background: #fcfcea;
-}
-
-#cartModalQuantity:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  outline: none;
+  pointer-events: none;
 }
 
 #addToCartModal .action-buttons {
@@ -203,7 +200,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  border-radius: 12px;
   transition: all 0.2s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
