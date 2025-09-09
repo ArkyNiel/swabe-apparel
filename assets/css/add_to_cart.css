@@ -1,12 +1,13 @@
 #addToCartModal .modal-dialog {
-  max-width: 400px !important;
-  width: 400px !important;
-  height: 500px !important;
-  margin: 0;
-  position: fixed;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  max-width: 960px !important;
+  width: 960px !important;
+  height: auto !important;
+  max-height: none !important;
 }
 #addToCartModal .modal-content {
   width: 400px !important;

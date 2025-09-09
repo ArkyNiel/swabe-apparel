@@ -6,14 +6,14 @@
   margin: 0 !important;
   max-width: 960px !important;
   width: 960px !important;
-  height: auto !important;
+  height: 500px !important;
   max-height: none !important;
 }
 
 #addToCartModal .modal-content {
-  width: 100% !important;
-  height: auto !important;
-  border-radius: 16px !important;
+  width: 960px !important;
+  height: 500px !important;
+  border-radius: 0 !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   background: #fcfcea;
   border: none;
@@ -33,7 +33,7 @@
 
 #addToCartModal .modal-layout {
   display: flex;
-  min-height: 400px;
+  height: 500px !important;
   padding: 0 !important;
 }
 
