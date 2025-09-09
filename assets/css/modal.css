@@ -73,7 +73,8 @@ body.modal-open {
   overflow: hidden;
 }
 
-#productModal .col-md-6.d-flex.align-items-center.justify-content-center.bg-light.rounded-start-3.p-4.position-relative {
+#productModal
+  .col-md-6.d-flex.align-items-center.justify-content-center.bg-light.rounded-start-3.p-4.position-relative {
   background: #fcfcea !important;
   border-right: 1px solid #e5e7eb;
 }
@@ -89,7 +90,8 @@ body.modal-open {
   border-radius: 8px;
 }
 
-#productModal .col-md-6.p-5.d-flex.flex-column.justify-content-center.rounded-end-3.bg-white {
+#productModal
+  .col-md-6.p-5.d-flex.flex-column.justify-content-center.rounded-end-3.bg-white {
   background: #fcfcea !important;
   color: #101820;
   padding: 2rem !important;
@@ -115,8 +117,13 @@ body.modal-open {
   border-radius: 50%;
   opacity: 1;
   background: rgba(252, 252, 234, 0.9) !important;
-  border: 1px solid #e5e7eb !important;
+  border: 1px solid #101820 !important;
   box-shadow: none !important;
+  color: #101820 !important;
+}
+
+#productModal .btn-close::before {
+  color: #101820 !important;
 }
 
 #productModal .btn-close:hover {
