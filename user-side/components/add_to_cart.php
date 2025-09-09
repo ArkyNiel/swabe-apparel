@@ -61,14 +61,18 @@ if (isset($_GET['add_to_cart'])) {
               <div class="quantity-section">
                 <div class="quantity-label">Quantity</div>
                 <div class="quantity-controls">
+                  <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="decreaseQuantity()">-</button>
                   <input
                     type="number"
                     name="quantity"
+                    id="quantityInput"
                     class="form-control"
                     value="1"
                     min="1"
                     max="99"
+                    readonly
                   >
+                  <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="increaseQuantity()">+</button>
                 </div>
               </div>
 
@@ -101,7 +105,7 @@ if (isset($_GET['add_to_cart'])) {
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('addToCartModal');
     const closeBtn = modal.querySelector('.close-btn');
-    
+
     closeBtn.addEventListener('click', function() {
         modal.classList.remove('show');
         modal.style.display = 'none';
@@ -109,10 +113,26 @@ document.addEventListener('DOMContentLoaded', function() {
         // Redirect to remove the query parameter
         window.location.href = window.location.pathname;
     });
-    
+
     // Initialize modal if it's shown
     if (modal.classList.contains('show')) {
         document.body.classList.add('modal-open');
     }
 });
+
+function increaseQuantity() {
+    const input = document.getElementById('quantityInput');
+    let value = parseInt(input.value);
+    if (value < 99) {
+        input.value = value + 1;
+    }
+}
+
+function decreaseQuantity() {
+    const input = document.getElementById('quantityInput');
+    let value = parseInt(input.value);
+    if (value > 1) {
+        input.value = value - 1;
+    }
+}
 </script>
