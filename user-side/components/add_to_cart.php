@@ -22,7 +22,11 @@ if (isset($_GET['add_to_cart'])) {
 
 </style>
 
-<div class="modal fade <?php echo $showModal ? 'show' : ''; ?>" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true" style="<?php echo $showModal ? 'display: block;' : ''; ?>">
+<?php
+$userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+?>
+
+<div class="modal fade <?php echo $showModal && $userLoggedIn ? 'show' : ''; ?>" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true" style="<?php echo $showModal && $userLoggedIn ? 'display: block;' : ''; ?>">
   <div class="modal-dialog">
     <div class="modal-content">
       <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">
@@ -69,8 +73,10 @@ if (isset($_GET['add_to_cart'])) {
                     class="form-control"
                     value="1"
                     min="1"
-                    max="99"
+                    max="30"
                     readonly
+                    style="-moz-appearance: textfield; appearance: textfield;"
+                    onkeydown="return false;"
                   >
                   <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="increaseQuantity()">+</button>
                 </div>
@@ -97,11 +103,18 @@ if (isset($_GET['add_to_cart'])) {
   </div>
 </div>
 
-<?php if ($showModal): ?>
+<?php if ($showModal && $userLoggedIn): ?>
 <div class="modal-backdrop fade show" style="z-index: 1040;"></div>
+<?php elseif ($showModal && !$userLoggedIn): ?>
+  <?php include('login_req.php'); ?>
+  <script>
+    var loginReqModal = new bootstrap.Modal(document.getElementById('loginReqModal'));
+    loginReqModal.show();
+  </script>
 <?php endif; ?>
 
 <script>
+// modal function
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('addToCartModal');
     const closeBtn = modal.querySelector('.close-btn');
@@ -110,11 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('show');
         modal.style.display = 'none';
         document.body.classList.remove('modal-open');
-        // Redirect to remove the query parameter
         window.location.href = window.location.pathname;
     });
 
-    // Initialize modal if it's shown
     if (modal.classList.contains('show')) {
         document.body.classList.add('modal-open');
     }
