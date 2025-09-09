@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" style="max-width: 800px;">
         <div class="modal-content border-0 rounded-3 shadow-lg">
             <button type="button" class="btn-close position-absolute end-0 top-0 m-3 bg-white rounded-circle p-2" 
-                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; background-color: #fee715;">
+                data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; background-color: #101820;">
                 <span class="visually-hidden">Close</span>
             </button>
             <div class="modal-body d-flex flex-column flex-md-row p-0">
@@ -61,7 +61,7 @@
                     
                     <div class="mt-auto">
                         <button type="button" class="btn btn-outline-secondary btn-outline-gold w-100 py-3 rounded-3 fw-semibold" 
-                            data-bs-dismiss="modal" style="border-width: 1px; border-color: #fee715; color: #fee715;">
+                            data-bs-dismiss="modal" style="border-width: 1px; border-color: #101820; color: #101820;">
                             <i class="fas fa-times me-2"></i>Close
                         </button>
                     </div>
@@ -77,7 +77,7 @@
         <div class="modal-content border-0 bg-transparent shadow-none p-0 d-flex justify-content-center align-items-center" style="background: rgba(0,0,0,0.5);">
             <div class="position-relative">
                 <button type="button" class="btn-close position-absolute top-0 end-0 m-2 bg-white rounded-circle p-2" 
-                    data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; opacity: 0.9; box-shadow: 0 2px 8px rgba(0,0,0,0.3); background-color: #ffc107;">
+                    data-bs-dismiss="modal" aria-label="Close" style="z-index: 1050; opacity: 0.9; box-shadow: 0 2px 8px rgba(0,0,0,0.3); background-color: #101820;">
                 </button>
                 <img id="lightboxImage" src="" alt="Full View"
                     style="
@@ -102,5 +102,6 @@
 
 </style>
 
-<link rel="stylesheet" href="../../assets/css/modal.css">
+<link rel="stylesheet" href="../../assets/css/cart.css">
+<link rel="stylesheet" href="../../assets/css/add_to_cart.css">
 <script src="../../assets/js/modal.js"></script>
