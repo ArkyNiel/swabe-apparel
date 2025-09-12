@@ -22,8 +22,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Define the populateCartModal function
-  window.populateCartModal = function(name, image, price, availableSizes, selectedSize) {
-    console.log("populateCartModal called with:", { name, image, price, availableSizes, selectedSize });
+  window.populateCartModal = function (
+    name,
+    image,
+    price,
+    availableSizes,
+    selectedSize
+  ) {
+    console.log("populateCartModal called with:", {
+      name,
+      image,
+      price,
+      availableSizes,
+      selectedSize,
+    });
 
     // Populate modal fields
     document.getElementById("cartModalProductImg").src = image;
