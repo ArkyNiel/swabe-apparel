@@ -95,6 +95,7 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
         </div>
 
         <input type="hidden" name="action" value="add_to_cart">
+        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($_GET['id'] ?? ''); ?>">
         <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($productName); ?>">
         <input type="hidden" name="image" value="<?php echo htmlspecialchars($productImage); ?>">
         <input type="hidden" name="price" value="<?php echo htmlspecialchars($productPrice); ?>">

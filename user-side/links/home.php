@@ -42,7 +42,7 @@
                     <button type="button" class="btn-close" onclick="closeSwabeModal()" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
-                </div>   
+                </div>
             </div>
         </div>
     </div>
@@ -177,6 +177,10 @@
 
     <script src="../../assets/js/home_add_to_cart.js"></script>
     <script src="../../assets/js/home_modal.js"></script>
+    <script>
+        const swabeModal = new bootstrap.Modal(document.getElementById('swabeModal'));
+        swabeModal.show();
+    </script>
 
     <style>
         #cartModalProductImg {
