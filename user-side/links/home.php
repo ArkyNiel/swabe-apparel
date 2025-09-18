@@ -35,7 +35,7 @@
     ?>
     
     <!-- Auto-show modal for swabe apparel -->
-    <div id="swabeModal" class="modal fade" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="swabeModalLabel" aria-hidden="true">
+    <!-- <div id="swabeModal" class="modal fade" style="display: none;" tabindex="-1" role="dialog" aria-labelledby="swabeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content border-0 shadow">
                 <div class="modal-header border-0 pb-0">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
     
     <!-- Modal backdrop -->
     <div id="modalBackdrop" class="modal-backdrop fade" style="display: none;"></div>
