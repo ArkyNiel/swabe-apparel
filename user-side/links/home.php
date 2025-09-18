@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../../assets/css/toggle_switch.css">
     <link rel="stylesheet" href="../../assets/css/products_card_animation.css">
     <link rel="stylesheet" href="../../assets/css/cart.css">
-    <link rel="stylesheet" href="../../assets/css/modal.css">
     <link rel="stylesheet" href="../../assets/css/cards_radius.css">
     <link rel="stylesheet" href="../../assets/css/swabe_apparel.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,6 +20,12 @@
 <style>
     body {
         background-color: #fcfcea !important;
+    }
+</style>
+
+<style>
+    #swabeModal .btn-close::before {
+        color: #101820 !important;
     }
 </style>
 
@@ -182,14 +187,7 @@
         swabeModal.show();
     </script>
 
-    <style>
-        #cartModalProductImg {
-            width: 100% !important;
-            height: 320px !important;
-            object-fit: cover !important;
-            border-radius: 8px !important;
-        }
-    </style>
+
 </body>
 
 </html>
