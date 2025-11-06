@@ -1,20 +1,3 @@
-<?php
-$showModal = false;
-$productName = '';
-$productImage = '';
-$productPrice = '';
-$productSizes = [];
-
-if (isset($_GET['add_to_cart'])) {
-    $showModal = true;
-    $productName = $_GET['name'] ?? '';
-    $productImage = $_GET['image'] ?? '';
-    $productPrice = $_GET['price'] ?? '';
-    $sizesStr = $_GET['size'] ?? '';
-    $productSizes = explode(',', $sizesStr);
-}
-?>
-
 <link rel="stylesheet" href="../../assets/css/cart.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -22,11 +5,7 @@ if (isset($_GET['add_to_cart'])) {
 
 </style>
 
-<?php
-$userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
-?>
-
-<div class="modal fade <?php echo $showModal && $userLoggedIn ? 'show' : ''; ?>" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true" style="<?php echo $showModal && $userLoggedIn ? 'display: block;' : ''; ?>">
+<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">
@@ -37,17 +16,17 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
         <div class="modal-body">
           <div class="modal-layout">
             <div class="image-column">
-              <img id="cartModalProductImg" src="<?php echo htmlspecialchars($productImage); ?>" alt="Product Image">
+              <img id="cartModalProductImg" src="" alt="Product Image">
             </div>
 
             <div class="details-column">
               <div class="product-header">
-                <h3 id="cartModalProductName" class="product-name"><?php echo htmlspecialchars($productName); ?></h3>
+                <h3 id="cartModalProductName" class="product-name"></h3>
               </div>
 
               <div class="pricing-section">
                 <div class="current-price">
-                  ₱<span id="cartModalProductPrice"><?php echo htmlspecialchars($productPrice); ?></span>
+                  ₱<span id="cartModalProductPrice"></span>
                 </div>
               </div>
 
@@ -55,10 +34,6 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
                 <div class="size-label">Size</div>
 
                 <div id="cartModalProductSizes" class="size-options">
-                  <?php foreach ($productSizes as $index => $size): ?>
-                    <input type="radio" class="btn-check" name="size" id="size<?php echo $index; ?>" value="<?php echo htmlspecialchars(trim($size)); ?>" <?php echo $index === 0 ? 'checked' : ''; ?>>
-                    <label class="btn btn-outline-primary" for="size<?php echo $index; ?>"><?php echo htmlspecialchars(trim($size)); ?></label>
-                  <?php endforeach; ?>
                 </div>
               </div>
 
@@ -95,41 +70,100 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
         </div>
 
         <input type="hidden" name="action" value="add_to_cart">
-        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($_GET['id'] ?? ''); ?>">
-        <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($productName); ?>">
-        <input type="hidden" name="image" value="<?php echo htmlspecialchars($productImage); ?>">
-        <input type="hidden" name="price" value="<?php echo htmlspecialchars($productPrice); ?>">
+        <input type="hidden" name="product_id" value="">
+        <input type="hidden" name="product_name" value="">
+        <input type="hidden" name="image" value="">
+        <input type="hidden" name="price" value="">
       </form>
     </div>
   </div>
 </div>
 
-<?php if ($showModal && $userLoggedIn): ?>
-<div class="modal-backdrop fade show" style="z-index: 1040;"></div>
-<?php elseif ($showModal && !$userLoggedIn): ?>
-  <?php include('login_req.php'); ?>
-  <script>
-    var loginReqModal = new bootstrap.Modal(document.getElementById('loginReqModal'));
-    loginReqModal.show();
-  </script>
-<?php endif; ?>
-
 <script>
-// modal function
+// Handle cart button clicks
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.cart-btn')) {
+        e.preventDefault();
+        const btn = e.target.closest('.cart-btn');
+        const name = btn.dataset.name;
+        const image = btn.dataset.image;
+        const size = btn.dataset.size;
+        const price = btn.dataset.price;
+        const id = btn.dataset.id;
+        const color = btn.dataset.color;
+
+        if (!window.userLoggedIn) {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginReqModal'));
+            loginModal.show();
+            return;
+        }
+
+        // Populate modal
+        document.getElementById('cartModalProductName').textContent = name;
+        document.getElementById('cartModalProductImg').src = image;
+        document.getElementById('cartModalProductPrice').textContent = price;
+
+        // Sizes
+        const sizes = size.split(',');
+        let sizesHtml = '';
+        sizes.forEach((s, i) => {
+            sizesHtml += `<input type="radio" class="btn-check" name="size" id="size${i}" value="${s.trim()}" ${i === 0 ? 'checked' : ''}>
+<label class="btn btn-outline-primary" for="size${i}">${s.trim()}</label>`;
+        });
+        document.getElementById('cartModalProductSizes').innerHTML = sizesHtml;
+
+        // Hidden inputs
+        document.querySelector('input[name="product_id"]').value = id;
+        document.querySelector('input[name="product_name"]').value = name;
+        document.querySelector('input[name="image"]').value = image;
+        document.querySelector('input[name="price"]').value = price;
+
+        // Reset quantity
+        document.getElementById('quantityInput').value = 1;
+
+        // Show modal
+        const modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
+        modal.show();
+    }
+});
+
+// Handle form submit
+document.addEventListener('submit', function(e) {
+    if (e.target.closest('#addToCartModal form')) {
+        e.preventDefault();
+        const form = e.target.closest('#addToCartModal form');
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Hide modal
+                bootstrap.Modal.getInstance(document.getElementById('addToCartModal')).hide();
+                // Show success alert
+                showAlert(data.message, 'success');
+            } else {
+                showAlert(data.message, 'danger');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showAlert('An error occurred. Please try again.', 'danger');
+        });
+    }
+});
+
+// Modal close function
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('addToCartModal');
     const closeBtn = modal.querySelector('.close-btn');
 
     closeBtn.addEventListener('click', function() {
-        modal.classList.remove('show');
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-        window.location.href = window.location.pathname;
+        bootstrap.Modal.getInstance(modal).hide();
     });
-
-    if (modal.classList.contains('show')) {
-        document.body.classList.add('modal-open');
-    }
 });
 
 function increaseQuantity() {
@@ -146,5 +180,14 @@ function decreaseQuantity() {
     if (value > 1) {
         input.value = value - 1;
     }
+}
+
+function showAlert(message, type) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+    alertDiv.style.cssText = 'top:20px;right:20px;z-index:9999;min-width:300px;';
+    alertDiv.innerHTML = `${message}<button class="btn-close" data-bs-dismiss="alert"></button>`;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => alertDiv.remove(), 5000);
 }
 </script>
