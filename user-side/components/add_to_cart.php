@@ -12,7 +12,7 @@
         <i class="bi bi-x"></i>
       </button>
 
-      <form action="../../back-end/user-side/add_tocart.php" method="post">
+      <form action="../../back-end/user-side/add_to_cart.php" method="post">
         <div class="modal-body">
           <div class="modal-layout">
             <div class="image-column">
