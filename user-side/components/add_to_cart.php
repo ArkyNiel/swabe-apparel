@@ -1,20 +1,3 @@
-<?php
-$showModal = false;
-$productName = '';
-$productImage = '';
-$productPrice = '';
-$productSizes = [];
-
-if (isset($_GET['add_to_cart'])) {
-    $showModal = true;
-    $productName = $_GET['name'] ?? '';
-    $productImage = $_GET['image'] ?? '';
-    $productPrice = $_GET['price'] ?? '';
-    $sizesStr = $_GET['size'] ?? '';
-    $productSizes = explode(',', $sizesStr);
-}
-?>
-
 <link rel="stylesheet" href="../../assets/css/cart.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -22,11 +5,7 @@ if (isset($_GET['add_to_cart'])) {
 
 </style>
 
-<?php
-$userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
-?>
-
-<div class="modal fade <?php echo $showModal && $userLoggedIn ? 'show' : ''; ?>" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true" style="<?php echo $showModal && $userLoggedIn ? 'display: block;' : ''; ?>">
+<div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">
@@ -37,17 +16,17 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
         <div class="modal-body">
           <div class="modal-layout">
             <div class="image-column">
-              <img id="cartModalProductImg" src="<?php echo htmlspecialchars($productImage); ?>" alt="Product Image">
+              <img id="cartModalProductImg" src="" alt="Product Image">
             </div>
 
             <div class="details-column">
               <div class="product-header">
-                <h3 id="cartModalProductName" class="product-name"><?php echo htmlspecialchars($productName); ?></h3>
+                <h3 id="cartModalProductName" class="product-name"></h3>
               </div>
 
               <div class="pricing-section">
                 <div class="current-price">
-                  ₱<span id="cartModalProductPrice"><?php echo htmlspecialchars($productPrice); ?></span>
+                  ₱<span id="cartModalProductPrice"></span>
                 </div>
               </div>
 
@@ -95,24 +74,14 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
         </div>
 
         <input type="hidden" name="action" value="add_to_cart">
-        <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($_GET['id'] ?? ''); ?>">
-        <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($productName); ?>">
-        <input type="hidden" name="image" value="<?php echo htmlspecialchars($productImage); ?>">
-        <input type="hidden" name="price" value="<?php echo htmlspecialchars($productPrice); ?>">
+        <input type="hidden" name="product_id" value="">
+        <input type="hidden" name="product_name" value="">
+        <input type="hidden" name="image" value="">
+        <input type="hidden" name="price" value="">
       </form>
     </div>
   </div>
 </div>
-
-<?php if ($showModal && $userLoggedIn): ?>
-<div class="modal-backdrop fade show" style="z-index: 1040;"></div>
-<?php elseif ($showModal && !$userLoggedIn): ?>
-  <?php include('login_req.php'); ?>
-  <script>
-    var loginReqModal = new bootstrap.Modal(document.getElementById('loginReqModal'));
-    loginReqModal.show();
-  </script>
-<?php endif; ?>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

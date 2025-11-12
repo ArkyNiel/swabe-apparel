@@ -5,7 +5,8 @@
             data-image="<?php echo htmlspecialchars($product['image']); ?>"
             data-color="<?php echo htmlspecialchars($product['color']); ?>"
             data-size="<?php echo htmlspecialchars($product['size']); ?>"
-            data-price="<?php echo htmlspecialchars($product['price']); ?>">
+            data-price="<?php echo htmlspecialchars($product['price']); ?>"
+            data-id="<?php echo htmlspecialchars($product['id']); ?>">
             <img src="<?php echo htmlspecialchars($product['image']); ?>"
                  class="card-img-top"
                  alt="<?php echo htmlspecialchars($product['product_name']); ?>"
