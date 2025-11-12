@@ -112,6 +112,7 @@ footer a:hover {
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
     <?php include(__DIR__ . '/../components/login_req.php'); ?>
     <?php include('../components/footer.php'); ?>
+    <script src="../../assets/js/add_to_cart.js"></script>
 </body>
 
 </html>

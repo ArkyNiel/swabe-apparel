@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     
     <!-- Modal backdrop -->
     <div id="modalBackdrop" class="modal-backdrop fade" style="display: none;"></div>
