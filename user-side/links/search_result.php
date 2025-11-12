@@ -12,31 +12,9 @@
     <link rel="stylesheet" href="../../assets/css/fav_icons.css">
     <link rel="stylesheet" href="../../assets/css/cards_radius.css">
     <link rel="stylesheet" href="../../assets/css/global.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
-<style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
-    .content-wrap {
-        flex: 1 0 auto;
-    }
-    footer {
-        flex-shrink: 0;
-        margin-top: auto;
-    }
-    footer a:hover {
-        text-decoration: underline !important;
-    }
-</style>
 
 <body>
     <div class="content-wrap">
