@@ -1,30 +1,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="../../assets/css/cart.css">
 <style>
   #addToCartModal .modal-dialog {
     max-width: 800px !important;
     width: 800px !important;
-    height: 500px !important;
+    height: 470px !important;
   }
 
   #addToCartModal .modal-content {
     background: #ffffff !important;
     width: 800px !important;
     height: 500px !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     border: none !important;
     overflow: hidden !important;
   }
 
   #addToCartModal .modal-dialog {
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     overflow: hidden !important;
   }
 
   #addToCartModal .modal-body {
     background: #ffffff !important;
     overflow: visible !important;
-    border-radius: 12px !important;
+    border-radius: 8px !important;
     padding: 0 !important;
     height: 100%;
   }
@@ -98,7 +97,7 @@
     height: 32px;
     border: 1px solid #d1d5db;
     color: #6b7280;
-    border-radius: 6px;
+    border-radius: 50px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,6 +112,7 @@
     background-color: #f3f4f6;
     border-color: #9ca3af;
     color: #374151;
+    border-radius: 50px !important;
   }
 
   #cartModalQuantity {
@@ -121,14 +121,14 @@
     padding: 0.4rem;
     border: 1px solid #d1d5db;
     color: #101820;
-    border-radius: 6px;
+    border-radius: 3px;
     font-size: 0.9rem;
     font-weight: 500;
     background: #ffffff;
   }
 
   #addToCartModal .action-buttons {
-    margin-top: auto !important;
+    margin-top: -5px !important;
     display: flex !important;
     gap: 1rem;
     align-items: center;
@@ -138,6 +138,7 @@
     flex-shrink: 0;
     visibility: visible !important;
     opacity: 1 !important;
+    border-radius: 50px !important;
   }
 
   #addToCartModal .btn-add-cart {
@@ -147,7 +148,6 @@
     font-size: 0.875rem;
     font-weight: 600;
     padding: 0.6rem 1.25rem;
-    border-radius: 6px;
     transition: all 0.2s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -155,10 +155,12 @@
     display: flex !important;
     align-items: center;
     gap: 0.4rem;
+    height: 50px;
     visibility: visible !important;
     opacity: 1 !important;
     position: relative;
     z-index: 10;
+    border-radius: 50px;
   }
 
   #addToCartModal .btn-add-cart:hover {
@@ -171,7 +173,7 @@
     border: 1px solid #000000;
     color: #000000;
     padding: 0.6rem;
-    border-radius: 6px;
+    border-radius: 50px;
     transition: all 0.2s ease;
     cursor: pointer;
     display: flex;
