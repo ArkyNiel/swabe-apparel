@@ -33,7 +33,7 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
         <i class="bi bi-x"></i>
       </button>
 
-      <form action="../../back-end/user-side/add_to_cart.php" method="post">
+      <form id="addToCartForm" action="../../back-end/user-side/add_to_cart.php" method="post" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="modal-layout">
             <div class="image-column">
@@ -56,7 +56,7 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 
                 <div id="cartModalProductSizes" class="size-options">
                   <?php foreach ($productSizes as $index => $size): ?>
-                    <input type="radio" class="btn-check" name="size" id="size<?php echo $index; ?>" value="<?php echo htmlspecialchars(trim($size)); ?>" <?php echo $index === 0 ? 'checked' : ''; ?>>
+                    <input type="radio" class="btn-check" name="cartModalProductSize" id="size<?php echo $index; ?>" value="<?php echo htmlspecialchars(trim($size)); ?>" <?php echo $index === 0 ? 'checked' : ''; ?>>
                     <label class="btn btn-outline-primary" for="size<?php echo $index; ?>"><?php echo htmlspecialchars(trim($size)); ?></label>
                   <?php endforeach; ?>
                 </div>
@@ -65,25 +65,25 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
               <div class="quantity-section">
                 <div class="quantity-label">Quantity</div>
                 <div class="quantity-controls">
-                  <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="decreaseQuantity()">-</button>
+                  <button type="button" class="btn btn-outline-secondary quantity-btn" id="decreaseQuantity">-</button>
                   <input
                     type="number"
                     name="quantity"
-                    id="quantityInput"
+                    id="cartModalQuantity"
                     class="form-control"
                     value="1"
                     min="1"
-                    max="30"
+                    max="99"
                     readonly
                     style="-moz-appearance: textfield; appearance: textfield;"
                     onkeydown="return false;"
                   >
-                  <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="increaseQuantity()">+</button>
+                  <button type="button" class="btn btn-outline-secondary quantity-btn" id="increaseQuantity">+</button>
                 </div>
               </div>
 
               <div class="action-buttons">
-                <button type="submit" class="btn-add-cart">
+                <button type="submit" class="btn-add-cart" id="addToCartButton">
                   Add to Cart
                 </button>
                 <button type="button" class="btn-favorite">
@@ -115,8 +115,63 @@ $userLoggedIn = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 <?php endif; ?>
 
 <script>
-// modal function
 document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.cart-btn')) {
+            e.preventDefault();
+            const btn = e.target.closest('.cart-btn');
+            const name = btn.dataset.name;
+            const image = btn.dataset.image;
+            const size = btn.dataset.size;
+            const price = btn.dataset.price;
+            const id = btn.dataset.id;
+
+            // Populate modal
+            document.getElementById('cartModalProductName').textContent = name;
+            document.getElementById('cartModalProductImg').src = image;
+            document.getElementById('cartModalProductPrice').textContent = price;
+
+            // Populate sizes
+            const sizesContainer = document.getElementById('cartModalProductSizes');
+            sizesContainer.innerHTML = '';
+            size.split(',').forEach((s, index) => {
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.className = 'btn-check';
+                radio.name = 'size';
+                radio.id = 'size' + index;
+                radio.value = s.trim();
+                if (index === 0) radio.checked = true;
+
+                const label = document.createElement('label');
+                label.className = 'btn btn-outline-primary';
+                label.htmlFor = 'size' + index;
+                label.textContent = s.trim();
+
+                sizesContainer.appendChild(radio);
+                sizesContainer.appendChild(label);
+            });
+
+            // Set hidden fields
+            document.querySelector('input[name="product_id"]').value = id;
+            document.querySelector('input[name="product_name"]').value = name;
+            document.querySelector('input[name="image"]').value = image;
+            document.querySelector('input[name="price"]').value = price;
+
+            // Show modal
+            const modal = document.getElementById('addToCartModal');
+            modal.classList.add('show');
+            modal.style.display = 'block';
+            document.body.classList.add('modal-open');
+
+            // Add backdrop
+            const backdrop = document.createElement('div');
+            backdrop.className = 'modal-backdrop fade show';
+            backdrop.style.zIndex = '1040';
+            document.body.appendChild(backdrop);
+        }
+    });
+
     const modal = document.getElementById('addToCartModal');
     const closeBtn = modal.querySelector('.close-btn');
 
@@ -124,13 +179,46 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('show');
         modal.style.display = 'none';
         document.body.classList.remove('modal-open');
-        window.location.href = window.location.pathname;
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) backdrop.remove();
     });
 
-    if (modal.classList.contains('show')) {
-        document.body.classList.add('modal-open');
-    }
+    // Handle form submission via AJAX
+    document.getElementById('addToCartForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'login_required') {
+                showAlert(data.message, 'warning');
+                setTimeout(() => location.href = '../../user-side/links/login.php', 2000);
+            } else if (data.status === 'success') {
+                showAlert(data.message, 'success');
+                modal.classList.remove('show');
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) backdrop.remove();
+            } else {
+                showAlert(data.message, 'danger');
+            }
+        })
+        .catch(error => showAlert('Error: ' + error.message, 'danger'));
+    });
 });
+
+function addToCart() {
+    const form = document.getElementById('addToCartForm');
+    if (form) {
+        form.dispatchEvent(new Event('submit'));
+    }
+}
 
 function increaseQuantity() {
     const input = document.getElementById('quantityInput');
@@ -146,5 +234,23 @@ function decreaseQuantity() {
     if (value > 1) {
         input.value = value - 1;
     }
+}
+
+function showAlert(message, type) {
+    // Remove existing alerts
+    document.querySelectorAll('.alert').forEach(alert => alert.remove());
+
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type} alert-dismissible fade show`;
+    alert.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060; min-width: 300px;';
+    alert.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+    document.body.appendChild(alert);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (alert.parentNode) {
+            alert.remove();
+        }
+    }, 5000);
 }
 </script>
