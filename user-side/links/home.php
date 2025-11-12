@@ -180,8 +180,8 @@
     <?php include('../components/modal.php'); ?>
     <?php include('../components/add_to_cart.php'); ?>
 
-    <script src="../../assets/js/home_add_to_cart.js"></script>
-    <script src="../../assets/js/home_modal.js"></script>
+    <script src="../../assets/js/add_to_cart.js"></script>
+
     <script>
         const swabeModal = new bootstrap.Modal(document.getElementById('swabeModal'));
         swabeModal.show();

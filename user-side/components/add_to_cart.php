@@ -12,7 +12,7 @@
         <i class="bi bi-x"></i>
       </button>
 
-      <form action="../../back-end/user-side/add_to_cart.php" method="post">
+      <form id="addToCartForm" action="../../back-end/user-side/add_to_cart.php" method="post" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="modal-layout">
             <div class="image-column">
@@ -34,31 +34,35 @@
                 <div class="size-label">Size</div>
 
                 <div id="cartModalProductSizes" class="size-options">
+                  <?php foreach ($productSizes as $index => $size): ?>
+                    <input type="radio" class="btn-check" name="cartModalProductSize" id="size<?php echo $index; ?>" value="<?php echo htmlspecialchars(trim($size)); ?>" <?php echo $index === 0 ? 'checked' : ''; ?>>
+                    <label class="btn btn-outline-primary" for="size<?php echo $index; ?>"><?php echo htmlspecialchars(trim($size)); ?></label>
+                  <?php endforeach; ?>
                 </div>
               </div>
 
               <div class="quantity-section">
                 <div class="quantity-label">Quantity</div>
                 <div class="quantity-controls">
-                  <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="decreaseQuantity()">-</button>
+                  <button type="button" class="btn btn-outline-secondary quantity-btn" id="decreaseQuantity">-</button>
                   <input
                     type="number"
                     name="quantity"
-                    id="quantityInput"
+                    id="cartModalQuantity"
                     class="form-control"
                     value="1"
                     min="1"
-                    max="30"
+                    max="99"
                     readonly
                     style="-moz-appearance: textfield; appearance: textfield;"
                     onkeydown="return false;"
                   >
-                  <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="increaseQuantity()">+</button>
+                  <button type="button" class="btn btn-outline-secondary quantity-btn" id="increaseQuantity">+</button>
                 </div>
               </div>
 
               <div class="action-buttons">
-                <button type="submit" class="btn-add-cart">
+                <button type="submit" class="btn-add-cart" id="addToCartButton">
                   Add to Cart
                 </button>
                 <button type="button" class="btn-favorite">
@@ -80,91 +84,110 @@
 </div>
 
 <script>
-// Handle cart button clicks
-document.addEventListener('click', function(e) {
-    if (e.target.closest('.cart-btn')) {
-        e.preventDefault();
-        const btn = e.target.closest('.cart-btn');
-        const name = btn.dataset.name;
-        const image = btn.dataset.image;
-        const size = btn.dataset.size;
-        const price = btn.dataset.price;
-        const id = btn.dataset.id;
-        const color = btn.dataset.color;
-
-        if (!window.userLoggedIn) {
-            const loginModal = new bootstrap.Modal(document.getElementById('loginReqModal'));
-            loginModal.show();
-            return;
-        }
-
-        // Populate modal
-        document.getElementById('cartModalProductName').textContent = name;
-        document.getElementById('cartModalProductImg').src = image;
-        document.getElementById('cartModalProductPrice').textContent = price;
-
-        // Sizes
-        const sizes = size.split(',');
-        let sizesHtml = '';
-        sizes.forEach((s, i) => {
-            sizesHtml += `<input type="radio" class="btn-check" name="size" id="size${i}" value="${s.trim()}" ${i === 0 ? 'checked' : ''}>
-<label class="btn btn-outline-primary" for="size${i}">${s.trim()}</label>`;
-        });
-        document.getElementById('cartModalProductSizes').innerHTML = sizesHtml;
-
-        // Hidden inputs
-        document.querySelector('input[name="product_id"]').value = id;
-        document.querySelector('input[name="product_name"]').value = name;
-        document.querySelector('input[name="image"]').value = image;
-        document.querySelector('input[name="price"]').value = price;
-
-        // Reset quantity
-        document.getElementById('quantityInput').value = 1;
-
-        // Show modal
-        const modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
-        modal.show();
-    }
-});
-
-// Handle form submit
-document.addEventListener('submit', function(e) {
-    if (e.target.closest('#addToCartModal form')) {
-        e.preventDefault();
-        const form = e.target.closest('#addToCartModal form');
-        const formData = new FormData(form);
-
-        fetch(form.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                // Hide modal
-                bootstrap.Modal.getInstance(document.getElementById('addToCartModal')).hide();
-                // Show success alert
-                showAlert(data.message, 'success');
-            } else {
-                showAlert(data.message, 'danger');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            showAlert('An error occurred. Please try again.', 'danger');
-        });
-    }
-});
-
-// Modal close function
 document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.cart-btn')) {
+            e.preventDefault();
+            const btn = e.target.closest('.cart-btn');
+            const name = btn.dataset.name;
+            const image = btn.dataset.image;
+            const size = btn.dataset.size;
+            const price = btn.dataset.price;
+            const id = btn.dataset.id;
+
+            // Populate modal
+            document.getElementById('cartModalProductName').textContent = name;
+            document.getElementById('cartModalProductImg').src = image;
+            document.getElementById('cartModalProductPrice').textContent = price;
+
+            // Populate sizes
+            const sizesContainer = document.getElementById('cartModalProductSizes');
+            sizesContainer.innerHTML = '';
+            size.split(',').forEach((s, index) => {
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.className = 'btn-check';
+                radio.name = 'size';
+                radio.id = 'size' + index;
+                radio.value = s.trim();
+                if (index === 0) radio.checked = true;
+
+                const label = document.createElement('label');
+                label.className = 'btn btn-outline-primary';
+                label.htmlFor = 'size' + index;
+                label.textContent = s.trim();
+
+                sizesContainer.appendChild(radio);
+                sizesContainer.appendChild(label);
+            });
+
+            // Set hidden fields
+            document.querySelector('input[name="product_id"]').value = id;
+            document.querySelector('input[name="product_name"]').value = name;
+            document.querySelector('input[name="image"]').value = image;
+            document.querySelector('input[name="price"]').value = price;
+
+            // Show modal
+            const modal = document.getElementById('addToCartModal');
+            modal.classList.add('show');
+            modal.style.display = 'block';
+            document.body.classList.add('modal-open');
+
+            // Add backdrop
+            const backdrop = document.createElement('div');
+            backdrop.className = 'modal-backdrop fade show';
+            backdrop.style.zIndex = '1040';
+            document.body.appendChild(backdrop);
+        }
+    });
+
     const modal = document.getElementById('addToCartModal');
     const closeBtn = modal.querySelector('.close-btn');
 
     closeBtn.addEventListener('click', function() {
-        bootstrap.Modal.getInstance(modal).hide();
+        modal.classList.remove('show');
+        modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) backdrop.remove();
+    });
+
+    // Handle form submission via AJAX
+    document.getElementById('addToCartForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'login_required') {
+                showAlert(data.message, 'warning');
+                setTimeout(() => location.href = '../../user-side/links/login.php', 2000);
+            } else if (data.status === 'success') {
+                showAlert(data.message, 'success');
+                modal.classList.remove('show');
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) backdrop.remove();
+            } else {
+                showAlert(data.message, 'danger');
+            }
+        })
+        .catch(error => showAlert('Error: ' + error.message, 'danger'));
     });
 });
+
+function addToCart() {
+    const form = document.getElementById('addToCartForm');
+    if (form) {
+        form.dispatchEvent(new Event('submit'));
+    }
+}
 
 function increaseQuantity() {
     const input = document.getElementById('quantityInput');
@@ -183,11 +206,20 @@ function decreaseQuantity() {
 }
 
 function showAlert(message, type) {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-    alertDiv.style.cssText = 'top:20px;right:20px;z-index:9999;min-width:300px;';
-    alertDiv.innerHTML = `${message}<button class="btn-close" data-bs-dismiss="alert"></button>`;
-    document.body.appendChild(alertDiv);
-    setTimeout(() => alertDiv.remove(), 5000);
+    // Remove existing alerts
+    document.querySelectorAll('.alert').forEach(alert => alert.remove());
+
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type} alert-dismissible fade show`;
+    alert.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060; min-width: 300px;';
+    alert.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+    document.body.appendChild(alert);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (alert.parentNode) {
+            alert.remove();
+        }
+    }, 5000);
 }
 </script>
