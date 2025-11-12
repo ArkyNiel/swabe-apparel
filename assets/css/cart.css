@@ -13,11 +13,12 @@
 #addToCartModal .modal-content {
   width: 960px !important;
   height: 500px !important;
-  border-radius: 0 !important;
+  border-radius: 10px !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  background: #fcfcea;
-  border: none;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   overflow: visible !important;
+  position: relative;
 }
 
 #addToCartModal .modal-title-bar {
@@ -27,7 +28,7 @@
 #addToCartModal .modal-body {
   padding: 0 !important;
   margin: 0 !important;
-  background: #fcfcea;
+  background: #ffffff;
   overflow: visible !important;
 }
 
@@ -39,64 +40,72 @@
 
 #addToCartModal .image-column {
   width: 45%;
-  background: #fcfcea;
+  background: #ffffff;
   border-right: 1px solid #e5e7eb;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem !important;
+  padding: 2rem !important;
 }
 
 #cartModalProductImg {
   width: 100%;
-  height: 320px;
-  object-fit: cover;
+  max-height: 400px;
+  height: auto;
+  object-fit: contain !important;
   border-radius: 8px;
 }
 
 #addToCartModal .details-column {
   width: 55%;
-  padding: 2rem !important;
-  background: #fcfcea;
+  padding: 2.5rem !important;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  gap: 1.5rem;
 }
 
 #addToCartModal .product-header {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 #addToCartModal .product-name {
-  color: #101820;
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.4;
-}
-
-#addToCartModal .pricing-section {
-  margin-bottom: 1rem;
-}
-
-#addToCartModal .current-price {
-  color: #101820;
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-#addToCartModal .size-section {
-  margin-bottom: 1rem;
-}
-
-#addToCartModal .size-label {
+  color: #000000;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: #374151;
+  margin: 0;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#addToCartModal .color-section,
+#addToCartModal .size-section,
+#addToCartModal .pricing-section {
+  margin-bottom: 0;
+}
+
+#addToCartModal .info-label {
+  font-weight: 500;
+  color: #6b7280;
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
   display: block;
+}
+
+#addToCartModal .info-value {
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#addToCartModal .current-price {
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 #addToCartModal .size-options {
@@ -108,27 +117,27 @@
 
 #cartModalProductSizes .btn {
   border: 1px solid #d1d5db;
-  background: #fcfcea;
-  color: #101820;
+  background: #ffffff;
+  color: #000000;
   font-size: 0.875rem;
   font-weight: 500;
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 4px;
   transition: all 0.2s ease;
   text-align: center;
-  min-height: 36px;
+  min-height: 38px;
 }
 
 #cartModalProductSizes .btn:hover {
-  border-color: #101820;
-  background: #fcfcea;
-  color: #101820;
+  border-color: #000000;
+  background: #ffffff;
+  color: #000000;
 }
 
 #cartModalProductSizes .btn-check:checked + .btn {
-  background: #101820;
-  color: #fcfcea;
-  border-color: #101820;
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
 }
 
 #addToCartModal .quantity-section {
@@ -187,65 +196,41 @@
 #addToCartModal .action-buttons {
   margin-top: auto;
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   align-items: center;
-  padding-top: 1rem;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
 }
 
-#addToCartModal .btn-add-cart {
-  flex: 1;
-  background: #101820;
-  border: none;
-  color: #fcfcea;
-  font-size: 0.95rem;
+
+#addToCartModal .btn-close-modal {
+  background: #ffffff;
+  border: 1px solid #000000;
+  color: #000000;
+  font-size: 0.875rem;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
-  border-radius: 12px;
+  border-radius: 6px;
   transition: all 0.2s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-#addToCartModal .btn-add-cart:hover {
-  background: #374151;
-  transform: translateY(-1px);
-}
-
-#addToCartModal .btn-favorite {
-  width: 44px;
-  height: 44px;
-  border: 1px solid #101820;
-  background: #fcfcea;
-  color: #101820;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
   cursor: pointer;
 }
 
-#addToCartModal .btn-favorite:hover {
-  border-color: #fee715;
-  color: #fee715;
-  background: #fcfcea;
-}
-
-#addToCartModal .btn-favorite.active {
-  border-color: #fee715;
-  color: #fee715;
-  background: #fee715;
+#addToCartModal .btn-close-modal:hover {
+  background: #f9fafb;
+  border-color: #000000;
 }
 
 #addToCartModal .close-btn {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: rgba(252, 252, 234, 0.9);
-  border: 1px solid #e5e7eb;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -253,12 +238,12 @@
   transition: all 0.2s ease;
   color: #6b7280;
   z-index: 10;
+  font-size: 1.25rem;
 }
 
 #addToCartModal .close-btn:hover {
-  background: #fcfcea;
-  border-color: #3b82f6;
-  color: #3b82f6;
+  background: #f3f4f6;
+  color: #000000;
 }
 
 @media (max-width: 991.98px) {
@@ -276,18 +261,20 @@
     min-height: auto;
   }
 
-  #addToCartModal .image-column {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid #e5e7eb;
-    min-height: 250px;
-    padding: 1rem !important;
-  }
+#addToCartModal .image-column {
+  width: 100%;
+  border-right: none;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 250px;
+  padding: 1.5rem !important;
+  background: #ffffff;
+}
 
-  #addToCartModal .details-column {
-    width: 100%;
-    padding: 1rem !important;
-  }
+#addToCartModal .details-column {
+  width: 100%;
+  padding: 1.5rem !important;
+  background: #ffffff;
+}
 
   #addToCartModal .size-options {
     grid-template-columns: repeat(3, 1fr);
@@ -309,10 +296,4 @@
 
 #addToCartModal.show {
   display: block !important;
-}
-#cartModalProductImg {
-  width: 100%;
-  max-height: 320px;
-  object-fit: contain !important;
-  border-radius: 8px;
 }

@@ -1,19 +1,26 @@
 <?php
+// Prevent any output before JSON
+ob_start();
 session_start();
 include '../../connection/connection.php';
+// Clean any output that might have been generated
+ob_clean();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_to_cart') {
-    $isAjax = isset($_POST['ajax']);
+    $isAjax = isset($_POST['ajax']) && $_POST['ajax'] === '1';
 
     if (!isset($_SESSION['user_id'])) {
         $response = ['status' => 'login_required', 'message' => 'Please login to add items to cart!'];
         if ($isAjax) {
+            // Clean any output before sending JSON
+            ob_clean();
             header('Content-Type: application/json');
             echo json_encode($response);
+            exit;
         } else {
             header('Location: ../../user-side/links/login.php?message=' . urlencode($response['message']));
+            exit;
         }
-        exit;
     }
 
     $user_id = $_SESSION['user_id'];
@@ -60,12 +67,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 
     if ($isAjax) {
+        // Clean any output before sending JSON
+        ob_clean();
         header('Content-Type: application/json');
         echo json_encode($result);
+        exit;
     } else {
         $_SESSION['alert'] = ['type' => $result['status'] === 'success' ? 'success' : 'danger', 'message' => $result['message']];
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+        exit;
     }
-    exit;
 }
-?>
