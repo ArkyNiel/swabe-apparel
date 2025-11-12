@@ -105,6 +105,7 @@ footer a:hover {
     <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
+    <script src="../../assets/js/add_to_cart.js"></script>
 </body>
 
 </html>
