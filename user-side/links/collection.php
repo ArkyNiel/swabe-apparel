@@ -16,29 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<!-- footer style -->
-<style>
-    html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-body {
-    min-height: 100vh;
-    display: flex;  
-    flex-direction: column;
-}
-.content-wrap {
-    flex: 1 0 auto;
-}
-footer {
-    flex-shrink: 0;
-}
-footer a:hover {
-    text-decoration: underline !important;
-}
-
-</style>
 
 <body>
     <div class="content-wrap">
@@ -50,7 +27,7 @@ footer a:hover {
 
     <!-- cards -->
     <div class="container section-content">
-        <h1 class="mb-5 mt-5 text-center">recommend items</h1>
+        <h1 class="mb-5 mt-5 text-center" style="letter-spacing: 0px;">recommend items</h1>
 
         <?php if (isset($_SESSION['alert'])): ?>
             <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">

@@ -10,33 +10,9 @@
     <link rel="stylesheet" href="../../assets/css/fav_icons.css">
     <link rel="stylesheet" href="../../assets/css/cards_hover.css">
     <link rel="stylesheet" href="../../assets/css/cards_radius.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
-<!-- footer style -->
-<style>
-    html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #fcfcea !important;
-}
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-.content-wrap {
-    flex: 1 0 auto;
-}
-footer {
-    flex-shrink: 0;
-}
-footer a:hover {
-    text-decoration: underline !important;
-}
-
-</style>
 
 <body>
     <div class="content-wrap">
@@ -48,7 +24,7 @@ footer a:hover {
 
     <!-- cards -->
     <div class="container section-content">
-        <h1 class="mb-5 mt-5 text-center">recommend items</h1>
+        <h1 class="mb-5 mt-5 text-center" style="letter-spacing: 0px;">recommend shoes</h1>
         <div class="row" id="products-container">
             <?php
           include '../../connection/connection.php';

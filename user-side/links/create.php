@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
-            background-color: #fcfcea;
+            background-color: #ffff;
         }
 
         .auth-container {
@@ -38,7 +38,7 @@
                 <p class="text-muted text-center px-4" style="color: #fff !important;">Find your fashion. Shop the latest trends with us!</p>
             </div>
             <!-- Create Account Form -->
-            <div class="col-md-6 bg-white d-flex align-items-center justify-content-center">
+            <div class="col-md-6 bg-white d-flex align-items-center justify-content-center" style="background-color: #fcfcea !important;">
                 <div class="w-100 p-4" style="max-width: 450px;" >
                     <h2 class="mb-4 text-center">Create Account</h2>
 
@@ -52,12 +52,12 @@
                     <form action="../../back-end/user-side/register_process.php" method="POST" autocomplete="off">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" required autofocus>
+                            <input type="text" class="form-control" style="background-color: #e2e2cfff !important;" id="username" name="username" required autofocus>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                                <input type="password" class="form-control" style="background-color: #e2e2cfff !important;" id="password" name="password" required minlength="6">
                                 <button class="btn" type="button" id="togglePassword">
                                     <i class="fas fa-eye" id="eyeIcon"></i>
                                 </button>
@@ -66,7 +66,7 @@
                         <div class="mb-3">
                             <label for="confirm_password" class="form-label">Confirm Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required minlength="6">
+                                <input type="password" class="form-control" style="background-color: #e2e2cfff !important;" id="confirm_password" name="confirm_password" required minlength="6">
                                 <button class="btn" type="button" id="toggleConfirmPassword">
                                     <i class="fas fa-eye" id="confirmEyeIcon"></i>
                                 </button>

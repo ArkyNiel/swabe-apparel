@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $_SESSION['alert'] = [
                 'type' => 'success', 
-                'message' => 'Welcome back, ' . $user['username'] . '!'
+                'message' => 'Hi, ' . $user['username'] . '!'
             ];
             
             // path
