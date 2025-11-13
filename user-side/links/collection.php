@@ -79,6 +79,9 @@
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
     <script src="../../assets/js/set_timeout.js"></script>
+    <script>
+        window.userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    </script>
 
     <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>

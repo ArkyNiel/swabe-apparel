@@ -100,25 +100,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const increaseBtn = document.getElementById('increaseQuantity');
     const quantityInput = document.getElementById('cartModalQuantity');
 
-    if (decreaseBtn && quantityInput) {
+    if (decreaseBtn && quantityInput && !decreaseBtn.hasAttribute('data-listener-added')) {
+        decreaseBtn.setAttribute('data-listener-added', 'true');
         decreaseBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            if (decreaseBtn.disabled) return;
+            decreaseBtn.disabled = true;
             let value = parseInt(quantityInput.value) || 1;
             if (value > 1) {
                 quantityInput.value = value - 1;
             }
+            setTimeout(() => decreaseBtn.disabled = false, 300);
         });
     }
 
-    if (increaseBtn && quantityInput) {
+    if (increaseBtn && quantityInput && !increaseBtn.hasAttribute('data-listener-added')) {
+        increaseBtn.setAttribute('data-listener-added', 'true');
         increaseBtn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
+            if (increaseBtn.disabled) return;
+            increaseBtn.disabled = true;
             let value = parseInt(quantityInput.value) || 1;
             if (value < 99) {
                 quantityInput.value = value + 1;
             }
+            setTimeout(() => increaseBtn.disabled = false, 300);
         });
     }
 
