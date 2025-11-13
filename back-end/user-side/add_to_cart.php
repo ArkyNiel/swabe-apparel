@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     $user_id = $_SESSION['user_id'];
     $product_name = $_POST['product_name'] ?? '';
-    $image = $_POST['image'] ?? '';
+    $image = basename($_POST['image'] ?? '');
     $size = $_POST['size'] ?? '';
     $price = $_POST['price'] ?? '';
     $quantity = (int)($_POST['quantity'] ?? 1);
@@ -52,10 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 }
 
                 // Put the item in the cart
-                $stmt = $conn->prepare("INSERT INTO cart (id, user_id, product_name, image, size, price, quantity, added_at) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())");
+                $stmt = $conn->prepare("INSERT INTO cart (id, user_id, product_name, image, size, price, quantity, added_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                $current_time = date('Y-m-d H:i:s');
 
                 // Try to add it
-                if ($stmt->execute([$random_id, $user_id, $product_name, $image, $size, $price, $quantity])) {
+                if ($stmt->execute([$random_id, $user_id, $product_name, $image, $size, $price, $quantity, $current_time])) {
                     $result = ['status' => 'success', 'message' => 'Product added to cart successfully!'];
                 } else {
                     $result = ['status' => 'error', 'message' => 'Failed to add product to cart.'];
