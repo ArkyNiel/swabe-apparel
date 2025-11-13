@@ -68,6 +68,9 @@
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
     <script src="../../assets/js/set_timeout.js"></script>
+    <script>
+        window.userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    </script>
 
     <?php if (isset($_SESSION['alert'])): ?>
         <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">

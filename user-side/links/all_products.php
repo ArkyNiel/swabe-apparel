@@ -82,6 +82,39 @@
     <script>
         window.userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
     </script>
+    <script>
+    // Load wishlist items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.userLoggedIn) {
+            fetch('../../back-end/user-side/get_wishlist.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.wishlist) {
+                        data.wishlist.forEach(productId => {
+                            const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${productId}"]`);
+                            if (favoriteBtn) {
+                                const icon = favoriteBtn.querySelector('.fa-heart');
+                                icon.classList.add('fas', 'red');
+                                icon.classList.remove('far');
+                            }
+                        });
+                    }
+                })
+                .catch(error => console.error('Error loading wishlist:', error));
+        }
+    });
+
+    // Show alert function
+    function showAlert(msg, type) {
+        document.querySelectorAll('.alert').forEach(a => a.remove());
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+        alert.style.cssText = 'top:20px;right:20px;z-index:9999;min-width:300px;';
+        alert.innerHTML = `${msg}<button class="btn-close" data-bs-dismiss="alert"></button>`;
+        document.body.appendChild(alert);
+        setTimeout(() => alert.remove(), 5000);
+    }
+    </script>
 
     <?php if (isset($_SESSION['alert'])): ?>
         <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">

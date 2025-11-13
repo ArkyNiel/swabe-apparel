@@ -101,7 +101,40 @@
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script>
+    window.userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    </script>
+    <script>
+    // Show alert function
+    function showAlert(msg, type) {
+        document.querySelectorAll('.alert').forEach(a => a.remove());
+        const alert = document.createElement('div');
+        alert.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+        alert.style.cssText = 'top:20px;right:20px;z-index:9999;min-width:300px;';
+        alert.innerHTML = `${msg}<button class="btn-close" data-bs-dismiss="alert"></button>`;
+        document.body.appendChild(alert);
+        setTimeout(() => alert.remove(), 5000);
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+    // Load wishlist items on page load
+    if (window.userLoggedIn) {
+        fetch('../../back-end/user-side/get_wishlist.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.wishlist) {
+                    data.wishlist.forEach(productId => {
+                        const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${productId}"]`);
+                        if (favoriteBtn) {
+                            const icon = favoriteBtn.querySelector('.fa-heart');
+                            icon.classList.add('fas', 'red');
+                            icon.classList.remove('far');
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading wishlist:', error));
+    }
+
     document.getElementById('products-container').addEventListener('click', function(event) {
         const card = event.target.closest('.product-card');
         if (card && !event.target.closest('.card-actions')) {
@@ -137,11 +170,57 @@
     document.getElementById('products-container').addEventListener('click', function(event) {
         const btn = event.target.closest('.favorite-btn');
         if (btn) {
-            event.stopPropagation(); 
+            event.stopPropagation();
+
+            // Check if user is logged in
+            if (!window.userLoggedIn) {
+                showAlert("Please login to add items to wishlist!", "warning");
+                setTimeout(() => location.href = "../../user-side/links/login.php", 2000);
+                return;
+            }
+
             const icon = btn.querySelector('.fa-heart');
             icon.classList.toggle('red');
-            icon.classList.toggle('fas'); 
-            icon.classList.toggle('far'); 
+            icon.classList.toggle('fas');
+            icon.classList.toggle('far');
+
+            // Get product data
+            const name = btn.getAttribute('data-name');
+            const image = btn.getAttribute('data-image');
+            const price = btn.getAttribute('data-price');
+            const id = btn.getAttribute('data-id');
+            const color = btn.getAttribute('data-color') || 'N/A';
+
+            // Send to backend
+            const data = new FormData();
+            data.append('action', 'add_to_wishlist');
+            data.append('ajax', '1');
+            data.append('product_id', id);
+            data.append('product_name', name);
+            data.append('image', image);
+            data.append('price', price);
+
+            fetch('../../back-end/user-side/add_to_wishlist.php', {
+                method: 'POST',
+                body: data
+            })
+            .then(response => response.text())
+            .then(text => {
+                try {
+                    const data = JSON.parse(text);
+                    if (data.status === 'login_required') {
+                        showAlert(data.message, 'warning');
+                        setTimeout(() => location.href = '../../user-side/links/login.php', 2000);
+                    } else if (data.status === 'success') {
+                        showAlert(data.message, 'success');
+                    } else {
+                        showAlert(data.message, 'danger');
+                    }
+                } catch (e) {
+                    showAlert('Server error. Please try again.', 'danger');
+                }
+            })
+            .catch(error => showAlert('Error occurred!', 'danger'));
         }
     });
 });
