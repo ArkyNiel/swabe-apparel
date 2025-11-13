@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../assets/css/footer.css">
+
 <footer class="footer text-white py-5 mt-5" style="font-size: 0.95rem; background: #101820 !important;">
     <div class="container text-center">
         <span>&copy; <?php echo date('Y'); ?> Swabe Apparel. All rights reserved.</span>
@@ -8,25 +10,3 @@
             Service</a>
     </div>
 </footer>
-
-<style>
-html, body {
-    margin: 0;
-    padding: 0;
-}
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-.content-wrap {
-    flex: 1 0 auto;
-}
-footer {
-    flex-shrink: 0;
-}
-footer a:hover {
-    text-decoration: underline !important;
-}
-
-</style>
