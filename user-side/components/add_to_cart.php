@@ -128,11 +128,11 @@
   }
 
   #addToCartModal .action-buttons {
-    margin-top: -5px !important;
+    margin-top: 10px !important;
     display: flex !important;
     gap: 1rem;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding-top: 0.5rem;
     width: 100%;
     flex-shrink: 0;
@@ -173,7 +173,7 @@
     border: 1px solid #000000;
     color: #000000;
     padding: 0.6rem;
-    border-radius: 50px;
+    border-radius: 30px;
     transition: all 0.2s ease;
     cursor: pointer;
     display: flex;
@@ -320,9 +320,6 @@
                 <button type="submit" class="btn-add-cart" id="addToCartButton">
                   <i class="bi bi-cart-plus"></i>
                   Add to Cart
-                </button>
-                <button type="button" class="btn-favorite">
-                  <i class="bi bi-heart"></i>
                 </button>
               </div>
             </div>
