@@ -26,7 +26,7 @@
 
         <!-- cards -->
         <div class="container section-content">
-            <h1 class="mb-5 mt-5 text-center">related search</h1>
+            <h1 class="mb-5 mt-5 text-center">result for ""</h1>
             <div class="row" id="products-container">
                 <?php
                 include '../../connection/connection.php';

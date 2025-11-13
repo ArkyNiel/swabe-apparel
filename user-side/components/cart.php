@@ -1,3 +1,7 @@
+<?php
+include '../../back-end/user-side/cart_info.php';
+?>
+
 <link rel="stylesheet" href="../../assets/css/cart_notif.css">
 
 <div class="nav-item dropdown">
@@ -9,78 +13,25 @@
             <i class="fa-solid fa-cart-shopping" style="margin-right: 8px; color: #101820;"></i>
             Cart
         </li>
+        <?php if (empty($cart_items)): ?>
+        <li class="cart-item">
+            <div class="cart-content">Your cart is empty.</div>
+        </li>
+        <?php else: ?>
+        <?php foreach ($cart_items as $item): ?>
         <li class="cart-item">
             <div class="cart-header">
                 <span class="cart-title">
-                    Nike Air Max Added
+                    <?php echo htmlspecialchars($item['product_name']); ?> Added
                 </span>
-                <span class="cart-time">Just now</span>
+                <span class="cart-time"><?php echo timeAgo($item['added_at']); ?></span>
             </div>
             <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Nike Air Max" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Nike Air Max shoes have been added to your cart. Size: 10, Qty: 1.
+                <?php echo htmlspecialchars($item['product_name']); ?> added to cart. Size: <?php echo htmlspecialchars($item['size']); ?>, Qty: <?php echo htmlspecialchars($item['quantity']); ?>.
             </div>
         </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Polo Shirt Added
-                </span>
-                <span class="cart-time">5m ago</span>
-            </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Polo Shirt" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Polo Ralph Lauren shirt added to cart. Size: M, Qty: 2.
-            </div>
-        </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Air Jordan Added
-                </span>
-                <span class="cart-time">10m ago</span>
-            </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
-            </div>
-        </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Air Jordan Added
-                </span>
-                <span class="cart-time">10m ago</span>
-            </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
-            </div>
-        </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Air Jordan Added
-                </span>
-                <span class="cart-time">10m ago</span>
-            </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
-            </div>
-        </li>
-        <li class="cart-item">
-            <div class="cart-header">
-                <span class="cart-title">
-                    Air Jordan Added
-                </span>
-                <span class="cart-time">10m ago</span>
-            </div>
-            <div class="cart-content">
-                <img src="../../assets/img/logo.jpg" alt="Air Jordan" style="width: 50px; height: 50px; margin-right: 10px; float: left;">
-                Air Jordan sneakers added to cart. Size: 9, Qty: 1.
-            </div>
-        </li>
+        <?php endforeach; ?>
+        <?php endif; ?>
         <li class="cart-item">
             <div class="cart-header">
                 <span class="cart-title">

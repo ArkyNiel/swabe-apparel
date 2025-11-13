@@ -27,7 +27,7 @@
 
     <!-- cards -->
     <div class="container section-content">
-        <h1 class="mb-5 mt-5 text-center" style="letter-spacing: 0px;">recommend items</h1>
+        <h1 class="mb-5 mt-5 text-center" style="letter-spacing: 0px;">Anime Collection</h1>
 
         <?php if (isset($_SESSION['alert'])): ?>
             <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">
@@ -40,7 +40,7 @@
           include '../../connection/connection.php';
           include '../../back-end/user-side/get_products.php';
           
-          $productsPerPage = 24; // 24 per page meaning 4 row per load
+          $productsPerPage = 24;
           $limitedProductsData = getProducts($conn, 0, $productsPerPage, '../uploads/', 'collection');
           
           $limitedProducts = isset($limitedProductsData['products']) ? $limitedProductsData['products'] : $limitedProductsData;
