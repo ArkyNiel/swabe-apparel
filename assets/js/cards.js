@@ -200,8 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Check if user is logged in
         if (!window.userLoggedIn) {
-          showAlert("Please login to add items to wishlist!", "warning");
-          setTimeout(() => location.href = "../../user-side/links/login.php", 2000);
+          const loginModal = new bootstrap.Modal(document.getElementById('loginReqModal'));
+          loginModal.show();
           return;
         }
 

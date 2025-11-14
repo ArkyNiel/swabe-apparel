@@ -182,6 +182,7 @@
     <?php include('../components/footer.php'); ?>
     <?php include('../components/modal.php'); ?>
     <?php include('../components/add_to_cart.php'); ?>
+    <?php include(__DIR__ . '/../components/login_req.php'); ?>
 
     <script src="../../assets/js/add_to_cart.js"></script>
 
