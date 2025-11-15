@@ -1,3 +1,13 @@
+function showAlert(msg, type) {
+    document.querySelectorAll(".alert").forEach(a => a.remove());
+    const alert = document.createElement("div");
+    alert.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+    alert.style.cssText = "top:20px;right:20px;z-index:9999;min-width:300px;";
+    alert.innerHTML = `${msg}<button class="btn-close" data-bs-dismiss="alert"></button>`;
+    document.body.appendChild(alert);
+    setTimeout(() => alert.remove(), 5000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const productsContainer = document.getElementById('products-container');
     const loadMoreBtn = document.getElementById('load-more-btn');
@@ -7,14 +17,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const productCategory = window.PRODUCT_CATEGORY;
     const initialProductsCount = window.INITIAL_PRODUCTS_COUNT || 0;
     const searchQuery = window.SEARCH_QUERY || '';
-    
+
     if (!getProductsUrl) {
         console.error('GET_PRODUCTS_URL is not set!');
         return;
     }
-    
+
     const productModal = new bootstrap.Modal(document.getElementById('productModal'));
-    
+
+
+
     productsContainer.addEventListener('click', function(e) {
         const productCard = e.target.closest('.product-card');
         if (productCard) {
@@ -26,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             productModal.show();
         }
     });
-    
+
     if (!loadMoreBtn) {
         console.error('Load More button not found!');
         return;
@@ -95,7 +107,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="card-actions d-flex justify-content-between align-items-center mt-2">
                                     <h5 class="product-price">₱${product.price || 'N/A'}</h5>
                                     <div>
-                                        <button class="btn favorite-btn" title="Add to Favorites">
+                                        <button class="btn favorite-btn" title="Add to Favorites"
+                                            data-name="${product.product_name || ''}"
+                                            data-image="${product.image || ''}"
+                                            data-price="${product.price || 'N/A'}"
+                                            data-id="${product.id || ''}"
+                                            data-color="${product.color || 'N/A'}"
+                                        >
                                             <i class="far fa-heart"></i>
                                         </button>
                                         <button 
@@ -151,10 +169,56 @@ function attachFavoriteBtnHandler() {
     document.querySelectorAll('.favorite-btn').forEach(function(btn) {
         btn.onclick = function(event) {
             event.stopPropagation();
+
+            // Check if user is logged in
+            if (!window.userLoggedIn) {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginReqModal'));
+                loginModal.show();
+                return;
+            }
+
             const icon = this.querySelector('.fa-heart');
             icon.classList.toggle('red');
             icon.classList.toggle('fas');
             icon.classList.toggle('far');
+
+            // Get product data
+            const name = this.getAttribute("data-name");
+            const image = this.getAttribute("data-image");
+            const price = this.getAttribute("data-price");
+            const id = this.getAttribute("data-id");
+            const color = this.getAttribute("data-color") || "N/A";
+
+            // Send to backend
+            const data = new FormData();
+            data.append("action", "add_to_wishlist");
+            data.append("ajax", "1");
+            data.append("product_id", id);
+            data.append("product_name", name);
+            data.append("image", image);
+            data.append("price", price);
+
+            fetch("../../back-end/user-side/add_to_wishlist.php", {
+                method: "POST",
+                body: data
+            })
+                .then(response => response.text())
+                .then(text => {
+                    try {
+                        const data = JSON.parse(text);
+                        if (data.status === "login_required") {
+                            showAlert(data.message, "warning");
+                            setTimeout(() => location.href = "../../user-side/links/login.php", 2000);
+                        } else if (data.status === "success") {
+                            showAlert(data.message, "success");
+                        } else {
+                            showAlert(data.message, "danger");
+                        }
+                    } catch (e) {
+                        showAlert("Server error. Please try again.", "danger");
+                    }
+                })
+                .catch(error => showAlert("Error occurred!", "danger"));
         };
     });
 }
@@ -162,3 +226,5 @@ function attachFavoriteBtnHandler() {
 document.addEventListener('productsAppended', function() {
     attachFavoriteBtnHandler();
 });
+
+
