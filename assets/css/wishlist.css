@@ -44,6 +44,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 4px;
+    position: relative;
 }
 
 .wishlist-title {
@@ -56,6 +57,8 @@
 .wishlist-time {
     font-size: 11px;
     color: #666 !important;
+    position: absolute;
+    right: 20px;
 }
 
 .wishlist-content {
@@ -81,8 +84,9 @@
 }
 
 .remove-wishlist {
-    color: #dc3545;
+    color: #fee715;
     cursor: pointer;
     font-size: 14px;
-    margin-left: 10px;
+    position: absolute;
+    right: 0;
 }

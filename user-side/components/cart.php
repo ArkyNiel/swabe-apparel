@@ -1,5 +1,5 @@
 <?php
-include '../../back-end/user-side/cart_info.php';
+include '../../back-end/user-side/get_cart.php';
 ?>
 
 <link rel="stylesheet" href="../../assets/css/cart_notif.css">
