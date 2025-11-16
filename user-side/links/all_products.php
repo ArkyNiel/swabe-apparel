@@ -90,8 +90,8 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.wishlist) {
-                        data.wishlist.forEach(productId => {
-                            const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${productId}"]`);
+                        data.wishlist.forEach(item => {
+                            const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${item.product_id}"]`);
                             if (favoriteBtn) {
                                 const icon = favoriteBtn.querySelector('.fa-heart');
                                 icon.classList.add('fas', 'red');

@@ -82,7 +82,7 @@
     <script>
         window.userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
     </script>
-
+    <script src="../../assets/js/load_wishlist_hearts.js"></script>
     <?php include('../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
