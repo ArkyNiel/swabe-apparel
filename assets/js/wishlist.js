@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="wishlist-header">
                                 <span class="wishlist-title">${item.product_name} Added</span>
                                 <span class="wishlist-time">${getTimeAgo(item.added_at)}</span>
-                                <i class="fa-solid fa-heart remove-wishlist" title="Remove from wishlist" data-id="${item.id}"></i>
+                                <i class="fa-solid fa-heart remove-wishlist red" title="Remove from wishlist" data-id="${item.product_id}"></i>
                             </div>
                             <div class="wishlist-content">
                                 ${item.product_name} added to wishlist. Price: ₱${item.price}
@@ -65,24 +65,23 @@ document.addEventListener('DOMContentLoaded', function() {
     wishlistMenu.addEventListener('click', function(e) {
         if (e.target.classList.contains('remove-wishlist')) {
             const itemId = e.target.getAttribute('data-id');
-            if (confirm('Remove this item from wishlist?')) {
-                fetch('../../back-end/user-side/add_to_wishlist.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `id=${itemId}&action=remove`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        loadWishlist(); // Reload wishlist
-                    } else {
-                        alert('Error removing item from wishlist');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            }
+            // Remove without confirmation for better UX
+            fetch('../../back-end/user-side/add_to_wishlist.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `product_id=${itemId}&action=remove`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    loadWishlist(); // Reload wishlist
+                } else {
+                    alert('Error removing item from wishlist');
+                }
+            })
+            .catch(error => console.error('Error:', error));
         }
     });
 });

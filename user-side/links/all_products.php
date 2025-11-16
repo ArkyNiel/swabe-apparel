@@ -83,6 +83,27 @@
         window.userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
     </script>
     <script>
+    // Load wishlist items on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.userLoggedIn) {
+            fetch('../../back-end/user-side/get_wishlist.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.wishlist) {
+                        data.wishlist.forEach(item => {
+                            const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${item.product_id}"]`);
+                            if (favoriteBtn) {
+                                const icon = favoriteBtn.querySelector('.fa-heart');
+                                icon.classList.add('fas', 'red');
+                                icon.classList.remove('far');
+                            }
+                        });
+                    }
+                })
+                .catch(error => console.error('Error loading wishlist:', error));
+        }
+    });
+
     // Show alert function
     function showAlert(msg, type) {
         document.querySelectorAll('.alert').forEach(a => a.remove());
@@ -94,7 +115,6 @@
         setTimeout(() => alert.remove(), 5000);
     }
     </script>
-    <script src="../../assets/js/load_wishlist_hearts.js"></script>
 
     <?php if (isset($_SESSION['alert'])): ?>
         <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">

@@ -26,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        $user_id = $_SESSION['user_id'];
-        $product_id = $_POST['product_id'] ?? '';
+        $user_id = (int)$_SESSION['user_id'];
+        $product_id = (int)($_POST['product_id'] ?? 0);
         $product_name = $_POST['product_name'] ?? '';
         $image = basename($_POST['image'] ?? '');
         $price = $_POST['price'] ?? '';
@@ -39,10 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Check if product is already in wishlist
                 $checkStmt = $conn->prepare("SELECT 1 FROM wishlist WHERE user_id = ? AND product_id = ? LIMIT 1");
                 $checkStmt->execute([$user_id, $product_id]);
-                if ($checkStmt->fetch()) {
+                $exists = $checkStmt->fetch();
+
+                if ($exists) {
                     $result = ['status' => 'error', 'message' => 'This product is already in your wishlist.'];
                 } else {
-                    // Generate random 8-digit ID
+                    // Product not in wishlist, so add it
+                    // generated id ito ha
                     do {
                         $id = mt_rand(10000000, 99999999);
                         $stmt = $conn->prepare("INSERT INTO wishlist (id, user_id, product_id, product_name, image, price, added_at) VALUES (?, ?, ?, ?, ?, ?, NOW())");
@@ -50,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if (!$success) {
                             $errorCode = $stmt->errorInfo()[1];
                         }
-                    } while (!$success && $errorCode == 1062); // 1062 is duplicate entry
+                    } while (!$success && $errorCode == 1062); 
 
                     if ($success) {
                         $result = ['status' => 'success', 'message' => 'Product added to wishlist successfully!'];
@@ -80,16 +83,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        $user_id = $_SESSION['user_id'];
-        $id = $_POST['id'] ?? '';
+        $user_id = (int)$_SESSION['user_id'];
+        $product_id = (int)($_POST['product_id'] ?? 0);
 
         try {
-            $stmt = $conn->prepare("DELETE FROM wishlist WHERE id = ? AND user_id = ?");
-            if ($stmt->execute([$id, $user_id])) {
-                echo json_encode(['success' => true]);
-            } else {
-                echo json_encode(['success' => false, 'message' => 'Failed to remove item']);
-            }
+            $stmt = $conn->prepare("DELETE FROM wishlist WHERE product_id = ? AND user_id = ?");
+            $stmt->execute([$product_id, $user_id]);
+            // Always return success for remove action, even if item wasn't in wishlist
+            echo json_encode(['success' => true]);
         } catch (PDOException $e) {
             echo json_encode(['success' => false, 'message' => 'Database error']);
         }

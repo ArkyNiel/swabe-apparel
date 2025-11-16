@@ -26,7 +26,10 @@
 
         <!-- cards -->
         <div class="container section-content">
-            <h1 class="mb-5 mt-5 text-center">result for ""</h1>
+            <?php
+            $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : '';
+            ?>
+            <h1 class="mb-5 mt-5 text-center">result for "<?php echo htmlspecialchars($searchQuery); ?>"</h1>
             <div class="row" id="products-container">
                 <?php
                 include '../../connection/connection.php';
@@ -34,21 +37,26 @@
 
                 $productsPerPage = 24;
                 $totalProducts = 0;
-                $searchQuery = isset($_GET['search']) ? trim($_GET['search']) : '';
 
                 if ($searchQuery !== '') {
-                    $stmt = $conn->prepare("SELECT COUNT(*) FROM inventory WHERE product_name LIKE :search");
-                    $stmt->execute(['search' => "%$searchQuery%"]);
+                    $searchTerm = "%$searchQuery%";
+                    $stmt = $conn->prepare("SELECT COUNT(*) FROM inventory WHERE LOWER(product_name) LIKE LOWER(:search) OR LOWER(category) LIKE LOWER(:search)");
+                    $stmt->execute(['search' => $searchTerm]);
                     $totalProducts = $stmt->fetchColumn();
 
-                    $stmt = $conn->prepare("SELECT * FROM inventory WHERE product_name LIKE :search LIMIT :offset, :limit");
-                    $offset = 0;
-                    $stmt->bindValue(':search', "%$searchQuery%", PDO::PARAM_STR);
-                    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+                    $stmt = $conn->prepare("SELECT * FROM inventory WHERE LOWER(product_name) LIKE LOWER(:search) OR LOWER(category) LIKE LOWER(:search) ORDER BY
+                        CASE
+                            WHEN LOWER(product_name) LIKE LOWER(:exact) THEN 1
+                            WHEN LOWER(category) LIKE LOWER(:exact) THEN 2
+                            ELSE 3
+                        END, product_name LIMIT :offset, :limit");
+                    $stmt->bindValue(':search', $searchTerm, PDO::PARAM_STR);
+                    $stmt->bindValue(':exact', $searchQuery, PDO::PARAM_STR);
+                    $stmt->bindValue(':offset', 0, PDO::PARAM_INT);
                     $stmt->bindValue(':limit', $productsPerPage, PDO::PARAM_INT);
                     $stmt->execute();
                     $rawProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    
+
                     $products = [];
                     foreach ($rawProducts as $product) {
                         if (!empty($product['image_path'])) {
@@ -64,7 +72,7 @@
                         $totalProducts = $stmt->fetchColumn();
                     }
                     $productsData = getProducts($conn, 0, $productsPerPage, '../uploads/');
-                    
+
                     $products = isset($productsData['products']) ? $productsData['products'] : $productsData;
                 }
 
@@ -93,7 +101,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
-    <script src="../../assets/js/load_wishlist_hearts.js"></script>
     const productsData = <?php echo json_encode($products ?? []); ?>;
     </script>
     <script>
@@ -101,131 +108,14 @@
     window.UPLOAD_PREFIX = '../uploads/';
     </script>
     <script src="../../assets/js/load-more.js"></script>
+    <script src="../../assets/js/cards.js"></script>
+    <script src="../../assets/js/set_timeout.js"></script>
     <script>
     window.userLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
     </script>
-    <script>
-    // Show alert function
-    function showAlert(msg, type) {
-        document.querySelectorAll('.alert').forEach(a => a.remove());
-        const alert = document.createElement('div');
-        alert.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
-        alert.style.cssText = 'top:20px;right:20px;z-index:9999;min-width:300px;';
-        alert.innerHTML = `${msg}<button class="btn-close" data-bs-dismiss="alert"></button>`;
-        document.body.appendChild(alert);
-        setTimeout(() => alert.remove(), 5000);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-    // Load wishlist items on page load
-    if (window.userLoggedIn) {
-        fetch('../../back-end/user-side/get_wishlist.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.wishlist) {
-                    data.wishlist.forEach(productId => {
-                        const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${productId}"]`);
-                        if (favoriteBtn) {
-                            const icon = favoriteBtn.querySelector('.fa-heart');
-                            icon.classList.add('fas', 'red');
-                            icon.classList.remove('far');
-                        }
-                    });
-                }
-            })
-            .catch(error => console.error('Error loading wishlist:', error));
-    }
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const card = event.target.closest('.product-card');
-        if (card && !event.target.closest('.card-actions')) {
-            document.getElementById('productModalProductImage').src = card.getAttribute('data-image');
-            document.getElementById('productModalProductName').textContent = card.getAttribute('data-name');
-            document.getElementById('productModalProductColor').textContent = card.getAttribute('data-color');
-            document.getElementById('productModalProductSize').textContent = card.getAttribute('data-size');
-            document.getElementById('productModalProductPrice').textContent = card.getAttribute('data-price');
-            var modal = new bootstrap.Modal(document.getElementById('productModal'));
-            modal.show();
-        }
-    });
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.cart-btn');
-        if (btn) {
-            event.stopPropagation();
-            var name = btn.getAttribute('data-name');
-            var image = btn.getAttribute('data-image');
-            var size = btn.getAttribute('data-size');
-            var price = btn.getAttribute('data-price');
-
-            // Use the global function to populate the modal
-            if (window.populateCartModal) {
-                window.populateCartModal(name, image, price, size, size);
-            }
-
-            var modal = new bootstrap.Modal(document.getElementById('addToCartModal'));
-            modal.show();
-        }
-    });
-
-    document.getElementById('products-container').addEventListener('click', function(event) {
-        const btn = event.target.closest('.favorite-btn');
-        if (btn) {
-            event.stopPropagation();
-
-            // Check if user is logged in
-            if (!window.userLoggedIn) {
-                showAlert("Please login to add items to wishlist!", "warning");
-                setTimeout(() => location.href = "../../user-side/links/login.php", 2000);
-                return;
-            }
-
-            const icon = btn.querySelector('.fa-heart');
-            icon.classList.toggle('red');
-            icon.classList.toggle('fas');
-            icon.classList.toggle('far');
-
-            // Get product data
-            const name = btn.getAttribute('data-name');
-            const image = btn.getAttribute('data-image');
-            const price = btn.getAttribute('data-price');
-            const id = btn.getAttribute('data-id');
-            const color = btn.getAttribute('data-color') || 'N/A';
-
-            // Send to backend
-            const data = new FormData();
-            data.append('action', 'add_to_wishlist');
-            data.append('ajax', '1');
-            data.append('product_id', id);
-            data.append('product_name', name);
-            data.append('image', image);
-            data.append('price', price);
-
-            fetch('../../back-end/user-side/add_to_wishlist.php', {
-                method: 'POST',
-                body: data
-            })
-            .then(response => response.text())
-            .then(text => {
-                try {
-                    const data = JSON.parse(text);
-                    if (data.status === 'login_required') {
-                        showAlert(data.message, 'warning');
-                        setTimeout(() => location.href = '../../user-side/links/login.php', 2000);
-                    } else if (data.status === 'success') {
-                        showAlert(data.message, 'success');
-                    } else {
-                        showAlert(data.message, 'danger');
-                    }
-                } catch (e) {
-                    showAlert('Server error. Please try again.', 'danger');
-                }
-            })
-            .catch(error => showAlert('Error occurred!', 'danger'));
-        }
-    });
-});
-    </script>
+    <script src="../../assets/js/alert.js"></script>
+    <script src="../../assets/js/load_wishlist_hearts.js"></script>
+    <script src="../../assets/js/product_interactions.js"></script>
 
     <?php if (isset($_SESSION['alert'])): ?>
         <div id="successAlert" class="alert alert-<?php echo $_SESSION['alert']['type']; ?> fade show" role="alert" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1060;">
@@ -247,6 +137,7 @@
     <?php include(__DIR__ . '/../components/footer.php'); ?>
     <?php include(__DIR__ . '/../components/modal.php'); ?>
     <?php include(__DIR__ . '/../components/add_to_cart.php'); ?>
+    <?php include(__DIR__ . '/../components/login_req.php'); ?>
     <script src="../../assets/js/add_to_cart.js"></script>
 </body>
 
