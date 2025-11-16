@@ -93,6 +93,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
+    <script src="../../assets/js/load_wishlist_hearts.js"></script>
     const productsData = <?php echo json_encode($products ?? []); ?>;
     </script>
     <script>

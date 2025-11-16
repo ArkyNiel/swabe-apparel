@@ -178,7 +178,7 @@
         </div>
         <?php unset($_SESSION['alert']); ?>
     <?php endif; ?>
-
+    <script src="../../assets/js/load_wishlist_hearts.js"></script>
     <?php include('../components/footer.php'); ?>
     <?php include('../components/modal.php'); ?>
     <?php include('../components/add_to_cart.php'); ?>
