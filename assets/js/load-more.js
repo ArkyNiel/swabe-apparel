@@ -8,6 +8,27 @@ function showAlert(msg, type) {
     setTimeout(() => alert.remove(), 5000);
 }
 
+// Function to load wishlist hearts
+function loadWishlistHearts() {
+    if (window.userLoggedIn) {
+        fetch('../../back-end/user-side/get_wishlist.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.wishlist) {
+                    data.wishlist.forEach(item => {
+                        const favoriteBtn = document.querySelector(`.favorite-btn[data-id="${item.product_id}"]`);
+                        if (favoriteBtn) {
+                            const icon = favoriteBtn.querySelector('.fa-heart');
+                            icon.classList.add('fas', 'red');
+                            icon.classList.remove('far');
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading wishlist:', error));
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const productsContainer = document.getElementById('products-container');
     const loadMoreBtn = document.getElementById('load-more-btn');
@@ -163,6 +184,9 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.add('visible');
         });
     }, 100);
+
+    // Load wishlist hearts for initial products
+    loadWishlistHearts();
 });
 
 function attachFavoriteBtnHandler() {
@@ -178,9 +202,7 @@ function attachFavoriteBtnHandler() {
             }
 
             const icon = this.querySelector('.fa-heart');
-            icon.classList.toggle('red');
-            icon.classList.toggle('fas');
-            icon.classList.toggle('far');
+            const isFavorited = icon.classList.contains('fas');
 
             // Get product data
             const name = this.getAttribute("data-name");
@@ -191,12 +213,16 @@ function attachFavoriteBtnHandler() {
 
             // Send to backend
             const data = new FormData();
-            data.append("action", "add_to_wishlist");
             data.append("ajax", "1");
             data.append("product_id", id);
-            data.append("product_name", name);
-            data.append("image", image);
-            data.append("price", price);
+            if (isFavorited) {
+                data.append("action", "remove");
+            } else {
+                data.append("action", "add_to_wishlist");
+                data.append("product_name", name);
+                data.append("image", image);
+                data.append("price", price);
+            }
 
             fetch("../../back-end/user-side/add_to_wishlist.php", {
                 method: "POST",
@@ -205,14 +231,27 @@ function attachFavoriteBtnHandler() {
                 .then(response => response.text())
                 .then(text => {
                     try {
-                        const data = JSON.parse(text);
-                        if (data.status === "login_required") {
-                            showAlert(data.message, "warning");
+                        const responseData = JSON.parse(text);
+                        if (responseData.status === "login_required") {
+                            showAlert(responseData.message, "warning");
                             setTimeout(() => location.href = "../../user-side/links/login.php", 2000);
-                        } else if (data.status === "success") {
-                            showAlert(data.message, "success");
+                        } else if (responseData.status === "success" || responseData.success) {
+                            // Toggle the icon only on success
+                            icon.classList.toggle('red');
+                            icon.classList.toggle('fas');
+                            icon.classList.toggle('far');
+                            if (isFavorited) {
+                                showAlert("Product removed from wishlist!", "success");
+                            } else {
+                                showAlert("Product added to wishlist!", "success");
+                            }
+                        } else if (responseData.status === "error" && responseData.message === "This product is already in your wishlist.") {
+                            // If already in wishlist, ensure icon is colored
+                            icon.classList.add('fas', 'red');
+                            icon.classList.remove('far');
+                            showAlert(responseData.message, "warning");
                         } else {
-                            showAlert(data.message, "danger");
+                            showAlert(responseData.message, "danger");
                         }
                     } catch (e) {
                         showAlert("Server error. Please try again.", "danger");
@@ -225,6 +264,7 @@ function attachFavoriteBtnHandler() {
 
 document.addEventListener('productsAppended', function() {
     attachFavoriteBtnHandler();
+    loadWishlistHearts();
 });
 
 
