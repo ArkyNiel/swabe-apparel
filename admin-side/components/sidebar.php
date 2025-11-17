@@ -1,107 +1,142 @@
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="./../assets/css/sidebar.css">
 <link rel="stylesheet" href="../assets/bootswatch/css/bootstrap.min.css">
 
+<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex flex-column sidebar" style="height: 100vh; overflow-y: auto;">
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between p-3">
+        <div class="d-flex align-items-center">
+            <i class="fas fa-tshirt text-primary me-2 fs-4" style="color: #ffff !important; "></i>
+            <span class="fw-bold fs-5 text-white d-none d-sm-inline" style="text-shadow: none; outline: none !important;">Swabe Apparel</span>
+        </div>
+        <button class="btn btn-link text-white p-1 d-sm-none" id="sidebarToggle">
+            <i class="bi bi-x-lg fs-4"></i>
+        </button>
+    </div>
 
-<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark py-5 d-flex flex-column sidebar" style="height: 100vh;">
-    <button class="btn btn-link text-white" id="sidebarToggle" style="margin-left: 15px; background-color: none; border: none; outline: none;">
-        <i class="bi bi-list fs-4"></i>
-    </button>
+    <!-- Navigation -->
+    <div class="flex-grow-1 overflow-auto">
+        <ul class="nav nav-pills flex-column p-2">
 
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white flex-grow-1" style="margin-top: 2rem; overflow-y: auto;">
-        <h3 class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <span class="fs-5 d-none d-sm-inline">Swabe Apparel</span>
-        </h3>
-
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100">
-            <li class="nav-item w-100">
-                <a href="main.php?page=dashboard" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'dashboard') ? 'active' : ''; ?>">
+            <!-- Dashboard -->
+            <li class="nav-item mb-1">
+                <a href="main.php?page=dashboard" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'dashboard') ? 'active' : ''; ?>">
                     <i class="bi bi-speedometer2 me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                    <span class="d-none d-sm-inline">Dashboard</span>
                 </a>
             </li>
 
-            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Product Management</small>
-
-            <li class="nav-item w-100 mt-2">
-                <a href="main.php?page=information" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'category') ? 'active' : ''; ?>">
-                    <i class="bi bi-tags me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Information</span>
+            <!-- Product Management Section -->
+            <li class="nav-item">
+                <div class="px-3 py-2">
+                    <small class="text-white fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.5px;">
+                        <i class="fas fa-boxes me-1"></i>Product Management
+                    </small>
+                </div>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="main.php?page=information" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'information') ? 'active' : ''; ?>">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <span class="d-none d-sm-inline">Information</span>
                 </a>
             </li>
-
-            <li class="nav-item w-100 mt-2">
-                <a href="main.php?page=inventory" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'inventory') ? 'active' : ''; ?>">
+            <li class="nav-item mb-1">
+                <a href="main.php?page=inventory" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'inventory') ? 'active' : ''; ?>">
                     <i class="bi bi-box2 me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Inventory</span>
+                    <span class="d-none d-sm-inline">Inventory</span>
                 </a>
             </li>
 
-            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Sales & Orders</small>
-            <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=orders" class="nav-link text-white">
-                    <i class="bi bi-cart3 me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Orders</span>
+            <!-- Sales & Orders Section -->
+            <li class="nav-item mt-3">
+                <div class="px-3 py-2">
+                    <small class="text-white fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.5px;">
+                        <i class="fas fa-shopping-cart me-1"></i>Sales & Orders
+                    </small>
+                </div>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="main.php?page=orders" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'orders') ? 'active' : ''; ?>">
+                    <i class="bi bi-receipt me-2"></i>
+                    <span class="d-none d-sm-inline">Orders</span>
                 </a>
             </li>
-
-            <li class="nav-item w-100 mt-2">
-                <a href="main.php?page=add_sales" class="nav-link text-white">
+            <li class="nav-item mb-1">
+                <a href="main.php?page=add_sales" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'add_sales') ? 'active' : ''; ?>">
                     <i class="bi bi-plus-circle me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Add Sales</span>
+                    <span class="d-none d-sm-inline">Add Sales</span>
                 </a>
             </li>
-
-            <li class="nav-item w-100 mt-2">
-                <a href="main.php?page=customers" class="nav-link text-white">
+            <li class="nav-item mb-1">
+                <a href="main.php?page=customers" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'customers') ? 'active' : ''; ?>">
                     <i class="bi bi-people me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Customers</span>
+                    <span class="d-none d-sm-inline">Customers</span>
                 </a>
             </li>
 
-            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Reports</small>
-            <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=sales_report" class="nav-link text-white">
+            <!-- Reports Section -->
+            <li class="nav-item mt-3">
+                <div class="px-3 py-2">
+                    <small class="text-white fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.5px;">
+                        <i class="fas fa-chart-line me-1"></i>Reports
+                    </small>
+                </div>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="main.php?page=sales_report" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'sales_report') ? 'active' : ''; ?>">
                     <i class="bi bi-graph-up me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Sales Report</span>
+                    <span class="d-none d-sm-inline">Sales Report</span>
                 </a>
             </li>
 
-            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Settings</small>
-            <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=settings" class="nav-link text-white">
+            <!-- Settings Section -->
+            <li class="nav-item mt-3">
+                <div class="px-3 py-2">
+                    <small class="text-white fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.5px;">
+                        <i class="fas fa-cogs me-1"></i>Settings
+                    </small>
+                </div>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="main.php?page=settings" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'settings') ? 'active' : ''; ?>">
                     <i class="bi bi-gear me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Settings</span>
+                    <span class="d-none d-sm-inline">Settings</span>
                 </a>
             </li>
 
             <!-- Customization Section -->
-            <small class="mt-3 ms-0 d-block" style="font-weight: 600; text-transform: uppercase;">Customization</small>
-            <li class="nav-item w-100 mt-3">
-                <a href="main.php?page=shop_picture" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'shop_picture') ? 'active' : ''; ?>">
+            <li class="nav-item mt-3">
+                <div class="px-3 py-2">
+                    <small class="text-white fw-bold text-uppercase" style="font-size: 0.7rem; letter-spacing: 0.5px;">
+                        <i class="fas fa-palette me-1"></i>Customization
+                    </small>
+                </div>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="main.php?page=shop_picture" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'shop_picture') ? 'active' : ''; ?>">
                     <i class="bi bi-image me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Shop Picture</span>
+                    <span class="d-none d-sm-inline">Shop Picture</span>
                 </a>
             </li>
-
-            <li class="nav-item w-100 mt-2">
-                <a href="main.php?page=top_trends" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'top_trends') ? 'active' : ''; ?>">
-                    <i class="bi bi-graph-up-arrow me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Top Trends</span>
+            <li class="nav-item mb-1">
+                <a href="main.php?page=top_trends" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'top_trends') ? 'active' : ''; ?>">
+                    <i class="bi bi-fire me-2"></i>
+                    <span class="d-none d-sm-inline">Top Trends</span>
                 </a>
             </li>
-
-            <li class="nav-item w-100 mt-2">
-                <a href="main.php?page=featured_product" class="nav-link text-white <?php echo (isset($_GET['page']) && $_GET['page'] == 'featured_product') ? 'active' : ''; ?>">
+            <li class="nav-item mb-1">
+                <a href="main.php?page=featured_product" class="nav-link text-white px-3 py-2 <?php echo (isset($_GET['page']) && $_GET['page'] == 'featured_product') ? 'active' : ''; ?>">
                     <i class="bi bi-star me-2"></i>
-                    <span class="ms-1 d-none d-sm-inline">Featured Product</span>
+                    <span class="d-none d-sm-inline">Featured Product</span>
                 </a>
             </li>
         </ul>
     </div>
 
-    <div class="mt-5">
-       
+    <!-- Footer -->
+    <div class="p-3">
+        <small class="text-white text-center d-block" style="font-size: 0.7rem; outline: none;">© 2024 Swabe Apparel</small>
     </div>
 </div>
 

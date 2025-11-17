@@ -10,11 +10,11 @@
 <body>
     <div class="d-flex">
         <?php include('components/sidebar.php'); ?>
-        
-        <div class="flex-grow-1">
+
+        <div class="flex-grow-1" style="height: 100vh; overflow-y: auto;">
             <?php
             $page = isset($_GET['page']) ? $_GET['page'] : 'dashboard';
-            
+
             $page_path = "links/{$page}.php";
             if (file_exists($page_path)) {
                 include($page_path);

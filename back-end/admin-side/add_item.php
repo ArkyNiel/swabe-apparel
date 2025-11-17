@@ -26,16 +26,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Move file
         if (move_uploaded_file($_FILES['product_image']['tmp_name'], $filepath)) {
-            // create db query
+            // generated id
+            $id = mt_rand(1000000, 9999999);
             $name = $_POST['product_name'] ?? '';
             $category = $_POST['category'] ?? '';
             $size = isset($_POST['size']) ? (is_array($_POST['size']) ? implode(',', $_POST['size']) : $_POST['size']) : '';
             $color = $_POST['color'] ?? '';
             $stock = isset($_POST['stock']) ? (int)$_POST['stock'] : 0;
             $price = isset($_POST['price']) ? (float)$_POST['price'] : 0;
-            
-            $stmt = $conn->prepare("INSERT INTO inventory (product_name, category, size, color, stock, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$name, $category, $size, $color, $stock, $price, $filename]);
+
+            $stmt = $conn->prepare("INSERT INTO inventory (id, product_name, category, size, color, stock, price, image_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$id, $name, $category, $size, $color, $stock, $price, $filename]);
             
             echo json_encode(['success' => true, 'message' => 'Product added successfully!']);
         } else {
