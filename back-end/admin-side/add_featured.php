@@ -26,10 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Move file
         if (move_uploaded_file($_FILES['featured_img']['tmp_name'], $filepath)) {
-            // save to database
-            $stmt = $conn->prepare("INSERT INTO featured_products (image_path, product_name, product_price, uploaded_at) VALUES (?, ?, ?, NOW())");
-            $stmt->execute([$filename, $_POST['product_name'], $_POST['product_price']]);
-            
+            // generated id
+            $id = mt_rand(1000000, 9999999);
+            $stmt = $conn->prepare("INSERT INTO featured_products (id, image_path, product_name, product_price, uploaded_at) VALUES (?, ?, ?, ?, NOW())");
+            $stmt->execute([$id, $filename, $_POST['product_name'], $_POST['product_price']]);
+
             header('Location: ../../admin-side/main.php?page=featured_product&success=1');
         } else {
             header('Location: ../../admin-side/main.php?page=featured_product&error=move');

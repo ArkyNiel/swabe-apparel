@@ -31,10 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['banner_img'])) {
         
         // Move file
         if (move_uploaded_file($_FILES['banner_img']['tmp_name'], $filepath)) {
-            // save
-            $stmt = $conn->prepare("INSERT INTO shop_banners (image_path, uploaded_at) VALUES (?, NOW())");
-            $stmt->execute([$filename]);
-            
+            // generated id
+            $id = mt_rand(1000000, 9999999);
+            $stmt = $conn->prepare("INSERT INTO shop_banners (id, image_path, uploaded_at) VALUES (?, ?, NOW())");
+            $stmt->execute([$id, $filename]);
+
             echo json_encode(['success' => true, 'msg' => 'Banner uploaded!']);
         } else {
             echo json_encode(['success' => false, 'msg' => 'Upload failed']);

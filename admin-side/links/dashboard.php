@@ -1,93 +1,93 @@
-<div class="container-fluid p-4 rounded-4" style="background: #f8f9fa; height: 100vh; overflow-y: auto;">
-    <h2 class="mb-4 fw-bold text-dark">Dashboard Overview</h2>
-    
+<div class="container-fluid p-4 rounded-4" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+    <h2 class="mb-4 fw-bold text-dark" style="font-size: 2.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Dashboard Overview</h2>
+
     <div class="row g-4 mb-4">
         <div class="col-md-4">
-            <div class="card bg-primary text-white rounded-4 shadow-sm border-0">
-                <div class="card-body rounded-4 d-flex flex-column align-items-start" style="padding: 40px;">
-                    <div class="mb-2">
-                        <i class="fas fa-shopping-cart fa-2x opacity-75"></i>
+            <div class="card text-white rounded-4 shadow-lg border-0 gradient-primary">
+                <div class="card-body rounded-4 d-flex flex-column align-items-start p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-shopping-cart fa-3x opacity-90"></i>
                     </div>
-                    <h5 class="card-title fw-semibold">Total Orders</h5>
-                    <h2 class="card-text fw-bold">150</h2>
+                    <h5 class="card-title fw-semibold mb-2">Total Orders</h5>
+                    <h2 class="card-text fw-bold mb-0" style="font-size: 3rem;">150</h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card bg-success text-white rounded-4 shadow-sm border-0">
-                <div class="card-body rounded-4 d-flex flex-column align-items-start" style="padding: 40px;">
-                    <div class="mb-2">
-                        <i class="fas fa-tshirt fa-2x opacity-75"></i>
+            <div class="card text-white rounded-4 shadow-lg border-0 gradient-success">
+                <div class="card-body rounded-4 d-flex flex-column align-items-start p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-tshirt fa-3x opacity-90"></i>
                     </div>
-                    <h5 class="card-title fw-semibold">Total Products</h5>
-                    <h2 class="card-text fw-bold">45</h2>
+                    <h5 class="card-title fw-semibold mb-2">Total Products</h5>
+                    <h2 class="card-text fw-bold mb-0" style="font-size: 3rem;">45</h2>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card bg-info text-white rounded-4 shadow-sm border-0">
-                <div class="card-body rounded-4 d-flex flex-column align-items-start" style="padding: 40px;">
-                    <div class="mb-2">
-                        <i class="fas fa-users fa-2x opacity-75"></i>
+            <div class="card text-white rounded-4 shadow-lg border-0 gradient-info">
+                <div class="card-body rounded-4 d-flex flex-column align-items-start p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-users fa-3x opacity-90"></i>
                     </div>
-                    <h5 class="card-title fw-semibold">Total Customers</h5>
-                    <h2 class="card-text fw-bold">89</h2>
+                    <h5 class="card-title fw-semibold mb-2">Total Customers</h5>
+                    <h2 class="card-text fw-bold mb-0" style="font-size: 3rem;">89</h2>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card rounded-4 shadow-sm border-0 mb-4">
-        <div class="card-header rounded-4 bg-white border-0">
-            <h5 class="mb-0 fw-bold text-dark">Recent Orders</h5>
+    <div class="card rounded-4 shadow-lg border-0 mb-4 bg-white">
+        <div class="card-header rounded-4 bg-light border-0 py-3">
+            <h5 class="mb-0 fw-bold text-dark" style="font-size: 1.5rem;">Recent Orders</h5>
         </div>
-        <div class="card-body rounded-4">
-            <div class="table-responsive rounded-4" style="overflow:hidden;">
-                <table class="table table-hover align-middle rounded-4 mb-0">
-                    <thead class="table-light">
+        <div class="card-body rounded-4 p-0">
+            <div class="table-responsive rounded-4" style="overflow: hidden;">
+                <table class="table table-hover align-middle mb-0 table-striped">
+                    <thead class="table-dark">
                         <tr>
-                            <th>Order ID</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Total</th>
+                            <th class="py-3 px-4">Order ID</th>
+                            <th class="py-3 px-4">Customer</th>
+                            <th class="py-3 px-4">Date</th>
+                            <th class="py-3 px-4">Status</th>
+                            <th class="py-3 px-4">Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>#1001</td>
-                            <td>Niel Arky</td>
-                            <td>Mar 15, 2024</td>
-                            <td><span class="badge bg-success rounded-pill px-3 py-2">Completed</span></td>
-                            <td>₱2,500.00</td>
+                            <td class="py-3 px-4">#1001</td>
+                            <td class="py-3 px-4">Niel Arky</td>
+                            <td class="py-3 px-4">Mar 15, 2024</td>
+                            <td class="py-3 px-4"><span class="badge bg-success rounded-pill px-3 py-2 fw-semibold">Completed</span></td>
+                            <td class="py-3 px-4 fw-bold">₱2,500.00</td>
                         </tr>
                         <tr>
-                            <td>#1002</td>
-                            <td>Niel Arky</td>
-                            <td>Mar 14, 2024</td>
-                            <td><span class="badge bg-danger rounded-pill px-3 py-2">Refund</span></td>
-                            <td>₱1,800.00</td>
+                            <td class="py-3 px-4">#1002</td>
+                            <td class="py-3 px-4">Niel Arky</td>
+                            <td class="py-3 px-4">Mar 14, 2024</td>
+                            <td class="py-3 px-4"><span class="badge bg-danger rounded-pill px-3 py-2 fw-semibold">Refund</span></td>
+                            <td class="py-3 px-4 fw-bold">₱1,800.00</td>
                         </tr>
                         <tr>
-                            <td>#1003</td>
-                            <td>Niel Arky</td>
-                            <td>Mar 14, 2024</td>
-                            <td><span class="badge bg-success rounded-pill px-3 py-2">Completed</span></td>
-                            <td>₱3,200.00</td>
+                            <td class="py-3 px-4">#1003</td>
+                            <td class="py-3 px-4">Niel Arky</td>
+                            <td class="py-3 px-4">Mar 14, 2024</td>
+                            <td class="py-3 px-4"><span class="badge bg-success rounded-pill px-3 py-2 fw-semibold">Completed</span></td>
+                            <td class="py-3 px-4 fw-bold">₱3,200.00</td>
                         </tr>
                         <tr>
-                            <td>#1004</td>
-                            <td>Niel Arky</td>
-                            <td>Mar 13, 2024</td>
-                            <td><span class="badge bg-danger rounded-pill px-3 py-2">Refund</span></td>
-                            <td>₱4,500.00</td>
+                            <td class="py-3 px-4">#1004</td>
+                            <td class="py-3 px-4">Niel Arky</td>
+                            <td class="py-3 px-4">Mar 13, 2024</td>
+                            <td class="py-3 px-4"><span class="badge bg-danger rounded-pill px-3 py-2 fw-semibold">Refund</span></td>
+                            <td class="py-3 px-4 fw-bold">₱4,500.00</td>
                         </tr>
                         <tr>
-                            <td>#1005</td>
-                            <td>Niel Arky</td>
-                            <td>Mar 13, 2024</td>
-                            <td><span class="badge bg-success rounded-pill px-3 py-2">Completed</span></td>
-                            <td>₱1,950.00</td>
+                            <td class="py-3 px-4">#1005</td>
+                            <td class="py-3 px-4">Niel Arky</td>
+                            <td class="py-3 px-4">Mar 13, 2024</td>
+                            <td class="py-3 px-4"><span class="badge bg-success rounded-pill px-3 py-2 fw-semibold">Completed</span></td>
+                            <td class="py-3 px-4 fw-bold">₱1,950.00</td>
                         </tr>
                     </tbody>
                 </table>
@@ -97,15 +97,15 @@
 
     <div class="row mt-4">
         <div class="col-md-12">
-            <div class="card rounded-4 shadow-sm border-0">
-                <div class="card-header rounded-4 bg-white border-0">
-                    <h5 class="mb-0 fw-bold text-dark">Quick Actions</h5>
+            <div class="card rounded-4 shadow-lg border-0 bg-white">
+                <div class="card-header rounded-4 bg-light border-0 py-3">
+                    <h5 class="mb-0 fw-bold text-dark" style="font-size: 1.5rem;">Quick Actions</h5>
                 </div>
-                <div class="card-body rounded-4">
+                <div class="card-body rounded-4 p-4">
                     <div class="row g-4">
                         <div class="col-md-4">
                             <a href="?page=inventory" class="text-decoration-none">
-                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card bg-light">
                                     <div class="card-body p-4">
                                         <div class="d-flex align-items-center mb-3">
                                             <div class="icon-circle bg-primary bg-opacity-10 me-3">
@@ -120,7 +120,7 @@
                         </div>
                         <div class="col-md-4">
                             <a href="?page=orders" class="text-decoration-none">
-                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card bg-light">
                                     <div class="card-body p-4">
                                         <div class="d-flex align-items-center mb-3">
                                             <div class="icon-circle bg-success bg-opacity-10 me-3">
@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-md-4">
                             <a href="?page=customers" class="text-decoration-none">
-                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card">
+                                <div class="card h-100 border-0 rounded-4 shadow-sm hover-card bg-light">
                                     <div class="card-body p-4">
                                         <div class="d-flex align-items-center mb-3">
                                             <div class="icon-circle bg-info bg-opacity-10 me-3">
@@ -156,25 +156,52 @@
 </div>
 
 <style>
+.gradient-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.gradient-success {
+    background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+}
+
+.gradient-info {
+    background: linear-gradient(135deg, #17a2b8 0%, #117a8b 100%);
+}
+
 .hover-card {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .hover-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15) !important;
+    border-color: rgba(0,123,255,0.3);
 }
 
 .icon-circle {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
-.icon-circle i {
-    font-size: 1.2rem;
+.icon-circle:hover {
+    transform: scale(1.1);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,0.02);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0,123,255,0.05);
+}
+
+.badge {
+    font-size: 0.85rem;
 }
 </style>
