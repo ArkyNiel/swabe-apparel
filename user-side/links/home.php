@@ -165,7 +165,7 @@
         window.INITIAL_PRODUCTS_COUNT = <?php echo isset($limitedProducts['products']) ? count($limitedProducts['products']) : 0; ?>;
         window.SEARCH_QUERY = ""; 
     </script>
-    <script src="../../assets/js/load-more.js"></script>
+    <script src="../../assets/js/load_more.js"></script>
     <script src="../../assets/js/cards.js"></script>
     <script src="../../assets/js/set_timeout.js"></script>
     <script>

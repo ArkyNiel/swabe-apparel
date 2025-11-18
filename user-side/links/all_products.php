@@ -77,7 +77,7 @@
     window.UPLOAD_PREFIX = '../uploads/';
     window.INITIAL_PRODUCTS_COUNT = <?php echo count($products); ?>;
     </script>
-    <script src="../../assets/js/load-more.js"></script>
+    <script src="../../assets/js/load_more.js"></script>
     <script src="../../assets/js/load_wishlist_hearts.js"></script>
     <script src="../../assets/js/cards.js"></script>
     <script src="../../assets/js/set_timeout.js"></script>
