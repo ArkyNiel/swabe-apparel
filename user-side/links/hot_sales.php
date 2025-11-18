@@ -60,10 +60,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
     <script>
-    window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
-    window.UPLOAD_PREFIX = '../uploads/';
-    const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
-    let offset = productsData.length;
+        window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
+        window.UPLOAD_PREFIX = '../uploads/';
+        window.INITIAL_PRODUCTS_COUNT = <?php echo count($limitedProducts); ?>;
+        const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
+        let offset = productsData.length;
     </script>
     <script src="../../assets/js/load_wishlist_hearts.js"></script>
     <script src="../../assets/js/load-more.js"></script>
