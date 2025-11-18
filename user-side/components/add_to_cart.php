@@ -100,9 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const increaseBtn = document.getElementById('increaseQuantity');
     const quantityInput = document.getElementById('cartModalQuantity');
 
-    if (decreaseBtn && quantityInput && !decreaseBtn.hasAttribute('data-listener-added')) {
-        decreaseBtn.setAttribute('data-listener-added', 'true');
-        decreaseBtn.addEventListener('click', function(e) {
+    if (decreaseBtn && quantityInput) {
+        decreaseBtn.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
             if (decreaseBtn.disabled) return;
@@ -112,12 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 quantityInput.value = value - 1;
             }
             setTimeout(() => decreaseBtn.disabled = false, 300);
-        });
+        };
     }
 
-    if (increaseBtn && quantityInput && !increaseBtn.hasAttribute('data-listener-added')) {
-        increaseBtn.setAttribute('data-listener-added', 'true');
-        increaseBtn.addEventListener('click', function(e) {
+    if (increaseBtn && quantityInput) {
+        increaseBtn.onclick = function(e) {
             e.preventDefault();
             e.stopPropagation();
             if (increaseBtn.disabled) return;
@@ -127,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 quantityInput.value = value + 1;
             }
             setTimeout(() => increaseBtn.disabled = false, 300);
-        });
+        };
     }
 
     document.addEventListener('click', function(e) {
