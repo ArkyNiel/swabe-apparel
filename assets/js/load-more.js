@@ -32,7 +32,7 @@ function loadWishlistHearts() {
 document.addEventListener('DOMContentLoaded', function() {
     const productsContainer = document.getElementById('products-container');
     const loadMoreBtn = document.getElementById('load-more-btn');
-    let currentPage = 1;
+    let currentPage = 2;
     const productsPerPage = 12;
     const getProductsUrl = window.GET_PRODUCTS_URL;
     const productCategory = window.PRODUCT_CATEGORY;
