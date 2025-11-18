@@ -77,7 +77,7 @@
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
     </script>
-    <script src="../../assets/js/load-more.js"></script>
+    <script src="../../assets/js/load_more.js"></script>
     <script src="../../assets/js/cards.js"></script>
     <script src="../../assets/js/set_timeout.js"></script>
     <script>

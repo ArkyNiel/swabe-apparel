@@ -106,6 +106,9 @@
     <script>
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
+    window.SEARCH_QUERY = '<?php echo htmlspecialchars($searchQuery); ?>';
+    window.INITIAL_PRODUCTS_COUNT = <?php echo count($products); ?>;
+    window.PRODUCT_CATEGORY = '';
     </script>
     <script src="../../assets/js/load-more.js"></script>
     <script src="../../assets/js/cards.js"></script>
