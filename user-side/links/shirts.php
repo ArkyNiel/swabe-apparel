@@ -63,6 +63,7 @@
     window.GET_PRODUCTS_URL = '../../back-end/user-side/get_products.php';
     window.UPLOAD_PREFIX = '../uploads/';
     window.PRODUCT_CATEGORY = 'Shirts';
+    window.INITIAL_PRODUCTS_COUNT = <?php echo count($limitedProducts); ?>;
     const productsData = <?php echo json_encode($limitedProducts ?? []); ?>;
     let offset = productsData.length;
     </script>

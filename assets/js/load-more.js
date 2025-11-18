@@ -32,21 +32,16 @@ function loadWishlistHearts() {
 document.addEventListener('DOMContentLoaded', function() {
     const productsContainer = document.getElementById('products-container');
     const loadMoreBtn = document.getElementById('load-more-btn');
-    let currentPage = 2;
+    let currentPage = 1;
     const productsPerPage = 12;
     const getProductsUrl = window.GET_PRODUCTS_URL;
     const productCategory = window.PRODUCT_CATEGORY;
     const initialProductsCount = window.INITIAL_PRODUCTS_COUNT || 0;
     const searchQuery = window.SEARCH_QUERY || '';
 
-    if (!getProductsUrl) {
-        console.error('GET_PRODUCTS_URL is not set!');
-        return;
-    }
+    if (!getProductsUrl || !loadMoreBtn) return;
 
     const productModal = new bootstrap.Modal(document.getElementById('productModal'));
-
-
 
     productsContainer.addEventListener('click', function(e) {
         const productCard = e.target.closest('.product-card');
@@ -60,91 +55,40 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    if (!loadMoreBtn) {
-        console.error('Load More button not found!');
-        return;
-    }
-    
     loadMoreBtn.addEventListener('click', function() {
-        console.log('Load More button clicked');
-        const start = currentPage * productsPerPage;
-        console.log('Fetching from:', getProductsUrl, 'with start:', start, 'and limit:', productsPerPage);
-        
-        let url;
-        if (searchQuery) {
-            url = '../../back-end/user-side/search_products.php';
-            url += `?start=${start}&limit=${productsPerPage}&search=${encodeURIComponent(searchQuery)}`;
-        } else {
-            url = `${getProductsUrl}?start=${start}&limit=${productsPerPage}`;
-            if (productCategory) {
-                url += `&category=${productCategory}`;
-            }
-        }
-        
-        if (window.UPLOAD_PREFIX) {
-            url += `&prefix=${encodeURIComponent(window.UPLOAD_PREFIX)}`;
-        }
-        console.log('Fetching:', url);
-        
+        const start = initialProductsCount + (currentPage - 1) * productsPerPage;
+
+        let url = searchQuery ? '../../back-end/user-side/search_products.php' : getProductsUrl;
+        url += `?start=${start}&limit=${productsPerPage}`;
+        if (searchQuery) url += `&search=${encodeURIComponent(searchQuery)}`;
+        if (productCategory) url += `&category=${productCategory}`;
+        if (window.UPLOAD_PREFIX) url += `&prefix=${encodeURIComponent(window.UPLOAD_PREFIX)}`;
+
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log('Fetched data:', data);
-                
-                if (data.error) {
-                    console.error('Error from server:', data.error);
-                    return;
-                }
-                
-                const nextProducts = data.products || data; 
+                if (data.error) return;
+
+                const nextProducts = data.products || data;
                 const hasMore = data.hasMore !== undefined ? data.hasMore : (nextProducts.length === productsPerPage);
-                
-                console.log('Fetched products:', nextProducts);
-                console.log('Has more products:', hasMore);
-                
+
                 if (Array.isArray(nextProducts) && nextProducts.length > 0) {
                     nextProducts.forEach((product, index) => {
                         const isRight = (index % 12) >= 6 ? 'right' : '';
-                        const imgSrc = product.image;
                         const productHTML = `
                             <div class="col-md-2 mb-4 product-item">
                                 <div class="card-container ${isRight}">
-                                    <div 
-                                        class="card product-card" 
-                                        style="width: 100%; height: 300px; cursor:pointer;"
-                                        data-name="${product.product_name || ''}"
-                                        data-image="${product.image || ''}"
-                                        data-color="${product.color || 'N/A'}"
-                                        data-size="${product.size || 'N/A'}"
-                                        data-price="${product.price || 'N/A'}"
-                                    >
-                                        <img src="${product.image || ''}"
-                                            class="card-img-top"
-                                            alt="${product.product_name || ''}"
-                                            style="height: 100%; object-fit: cover"
-                                        />
+                                    <div class="card product-card" style="width: 100%; height: 300px; cursor:pointer;" data-name="${product.product_name || ''}" data-image="${product.image || ''}" data-color="${product.color || 'N/A'}" data-size="${product.size || 'N/A'}" data-price="${product.price || 'N/A'}">
+                                        <img src="${product.image || ''}" class="card-img-top" alt="${product.product_name || ''}" style="height: 100%; object-fit: cover" />
                                     </div>
                                 </div>
                                 <div class="card-actions d-flex justify-content-between align-items-center mt-2">
                                     <h5 class="product-price">₱${product.price || 'N/A'}</h5>
                                     <div>
-                                        <button class="btn favorite-btn" title="Add to Favorites"
-                                            data-name="${product.product_name || ''}"
-                                            data-image="${product.image || ''}"
-                                            data-price="${product.price || 'N/A'}"
-                                            data-id="${product.id || ''}"
-                                            data-color="${product.color || 'N/A'}"
-                                        >
+                                        <button class="btn favorite-btn" title="Add to Favorites" data-name="${product.product_name || ''}" data-image="${product.image || ''}" data-price="${product.price || 'N/A'}" data-id="${product.id || ''}" data-color="${product.color || 'N/A'}">
                                             <i class="far fa-heart"></i>
                                         </button>
-                                        <button 
-                                            class="btn cart-btn" 
-                                            title="Add to Cart"
-                                            data-name="${product.product_name || ''}"
-                                            data-image="${product.image || ''}"
-                                            data-size="${product.size || 'N/A'}"
-                                            data-price="${product.price || 'N/A'}"
-                                        >
+                                        <button class="btn cart-btn" title="Add to Cart" data-name="${product.product_name || ''}" data-image="${product.image || ''}" data-size="${product.size || 'N/A'}" data-price="${product.price || 'N/A'}">
                                             <i class="fas fa-cart-shopping"></i>
                                         </button>
                                     </div>
@@ -153,30 +97,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         `;
                         productsContainer.insertAdjacentHTML('beforeend', productHTML);
                     });
-                    
-                    // manipulate css
+
                     setTimeout(() => {
                         document.querySelectorAll('.card-container:not(.visible)').forEach(card => {
                             card.classList.add('visible');
                         });
                     }, 100);
-                    
+
                     currentPage++;
-                    
-                    if (!hasMore) {
-                        loadMoreBtn.style.display = 'none';
-                        console.log('No more products to load, hiding button');
-                    }
+
+                    if (!hasMore) loadMoreBtn.style.display = 'none';
                 } else {
                     loadMoreBtn.style.display = 'none';
-                    console.log('No products returned, hiding button');
                 }
-                const event = new Event('productsAppended');
-                document.dispatchEvent(event);
+                document.dispatchEvent(new Event('productsAppended'));
             })
-            .catch(error => {
-                console.error('Error loading more products:', error);
-            });
+            .catch(console.error);
     });
 
     setTimeout(() => {
@@ -185,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 100);
 
-    // Load wishlist hearts for initial products
     loadWishlistHearts();
+    attachFavoriteBtnHandler();
 });
 
 function attachFavoriteBtnHandler() {

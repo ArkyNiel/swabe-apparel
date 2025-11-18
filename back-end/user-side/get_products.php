@@ -16,10 +16,10 @@ function getProducts($conn, $start, $limit, $imagePathPrefix = './uploads/', $ca
         $totalCount = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
 
         if ($category) {
-            $stmt = $conn->prepare("SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` FROM `inventory` WHERE `category` = :category LIMIT :start, :limit");
+            $stmt = $conn->prepare("SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` FROM `inventory` WHERE `category` = :category ORDER BY `id` DESC LIMIT :start, :limit");
             $stmt->bindValue(':category', $category, PDO::PARAM_STR);
         } else {
-            $stmt = $conn->prepare("SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` FROM `inventory` LIMIT :start, :limit");
+            $stmt = $conn->prepare("SELECT `id`, `product_name`, `category`, `size`, `color`, `stock`, `image_path`, `price`, `created_at` FROM `inventory` ORDER BY `id` DESC LIMIT :start, :limit");
         }
         $stmt->bindValue(':start', (int)$start, PDO::PARAM_INT);
         $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
