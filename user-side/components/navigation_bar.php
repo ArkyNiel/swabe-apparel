@@ -47,7 +47,7 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item link-hover" href="../../back-end/user-side/logout.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Log Out</a></li>
                             <?php else: ?>
-                                <li><a class="dropdown-item link-hover" href="../../user-side/links/login.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Log In</a></li>
+                                <li><a class="dropdown-item link-hover" href="../../user-side/auth/login.php" style="color: #101820 !important; text-decoration: none !important; text-transform: uppercase !important;">Log In</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>
